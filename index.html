@@ -1,45 +1,153 @@
 <!doctype html>
 <html lang="ja">
 <head>
-  <meta property="og:image" content="https://t-act-official.github.io/t-act-site/ogp.png">
-　<meta property="twitter:card" content="summary_large_image">
-　<meta property="og:title" content="T-ACT 公式サイト">
-　<meta property="og:description" content="最新曲『Sweet & Bitter』配信中。">
-　<meta property="og:image" content="https://t-act-official.github.io/t-act-site/logo-main.png">
-　<meta property="og:url" content="https://t-act-official.github.io/t-act-site/">
-　<meta property="og:type" content="website">
-　<meta name="twitter:card" content="summary_large_image">
+  <!-- ========== OGP / META ========== -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>T-ACT 公式サイト</title>
-  <meta name="description" content="T-ACT 公式サイト。最新曲『Sweet & Bitter』配信中。">
-  <link rel="icon" href="logo-main.png">
-  <!-- Apple Music Smart App Banner -->
+  <meta name="description" content="T-ACT Official Site. Chill & Emotion inspired music artist delivering urban night vibes.">
+
+  <!-- SNSプレビュー設定 -->
+  <meta property="og:title" content="T-ACT 公式サイト">
+  <meta property="og:description" content="T-ACT Official Site. Chill & Emotion inspired artist.">
+  <meta property="og:image" content="https://t-act-official.github.io/t-act-site/ogp.png">
+  <meta property="og:url" content="https://t-act-official.github.io/t-act-site/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Apple Music スマートバナー -->
   <meta name="apple-itunes-app" content="app-id=1108187390, app-argument=https://music.apple.com/jp/artist/t-act/1842221982">
+
+  <!-- ファビコン -->
+  <link rel="icon" href="logo-main.png">
+
+  <!-- ========== STYLE ========== -->
   <style>
-    :root{ --bg:#0b0f10; --text:#f3faf6; --mint:#34d399; --border:rgba(255,255,255,.14); }
-    *{ box-sizing:border-box; }
-    body{ margin:0; background:radial-gradient(1200px 800px at 20% 0%, rgba(52,211,153,.10), transparent 60%), linear-gradient(#0b0f10,#0a0c0d); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Noto Sans JP",Segoe UI,Roboto,Helvetica,Arial; text-align:center; line-height:1.65; }
-    header{ padding:56px 20px; position:relative; overflow:hidden; }
-    header::before{ content:""; position:absolute; inset:0; background:url("logo-main.png") no-repeat center/65%; opacity:.06; filter:grayscale(100%); }
-    header > *{ position:relative; }
-    img.logo{ max-width:180px; border-radius:16px; }
-    h1{ margin:14px 0 6px; font-size:clamp(22px,5vw,34px); letter-spacing:.02em; }
-    p.lead{ color:#a7b7b1; margin:0 0 10px; }
-    .cta{ display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:16px; }
-    .cta a{ display:inline-block; padding:12px 18px; border:1px solid var(--border); border-radius:12px; color:var(--mint); text-decoration:none; background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); }
-    .cta a:hover{ background:rgba(255,255,255,.10); }
-    section{ padding:36px 20px 60px; border-top:1px solid var(--border); }
-    img.profile{ max-width:260px; border-radius:14px; display:block; margin:10px auto 14px; border:1px solid var(--border); }
-    footer{ padding:36px 20px; color:#95aa9f; border-top:1px solid var(--border); }
+    :root {
+      --bg:#0b0f10;
+      --text:#f3faf6;
+      --mint:#34d399;
+      --border:rgba(255,255,255,.14);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(1200px 800px at 20% 0%, rgba(52,211,153,.10), transparent 60%),
+        linear-gradient(#0b0f10,#0a0c0d);
+      color: var(--text);
+      font-family: -apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Noto Sans JP",Segoe UI,Roboto,Helvetica,Arial;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    header {
+      padding: 56px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("logo-main.png") no-repeat center/65%;
+      opacity: .06;
+      filter: grayscale(100%);
+    }
+
+    header > * {
+      position: relative;
+    }
+
+    img.logo {
+      max-width: 180px;
+      border-radius: 16px;
+    }
+
+    h1 {
+      margin: 14px 0 6px;
+      font-size: clamp(22px,5vw,34px);
+      letter-spacing: .02em;
+    }
+
+    p.lead {
+      color: #a7b7b1;
+      margin: 0 0 10px;
+    }
+
+    .cta {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 16px;
+    }
+
+    .cta a {
+      display: inline-block;
+      padding: 12px 18px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--mint);
+      text-decoration: none;
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      transition: all .2s ease;
+    }
+
+    .cta a:hover {
+      background: rgba(255,255,255,.10);
+      transform: translateY(-2px);
+    }
+
+    section {
+      padding: 36px 20px 60px;
+      border-top: 1px solid var(--border);
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      letter-spacing: .05em;
+      color: var(--mint);
+      margin-bottom: 0.6em;
+    }
+
+    img.profile {
+      max-width: 260px;
+      border-radius: 14px;
+      display: block;
+      margin: 10px auto 14px;
+      border: 1px solid var(--border);
+    }
+
+    footer {
+      padding: 36px 20px;
+      color: #95aa9f;
+      border-top: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+
+    a {
+      color: var(--mint);
+    }
+
+    a:hover {
+      opacity: .8;
+    }
   </style>
 </head>
 <body>
 
+<!-- ========== HEADER ========== -->
 <header>
-  <img src="logo-main.png" alt="T-ACT" class="logo">
+  <img src="logo-main.png" alt="T-ACT ロゴ" class="logo">
   <h1>T-ACT 公式サイト</h1>
-  <p class="lead">最新曲『Sweet & Bitter』配信中</p>
+  <p class="lead">Chill × Emotion — 都会の夜に寄り添う音楽。</p>
+
   <div class="cta">
     <a href="https://lin.ee/L5MxMC0" target="_blank" rel="noopener">LINE MUSIC</a>
     <a href="https://music.apple.com/jp/artist/t-act/1842221982" target="_blank" rel="noopener">Apple Music</a>
@@ -47,21 +155,27 @@
   </div>
 </header>
 
-<section>
+<!-- ========== PROFILE ========== -->
+<section id="profile">
   <img src="profile.jpg" alt="T-ACT 宣材写真" class="profile">
-  <h2>プロフィール</h2>
-  <p>T-ACTは、チルとエモーションを軸にした音楽を届けるアーティストとして活動。<br>
-  電子的な質感と有機的なメロディを融合し、都会の夜や静かな瞬間に寄り添うサウンドを描く。<br>
-    <br>
-  最新作『Sweet &amp; Bitter』は、チョコミントのように甘さとほろ苦さが共存する世界観を表現している。</p>
+  <h2>PROFILE</h2>
+  <p>
+    T-ACTは、チルとエモーションを軸にした音楽を届けるアーティスト。<br>
+    電子的な質感と有機的なメロディを融合し、都会の夜や静かな瞬間に寄り添うサウンドを描く。<br><br>
+    本職は実業家・投資家としても活動し、現実と夢の狭間をテーマにした表現を追求している。
+  </p>
 </section>
-　<section id="contact" class="section">
+
+<!-- ========== CONTACT ========== -->
+<section id="contact" class="section">
   <h2>CONTACT</h2>
   <p>お仕事のご依頼やお問い合わせはメールにてご連絡ください。</p>
   <p><a href="mailto:tekutaku12@gmail.com">tekutaku12@gmail.com</a></p>
 </section>
+
+<!-- ========== FOOTER ========== -->
 <footer>
-  © 2025 T-ACT — All rights reserved.
+  © 2025 T-ACT — All Rights Reserved.
 </footer>
 
 </body>
