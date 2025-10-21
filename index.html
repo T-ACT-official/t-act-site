@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>T-ACT 公式サイト</title>
   <meta name="description" content="T-ACT Official Site. Chill × Emotion — 都会の夜に寄り添う音楽。">
+  <link rel="canonical" href="https://t-act-official.github.io/t-act-site/">
 
   <!-- SNSプレビュー -->
   <meta property="og:title" content="T-ACT 公式サイト">
@@ -12,6 +13,7 @@
   <meta property="og:image" content="https://t-act-official.github.io/t-act-site/ogp.png">
   <meta property="og:url" content="https://t-act-official.github.io/t-act-site/">
   <meta property="og:type" content="website">
+  <meta property="og:locale" content="ja_JP">
   <meta name="twitter:card" content="summary_large_image">
 
   <!-- Apple Music スマートバナー -->
@@ -20,128 +22,67 @@
   <!-- Favicon -->
   <link rel="icon" href="logo-main.png">
 
-  <!-- ========== STYLE ========== -->
   <style>
-    :root {
-      --bg:#0b0f10;
-      --text:#f3faf6;
-      --mint:#34d399;
-      --border:rgba(255,255,255,.14);
-    }
-
+    :root { --bg:#0b0f10; --text:#f3faf6; --mint:#34d399; --border:rgba(255,255,255,.14); }
     * { box-sizing: border-box; }
-
     body {
-      margin: 0;
-      color: var(--text);
+      margin: 0; color: var(--text);
       background: linear-gradient(#0b0f10,#0a0c0d);
-      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Noto Sans JP", Segoe UI, Roboto, Helvetica, Arial;
-      text-align: center;
-      line-height: 1.7;
+      font-family: -apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Noto Sans JP",Segoe UI,Roboto,Helvetica,Arial;
+      text-align: center; line-height: 1.7;
     }
-
-    /* ==== Header ==== */
     header {
-      padding: 56px 20px;
-      position: relative;
-      overflow: hidden;
+      padding: 56px 20px; position: relative; overflow: hidden;
       background: radial-gradient(1200px 800px at 20% 0%, rgba(52,211,153,.10), transparent 60%);
     }
     header::before {
-      content: "";
-      position: absolute;
-      inset: 0;
+      content: ""; position: absolute; inset: 0;
       background: url("logo-main.png") no-repeat center/65%;
-      opacity: .06;
-      filter: grayscale(100%);
+      opacity: .06; filter: grayscale(100%);
     }
     header > * { position: relative; }
-
     img.logo { max-width: 180px; border-radius: 16px; }
     h1 { margin: 14px 0 6px; font-size: clamp(22px,5vw,34px); letter-spacing: .02em; }
     p.lead { color: #a7b7b1; margin: 0 0 10px; }
-
-    /* ==== CTA Buttons ==== */
-    .cta {
-      display: flex; gap: 10px; flex-wrap: wrap;
-      justify-content: center; margin-top: 16px;
-    }
+    .cta { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 16px; }
     .cta a {
-      display: inline-block;
-      padding: 12px 18px;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      color: var(--mint);
-      text-decoration: none;
+      display: inline-block; padding: 12px 18px; border: 1px solid var(--border);
+      border-radius: 12px; color: var(--mint); text-decoration: none;
       background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
       transition: all .2s ease;
     }
     .cta a:hover { background: rgba(255,255,255,.10); transform: translateY(-2px); }
+    section { padding: 36px 20px 60px; border-top: 1px solid var(--border); background: rgba(0,0,0,0.3); }
+    h2 { font-size: 1.4rem; letter-spacing: .05em; color: var(--mint); margin-bottom: 0.6em; }
 
-    /* ==== Section ==== */
-    section {
-      padding: 36px 20px 60px;
-      border-top: 1px solid var(--border);
-      background: rgba(0,0,0,0.3);
-    }
-
-    h2 {
-      font-size: 1.4rem;
-      letter-spacing: .05em;
-      color: var(--mint);
-      margin-bottom: 0.6em;
-    }
-
-    /* ==== Video ==== */
     .video-container {
-      position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
-      overflow: hidden;
-      max-width: 800px;
-      margin: 0 auto;
-      border-radius: 12px;
-      border: 1px solid var(--border);
+      position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;
+      max-width: 800px; margin: 0 auto; border-radius: 12px; border: 1px solid var(--border);
     }
-    .video-container iframe {
-      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    }
+    .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
-    /* ==== Releases ==== */
     .releases {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      max-width: 900px;
-      margin: 0 auto;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px; max-width: 900px; margin: 0 auto;
     }
     .release {
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 16px;
-      background: rgba(255,255,255,.03);
-      transition: transform .3s ease, box-shadow .3s ease;
+      border: 1px solid var(--border); border-radius: 14px; padding: 16px;
+      background: rgba(255,255,255,.03); transition: transform .3s ease, box-shadow .3s ease;
     }
-    .release:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 35px rgba(0,0,0,.35);
-    }
+    .release:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,.35); }
     .release img { width: 100%; border-radius: 10px; margin-bottom: 12px; box-shadow: 0 12px 30px rgba(0,0,0,.35); }
     .release h3 { margin: 6px 0; color: var(--mint); font-size: 1.1rem; }
     .release p { font-size: 0.9rem; color: #a7b7b1; }
 
-    /* ==== Profile / Footer ==== */
     img.profile { max-width: 260px; border-radius: 14px; display: block; margin: 10px auto 14px; border: 1px solid var(--border); }
     footer { padding: 36px 20px; color: #95aa9f; border-top: 1px solid var(--border); font-size: 0.9rem; }
-    a { color: var(--mint); }
-    a:hover { opacity: .8; }
+    a { color: var(--mint); } a:hover { opacity: .8; }
   </style>
 </head>
 <body>
 
-<!-- ==== HEADER ==== -->
 <header>
-  <img src="logo-main.png" alt="T-ACT ロゴ" class="logo">
+  <img src="logo-main.png" alt="T-ACT ロゴ" class="logo" loading="lazy" decoding="async">
   <h1>T-ACT 公式サイト</h1>
   <p class="lead">Chill × Emotion — 都会の夜に寄り添う音楽。</p>
   <div class="cta">
@@ -151,27 +92,28 @@
   </div>
 </header>
 
-<!-- ==== Rain in Your Eyes ==== -->
 <section id="video">
   <h2>Rain in Your Eyes</h2>
   <p>10/20 Release — 光と影が交錯する、切なさと希望のバラード。</p>
   <div class="video-container">
-    <iframe src="https://www.youtube.com/embed/7oF0rDxDRWc"
-      title="Rain in Your Eyes MV"
+    <iframe
+      src="https://www.youtube.com/embed/7oF0rDxDRWc"
+      title="T-ACT - Rain in Your Eyes (MV)"
       frameborder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen></iframe>
+      allowfullscreen
+      loading="lazy">
+    </iframe>
   </div>
 </section>
 
-<!-- ==== RELEASES ==== -->
 <section id="releases">
   <h2>RELEASES</h2>
   <div class="releases">
 
     <!-- Rain in Your Eyes -->
     <div class="release">
-      <img src="Rain-in-Your-Eyes.jpg" alt="Rain in Your Eyes ジャケット">
+      <img src="Rain-in-Your-Eyes.jpg" alt="Rain in Your Eyes ジャケット画像" loading="lazy" decoding="async">
       <h3>Rain in Your Eyes</h3>
       <p>10/20 Release — 光と影が交錯する、切なさと希望のバラード。</p>
       <a href="https://music.line.me/webapp/album/mb0000000004bd70f0" target="_blank" rel="noopener">Listen on LINE MUSIC</a>
@@ -179,8 +121,8 @@
 
     <!-- Sweet & Bitter -->
     <div class="release">
-      <img src="sweet-bitter.jpg" alt="Sweet & Bitter ジャケット">
-      <h3>Sweet & Bitter</h3>
+      <img src="sweet-bitter.jpg" alt="Sweet &amp; Bitter ジャケット画像" loading="lazy" decoding="async">
+      <h3>Sweet &amp; Bitter</h3>
       <p>チョコミントのように甘さとほろ苦さが共存する一曲。</p>
       <a href="https://lin.ee/L5MxMC0" target="_blank" rel="noopener">Listen on LINE MUSIC</a>
     </div>
@@ -188,9 +130,8 @@
   </div>
 </section>
 
-<!-- ==== PROFILE ==== -->
 <section id="profile">
-  <img src="profile.jpg" alt="T-ACT 宣材写真" class="profile">
+  <img src="profile.jpg" alt="T-ACT 宣材写真" class="profile" loading="lazy" decoding="async">
   <h2>PROFILE</h2>
   <p>
     T-ACTは、チルとエモーションを軸にした音楽を届けるアーティスト。<br>
