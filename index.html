@@ -68,12 +68,23 @@
     section { padding: 36px 20px 60px; border-top: 1px solid var(--border); background: rgba(0,0,0,0.3); }
     h2 { font-size: 1.4rem; letter-spacing: .05em; color: var(--mint); margin-bottom: 0.6em; }
 
-    /* Video */
+    /* ✅ 修正版 Video（常に16:9） */
     .video-container {
-      position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;
-      max-width: 800px; margin: 0 auto; border-radius: 12px; border: 1px solid var(--border);
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      max-width: 1000px;
+      margin: 0 auto;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      overflow: hidden;
     }
-    .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+    .video-container iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
 
     /* Releases */
     .releases {
@@ -109,7 +120,7 @@
     a:hover { opacity: .8; }
   </style>
 
-  <!-- ===== 構造化データ（公式アーティスト＋作品） ===== -->
+  <!-- ===== 構造化データ ===== -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
