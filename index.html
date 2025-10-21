@@ -30,9 +30,7 @@
       --border:rgba(255,255,255,.14);
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -60,14 +58,9 @@
       filter: grayscale(100%);
     }
 
-    header > * {
-      position: relative;
-    }
+    header > * { position: relative; }
 
-    img.logo {
-      max-width: 180px;
-      border-radius: 16px;
-    }
+    img.logo { max-width: 180px; border-radius: 16px; }
 
     h1 {
       margin: 14px 0 6px;
@@ -75,17 +68,11 @@
       letter-spacing: .02em;
     }
 
-    p.lead {
-      color: #a7b7b1;
-      margin: 0 0 10px;
-    }
+    p.lead { color: #a7b7b1; margin: 0 0 10px; }
 
     .cta {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 16px;
+      display: flex; gap: 10px; flex-wrap: wrap;
+      justify-content: center; margin-top: 16px;
     }
 
     .cta a {
@@ -104,10 +91,7 @@
       transform: translateY(-2px);
     }
 
-    section {
-      padding: 36px 20px 60px;
-      border-top: 1px solid var(--border);
-    }
+    section { padding: 36px 20px 60px; border-top: 1px solid var(--border); }
 
     h2 {
       font-size: 1.4rem;
@@ -131,23 +115,64 @@
       font-size: 0.9rem;
     }
 
-    a {
-      color: var(--mint);
+    a { color: var(--mint); }
+    a:hover { opacity: .8; }
+
+    /* MVセクション */
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      max-width: 800px;
+      margin: 0 auto;
+      border-radius: 12px;
+      border: 1px solid var(--border);
     }
 
-    a:hover {
-      opacity: .8;
+    .video-container iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
     }
+
+    /* リリースカード */
+    .releases {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .release {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+      background: rgba(255,255,255,.03);
+    }
+
+    .release img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 12px;
+    }
+
+    .release h3 {
+      margin: 6px 0;
+      color: var(--mint);
+      font-size: 1.1rem;
+    }
+
+    .release p { font-size: 0.9rem; color: #a7b7b1; }
   </style>
 </head>
 <body>
 
-<!-- ========== HEADER ========== -->
 <header>
   <img src="logo-main.png" alt="T-ACT ロゴ" class="logo">
   <h1>T-ACT 公式サイト</h1>
   <p class="lead">Chill × Emotion — 都会の夜に寄り添う音楽。</p>
-
   <div class="cta">
     <a href="https://lin.ee/L5MxMC0" target="_blank" rel="noopener">LINE MUSIC</a>
     <a href="https://music.apple.com/jp/artist/t-act/1842221982" target="_blank" rel="noopener">Apple Music</a>
@@ -155,25 +180,61 @@
   </div>
 </header>
 
+<!-- ========== MVセクション ========== -->
+<section id="video">
+  <h2>Rain in Your Eyes</h2>
+  <p>10/20 Release — 光と影が交錯する、切なさと希望のバラード。</p>
+  <div class="video-container">
+    <iframe src="https://www.youtube.com/embed/7oF0rDxDRWc"
+      title="Rain in Your Eyes MV"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
+</section>
+
+<!-- ========== RELEASES ========== -->
+<section id="releases">
+  <h2>OTHER RELEASES</h2>
+  <div class="releases">
+
+    <!-- Rain in Your Eyes -->
+    <div class="release">
+      <img src="S__243122197_0.jpg" alt="Rain in Your Eyes ジャケット">
+      <h3>Rain in Your Eyes</h3>
+      <p>10/20 Release — 光と影が交錯する、切なさと希望のバラード。</p>
+      <a href="https://music.apple.com/jp/album/rain-in-your-eyes/1772662320" target="_blank" rel="noopener">Listen on Apple Music</a>
+    </div>
+
+    <!-- Sweet & Bitter -->
+    <div class="release">
+      <img src="logo-main.png" alt="Sweet & Bitter">
+      <h3>Sweet & Bitter</h3>
+      <p>チョコミントのように甘さとほろ苦さが共存する一曲。</p>
+      <a href="https://lin.ee/L5MxMC0" target="_blank" rel="noopener">Listen on LINE MUSIC</a>
+    </div>
+
+  </div>
+</section>
+
 <!-- ========== PROFILE ========== -->
 <section id="profile">
   <img src="profile.jpg" alt="T-ACT 宣材写真" class="profile">
   <h2>PROFILE</h2>
   <p>
-    T-ACTは、チルとエモーションを軸にした音楽を届けるアーティスト。<br>
-    電子的な質感と有機的なメロディを融合し、都会の夜や静かな瞬間に寄り添うサウンドを描く。<br><br>
-    本職は実業家・投資家としても活動し、現実と夢の狭間をテーマにした表現を追求している。
+    T-ACTは、チルとエモーションを軸にした音楽を届けたい。<br>
+    電子的な質感と有機的なメロディを融合し、都会の夜や静かな瞬間に寄り添うサウンドを描いていく。<br><br>
+    現実と夢の狭間をテーマにした表現を追求している。
   </p>
 </section>
 
-<!-- ========== CONTACT ========== -->
 <section id="contact" class="section">
   <h2>CONTACT</h2>
   <p>お仕事のご依頼やお問い合わせはメールにてご連絡ください。</p>
   <p><a href="mailto:tekutaku12@gmail.com">tekutaku12@gmail.com</a></p>
 </section>
 
-<!-- ========== FOOTER ========== -->
 <footer>
   © 2025 T-ACT — All Rights Reserved.
 </footer>
