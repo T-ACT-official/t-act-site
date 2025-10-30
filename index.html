@@ -29,7 +29,7 @@
 
   <!-- ===== スタイル ===== -->
   <style>
-    :root { --bg:#0b0f10; --text:#f3faf6; --mint:#34d399; --border:rgba(255,255,255,.14); }
+    :root { --bg:#0b0f10; --text:#f3faf6; --mint:#34d399; --border:rgba(255,255,255,.14); --muted:#9db1a8; --chip:rgba(255,255,255,.08); }
     * { box-sizing: border-box; }
 
     body {
@@ -68,7 +68,7 @@
     section { padding: 36px 20px 60px; border-top: 1px solid var(--border); background: rgba(0,0,0,0.3); }
     h2 { font-size: 1.4rem; letter-spacing: .05em; color: var(--mint); margin-bottom: 0.6em; }
 
-    /* ✅ 修正版 Video（常に16:9） */
+    /* ✅ Video（常に16:9） */
     .video-container {
       position: relative;
       width: 100%;
@@ -79,12 +79,7 @@
       border: 1px solid var(--border);
       overflow: hidden;
     }
-    .video-container iframe {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-    }
+    .video-container iframe { position: absolute; inset: 0; width: 100%; height: 100%; }
 
     /* Releases */
     .releases {
@@ -94,30 +89,57 @@
     .release {
       border: 1px solid var(--border); border-radius: 14px; padding: 16px;
       background: rgba(255,255,255,.03); transition: transform .3s ease, box-shadow .3s ease;
+      text-align: left;
     }
     .release:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,.35); }
-    .release img { width: 100%; border-radius: 10px; margin-bottom: 12px; box-shadow: 0 12px 30px rgba(0,0,0,.35); }
+    .release img { width: 100%; border-radius: 10px; margin-bottom: 12px; box-shadow: 0 12px 30px rgba(0,0,0,.35); display:block; }
     .release h3 { margin: 6px 0; color: var(--mint); font-size: 1.1rem; }
     .release p { font-size: 0.9rem; color: #a7b7b1; }
+    .release a { color: var(--mint); }
+
+    /* ✅ Schedule（リリース予定/イベント） */
+    .schedule { max-width: 900px; margin: 0 auto; text-align: left; display: grid; gap: 14px; }
+    .sched-item {
+      display: grid; gap: 8px;
+      grid-template-columns: 110px 1fr;
+      align-items: start;
+      padding: 14px 16px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: rgba(255,255,255,.03);
+    }
+    .sched-date {
+      font-variant-numeric: tabular-nums;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .sched-main h3 { margin: 0; font-size: 1.05rem; }
+    .sched-meta { color: var(--muted); font-size: .9rem; margin-top: 2px; }
+    .chips { display: inline-flex; gap: 8px; margin-top: 6px; flex-wrap: wrap; }
+    .chip {
+      font-size: .75rem; padding: 4px 8px; border-radius: 999px;
+      background: var(--chip); border: 1px solid var(--border); color: var(--text);
+    }
+    .sched-links { margin-top: 8px; display: flex; gap: 10px; flex-wrap: wrap; }
+    .sched-links a {
+      display:inline-block; padding:8px 10px; border:1px solid var(--border);
+      border-radius:10px; text-decoration:none; color:var(--mint);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+    }
 
     /* Profile / Footer */
     img.profile { max-width: 260px; border-radius: 14px; display: block; margin: 10px auto 14px; border: 1px solid var(--border); }
-
-    .label {
-      margin-top: 40px;
-    }
-    .label img {
-      max-width: 220px;
-      opacity: 0.8;
-      transition: opacity .3s ease;
-    }
-    .label img:hover {
-      opacity: 1;
-    }
-
+    .label { margin-top: 40px; }
+    .label img { max-width: 220px; opacity: 0.8; transition: opacity .3s ease; }
+    .label img:hover { opacity: 1; }
     footer { padding: 36px 20px; color: #95aa9f; border-top: 1px solid var(--border); font-size: 0.9rem; }
-    a { color: var(--mint); }
-    a:hover { opacity: .8; }
+    a { color: var(--mint); } a:hover { opacity: .8; }
+
+    /* 小画面最適化 */
+    @media (max-width: 640px) {
+      .sched-item { grid-template-columns: 1fr; }
+      .sched-date { order: -1; }
+    }
   </style>
 
   <!-- ===== 構造化データ ===== -->
@@ -128,22 +150,7 @@
     "name": "T-ACT",
     "url": "https://t-act-official.github.io/t-act-site/",
     "image": "https://t-act-official.github.io/t-act-site/ogp.png",
-    "genre": ["Chill", "Electronic", "J-Pop"],
-    "album": [
-      {
-        "@type": "MusicAlbum",
-        "name": "Rain in Your Eyes",
-        "image": "https://t-act-official.github.io/t-act-site/Rain-in-Your-Eyes.jpg",
-        "url": "https://music.line.me/webapp/album/mb0000000004bd70f0",
-        "datePublished": "2025-10-20"
-      },
-      {
-        "@type": "MusicAlbum",
-        "name": "Sweet & Bitter",
-        "image": "https://t-act-official.github.io/t-act-site/sweet-bitter.jpg",
-        "url": "https://lin.ee/L5MxMC0"
-      }
-    ]
+    "genre": ["Chill", "Electronic", "J-Pop"]
   }
   </script>
 </head>
@@ -199,6 +206,55 @@
     </div>
   </section>
 
+  <!-- ===== ✅ SCHEDULE（リリース予定・イベント） ===== -->
+  <section id="schedule">
+    <h2>SCHEDULE</h2>
+    <div class="schedule">
+
+      <!-- ▼▼▼ ここからコピペで増やす ▼▼▼
+        typeバッジは .chip に以下いずれかを入れてください：
+        RELEASE / LIVE / EVENT / MEDIA / OTHER
+      -->
+
+      <!-- サンプル：リリース予定 -->
+      <article class="sched-item">
+        <div class="sched-date">2025-11-15</div>
+        <div class="sched-main">
+          <h3>（サンプル）New Single Release</h3>
+          <div class="sched-meta">配信：主要サブスク</div>
+          <div class="chips">
+            <span class="chip">RELEASE</span>
+            <span class="chip">Digital</span>
+          </div>
+          <div class="sched-links">
+            <a href="#" target="_blank" rel="noreferrer noopener">Teaser</a>
+            <a href="#" target="_blank" rel="noreferrer noopener">Pre-save</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- サンプル：イベント -->
+      <article class="sched-item">
+        <div class="sched-date">2025-12-20</div>
+        <div class="sched-main">
+          <h3>（サンプル）Live Showcase</h3>
+          <div class="sched-meta">会場：Tokyo / Open 18:00 Start 19:00</div>
+          <div class="chips">
+            <span class="chip">LIVE</span>
+            <span class="chip">On-stage</span>
+          </div>
+          <div class="sched-links">
+            <a href="#" target="_blank" rel="noreferrer noopener">Tickets</a>
+            <a href="#" target="_blank" rel="noreferrer noopener">Access</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- ▲▲▲ ここまでを複製して更新 ▲▲▲ -->
+
+    </div>
+  </section>
+
   <!-- ===== PROFILE ===== -->
   <section id="profile">
     <img src="profile.jpg" alt="T-ACT 宣材写真" class="profile" loading="lazy" decoding="async">
@@ -209,7 +265,7 @@
       現実と夢の狭間をテーマにした表現を追求している。
     </p>
 
-    <!-- ===== LABEL LOGO ===== -->
+    <!-- LABEL LOGO -->
     <div class="label">
       <img src="VISION-VOID-W.png" alt="VISION VOID RECORDS ロゴ" loading="lazy" decoding="async">
     </div>
@@ -218,6 +274,9 @@
   <footer>
     © 2025 T-ACT — All Rights Reserved.
   </footer>
+
+</body>
+</html>
 
 </body>
 </html>
