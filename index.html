@@ -52,7 +52,7 @@
     header > * { position: relative; }
     img.logo { max-width: 180px; border-radius: 16px; }
     h1 { margin: 14px 0 6px; font-size: clamp(22px,5vw,34px); letter-spacing: .02em; }
-    p.lead { color: #a7b7b1; margin: 0 0 10px; }
+    p.lead { color: #a7b71; margin: 0 0 10px; }
 
     /* CTA */
     .cta { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 16px; }
@@ -135,6 +135,18 @@
     footer { padding: 36px 20px; color: #95aa9f; border-top: 1px solid var(--border); font-size: 0.9rem; }
     a { color: var(--mint); } a:hover { opacity: .8; }
 
+    /* === Mint 粒子 背景 === */
+    #mint-bg{
+      position:fixed;
+      inset:0;
+      z-index:0;
+      width:100vw;
+      height:100vh;
+      pointer-events:none;
+    }
+    /* 既存コンテンツは前面に */
+    header, section, footer{ position:relative; z-index:1; }
+
     /* 小画面最適化 */
     @media (max-width: 640px) {
       .sched-item { grid-template-columns: 1fr; }
@@ -156,6 +168,9 @@
 </head>
 <body>
 
+  <!-- 🌱 背景Mint粒子 Canvas -->
+  <canvas id="mint-bg" aria-hidden="true"></canvas>
+
   <!-- ===== HEADER ===== -->
   <header>
     <img src="logo-main.png" alt="T-ACT ロゴ" class="logo" loading="lazy" decoding="async">
@@ -173,10 +188,7 @@
     <h2>SCHEDULE</h2>
     <div class="schedule">
 
-      <!-- ▼▼▼ ここからコピペで増やす ▼▼▼
-        typeバッジは .chip に以下いずれかを入れてください：
-        RELEASE / LIVE / EVENT / MEDIA / OTHER
-      -->
+      <!-- ▼▼▼ ここからコピペで増やす ▼▼▼ -->
 
       <!-- リリース予定 -->
       <article class="sched-item">
@@ -254,8 +266,69 @@
     © 2025 T-ACT — All Rights Reserved.
   </footer>
 
-</body>
-</html>
+  <!-- 🌱 Mint粒子スクリプト -->
+  <script>
+  (() => {
+    const canvas = document.getElementById('mint-bg');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let width = 0, height = 0;
+    let running = true;
+
+    // 端末の「簡易モーション」を尊重
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) running = false;
+
+    function resize(){
+      width  = canvas.width  = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+      // 画面サイズに応じて粒子数を調整（密度一定）
+      const density = Math.floor((width * height) / 30000);
+      const count = Math.max(40, Math.min(140, density));
+      particles = Array.from({length: count}, () => spawn());
+    }
+
+    function spawn(){
+      return {
+        x: Math.random()*width,
+        y: Math.random()*height,
+        r: 0.8 + Math.random()*2.2,        // 半径
+        vy: 0.15 + Math.random()*0.6,      // 縦流れ
+        vx: (Math.random()-0.5)*0.4,       // ゆらぎ
+        a: 0.20 + Math.random()*0.35,      // 透明度
+        tw: Math.random()*Math.PI*2        // 波揺らぎ用
+      };
+    }
+
+    function step(){
+      if (!running) return;
+      ctx.clearRect(0,0,width,height);
+
+      particles.forEach(p => {
+        p.tw += 0.01;
+        p.x += p.vx + Math.sin(p.tw)*0.15;
+        p.y += p.vy;
+
+        // はみ出し時は上から再出現
+        if (p.y - p.r > height) { p.y = -p.r; p.x = Math.random()*width; }
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+        ctx.fillStyle = `rgba(52,211,153,${p.a})`;
+        ctx.shadowColor = 'rgba(52,211,153,0.25)';
+        ctx.shadowBlur = 6;
+        ctx.fill();
+        ctx.shadowBlur = 0;
+      });
+
+      requestAnimationFrame(step);
+    }
+
+    window.addEventListener('resize', resize, { passive:true });
+    resize();
+    if (running) requestAnimationFrame(step);
+  })();
+  </script>
 
 </body>
 </html>
