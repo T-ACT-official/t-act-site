@@ -95,7 +95,24 @@
     .release img { width: 100%; border-radius: 10px; margin-bottom: 12px; box-shadow: 0 12px 30px rgba(0,0,0,.35); display:block; }
     .release h3 { margin: 6px 0; color: var(--mint); font-size: 1.1rem; }
     .release p { font-size: 0.9rem; color: #a7b7b1; }
-    .release a { color: var(--mint); }
+
+    /* 共通リンクボタン（Apple / Spotify / LINE） */
+    .release .sched-links {
+      margin-top: 10px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+    .release .sched-links a {
+      display:inline-block;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      text-decoration:none;
+      font-size:0.85rem;
+      color:var(--mint);
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+    }
 
     /* ✅ Schedule（リリース予定/イベント） */
     .schedule { max-width: 900px; margin: 0 auto; text-align: left; display: grid; gap: 14px; }
@@ -119,12 +136,6 @@
     .chip {
       font-size: .75rem; padding: 4px 8px; border-radius: 999px;
       background: var(--chip); border: 1px solid var(--border); color: var(--text);
-    }
-    .sched-links { margin-top: 8px; display: flex; gap: 10px; flex-wrap: wrap; }
-    .sched-links a {
-      display:inline-block; padding:8px 10px; border:1px solid var(--border);
-      border-radius:10px; text-decoration:none; color:var(--mint);
-      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
     }
 
     /* Profile / Footer */
@@ -151,6 +162,7 @@
     @media (max-width: 640px) {
       .sched-item { grid-template-columns: 1fr; }
       .sched-date { order: -1; }
+      .release .sched-links { flex-direction:column; }
     }
   </style>
 
@@ -187,8 +199,6 @@
   <section id="schedule">
     <h2>SCHEDULE</h2>
     <div class="schedule">
-
-      <!-- リリース（民意） -->
       <article class="sched-item">
         <div class="sched-date">2025-11-11</div>
         <div class="sched-main">
@@ -200,7 +210,6 @@
           </div>
         </div>
       </article>
-
     </div>
   </section>
 
@@ -233,7 +242,9 @@
           ライブ配信のリアルを描き、社会の“目覚め”を促す挑戦作。<br>
         </p>
         <div class="sched-links">
-          <a href="https://music.line.me/webapp/album/mb0000000004c69aec" target="_blank" rel="noreferrer noopener">Listen on LINE MUSIC</a>
+          <a href="https://music.apple.com/jp/album/%E6%B0%91%E6%84%8F-single/1849569794?l=en-US" target="_blank" rel="noreferrer noopener">Apple Music</a>
+          <a href="https://open.spotify.com/intl-ja/album/5aEr49bcIZFjfhHN3RLWwP" target="_blank" rel="noreferrer noopener">Spotify</a>
+          <a href="https://music.line.me/webapp/album/mb0000000004c69aec" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
         </div>
       </div>
 
@@ -243,7 +254,10 @@
         <h3>Rain in Your Eyes</h3>
         <p>光と影が交錯する、切なさと希望のバラード。</p>
         <div class="sched-links">
-          <a href="https://music.line.me/webapp/album/mb0000000004bd70f0" target="_blank" rel="noreferrer noopener">Listen on LINE MUSIC</a>
+          <!-- ▼ 実際のURLに差し替えてください ▼ -->
+          <a href="https://music.apple.com/jp/album/rein-in-your-eyes-single/1846001692?l=en-US&ls=1" target="_blank" rel="noreferrer noopener">Apple Music</a>
+          <a href="https://open.spotify.com/intl-ja/album/1C92rS53XHBaoCYRjzBaVe" target="_blank" rel="noreferrer noopener">Spotify</a>
+          <a href="https://music.line.me/webapp/album/mb0000000004bd70f0" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
         </div>
       </div>
 
@@ -253,7 +267,10 @@
         <h3>Sweet &amp; Bitter</h3>
         <p>チョコミントのように甘さとほろ苦さが共存する一曲。</p>
         <div class="sched-links">
-          <a href="https://lin.ee/L5MxMC0" target="_blank" rel="noreferrer noopener">Listen on LINE MUSIC</a>
+          <!-- ▼ 実際のURLに差し替えてください ▼ -->
+          <a href="https://music.apple.com/jp/album/sweet-bitter-single/1842222414?l=en-US" target="_blank" rel="noreferrer noopener">Apple Music</a>
+          <a href="https://open.spotify.com/intl-ja/album/7CbNVVZHkUaciaimexseSm" target="_blank" rel="noreferrer noopener">Spotify</a>
+          <a href="https://music.line.me/webapp/artist/mi00000000284748db" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
         </div>
       </div>
 
@@ -289,14 +306,12 @@
     let width = 0, height = 0;
     let running = true;
 
-    // 端末の「簡易モーション」を尊重
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReduced) running = false;
 
     function resize(){
       width  = canvas.width  = window.innerWidth;
       height = canvas.height = window.innerHeight;
-      // 画面サイズに応じて粒子数を調整（密度一定）
       const density = Math.floor((width * height) / 30000);
       const count = Math.max(40, Math.min(140, density));
       particles = Array.from({length: count}, () => spawn());
@@ -306,11 +321,11 @@
       return {
         x: Math.random()*width,
         y: Math.random()*height,
-        r: 0.8 + Math.random()*2.2,        // 半径
-        vy: 0.15 + Math.random()*0.6,      // 縦流れ
-        vx: (Math.random()-0.5)*0.4,       // ゆらぎ
-        a: 0.20 + Math.random()*0.35,      // 透明度
-        tw: Math.random()*Math.PI*2        // 波揺らぎ用
+        r: 0.8 + Math.random()*2.2,
+        vy: 0.15 + Math.random()*0.6,
+        vx: (Math.random()-0.5)*0.4,
+        a: 0.20 + Math.random()*0.35,
+        tw: Math.random()*Math.PI*2
       };
     }
 
@@ -323,7 +338,6 @@
         p.x += p.vx + Math.sin(p.tw)*0.15;
         p.y += p.vy;
 
-        // はみ出し時は上から再出現
         if (p.y - p.r > height) { p.y = -p.r; p.x = Math.random()*width; }
 
         ctx.beginPath();
