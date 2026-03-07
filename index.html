@@ -1,16 +1,16 @@
 <!doctype html>
 <html lang="ja">
 <head>
-  <!-- =====✅ 基本情報 ===== -->
+  <!-- ===== 基本情報 ===== -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>T-ACT 公式サイト</title>
-  <meta name="description" content="T-ACT Official Site. 社会の当事者として「音楽」で語る。""
+  <meta name="description" content="T-ACT Official Site. 社会の当事者として『音楽』で語る。">
   <link rel="canonical" href="https://t-act-official.github.io/t-act-site/">
 
-  <!-- ===== ✅OGP / SNSプレビュー ===== -->
+  <!-- ===== OGP / SNSプレビュー ===== -->
   <meta property="og:title" content="T-ACT 公式サイト">
-  <meta property="og:description" content="社会の当事者として「音楽」で語る。">
+  <meta property="og:description" content="社会の当事者として『音楽』で語る。">
   <meta property="og:image" content="https://t-act-official.github.io/t-act-site/ogp.png?v=1">
   <meta property="og:url" content="https://t-act-official.github.io/t-act-site/">
   <meta property="og:type" content="website">
@@ -23,52 +23,107 @@
   <!-- ===== Favicon ===== -->
   <link rel="icon" href="logo-main.png">
 
-  <!-- ===== ✅表示高速化（YouTube先読み） ===== -->
+  <!-- ===== 表示高速化（YouTube先読み） ===== -->
   <link rel="preconnect" href="https://i.ytimg.com">
   <link rel="preconnect" href="https://www.youtube-nocookie.com">
 
-  <!-- ===== ✅スタイル ===== -->
+  <!-- ===== スタイル ===== -->
   <style>
-    :root { --bg:#0b0f10; --text:#f3faf6; --mint:#34d399; --border:rgba(255,255,255,.14); --muted:#9db1a8; --chip:rgba(255,255,255,.08); }
+    :root {
+      --bg:#0b0f10;
+      --text:#f3faf6;
+      --mint:#34d399;
+      --border:rgba(255,255,255,.14);
+      --muted:#9db1a8;
+      --chip:rgba(255,255,255,.08);
+    }
+
     * { box-sizing: border-box; }
 
     body {
-      margin: 0; color: var(--text);
+      margin: 0;
+      color: var(--text);
       background: linear-gradient(#0b0f10,#0a0c0d);
       font-family: -apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Noto Sans JP",Segoe UI,Roboto,Helvetica,Arial;
-      text-align: center; line-height: 1.7;
+      text-align: center;
+      line-height: 1.7;
     }
 
     /* Header */
     header {
-      padding: 56px 20px; position: relative; overflow: hidden;
+      padding: 56px 20px;
+      position: relative;
+      overflow: hidden;
       background: radial-gradient(1200px 800px at 20% 0%, rgba(52,211,153,.10), transparent 60%);
     }
+
     header::before {
-      content: ""; position: absolute; inset: 0;
+      content: "";
+      position: absolute;
+      inset: 0;
       background: url("logo-main.png") no-repeat center/65%;
-      opacity: .06; filter: grayscale(100%);
+      opacity: .06;
+      filter: grayscale(100%);
     }
+
     header > * { position: relative; }
-    img.logo { max-width: 180px; border-radius: 16px; }
-    h1 { margin: 14px 0 6px; font-size: clamp(22px,5vw,34px); letter-spacing: .02em; }
-    p.lead { color: #a7b7b1; margin: 0 0 10px; }
+
+    img.logo {
+      max-width: 180px;
+      border-radius: 16px;
+    }
+
+    h1 {
+      margin: 14px 0 6px;
+      font-size: clamp(22px,5vw,34px);
+      letter-spacing: .02em;
+    }
+
+    p.lead {
+      color: #a7b7b1;
+      margin: 0 0 10px;
+    }
 
     /* CTA */
-    .cta { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 16px; }
+    .cta {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 16px;
+    }
+
     .cta a {
-      display: inline-block; padding: 12px 18px; border: 1px solid var(--border);
-      border-radius: 12px; color: var(--mint); text-decoration: none;
+      display: inline-block;
+      padding: 12px 18px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--mint);
+      text-decoration: none;
       background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
       transition: all .2s ease;
     }
-    .cta a:hover { background: rgba(255,255,255,.10); transform: translateY(-2px); }
+
+    .cta a:hover {
+      background: rgba(255,255,255,.10);
+      transform: translateY(-2px);
+    }
 
     /* Sections */
-    section { padding: 36px 20px 60px; border-top: 1px solid var(--border); background: rgba(0,0,0,0.3); }
-    h2 { font-size: 1.4rem; letter-spacing: .05em; color: var(--mint); margin-bottom: 0.6em; }
+    section {
+      padding: 36px 20px 60px;
+      border-top: 1px solid var(--border);
+      background: rgba(0,0,0,0.3);
+    }
 
-    /*  Video（常に16:9） */
+    h2 {
+      font-size: 1.4rem;
+      letter-spacing: .05em;
+      color: var(--mint);
+      margin-bottom: 0.6em;
+    }
+
+    /* Video（常に16:9） */
     .video-container {
       position: relative;
       width: 100%;
@@ -79,45 +134,87 @@
       border: 1px solid var(--border);
       overflow: hidden;
     }
-    .video-container iframe { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+    .video-container iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
 
     /* Releases */
     .releases {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px; max-width: 900px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      max-width: 900px;
+      margin: 0 auto;
     }
+
     .release {
-      border: 1px solid var(--border); border-radius: 14px; padding: 16px;
-      background: rgba(255,255,255,.03); transition: transform .3s ease, box-shadow .3s ease;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+      background: rgba(255,255,255,.03);
+      transition: transform .3s ease, box-shadow .3s ease;
       text-align: left;
     }
-    .release:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,.35); }
-    .release img { width: 100%; border-radius: 10px; margin-bottom: 12px; box-shadow: 0 12px 30px rgba(0,0,0,.35); display:block; }
-    .release h3 { margin: 6px 0; color: var(--mint); font-size: 1.1rem; }
-    .release p { font-size: 0.9rem; color: #a7b7b1; }
 
-    /* 共通リンクボタン（Apple / Spotify / LINE） */
+    .release:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0,0,0,.35);
+    }
+
+    .release img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 12px;
+      box-shadow: 0 12px 30px rgba(0,0,0,.35);
+      display: block;
+    }
+
+    .release h3 {
+      margin: 6px 0;
+      color: var(--mint);
+      font-size: 1.1rem;
+    }
+
+    .release p {
+      font-size: 0.9rem;
+      color: #a7b7b1;
+    }
+
+    /* 共通リンクボタン */
     .release .sched-links {
       margin-top: 10px;
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-    }
-    .release .sched-links a {
-      display:inline-block;
-      padding:8px 12px;
-      border-radius:999px;
-      border:1px solid var(--border);
-      text-decoration:none;
-      font-size:0.85rem;
-      color:var(--mint);
-      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
     }
 
-    /* Schedule（リリース予定/イベント） */
-    .schedule { max-width: 900px; margin: 0 auto; text-align: left; display: grid; gap: 14px; }
+    .release .sched-links a {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      font-size: 0.85rem;
+      color: var(--mint);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+    }
+
+    /* Schedule */
+    .schedule {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: left;
+      display: grid;
+      gap: 14px;
+    }
+
     .sched-item {
-      display: grid; gap: 8px;
+      display: grid;
+      gap: 8px;
       grid-template-columns: 110px 1fr;
       align-items: start;
       padding: 14px 16px;
@@ -125,211 +222,268 @@
       border-radius: 12px;
       background: rgba(255,255,255,.03);
     }
+
     .sched-date {
       font-variant-numeric: tabular-nums;
       color: var(--muted);
       white-space: nowrap;
     }
-    .sched-main h3 { margin: 0; font-size: 1.05rem; }
-    .sched-meta { color: var(--muted); font-size: .9rem; margin-top: 2px; }
-    .chips { display: inline-flex; gap: 8px; margin-top: 6px; flex-wrap: wrap; }
+
+    .sched-main h3 {
+      margin: 0;
+      font-size: 1.05rem;
+    }
+
+    .sched-meta {
+      color: var(--muted);
+      font-size: .9rem;
+      margin-top: 2px;
+    }
+
+    .chips {
+      display: inline-flex;
+      gap: 8px;
+      margin-top: 6px;
+      flex-wrap: wrap;
+    }
+
     .chip {
-      font-size: .75rem; padding: 4px 8px; border-radius: 999px;
-      background: var(--chip); border: 1px solid var(--border); color: var(--text);
+      font-size: .75rem;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: var(--chip);
+      border: 1px solid var(--border);
+      color: var(--text);
     }
 
     /* Profile / Footer */
-    img.profile { max-width: 260px; border-radius: 14px; display: block; margin: 10px auto 14px; border: 1px solid var(--border); }
-    .label { margin-top: 40px; }
-    .label img { max-width: 220px; opacity: 0.8; transition: opacity .3s ease; }
-    .label img:hover { opacity: 1; }
-    footer { padding: 36px 20px; color: #95aa9f; border-top: 1px solid var(--border); font-size: 0.9rem; }
-    a { color: var(--mint); } a:hover { opacity: .8; }
-
-    /* === Mint 粒子 背景 === */
-    #mint-bg{
-      position:fixed;
-      inset:0;
-      z-index:0;
-      width:100vw;
-      height:100vh;
-      pointer-events:none;
+    img.profile {
+      max-width: 260px;
+      border-radius: 14px;
+      display: block;
+      margin: 10px auto 14px;
+      border: 1px solid var(--border);
     }
-    header, section, footer{ position:relative; z-index:1; }
+
+    .label {
+      margin-top: 40px;
+    }
+
+    .label img {
+      max-width: 220px;
+      opacity: 0.8;
+      transition: opacity .3s ease;
+    }
+
+    .label img:hover {
+      opacity: 1;
+    }
+
+    footer {
+      padding: 36px 20px;
+      color: #95aa9f;
+      border-top: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+
+    a { color: var(--mint); }
+    a:hover { opacity: .8; }
+
+    /* Mint 粒子 背景 */
+    #mint-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+    }
+
+    header, section, footer {
+      position: relative;
+      z-index: 1;
+    }
 
     /* 小画面最適化 */
     @media (max-width: 640px) {
       .sched-item { grid-template-columns: 1fr; }
       .sched-date { order: -1; }
-      .release .sched-links { flex-direction:column; }
+      .release .sched-links { flex-direction: column; }
     }
   </style>
 
-  <!-- ===== ✅構造化データ ===== -->
+  <!-- ===== 構造化データ ===== -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "MusicGroup",
+    "@id": "https://t-act-official.github.io/t-act-site/#artist",
     "name": "T-ACT",
     "url": "https://t-act-official.github.io/t-act-site/",
     "image": "https://t-act-official.github.io/t-act-site/ogp.png",
-    "genre": ["Chill", "Electronic", "J-Pop"]
+    "genre": ["Chill", "Electronic", "J-Pop"],
+    "sameAs": [
+      "https://music.apple.com/jp/artist/t-act/1842221982",
+      "https://open.spotify.com/intl-ja/artist/5FOiDuDN7NiDUrBtEciroP",
+      "https://x.com/t_act_music"
+    ]
   }
   </script>
 </head>
 <body>
 
-  <!-- ✅背景Mint粒子 Canvas -->
+  <!-- 背景Mint粒子 Canvas -->
   <canvas id="mint-bg" aria-hidden="true"></canvas>
 
   <!-- ===== HEADER ===== -->
   <header>
     <img src="logo-main.png" alt="T-ACT ロゴ" class="logo" loading="lazy" decoding="async">
     <h1>T-ACT</h1>
-    <p class="lead">昼は、責任と精度がすべてを決める世界で、構造とビジネスを築く。<br>
-夜は、その重みを音に変える。<br><br>
-逃避でも幻想でもない。<br>
-現実から生まれた、チルでミニマルな音楽。</p>
+    <p class="lead">
+      昼は、責任と精度がすべてを決める世界で、構造とビジネスを築く。<br>
+      夜は、その重みを音に変える。<br><br>
+      逃避でも幻想でもない。<br>
+      現実から生まれた、チルでミニマルな音楽。
+    </p>
     <div class="cta">
       <a href="https://lin.ee/L5MxMC0" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
       <a href="https://music.apple.com/jp/artist/t-act/1842221982" target="_blank" rel="noreferrer noopener">Apple Music</a>
       <a href="https://open.spotify.com/intl-ja/artist/5FOiDuDN7NiDUrBtEciroP" target="_blank" rel="noreferrer noopener">Spotify</a>
     </div>
   </header>
-  
-<!-- ===== ✅ SCHEDULE（リリース予定） ===== -->
-<section id="schedule">
-  <h2>SCHEDULE</h2>
-  <div class="schedule">
 
- <!-- 残置 -->
-    <article class="sched-item">
-      <div class="sched-date">2026-03-06</div>
-      <div class="sched-main">
-        <h3>New Single Release【残置】</h3>
-        <div class="sched-meta">配信：主要サブスク</div>
-        <div class="chips">
-          <span class="chip">RELEASE</span>
-          <span class="chip">Digital</span>
+  <!-- ===== SCHEDULE ===== -->
+  <section id="schedule">
+    <h2>SCHEDULE</h2>
+    <div class="schedule">
+
+      <article class="sched-item">
+        <div class="sched-date">2026-03-06</div>
+        <div class="sched-main">
+          <h3>New Single Release【残置】</h3>
+          <div class="sched-meta">配信：主要サブスク</div>
+          <div class="chips">
+            <span class="chip">RELEASE</span>
+            <span class="chip">Digital</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ===== RELEASES ===== -->
+  <section id="releases">
+    <h2>RELEASES</h2>
+    <div class="releases">
+
+      <!-- 残置 -->
+      <div class="release">
+        <img src="zanti.jpg" alt="残置 ジャケット画像" loading="lazy" decoding="async">
+        <h3>残置</h3>
+        <p>
+          ルールの中で生きることで置いてきた感情や記憶を、<br>
+          静かに見つめ直す一曲。
+        </p>
+        <div class="sched-links">
+          <a href="https://music.apple.com/jp/album/%E6%AE%8B%E7%BD%AE-single/1877027727?l=en-US" target="_blank" rel="noreferrer noopener">Apple Music</a>
+          <a href="https://open.spotify.com/intl-ja/album/5QjedeXnR7x5IG49Yyakch" target="_blank" rel="noreferrer noopener">Spotify</a>
+          <a href="https://music.line.me/webapp/album/mb0000000005084848" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
         </div>
       </div>
-    </article>
 
-  </div>
-</section>
-  
-  <!-- =====✅ RELEASES ===== -->
-<section id="releases">
-  <h2>RELEASES</h2>
-  <div class="releases">
-
-    <!-- 残置 -->
-    <div class="release">
-      <img src="zanti.jpg" alt="残置 ジャケット画像" loading="lazy" decoding="async">
-      <h3>残置</h3>
-      <p>
-        ルールの中で生きることで置いてきた感情や記憶を、<br>
-        静かに見つめ直す一曲。
-      </p>
-      <div class="sched-links">
-        <a href="https://music.apple.com/jp/album/%E6%AE%8B%E7%BD%AE-single/1877027727?l=en-US" target="_blank" rel="noreferrer noopener">Apple Music</a>
-        <a href="https://open.spotify.com/intl-ja/album/5QjedeXnR7x5IG49Yyakch" target="_blank" rel="noreferrer noopener">Spotify</a>
-        <a href="https://music.line.me/webapp/album/mb0000000005084848" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
+      <!-- いいね -->
+      <div class="release">
+        <img src="iine.jpg" alt="いいね ジャケット画像" loading="lazy" decoding="async">
+        <h3>いいね</h3>
+        <p>
+          他者からの反応に振り回されすぎず、<br>
+          自分自身の感覚や価値を大切にしてほしいという想い。
+        </p>
+        <div class="sched-links">
+          <a href="https://music.apple.com/jp/album/%E3%81%84%E3%81%84%E3%81%AD-single/1871989088?l=en-US" target="_blank" rel="noreferrer noopener">Apple Music</a>
+          <a href="https://open.spotify.com/intl-ja/album/4GRUelIFhMOQMx9yO07WkM?si=tblRppJZTXyVUCadGEstog" target="_blank" rel="noreferrer noopener">Spotify</a>
+          <a href="https://lin.ee/yrto4K0" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
+        </div>
       </div>
-    </div>
 
-    <!-- いいね -->
-    <div class="release">
-      <img src="iine.jpg" alt="いいね ジャケット画像" loading="lazy" decoding="async">
-      <h3>いいね</h3>
-      <p>
-        他者からの反応に振り回されすぎず、<br>
-        自分自身の感覚や価値を大切にしてほしいという想い。
-      </p>
-      <div class="sched-links">
-        <a href="https://music.apple.com/jp/album/%E3%81%84%E3%81%84%E3%81%AD-single/1871989088?l=en-US" target="_blank" rel="noreferrer noopener">Apple Music</a>
-        <a href="https://open.spotify.com/intl-ja/album/4GRUelIFhMOQMx9yO07WkM?si=tblRppJZTXyVUCadGEstog" target="_blank" rel="noreferrer noopener">Spotify</a>
-        <a href="https://lin.ee/yrto4K0" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
+      <!-- 蟹穴 -->
+      <div class="release">
+        <img src="kaniana.jpg" alt="蟹穴 ジャケット画像" loading="lazy" decoding="async">
+        <h3>蟹穴</h3>
+        <p>
+          蟹って、自分の体に合った穴を選んで、そこから世界を見てる。<br>
+          その穴は、逃げ場所じゃなくて、踏ん張る場所なんだよ。
+        </p>
+        <div class="sched-links">
+          <a href="https://music.apple.com/jp/album/%E8%9F%B9%E7%A9%B4-single/1867369742?l=en&ls=1&app=music" target="_blank" rel="noreferrer noopener">Apple Music</a>
+          <a href="https://open.spotify.com/album/0YmbmHT1sN7XpBxs14Fnp4" target="_blank" rel="noreferrer noopener">Spotify</a>
+          <a href="https://music.line.me/launch?target=album&item=mb0000000004edf2b2&cc=JP&v=1" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
+        </div>
       </div>
-    </div>
 
-    <!-- 蟹穴 -->
-    <div class="release">
-      <img src="kaniana.jpg" alt="蟹穴 ジャケット画像" loading="lazy" decoding="async">
-      <h3>蟹穴</h3>
-      <p>
-        蟹って、自分の体に合った穴を選んで、そこから世界を見てる。<br>
-        その穴は、逃げ場所じゃなくて、踏ん張る場所なんだよ。
-      </p>
-      <div class="sched-links">
-        <a href="https://music.apple.com/jp/album/%E8%9F%B9%E7%A9%B4-single/1867369742?l=en&ls=1&app=music" target="_blank" rel="noreferrer noopener">Apple Music</a>
-        <a href="https://open.spotify.com/album/0YmbmHT1sN7XpBxs14Fnp4" target="_blank" rel="noreferrer noopener">Spotify</a>
-        <a href="https://music.line.me/launch?target=album&item=mb0000000004edf2b2&cc=JP&v=1" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
+      <!-- Baton -->
+      <div class="release">
+        <img src="baton.jpg" alt="Baton ジャケット画像" loading="lazy" decoding="async">
+        <h3>Baton</h3>
+        <p>
+          受け継がれていく意思と責任をテーマにした一曲。
+        </p>
+        <div class="sched-links">
+          <a href="https://music.apple.com/jp/album/baton/1858161005?i=1858161006" target="_blank" rel="noreferrer noopener">Apple Music</a>
+          <a href="https://open.spotify.com/album/44Bq00HIJz3jXdJsIEHj6W?si=fhpAepe7SGiycFldcUJP2g" target="_blank" rel="noreferrer noopener">Spotify</a>
+          <a href="https://lin.ee/QcJr9CZ" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
+        </div>
       </div>
-    </div>
 
-    <!-- Baton -->
-    <div class="release">
-      <img src="baton.jpg" alt="Baton ジャケット画像" loading="lazy" decoding="async">
-      <h3>Baton</h3>
-      <p>
-        受け継がれていく意思と責任をテーマにした一曲。
-      </p>
-      <div class="sched-links">
-        <a href="https://music.apple.com/jp/album/baton/1858161005?i=1858161006" target="_blank" rel="noreferrer noopener">Apple Music</a>
-        <a href="https://open.spotify.com/album/44Bq00HIJz3jXdJsIEHj6W?si=fhpAepe7SGiycFldcUJP2g" target="_blank" rel="noreferrer noopener">Spotify</a>
-        <a href="https://lin.ee/QcJr9CZ" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
+      <!-- 民意 -->
+      <div class="release">
+        <img src="min-i.jpg" alt="民意 ジャケット画像" loading="lazy" decoding="async">
+        <h3>民意</h3>
+        <p>
+          SNS時代の“人気”や“称賛”に潜む虚構を冷たく切り裂く。<br>
+          “真実を見抜く力”を問いかける。
+        </p>
+        <div class="sched-links">
+          <a href="https://music.apple.com/jp/song/%E6%B0%91%E6%84%8F/1849569797" target="_blank" rel="noreferrer noopener">Apple Music</a>
+          <a href="https://open.spotify.com/intl-ja/track/3ZUQ3MExDqGBaJfETdHRGj?si=0cb63bd1eb14491d" target="_blank" rel="noreferrer noopener">Spotify</a>
+          <a href="https://lin.ee/YUxslGB" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
+        </div>
       </div>
-    </div>
 
-    <!-- 民意 -->
-    <div class="release">
-      <img src="min-i.jpg" alt="民意 ジャケット画像" loading="lazy" decoding="async">
-      <h3>民意</h3>
-      <p>
-        SNS時代の“人気”や“称賛”に潜む虚構を冷たく切り裂く。<br>
-        “真実を見抜く力”を問いかける。
-      </p>
-      <div class="sched-links">
-        <a href="https://music.apple.com/jp/song/%E6%B0%91%E6%84%8F/1849569797" target="_blank" rel="noreferrer noopener">Apple Music</a>
-        <a href="https://open.spotify.com/intl-ja/track/3ZUQ3MExDqGBaJfETdHRGj?si=0cb63bd1eb14491d" target="_blank" rel="noreferrer noopener">Spotify</a>
-        <a href="https://lin.ee/YUxslGB" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
+      <!-- Rain in Your Eyes -->
+      <div class="release">
+        <img src="Rain-in-Your-Eyes.jpg" alt="Rain in Your Eyes ジャケット画像" loading="lazy" decoding="async">
+        <h3>Rain in Your Eyes</h3>
+        <p>
+          失恋の痛みと向き合いながらも、<br>
+          再び立ち上がろうとする姿を描いたチル・バラード。
+        </p>
+        <div class="sched-links">
+          <a href="https://music.apple.com/jp/song/rein-in-your-eyes/1846001693" target="_blank" rel="noreferrer noopener">Apple Music</a>
+          <a href="https://open.spotify.com/intl-ja/track/1w0EC9a4tvC49bEs0OzhIL?si=1b4f30f6361e43f4" target="_blank" rel="noreferrer noopener">Spotify</a>
+          <a href="https://lin.ee/1JzZK3f" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
+        </div>
       </div>
-    </div>
 
-    <!-- Rain in Your Eyes -->
-    <div class="release">
-      <img src="Rain-in-Your-Eyes.jpg" alt="Rain in Your Eyes ジャケット画像" loading="lazy" decoding="async">
-      <h3>Rain in Your Eyes</h3>
-      <p>
-        失恋の痛みと向き合いながらも、<br>
-        再び立ち上がろうとする姿を描いたチル・バラード。
-      </p>
-      <div class="sched-links">
-        <a href="https://music.apple.com/jp/song/rein-in-your-eyes/1846001693" target="_blank" rel="noreferrer noopener">Apple Music</a>
-        <a href="https://open.spotify.com/intl-ja/track/1w0EC9a4tvC49bEs0OzhIL?si=1b4f30f6361e43f4" target="_blank" rel="noreferrer noopener">Spotify</a>
-        <a href="https://lin.ee/1JzZK3f" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
+      <!-- Sweet & Bitter -->
+      <div class="release">
+        <img src="sweet-bitter.jpg" alt="Sweet &amp; Bitter ジャケット画像" loading="lazy" decoding="async">
+        <h3>Sweet &amp; Bitter</h3>
+        <p>
+          甘さとほろ苦さが共存する自分を映した一曲。
+        </p>
+        <div class="sched-links">
+          <a href="https://music.apple.com/jp/song/sweet-bitter/1842222416" target="_blank" rel="noreferrer noopener">Apple Music</a>
+          <a href="https://open.spotify.com/intl-ja/track/7LFWlx8t4IAkWLWxfkvQER?si=a03f22fee8524aeb" target="_blank" rel="noreferrer noopener">Spotify</a>
+          <a href="https://lin.ee/vIEXJ7J" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
+        </div>
       </div>
+
     </div>
+  </section>
 
-    <!-- Sweet & Bitter -->
-    <div class="release">
-      <img src="sweet-bitter.jpg" alt="Sweet &amp; Bitter ジャケット画像" loading="lazy" decoding="async">
-      <h3>Sweet &amp; Bitter</h3>
-      <p>
-        甘さとほろ苦さが共存する自分を映した一曲。
-      </p>
-      <div class="sched-links">
-        <a href="https://music.apple.com/jp/song/sweet-bitter/1842222416" target="_blank" rel="noreferrer noopener">Apple Music</a>
-        <a href="https://open.spotify.com/intl-ja/track/7LFWlx8t4IAkWLWxfkvQER?si=a03f22fee8524aeb" target="_blank" rel="noreferrer noopener">Spotify</a>
-        <a href="https://lin.ee/vIEXJ7J" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-  <!-- =====✅ MV ===== -->
+  <!-- ===== MV ===== -->
   <section id="video">
     <h2>Rain in Your Eyes (MV)</h2>
     <p>2025/10/20 Release — 涙を抱えたままでも、それでも前を向きたい・・・</p>
@@ -343,7 +497,7 @@
         loading="lazy">
       </iframe>
     </div>
-    
+
     <div style="height:26px"></div>
 
     <h2>民意 (MV)</h2>
@@ -358,12 +512,14 @@
         loading="lazy">
       </iframe>
     </div>
-    
-    <h2> Baton(MV)</h2>
+
+    <div style="height:26px"></div>
+
+    <h2>Baton (MV)</h2>
     <p>2025/12/29 Release — 静かに手渡されてきた意志。それは消えることなく、今も前へと運ばれていく。</p>
     <div class="video-container">
       <iframe
-        src="https://www.youtube.com/embed/-xTPeyveovA?si=JTy3NRu_N4hY_5Ys"
+        src="https://www.youtube-nocookie.com/embed/-xTPeyveovA"
         title="T-ACT - Baton (MV)"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -373,65 +529,62 @@
     </div>
   </section>
 
-<!-- =====✅ GOODS ===== -->
-<iframe height="162" width="375" src="https://suzuri.jp/T-ACT/19260653/bucket-hat/l/black/embed"></iframe>
-      <p>
-        T-ACTのオフィシャルグッズを<br>
-        SUZURIにて展開しています。
-      </p>
-
-      <div class="sched-links">
-        <a href="https://suzuri.jp/T-ACT/products"
-           target="_blank"
-           rel="noreferrer noopener">
-           SUZURI SHOP
-        </a>
+  <!-- ===== GOODS ===== -->
+  <section id="goods">
+    <h2>GOODS</h2>
+    <div class="releases">
+      <div class="release">
+        <img src="goods.jpg" alt="T-ACT GOODS" loading="lazy" decoding="async">
+        <h3>T-ACT Official Goods</h3>
+        <p>
+          T-ACTのオフィシャルグッズを<br>
+          SUZURIにて展開しています。
+        </p>
+        <div class="sched-links">
+          <a href="https://suzuri.jp/T-ACT/products" target="_blank" rel="noreferrer noopener">SUZURI SHOP</a>
+        </div>
       </div>
     </div>
+  </section>
 
-  </div>
-
-</section>
-  
-  <!-- =====✅ PROFILE ===== -->
+  <!-- ===== PROFILE ===== -->
   <section id="profile">
     <img src="profile.jpg" alt="T-ACT 宣材写真" class="profile" loading="lazy" decoding="async">
     <h2>PROFILE</h2>
     <p>
-      T-ACT は、日本を拠点に活動するインディペンデントアーティスト<br>
+      T-ACT は、日本を拠点に活動するインディペンデントアーティスト。<br>
       ヒップホップやR&Bを軸に、余白を意識したミニマルな楽曲を制作する。<br><br>
-      
-      音楽活動の動機は、成功や承認ではなく「始めることそのもの」<br>
-      動かない理由を並べる前に、まず一歩踏み出すこと<br>
-      その姿勢を、自身の作品を通して静かに提示し続けている<br><br>
-      
-      歌詞は多くを語らない<br>
-      感情を直接的に説明するのではなく、余白や痕跡として残す表現を重視<br>
-      聴き手がそれぞれの経験を重ねられる余地を意図的に残している<br>
-      夜や移動、ひとりで思考する時間に寄り添う楽曲を制作している。<br><br>
-      
-      派手さよりも持続性を、正解よりも実感を大切にしながら<br>
-      現在も独立した立場で制作と発表を続けている<br><br>
 
-    <!-- LABEL LOGO -->
+      音楽活動の動機は、成功や承認ではなく「始めることそのもの」。<br>
+      動かない理由を並べる前に、まず一歩踏み出すこと。<br>
+      その姿勢を、自身の作品を通して静かに提示し続けている。<br><br>
+
+      歌詞は多くを語らない。<br>
+      感情を直接的に説明するのではなく、余白や痕跡として残す表現を重視。<br>
+      聴き手がそれぞれの経験を重ねられる余地を意図的に残している。<br>
+      夜や移動、ひとりで思考する時間に寄り添う楽曲を制作している。<br><br>
+
+      派手さよりも持続性を、正解よりも実感を大切にしながら、<br>
+      現在も独立した立場で制作と発表を続けている。
+    </p>
+
     <div class="label">
       <img src="VISION-VOID-W.png" alt="VISION VOID RECORDS ロゴ" loading="lazy" decoding="async">
     </div>
   </section>
 
-<footer>
-  <p>
-    お問い合わせは
-    <a href="https://x.com/t_act_music" target="_blank" rel="noreferrer noopener">
-      X（旧Twitter）
-    </a>
-    までお願いします。
-  </p>
-  <p>© 2025 T-ACT — All Rights Reserved.</p>
-</footer>
+  <footer>
+    <p>
+      お問い合わせは
+      <a href="https://x.com/t_act_music" target="_blank" rel="noreferrer noopener">
+        X（旧Twitter）
+      </a>
+      までお願いします。
+    </p>
+    <p>© 2025 T-ACT — All Rights Reserved.</p>
+  </footer>
 
-
-  <!-- 🌱 Mint粒子スクリプト -->
+  <!-- ===== Mint粒子スクリプト ===== -->
   <script>
   (() => {
     const canvas = document.getElementById('mint-bg');
@@ -448,34 +601,37 @@
       height = canvas.height = window.innerHeight;
       const density = Math.floor((width * height) / 30000);
       const count = Math.max(40, Math.min(140, density));
-      particles = Array.from({length: count}, () => spawn());
+      particles = Array.from({ length: count }, () => spawn());
     }
 
     function spawn(){
       return {
-        x: Math.random()*width,
-        y: Math.random()*height,
-        r: 0.8 + Math.random()*2.2,
-        vy: 0.15 + Math.random()*0.6,
-        vx: (Math.random()-0.5)*0.4,
-        a: 0.20 + Math.random()*0.35,
-        tw: Math.random()*Math.PI*2
+        x: Math.random() * width,
+        y: Math.random() * height,
+        r: 0.8 + Math.random() * 2.2,
+        vy: 0.15 + Math.random() * 0.6,
+        vx: (Math.random() - 0.5) * 0.4,
+        a: 0.20 + Math.random() * 0.35,
+        tw: Math.random() * Math.PI * 2
       };
     }
 
     function step(){
       if (!running) return;
-      ctx.clearRect(0,0,width,height);
+      ctx.clearRect(0, 0, width, height);
 
       particles.forEach(p => {
         p.tw += 0.01;
-        p.x += p.vx + Math.sin(p.tw)*0.15;
+        p.x += p.vx + Math.sin(p.tw) * 0.15;
         p.y += p.vy;
 
-        if (p.y - p.r > height) { p.y = -p.r; p.x = Math.random()*width; }
+        if (p.y - p.r > height) {
+          p.y = -p.r;
+          p.x = Math.random() * width;
+        }
 
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(52,211,153,${p.a})`;
         ctx.shadowColor = 'rgba(52,211,153,0.25)';
         ctx.shadowBlur = 6;
@@ -486,7 +642,7 @@
       requestAnimationFrame(step);
     }
 
-    window.addEventListener('resize', resize, { passive:true });
+    window.addEventListener('resize', resize, { passive: true });
     resize();
     if (running) requestAnimationFrame(step);
   })();
