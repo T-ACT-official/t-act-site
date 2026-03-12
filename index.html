@@ -1013,7 +1013,6 @@
   -webkit-backdrop-filter:blur(10px);
   box-shadow:0 10px 30px rgba(0,0,0,.4);
   font-size:.85rem;
-  max-width:420px;
 }
 
 .mini-player-meta{
@@ -1036,17 +1035,38 @@
   line-height:1.2;
 }
 
+.mini-player-controls{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-shrink:0;
+}
+
 .mini-player button{
   border:1px solid rgba(255,255,255,.18);
   background:rgba(255,255,255,.06);
   color:var(--mint);
-  border-radius:8px;
-  padding:4px 10px;
+  border-radius:10px;
+  padding:8px 14px;
   cursor:pointer;
 }
 
 .mini-player button:hover{
   background:rgba(255,255,255,.12);
+}
+
+.mini-player button:disabled{
+  opacity:.55;
+  cursor:not-allowed;
+}
+
+@media (max-width: 780px) {
+  .mini-player{
+    left:12px;
+    right:12px;
+    bottom:12px;
+    padding:12px;
+  }
 }
 
 .mini-player button:disabled{
@@ -1594,15 +1614,17 @@
   </script>
 
   <!-- Mini Music Player -->
-  <div class="mini-player" aria-label="ミニ音楽プレイヤー">
+  <div class="mini-player" aria-label="ミニプレイヤー">
     <div class="mini-player-meta">
       <span class="mini-player-title">Now Playing</span>
-      <span class="mini-player-status" id="miniStatus">音源準備中</span>
+      <span class="mini-player-status" id="miniStatus">再生準備OK</span>
     </div>
-    <button id="miniPlay" type="button" disabled>準備中</button>
-    <audio id="miniAudio" preload="none">
-      <source src="nowplaying.m4a" type="audio/mp4">
-    </audio>
+    <div class="mini-player-controls">
+      <button id="miniPlay" type="button">Play</button>
+      <audio id="miniAudio" preload="metadata" playsinline>
+        <source src="nowplaying.m4a" type="audio/mp4">
+      </audio>
+    </div>
   </div>
 
   <script>
@@ -1612,54 +1634,58 @@
     const status=document.getElementById('miniStatus');
     const source=audio?.querySelector('source');
 
-    if(!audio||!btn||!status||!source) return;
+    if(!audio || !btn || !status || !source) return;
 
     const src=source.getAttribute('src') || '';
-
-    if(!src || src === 'nowplaying.m4a-placeholder') {
-      status.textContent='音源を配置すると再生できます';
-      btn.textContent='未設定';
+    if(!src){
       btn.disabled=true;
+      status.textContent='音源ファイル未設定';
       return;
     }
 
-    btn.disabled=false;
-    btn.textContent='Play';
-    status.textContent='再生待機中';
-
-    const updatePaused=()=>{
+    const setIdle=()=>{
       btn.textContent='Play';
-      status.textContent='一時停止中';
+      status.textContent='停止中';
     };
 
-    const updatePlaying=()=>{
+    audio.addEventListener('loadedmetadata',()=>{
+      status.textContent='再生準備OK';
+    });
+
+    audio.addEventListener('playing',()=>{
       btn.textContent='Pause';
       status.textContent='再生中';
-    };
+    });
 
-    btn.addEventListener('click', async ()=>{
-      try{
-        if(audio.paused){
-          await audio.play();
-        }else{
-          audio.pause();
-        }
-      }catch(e){
-        status.textContent='再生できませんでした';
-        btn.textContent='Play';
+    audio.addEventListener('pause',()=>{
+      if(!audio.ended){
+        setIdle();
       }
     });
 
-    audio.addEventListener('play', updatePlaying);
-    audio.addEventListener('pause', updatePaused);
-    audio.addEventListener('ended', ()=>{
-      btn.textContent='Play';
-      status.textContent='再生終了';
+    audio.addEventListener('ended',()=>{
+      audio.currentTime=0;
+      setIdle();
     });
-    audio.addEventListener('error', ()=>{
+
+    audio.addEventListener('error',()=>{
       btn.disabled=true;
       btn.textContent='Error';
-      status.textContent='音源を確認してください';
+      status.textContent='音源を読み込めません';
+    });
+
+    btn.addEventListener('click', async ()=>{
+      if(audio.paused){
+        try{
+          await audio.play();
+        }catch(err){
+          btn.textContent='Play';
+          status.textContent='再生できませんでした';
+          console.error(err);
+        }
+      }else{
+        audio.pause();
+      }
     });
   })();
   </script>
