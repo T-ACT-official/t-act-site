@@ -1471,11 +1471,11 @@
 
     if (hero) {
       const onScroll = () => {
-        const y = Math.min(window.scrollY, 320);
-        const ratio = y / 320;
-        hero.style.opacity = String(1 - ratio * 0.42);
-        hero.style.transform = `translateY(${y * 0.10}px)`;
-        hero.style.filter = `blur(${ratio * 1.2}px)`;
+        const y = Math.min(window.scrollY, 220);
+        const ratio = y / 220;
+        hero.style.opacity = String(1 - ratio * 0.12);
+        hero.style.transform = `translateY(${y * 0.04}px)`;
+        hero.style.filter = `blur(${ratio * 0.35}px)`;
       };
       onScroll();
       window.addEventListener('scroll', onScroll, { passive: true });
