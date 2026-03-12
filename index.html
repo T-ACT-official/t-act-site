@@ -492,6 +492,9 @@
     }
 
     .release {
+      position: relative;
+      overflow: hidden;
+
       padding: 16px;
     }
 
@@ -506,10 +509,27 @@
     }
 
     .release-cover img {
+      transition: transform .45s ease, filter .45s ease;
+      filter: saturate(1.05);
+
       width: 100%;
       height: 100%;
       display: block;
       object-fit: cover;
+    }
+
+    .release:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 40px rgba(0,0,0,.45);
+      border-color: rgba(52,211,153,.35);
+    }
+
+    .release:hover .release-cover img{
+      transform: scale(1.06);
+    }
+
+    .release:hover h3{
+      text-shadow: 0 0 10px rgba(52,211,153,.35);
     }
 
     .release h3 {
@@ -943,7 +963,7 @@
               <img src="zanti.jpg" alt="残置 ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200">
             </div>
             <h3>残置</h3>
-            <p>ルールの中で生きることで置いてきた感情や記憶を、静かに見つめ直す一曲。</p>
+            <p>整えられた日常の奥に、置き去りのまま残っていた感情の輪郭をそっと拾い上げる作品。言葉を足しすぎず、消えきらなかった記憶の気配だけを静かに浮かび上がらせる。</p>
             <div class="sched-links">
               <a href="https://music.apple.com/jp/album/%E6%AE%8B%E7%BD%AE-single/1877027727?l=en-US" target="_blank" rel="noreferrer noopener">Apple Music</a>
               <a href="https://open.spotify.com/intl-ja/album/5QjedeXnR7x5IG49Yyakch" target="_blank" rel="noreferrer noopener">Spotify</a>
@@ -956,7 +976,7 @@
               <img src="iine.jpg" alt="いいね ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200">
             </div>
             <h3>いいね</h3>
-            <p>他者からの反応に振り回されすぎず、自分自身の感覚や価値を大切にしてほしいという想い。</p>
+            <p>反応が価値を決めるように見える時代のノイズの中で、自分の感覚を手放さないための一曲。賞賛にも無関心にも飲まれず、内側の温度を守ろうとする意思が流れている。</p>
             <div class="sched-links">
               <a href="https://music.apple.com/jp/album/%E3%81%84%E3%81%84%E3%81%AD-single/1871989088?l=en-US" target="_blank" rel="noreferrer noopener">Apple Music</a>
               <a href="https://open.spotify.com/intl-ja/album/4GRUelIFhMOQMx9yO07WkM?si=tblRppJZTXyVUCadGEstog" target="_blank" rel="noreferrer noopener">Spotify</a>
@@ -969,7 +989,7 @@
               <img src="kaniana.jpg" alt="蟹穴 ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200">
             </div>
             <h3>蟹穴</h3>
-            <p>逃げ場所ではなく、踏ん張る場所としての“穴”から世界を見る視点を描いた一曲。</p>
+            <p>世界から身を引くためではなく、自分の輪郭を保ったまま踏ん張るための場所を描いた作品。小さな穴の中から見える景色にこそ、その人の哲学と生き方が滲む。</p>
             <div class="sched-links">
               <a href="https://music.apple.com/jp/album/%E8%9F%B9%E7%A9%B4-single/1867369742?l=en&ls=1&app=music" target="_blank" rel="noreferrer noopener">Apple Music</a>
               <a href="https://open.spotify.com/album/0YmbmHT1sN7XpBxs14Fnp4" target="_blank" rel="noreferrer noopener">Spotify</a>
@@ -982,7 +1002,7 @@
               <img src="baton.jpg" alt="Baton ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200">
             </div>
             <h3>Baton</h3>
-            <p>受け継がれていく意思と責任をテーマにした一曲。</p>
+            <p>言葉にならないまま受け継がれてきた責任、期待、祈り。その重さを誇張せず、静かな推進力として描くことで、継承とは前へ進むための宿命でもあると語りかける。</p>
             <div class="sched-links">
               <a href="https://music.apple.com/jp/album/baton/1858161005?i=1858161006" target="_blank" rel="noreferrer noopener">Apple Music</a>
               <a href="https://open.spotify.com/album/44Bq00HIJz3jXdJsIEHj6W?si=fhpAepe7SGiycFldcUJP2g" target="_blank" rel="noreferrer noopener">Spotify</a>
@@ -995,7 +1015,7 @@
               <img src="min-i.jpg" alt="民意 ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200">
             </div>
             <h3>民意</h3>
-            <p>SNS時代の“人気”や“称賛”に潜む虚構を冷たく切り裂き、真実を見抜く力を問いかける。</p>
+            <p>数字や熱量が真実のように扱われる空気を切り裂き、見えているものと信じ込まされているものの境界を問い直す作品。冷たさの奥に、思考することへの執着がある。</p>
             <div class="sched-links">
               <a href="https://music.apple.com/jp/song/%E6%B0%91%E6%84%8F/1849569797" target="_blank" rel="noreferrer noopener">Apple Music</a>
               <a href="https://open.spotify.com/intl-ja/track/3ZUQ3MExDqGBaJfETdHRGj?si=0cb63bd1eb14491d" target="_blank" rel="noreferrer noopener">Spotify</a>
@@ -1008,7 +1028,7 @@
               <img src="Rain-in-Your-Eyes.jpg" alt="Rain in Your Eyes ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200">
             </div>
             <h3>Rain in Your Eyes</h3>
-            <p>失恋の痛みと向き合いながらも、再び立ち上がろうとする姿を描いたチル・バラード。</p>
+            <p>痛みを劇的に叫ぶのではなく、濡れた視界のまま歩き続ける気配を描いたチル・バラード。喪失のあとに残る静けさと、そこからもう一度立ち上がる微かな意思が同居している。</p>
             <div class="sched-links">
               <a href="https://music.apple.com/jp/song/rein-in-your-eyes/1846001693" target="_blank" rel="noreferrer noopener">Apple Music</a>
               <a href="https://open.spotify.com/intl-ja/track/1w0EC9a4tvC49bEs0OzhIL?si=1b4f30f6361e43f4" target="_blank" rel="noreferrer noopener">Spotify</a>
@@ -1021,7 +1041,7 @@
               <img src="sweet-bitter.jpg" alt="Sweet &amp; Bitter ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200">
             </div>
             <h3>Sweet &amp; Bitter</h3>
-            <p>甘さとほろ苦さが共存する自分を映した一曲。</p>
+            <p>甘さだけでも、苦さだけでも語れない自分自身の複層性をそのまま映した作品。心地よさの中に少しだけ残る引っかかりが、T-ACTの感性を象徴している。</p>
             <div class="sched-links">
               <a href="https://music.apple.com/jp/song/sweet-bitter/1842222416" target="_blank" rel="noreferrer noopener">Apple Music</a>
               <a href="https://open.spotify.com/intl-ja/track/7LFWlx8t4IAkWLWxfkvQER?si=a03f22fee8524aeb" target="_blank" rel="noreferrer noopener">Spotify</a>
@@ -1160,12 +1180,28 @@
   </main>
 
   <footer>
-    <p>
-      お問い合わせは
-      <a href="https://x.com/t_act_music" target="_blank" rel="noreferrer noopener">X（旧Twitter）</a>
-      までお願いします。
-    </p>
-    <p>© 2026 T-ACT — All Rights Reserved.</p>
+    <div class="section-inner">
+      <div class="profile-shell" style="max-width:980px; padding:28px 24px; background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)); border-color:rgba(52,211,153,.16);">
+        <p style="margin:0 0 8px; color:var(--mint-2); letter-spacing:.14em; text-transform:uppercase; font-size:.78rem;">T-ACT Official</p>
+        <p style="margin:0 auto 16px; max-width:700px; color:var(--text-soft); font-size:1rem; line-height:1.9;">
+          現実の重みから逃げず、その沈黙や摩擦までも音として残していく。<br>
+          T-ACTの作品、映像、グッズ、最新情報は各プラットフォームでご覧いただけます。
+        </p>
+        <div class="footer-links" style="margin-top:0; margin-bottom:14px;">
+          <a class="btn" href="https://x.com/t_act_music" target="_blank" rel="noreferrer noopener">X</a>
+          <a class="btn" href="https://youtube.com/@t_act_music" target="_blank" rel="noreferrer noopener">YouTube</a>
+          <a class="btn" href="https://music.apple.com/jp/artist/t-act/1842221982" target="_blank" rel="noreferrer noopener">Apple Music</a>
+          <a class="btn" href="https://open.spotify.com/intl-ja/artist/5FOiDuDN7NiDUrBtEciroP" target="_blank" rel="noreferrer noopener">Spotify</a>
+          <a class="btn" href="https://suzuri.jp/T-ACT/products" target="_blank" rel="noreferrer noopener">SUZURI</a>
+        </div>
+        <p style="margin:.5em 0 0; color:#92a99f; font-size:.9rem;">
+          お問い合わせは
+          <a href="https://x.com/t_act_music" target="_blank" rel="noreferrer noopener">X（旧Twitter）</a>
+          までお願いします。
+        </p>
+        <p style="margin:.5em 0 0; color:#7f948b; font-size:.86rem; letter-spacing:.04em;">© 2026 T-ACT — All Rights Reserved.</p>
+      </div>
+    </div>
   </footer>
 
   <script>
