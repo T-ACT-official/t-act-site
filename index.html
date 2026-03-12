@@ -992,6 +992,39 @@
   }
 }
 
+
+
+/* ===== Mini Music Player ===== */
+.mini-player{
+  position:fixed;
+  left:18px;
+  bottom:18px;
+  z-index:40;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 14px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(7,10,11,.75);
+  backdrop-filter:blur(10px);
+  box-shadow:0 10px 30px rgba(0,0,0,.4);
+  font-size:.85rem;
+}
+
+.mini-player button{
+  border:1px solid rgba(255,255,255,.18);
+  background:rgba(255,255,255,.06);
+  color:var(--mint);
+  border-radius:8px;
+  padding:4px 10px;
+  cursor:pointer;
+}
+
+.mini-player button:hover{
+  background:rgba(255,255,255,.12);
+}
+
 </style>
 </head>
 <body>
@@ -1448,10 +1481,20 @@
           p.x = Math.random() * width;
         }
 
+        // parallax base
         const parallaxY = p.y + scrollOffset * (0.08 + p.r * 0.02);
 
+        // attraction toward logo area based on scroll
+        const targetX = width / 2;
+        const targetY = height * 0.28;
+
+        const attract = Math.min(scrollOffset / 1200, 0.02);
+
+        p.x += (targetX - p.x) * attract;
+        const drawY = parallaxY + (targetY - parallaxY) * attract;
+
         ctx.beginPath();
-        ctx.arc(p.x, parallaxY, p.r, 0, Math.PI * 2);
+        ctx.arc(p.x, drawY, p.r, 0, Math.PI * 2);
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(52,211,153,${p.a})`;
         ctx.shadowColor = 'rgba(52,211,153,0.22)';
@@ -1512,6 +1555,34 @@
 
     window.addEventListener('scroll',onScroll,{passive:true});
     onScroll();
+  })();
+  </script>
+
+  <!-- Mini Music Player -->
+  <div class="mini-player">
+    <span>Now Playing</span>
+    <button id="miniPlay">Play</button>
+    <audio id="miniAudio" preload="none">
+      <source src="nowplaying.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+
+  <script>
+  (()=>{
+    const audio=document.getElementById('miniAudio');
+    const btn=document.getElementById('miniPlay');
+
+    if(!audio||!btn) return;
+
+    btn.addEventListener('click',()=>{
+      if(audio.paused){
+        audio.play();
+        btn.textContent='Pause';
+      }else{
+        audio.pause();
+        btn.textContent='Play';
+      }
+    });
   })();
   </script>
 </body>
