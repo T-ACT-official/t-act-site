@@ -284,7 +284,7 @@
       height: 100%;
       object-fit: cover;
       display: block;
-      opacity: .9;
+      opacity: .92;
     }
 
     .splash-overlay {
@@ -998,18 +998,42 @@
 .mini-player{
   position:fixed;
   left:18px;
+  right:18px;
   bottom:18px;
   z-index:40;
   display:flex;
   align-items:center;
-  gap:10px;
-  padding:10px 14px;
-  border-radius:14px;
+  justify-content:space-between;
+  gap:12px;
+  padding:12px 14px;
+  border-radius:16px;
   border:1px solid rgba(255,255,255,.12);
-  background:rgba(7,10,11,.75);
+  background:rgba(7,10,11,.82);
   backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
   box-shadow:0 10px 30px rgba(0,0,0,.4);
   font-size:.85rem;
+  max-width:420px;
+}
+
+.mini-player-meta{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:2px;
+  min-width:0;
+}
+
+.mini-player-title{
+  color:var(--text);
+  font-weight:700;
+  line-height:1.2;
+}
+
+.mini-player-status{
+  color:var(--muted);
+  font-size:.78rem;
+  line-height:1.2;
 }
 
 .mini-player button{
@@ -1025,6 +1049,21 @@
   background:rgba(255,255,255,.12);
 }
 
+.mini-player button:disabled{
+  opacity:.5;
+  cursor:not-allowed;
+}
+
+@media (max-width: 780px) {
+  .mini-player{
+    left:12px;
+    right:12px;
+    bottom:12px;
+    max-width:none;
+    padding:12px;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -1033,10 +1072,9 @@
 
   <div class="splash-screen" id="splash-screen" aria-label="イントロ映像">
     <div class="splash-media-wrap">
-      <video class="splash-media" autoplay muted playsinline preload="auto" poster="logo-main.png">
+      <video class="splash-media" id="splash-video" autoplay muted playsinline preload="metadata" poster="logo-main.png">
         <source src="splash.MP4" type="video/mp4">
       </video>
-      <img class="splash-media" src="splash.gif" alt="T-ACT イントロビジュアル" loading="eager" onerror="this.style.display='none'">
       <div class="splash-overlay">
         <button class="splash-skip" id="splash-skip" type="button">SKIP</button>
         <h2 class="splash-title">T-ACT</h2>
@@ -1355,23 +1393,7 @@
       </div>
     </section>
 
-    <section aria-labelledby="follow-title">
-      <div class="section-inner">
-        <div class="newsletter">
-          <div class="section-head" style="margin-bottom:18px;">
-            <h2 id="follow-title">FOLLOW</h2>
-            <p class="section-note">最新情報、MV、リリース、グッズ更新は各プラットフォームから。</p>
-          </div>
-          <div class="footer-links">
-            <a class="btn" href="https://x.com/t_act_music" target="_blank" rel="noreferrer noopener">X</a>
-            <a class="btn" href="https://youtube.com/@t_act_music" target="_blank" rel="noreferrer noopener">YouTube</a>
-            <a class="btn" href="https://music.apple.com/jp/artist/t-act/1842221982" target="_blank" rel="noreferrer noopener">Apple Music</a>
-            <a class="btn" href="https://open.spotify.com/intl-ja/artist/5FOiDuDN7NiDUrBtEciroP" target="_blank" rel="noreferrer noopener">Spotify</a>
-            <a class="btn" href="https://suzuri.jp/T-ACT/products" target="_blank" rel="noreferrer noopener">SUZURI</a>
-          </div>
-        </div>
-      </div>
-    </section>
+    
   </main>
 
   <footer>
@@ -1403,15 +1425,28 @@
   (() => {
     const splash = document.getElementById('splash-screen');
     const skip = document.getElementById('splash-skip');
+    const video = document.getElementById('splash-video');
     const hero = document.querySelector('.hero-inner');
 
     if (splash) {
-      const closeSplash = () => splash.classList.add('is-hidden');
+      let closed = false;
+      const closeSplash = () => {
+        if (closed) return;
+        closed = true;
+        splash.classList.add('is-hidden');
+      };
+
       skip?.addEventListener('click', closeSplash);
       window.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closeSplash();
       });
-      window.setTimeout(closeSplash, 3200);
+
+      if (video) {
+        video.addEventListener('ended', closeSplash);
+        video.addEventListener('error', closeSplash);
+      }
+
+      window.setTimeout(closeSplash, 3800);
     }
 
     if (hero) {
@@ -1559,11 +1594,14 @@
   </script>
 
   <!-- Mini Music Player -->
-  <div class="mini-player">
-    <span>Now Playing</span>
-    <button id="miniPlay">Play</button>
+  <div class="mini-player" aria-label="ミニ音楽プレイヤー">
+    <div class="mini-player-meta">
+      <span class="mini-player-title">Now Playing</span>
+      <span class="mini-player-status" id="miniStatus">音源準備中</span>
+    </div>
+    <button id="miniPlay" type="button" disabled>準備中</button>
     <audio id="miniAudio" preload="none">
-      <source src="nowplaying.mp3" type="audio/mpeg">
+      <source src="nowplaying.m4a" type="audio/mp4">
     </audio>
   </div>
 
@@ -1571,17 +1609,57 @@
   (()=>{
     const audio=document.getElementById('miniAudio');
     const btn=document.getElementById('miniPlay');
+    const status=document.getElementById('miniStatus');
+    const source=audio?.querySelector('source');
 
-    if(!audio||!btn) return;
+    if(!audio||!btn||!status||!source) return;
 
-    btn.addEventListener('click',()=>{
-      if(audio.paused){
-        audio.play();
-        btn.textContent='Pause';
-      }else{
-        audio.pause();
+    const src=source.getAttribute('src') || '';
+
+    if(!src || src === 'nowplaying.m4a-placeholder') {
+      status.textContent='音源を配置すると再生できます';
+      btn.textContent='未設定';
+      btn.disabled=true;
+      return;
+    }
+
+    btn.disabled=false;
+    btn.textContent='Play';
+    status.textContent='再生待機中';
+
+    const updatePaused=()=>{
+      btn.textContent='Play';
+      status.textContent='一時停止中';
+    };
+
+    const updatePlaying=()=>{
+      btn.textContent='Pause';
+      status.textContent='再生中';
+    };
+
+    btn.addEventListener('click', async ()=>{
+      try{
+        if(audio.paused){
+          await audio.play();
+        }else{
+          audio.pause();
+        }
+      }catch(e){
+        status.textContent='再生できませんでした';
         btn.textContent='Play';
       }
+    });
+
+    audio.addEventListener('play', updatePlaying);
+    audio.addEventListener('pause', updatePaused);
+    audio.addEventListener('ended', ()=>{
+      btn.textContent='Play';
+      status.textContent='再生終了';
+    });
+    audio.addEventListener('error', ()=>{
+      btn.disabled=true;
+      btn.textContent='Error';
+      status.textContent='音源を確認してください';
     });
   })();
   </script>
