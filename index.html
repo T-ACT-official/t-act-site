@@ -271,7 +271,7 @@
     .splash-media-wrap {
       position: relative;
       width: min(100vw, 1100px);
-      aspect-ratio: 16 / 9;
+      aspect-ratio: 1 / 1;
       border-radius: 24px;
       overflow: hidden;
       border: 1px solid rgba(255,255,255,.14);
@@ -957,7 +957,42 @@
         transition-duration: .01ms !important;
       }
     }
-  </style>
+  
+
+/* ===== Scroll Logo Shrink ===== */
+.topnav.scrolled .brand-mark{
+  transform:scale(.78);
+}
+.topnav.scrolled .brand span{
+  opacity:.75;
+}
+.brand-mark{
+  transition:transform .25s ease;
+}
+.brand span{
+  transition:opacity .25s ease;
+}
+
+
+
+/* ===== Mint Glow Logo Effect ===== */
+.logo{
+  animation: mintGlow 4s ease-in-out infinite;
+}
+
+@keyframes mintGlow{
+  0%{
+    box-shadow:0 0 0 rgba(52,211,153,0);
+  }
+  50%{
+    box-shadow:0 0 28px rgba(52,211,153,.35), 0 0 60px rgba(52,211,153,.18);
+  }
+  100%{
+    box-shadow:0 0 0 rgba(52,211,153,0);
+  }
+}
+
+</style>
 </head>
 <body>
   <canvas id="mint-bg" aria-hidden="true"></canvas>
@@ -1368,6 +1403,7 @@
     let width = 0;
     let height = 0;
     let running = true;
+    let scrollOffset = 0;
 
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const isMobile = window.innerWidth <= 768;
@@ -1412,7 +1448,10 @@
           p.x = Math.random() * width;
         }
 
+        const parallaxY = p.y + scrollOffset * (0.08 + p.r * 0.02);
+
         ctx.beginPath();
+        ctx.arc(p.x, parallaxY, p.r, 0, Math.PI * 2);
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(52,211,153,${p.a})`;
         ctx.shadowColor = 'rgba(52,211,153,0.22)';
@@ -1425,6 +1464,9 @@
     }
 
     window.addEventListener('resize', resize, { passive: true });
+    window.addEventListener('scroll', () => {
+      scrollOffset = window.scrollY;
+    }, { passive: true });
     resize();
     requestAnimationFrame(step);
   })();
@@ -1453,6 +1495,23 @@
         button.replaceWith(wrap);
       }, { once: true });
     });
+  })();
+  </script>
+  <script>
+  (()=>{
+    const nav=document.querySelector('.topnav');
+    if(!nav) return;
+
+    const onScroll=()=>{
+      if(window.scrollY>60){
+        nav.classList.add('scrolled');
+      }else{
+        nav.classList.remove('scrolled');
+      }
+    };
+
+    window.addEventListener('scroll',onScroll,{passive:true});
+    onScroll();
   })();
   </script>
 </body>
