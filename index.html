@@ -243,6 +243,92 @@
       box-shadow: var(--shadow);
     }
 
+    .hero-inner {
+      transition: opacity .16s linear, transform .16s linear, filter .16s linear;
+      will-change: opacity, transform, filter;
+    }
+
+    .splash-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 60;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(900px 500px at 50% 20%, rgba(52,211,153,.10), transparent 60%),
+        rgba(4,7,8,.94);
+      opacity: 1;
+      visibility: visible;
+      transition: opacity .6s ease, visibility .6s ease;
+    }
+
+    .splash-screen.is-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .splash-media-wrap {
+      position: relative;
+      width: min(100vw, 1100px);
+      aspect-ratio: 16 / 9;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.14);
+      box-shadow: 0 22px 60px rgba(0,0,0,.45);
+      background: #000;
+    }
+
+    .splash-media {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      opacity: .9;
+    }
+
+    .splash-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 12px;
+      padding: 28px 18px;
+      background: linear-gradient(180deg, rgba(0,0,0,.06), rgba(0,0,0,.56));
+      text-align: center;
+    }
+
+    .splash-title {
+      margin: 0;
+      font-size: clamp(1.4rem, 4vw, 2.4rem);
+      letter-spacing: .14em;
+      color: var(--text);
+      text-shadow: 0 8px 24px rgba(0,0,0,.35);
+    }
+
+    .splash-copy {
+      margin: 0;
+      color: var(--text-soft);
+      font-size: .95rem;
+    }
+
+    .splash-skip {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      min-height: 40px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(7,10,11,.56);
+      color: var(--text);
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
     h1 {
       margin: 12px 0 10px;
       font-size: clamp(32px, 6vw, 56px);
@@ -492,9 +578,6 @@
     }
 
     .release {
-      position: relative;
-      overflow: hidden;
-
       padding: 16px;
     }
 
@@ -509,9 +592,6 @@
     }
 
     .release-cover img {
-      transition: transform .45s ease, filter .45s ease;
-      filter: saturate(1.05);
-
       width: 100%;
       height: 100%;
       display: block;
@@ -787,6 +867,20 @@
     }
 
     @media (max-width: 780px) {
+      .splash-media-wrap {
+        width: calc(100vw - 24px);
+        border-radius: 18px;
+      }
+
+      .splash-overlay {
+        padding: 22px 14px;
+      }
+
+      .splash-skip {
+        top: 12px;
+        right: 12px;
+      }
+
       .topnav {
         min-height: var(--nav-h);
         padding-top: 10px;
@@ -869,6 +963,20 @@
   <canvas id="mint-bg" aria-hidden="true"></canvas>
   <div class="noise" aria-hidden="true"></div>
 
+  <div class="splash-screen" id="splash-screen" aria-label="イントロ映像">
+    <div class="splash-media-wrap">
+      <video class="splash-media" autoplay muted playsinline preload="auto" poster="logo-main.png">
+        <source src="splash.mp4" type="video/mp4">
+      </video>
+      <img class="splash-media" src="splash.gif" alt="T-ACT イントロビジュアル" loading="eager" onerror="this.style.display='none'">
+      <div class="splash-overlay">
+        <button class="splash-skip" id="splash-skip" type="button">SKIP</button>
+        <h2 class="splash-title">T-ACT</h2>
+        <p class="splash-copy">opening visual / latest atmosphere</p>
+      </div>
+    </div>
+  </div>
+
   <nav class="topnav" aria-label="メインナビゲーション">
     <div class="topnav-inner">
       <a href="#top" class="brand" aria-label="T-ACT トップへ">
@@ -894,11 +1002,12 @@
 
       <div class="hero-panel">
         <p class="lead">
-          昼は、責任と精度がすべてを決める世界で、構造とビジネスを築く。<br>
-          夜は、その重みを音に変える。<br><br>
-          逃避でも幻想でもない。<br>
-          現実から生まれた、チルでミニマルな音楽。
-        </p>
+      昼は、構造をつくる。<br>
+      夜は、その重みを音に残す。<br><br>
+      逃避でも幻想でもない。<br>
+      現実から生まれた、静かな音楽。<br>
+      <strong>T-ACT</strong>
+    </p>
 
         <div class="cta" aria-label="配信リンク">
           <a class="btn btn-primary" href="https://music.apple.com/jp/artist/t-act/1842221982" target="_blank" rel="noreferrer noopener">Apple Music</a>
@@ -924,6 +1033,25 @@
       </div>
     </div>
   </header>
+
+  <section id="featured">
+      <div class="section-inner">
+        <div class="section-head">
+          <h2>FEATURED</h2>
+          <p class="section-note">Latest Music Video</p>
+        </div>
+
+        <div class="yt-frame-wrap">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/7oF0rDxDRWc"
+            title="Rain in Your Eyes"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </section>
 
   <main>
     <section id="schedule">
@@ -1203,6 +1331,35 @@
       </div>
     </div>
   </footer>
+
+  <script>
+  (() => {
+    const splash = document.getElementById('splash-screen');
+    const skip = document.getElementById('splash-skip');
+    const hero = document.querySelector('.hero-inner');
+
+    if (splash) {
+      const closeSplash = () => splash.classList.add('is-hidden');
+      skip?.addEventListener('click', closeSplash);
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeSplash();
+      });
+      window.setTimeout(closeSplash, 3200);
+    }
+
+    if (hero) {
+      const onScroll = () => {
+        const y = Math.min(window.scrollY, 320);
+        const ratio = y / 320;
+        hero.style.opacity = String(1 - ratio * 0.42);
+        hero.style.transform = `translateY(${y * 0.10}px)`;
+        hero.style.filter = `blur(${ratio * 1.2}px)`;
+      };
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+    }
+  })();
+  </script>
 
   <script>
   (() => {
