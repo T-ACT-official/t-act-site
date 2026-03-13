@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://t-act-official.github.io/t-act-site/sitemap.xml
+Sitemap: https://t-act-official.site/sitemap.xml
