@@ -623,7 +623,12 @@
       margin: 0;
       color: #adc0b9;
       font-size: .94rem;
+      line-height: 1.68;
       min-height: 4.8em;
+      max-width: 100%;
+      text-wrap: pretty;
+      word-break: normal;
+      overflow-wrap: anywhere;
     }
 
     .sched-links,
@@ -867,6 +872,38 @@
     }
 
     @media (max-width: 780px) {
+      .release {
+        padding: 14px;
+      }
+
+      .release p {
+        font-size: .95rem;
+        line-height: 1.72;
+        min-height: 0;
+        text-align: left;
+      }
+
+      .release h3 {
+        font-size: 1.05rem;
+      }
+
+      .goods-embed iframe {
+        height: 168px;
+      }
+
+      .profile-grid[style*="minmax(260px, 360px) 1fr"] {
+        grid-template-columns: 1fr !important;
+      }
+
+      #releases .profile-shell {
+        padding: 18px;
+      }
+
+      #releases .sched-links {
+        flex-direction: row;
+        align-items: center;
+      }
+
       .splash-media-wrap {
         width: calc(100vw - 24px);
         border-radius: 18px;
