@@ -1103,7 +1103,7 @@
     <div class="topnav-inner">
       <a href="#top" class="brand" aria-label="T-ACT トップへ">
         <img src="logo-main.png" alt="" class="brand-mark" width="30" height="30" decoding="async">
-        <span>T-ACT</span>
+        <span></span>
       </a>
       <div class="nav-links">
         <a href="#schedule">NEWS</a>
@@ -1119,7 +1119,7 @@
     <div class="hero-inner">
       <div class="eyebrow">Official Artist Site</div>
       <img src="logo-main.png" alt="T-ACT ロゴ" class="logo" width="720" height="720" decoding="async">
-      <h1>T-ACT</h1>
+      <h1></h1>
       <p class="hero-sub">社会の当事者として、現実から音楽を立ち上げる。</p>
 
       <div class="hero-panel">
@@ -1128,7 +1128,7 @@
           夜は、その重みを音に残す。<br><br>
           逃避でも幻想でもない。<br>
           現実から生まれた、チルでミニマルな音楽。<br><br>
-          <strong style="color:var(--text); font-weight:700;">T-ACT</strong>
+          <strong style="color:var(--text); font-weight:700;"></strong>
         </p>
 
         <div class="cta" aria-label="配信リンク">
@@ -1456,7 +1456,7 @@
 
             <div class="profile-copy">
               <p>
-                <strong>T-ACT</strong> は、日本を拠点に活動するインディペンデントアーティスト。<br>
+                <strong></strong> は、日本を拠点に活動するインディペンデントアーティスト。<br>
                 ヒップホップやR&amp;Bを軸に、余白を意識したミニマルな楽曲を制作する。<br><br>
 
                 音楽活動の動機は、成功や承認ではなく「始めることそのもの」。<br>
@@ -1579,7 +1579,7 @@
       height = canvas.height = window.innerHeight;
       const density = Math.floor((width * height) / 32000);
       const count = isMobile
-        ? Math.max(10, Math.min(18, Math.floor(density * 0.22)))
+        ? Math.max(18, Math.min(36, Math.floor(density * 0.35)))
         : Math.max(34, Math.min(96, density));
       particles = Array.from({ length: count }, spawn);
     }
@@ -1613,7 +1613,7 @@
 
         ctx.beginPath();
         ctx.arc(p.x, drawY, p.r, 0, Math.PI * 2);
-        const mobileAlpha = isMobile ? p.a * 0.55 : p.a;
+        const mobileAlpha = isMobile ? p.a * 0.9 : p.a;
         ctx.fillStyle = `rgba(52,211,153,${mobileAlpha})`;
         ctx.shadowColor = isMobile ? 'rgba(52,211,153,0.10)' : 'rgba(52,211,153,0.22)';
         ctx.shadowBlur = isMobile ? 2 : 5;
