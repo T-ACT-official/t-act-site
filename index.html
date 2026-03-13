@@ -1095,11 +1095,7 @@
       <video class="splash-media" id="splash-video" autoplay muted playsinline preload="metadata" poster="logo-main.png">
         <source src="splash.mp4" type="video/mp4">
       </video>
-      <div class="splash-overlay">
-        
-        <h2 class="splash-title">T-ACT</h2>
-        <p class="splash-copy">opening visual / latest atmosphere</p>
-      </div>
+      
     </div>
   </div>
 
@@ -1159,25 +1155,6 @@
       </div>
     </div>
   </header>
-
-  <section id="featured">
-      <div class="section-inner">
-        <div class="section-head">
-          <h2>FEATURED</h2>
-          <p class="section-note">Latest Music Video</p>
-        </div>
-
-        <div class="yt-frame-wrap">
-          <iframe
-            src="https://www.youtube-nocookie.com/embed/7oF0rDxDRWc"
-            title="Rain in Your Eyes"
-            loading="lazy"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen>
-          </iframe>
-        </div>
-      </div>
-    </section>
 
   <section id="featured">
       <div class="section-inner">
@@ -1534,7 +1511,6 @@
   <script>
   (() => {
     const splash = document.getElementById('splash-screen');
-    const skip = document.getElementById('splash-skip');
     const video = document.getElementById('splash-video');
     const hero = document.querySelector('.hero-inner');
 
@@ -1545,11 +1521,6 @@
         closed = true;
         splash.classList.add('is-hidden');
       };
-
-      skip?.addEventListener('click', closeSplash);
-      window.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeSplash();
-      });
 
       if (video) {
         video.addEventListener('ended', closeSplash);
@@ -1586,7 +1557,7 @@
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const isMobile = window.innerWidth <= 768;
 
-    if (prefersReduced || isMobile) {
+    if (prefersReduced) {
       canvas.style.display = 'none';
       return;
     }
@@ -1607,7 +1578,9 @@
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
       const density = Math.floor((width * height) / 32000);
-      const count = Math.max(34, Math.min(96, density));
+      const count = isMobile
+        ? Math.max(10, Math.min(18, Math.floor(density * 0.22)))
+        : Math.max(34, Math.min(96, density));
       particles = Array.from({ length: count }, spawn);
     }
 
@@ -1640,10 +1613,10 @@
 
         ctx.beginPath();
         ctx.arc(p.x, drawY, p.r, 0, Math.PI * 2);
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(52,211,153,${p.a})`;
-        ctx.shadowColor = 'rgba(52,211,153,0.22)';
-        ctx.shadowBlur = 5;
+        const mobileAlpha = isMobile ? p.a * 0.55 : p.a;
+        ctx.fillStyle = `rgba(52,211,153,${mobileAlpha})`;
+        ctx.shadowColor = isMobile ? 'rgba(52,211,153,0.10)' : 'rgba(52,211,153,0.22)';
+        ctx.shadowBlur = isMobile ? 2 : 5;
         ctx.fill();
       }
 
