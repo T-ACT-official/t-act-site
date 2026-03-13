@@ -1093,10 +1093,10 @@
   <div class="splash-screen" id="splash-screen" aria-label="イントロ映像">
     <div class="splash-media-wrap">
       <video class="splash-media" id="splash-video" autoplay muted playsinline preload="metadata" poster="logo-main.png">
-        <source src="splash.MP4" type="video/mp4">
+        <source src="splash.mp4" type="video/mp4">
       </video>
       <div class="splash-overlay">
-        <button class="splash-skip" id="splash-skip" type="button">SKIP</button>
+        
         <h2 class="splash-title">T-ACT</h2>
         <p class="splash-copy">opening visual / latest atmosphere</p>
       </div>
@@ -1110,7 +1110,7 @@
         <span>T-ACT</span>
       </a>
       <div class="nav-links">
-        <a href="#schedule">SCHEDULE</a>
+        <a href="#schedule">NEWS</a>
         <a href="#releases">RELEASES</a>
         <a href="#video">VIDEO</a>
         <a href="#goods">GOODS</a>
@@ -1128,10 +1128,11 @@
 
       <div class="hero-panel">
         <p class="lead">
-          昼は、責任と精度がすべてを決める世界で、構造とビジネスを築く。<br>
-          夜は、その重みを音に変える。<br><br>
+          昼は、構造をつくる。<br>
+          夜は、その重みを音に残す。<br><br>
           逃避でも幻想でもない。<br>
-          現実から生まれた、チルでミニマルな音楽。
+          現実から生まれた、チルでミニマルな音楽。<br><br>
+          <strong style="color:var(--text); font-weight:700;">T-ACT</strong>
         </p>
 
         <div class="cta" aria-label="配信リンク">
@@ -1178,24 +1179,69 @@
       </div>
     </section>
 
+  <section id="featured">
+      <div class="section-inner">
+        <div class="section-head">
+          <h2>FEATURED VIDEO</h2>
+          <p class="section-note">現在のT-ACTの空気を最も象徴する映像作品。</p>
+        </div>
+
+        <div class="profile-shell" style="max-width:1040px; padding:18px;">
+          <div class="yt-frame-wrap" style="border-radius:18px; box-shadow:0 20px 54px rgba(0,0,0,.42);">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/7oF0rDxDRWc"
+              title="Rain in Your Eyes"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen>
+            </iframe>
+          </div>
+
+          <div style="max-width:760px; margin:18px auto 2px; text-align:center;">
+            <div class="chips" style="justify-content:center; margin-top:0; margin-bottom:12px;">
+              <span class="chip">FEATURED</span>
+              <span class="chip">MV</span>
+              <span class="chip">Rain in Your Eyes</span>
+            </div>
+            <p style="margin:0; color:var(--text-soft); line-height:1.9;">
+              痛みを大声で叫ぶのではなく、濡れた視界のまま進み続ける気配を映像として残した代表作。
+              T-ACTの静けさ、余白、現実感がもっとも伝わる一本です。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
   <main>
     <section id="schedule">
       <div class="section-inner">
         <div class="section-head">
-          <h2>SCHEDULE</h2>
-          <p class="section-note">最新のリリース・公開情報を掲載しています。</p>
+          <h2>NEWS / UPDATE</h2>
+          <p class="section-note">最新のリリース、公開情報、更新内容を掲載しています。</p>
         </div>
 
         <div class="schedule">
           <article class="sched-item">
             <div class="sched-date">2026-03-06</div>
             <div class="sched-main">
-              <h3>New Single Release【残置】</h3>
-              <div class="sched-meta">配信：主要サブスク</div>
+              <h3>New Single「残置」Release</h3>
+              <div class="sched-meta">主要サブスクにて配信開始</div>
               <div class="chips">
+                <span class="chip">NEWS</span>
                 <span class="chip">RELEASE</span>
-                <span class="chip">Digital</span>
                 <span class="chip">Latest</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="sched-item">
+            <div class="sched-date">2026</div>
+            <div class="sched-main">
+              <h3>Official Site Updated</h3>
+              <div class="sched-meta">最新リリース導線、映像導線、ディスコグラフィ構成を更新</div>
+              <div class="chips">
+                <span class="chip">UPDATE</span>
+                <span class="chip">SITE</span>
               </div>
             </div>
           </article>
@@ -1206,27 +1252,56 @@
     <section id="releases">
       <div class="section-inner">
         <div class="section-head">
-          <h2>RELEASES</h2>
-          <p class="section-note">感情を説明しすぎず、余白と痕跡として残す作品群。</p>
+          <h2>LATEST RELEASE</h2>
+          <p class="section-note">現在のT-ACTを最も濃く映している最新作。</p>
+        </div>
+
+        <div class="profile-shell" style="max-width:1040px; text-align:left;">
+          <div class="profile-grid" style="grid-template-columns: minmax(260px, 360px) 1fr; align-items:start;">
+            <div class="release-cover" style="margin-bottom:0;">
+              <img src="zanti.jpg" alt="残置 ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200">
+            </div>
+
+            <div>
+              <div class="chips" style="margin-top:0; margin-bottom:12px;">
+                <span class="chip">LATEST</span>
+                <span class="chip">2026</span>
+                <span class="chip">Digital Single</span>
+              </div>
+
+              <h3 style="margin:0 0 12px; color:var(--mint); font-size:clamp(1.6rem, 3vw, 2.2rem); line-height:1.15;">残置</h3>
+
+              <p style="margin:0 0 14px; color:var(--text-soft); font-size:1rem; line-height:1.9;">
+                整えられた日常の奥に、置き去りのまま残っていた感情の輪郭をそっと拾い上げる作品。<br>
+                言葉を足しすぎず、消えきらなかった記憶の気配だけを静かに浮かび上がらせる。
+              </p>
+
+              <p style="margin:0 0 18px; color:var(--muted); font-size:.92rem; line-height:1.85;">
+                ルールの中で生きること、整えてきた毎日、残してきたもの。<br>
+                その静かな摩擦を、T-ACTらしい余白と温度で描いた最新リリース。
+              </p>
+
+              <div class="sched-links" style="margin-top:0;">
+                <a href="https://music.apple.com/jp/album/%E6%AE%8B%E7%BD%AE-single/1877027727?l=en-US" target="_blank" rel="noreferrer noopener">Apple Music</a>
+                <a href="https://open.spotify.com/intl-ja/album/5QjedeXnR7x5IG49Yyakch" target="_blank" rel="noreferrer noopener">Spotify</a>
+                <a href="https://music.line.me/webapp/album/mb0000000005084848" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-head" style="margin-top:44px;">
+          <h2>DISCOGRAPHY</h2>
+          <p class="section-note">作品ごとの温度、余白、視点を残したアーカイブ。</p>
         </div>
 
         <div class="releases">
           <article class="release">
             <div class="release-cover">
-              <img src="zanti.jpg" alt="残置 ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200">
-            </div>
-            <h3>残置</h3>
-            <p>整えられた日常の奥に、置き去りのまま残っていた感情の輪郭をそっと拾い上げる作品。言葉を足しすぎず、消えきらなかった記憶の気配だけを静かに浮かび上がらせる。</p>
-            <div class="sched-links">
-              <a href="https://music.apple.com/jp/album/%E6%AE%8B%E7%BD%AE-single/1877027727?l=en-US" target="_blank" rel="noreferrer noopener">Apple Music</a>
-              <a href="https://open.spotify.com/intl-ja/album/5QjedeXnR7x5IG49Yyakch" target="_blank" rel="noreferrer noopener">Spotify</a>
-              <a href="https://music.line.me/webapp/album/mb0000000005084848" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
-            </div>
-          </article>
-
-          <article class="release">
-            <div class="release-cover">
               <img src="iine.jpg" alt="いいね ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200">
+            </div>
+            <div class="chips" style="margin-top:0; margin-bottom:10px;">
+              <span class="chip">2025</span>
             </div>
             <h3>いいね</h3>
             <p>反応が価値を決めるように見える時代のノイズの中で、自分の感覚を手放さないための一曲。賞賛にも無関心にも飲まれず、内側の温度を守ろうとする意思が流れている。</p>
@@ -1241,6 +1316,9 @@
             <div class="release-cover">
               <img src="kaniana.jpg" alt="蟹穴 ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200">
             </div>
+            <div class="chips" style="margin-top:0; margin-bottom:10px;">
+              <span class="chip">2025</span>
+            </div>
             <h3>蟹穴</h3>
             <p>世界から身を引くためではなく、自分の輪郭を保ったまま踏ん張るための場所を描いた作品。小さな穴の中から見える景色にこそ、その人の哲学と生き方が滲む。</p>
             <div class="sched-links">
@@ -1253,6 +1331,9 @@
           <article class="release">
             <div class="release-cover">
               <img src="baton.jpg" alt="Baton ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200">
+            </div>
+            <div class="chips" style="margin-top:0; margin-bottom:10px;">
+              <span class="chip">2025</span>
             </div>
             <h3>Baton</h3>
             <p>言葉にならないまま受け継がれてきた責任、期待、祈り。その重さを誇張せず、静かな推進力として描くことで、継承とは前へ進むための宿命でもあると語りかける。</p>
@@ -1267,6 +1348,9 @@
             <div class="release-cover">
               <img src="min-i.jpg" alt="民意 ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200">
             </div>
+            <div class="chips" style="margin-top:0; margin-bottom:10px;">
+              <span class="chip">2025</span>
+            </div>
             <h3>民意</h3>
             <p>数字や熱量が真実のように扱われる空気を切り裂き、見えているものと信じ込まされているものの境界を問い直す作品。冷たさの奥に、思考することへの執着がある。</p>
             <div class="sched-links">
@@ -1280,6 +1364,9 @@
             <div class="release-cover">
               <img src="Rain-in-Your-Eyes.jpg" alt="Rain in Your Eyes ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200">
             </div>
+            <div class="chips" style="margin-top:0; margin-bottom:10px;">
+              <span class="chip">2025</span>
+            </div>
             <h3>Rain in Your Eyes</h3>
             <p>痛みを劇的に叫ぶのではなく、濡れた視界のまま歩き続ける気配を描いたチル・バラード。喪失のあとに残る静けさと、そこからもう一度立ち上がる微かな意思が同居している。</p>
             <div class="sched-links">
@@ -1292,6 +1379,9 @@
           <article class="release">
             <div class="release-cover">
               <img src="sweet-bitter.jpg" alt="Sweet &amp; Bitter ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200">
+            </div>
+            <div class="chips" style="margin-top:0; margin-bottom:10px;">
+              <span class="chip">2025</span>
             </div>
             <h3>Sweet &amp; Bitter</h3>
             <p>甘さだけでも、苦さだけでも語れない自分自身の複層性をそのまま映した作品。心地よさの中に少しだけ残る引っかかりが、T-ACTの感性を象徴している。</p>
