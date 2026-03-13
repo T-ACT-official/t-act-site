@@ -4,23 +4,26 @@
   <!-- ===== 基本情報 ===== -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>T-ACT | Official Site</title>
-  <meta name="description" content="T-ACT Official Site. 社会の当事者として『音楽』で語る。">
+  <title>T-ACT Official Site | 社会の当事者として現実から音楽を立ち上げる</title>
+  <meta name="description" content="T-ACT Official Site。社会の当事者として現実から音楽を立ち上げる日本のインディペンデントアーティスト T-ACT の公式サイト。最新リリース、MV、ディスコグラフィ、グッズ、プロフィールを掲載。">
+  <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="theme-color" content="#0b0f10">
+  <meta name="google-site-verification" content="v2V_zySwHXIOgg7nOymSmx_8UiwnfsP1LPav9OlIXaI" />
   <link rel="canonical" href="https://t-act-official.github.io/t-act-site/">
 
   <!-- ===== OGP / SNSプレビュー ===== -->
-  <meta property="og:title" content="T-ACT 公式サイト">
-  <meta property="og:description" content="社会の当事者として『音楽』で語る。">
-  <meta property="og:image" content="https://t-act-official.github.io/t-act-site/ogp.png?v=1">
+  <meta property="og:title" content="T-ACT Official Site">
+  <meta property="og:description" content="社会の当事者として現実から音楽を立ち上げる。">
+  <meta property="og:image" content="https://t-act-official.github.io/t-act-site/ogp.png">
   <meta property="og:url" content="https://t-act-official.github.io/t-act-site/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="T-ACT Official Site">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="T-ACT 公式サイト">
-  <meta name="twitter:description" content="社会の当事者として『音楽』で語る。">
-  <meta name="twitter:image" content="https://t-act-official.github.io/t-act-site/ogp.png?v=1">
+  <meta name="twitter:title" content="T-ACT Official Site">
+  <meta name="twitter:description" content="社会の当事者として現実から音楽を立ち上げる。">
+  <meta name="twitter:image" content="https://t-act-official.github.io/t-act-site/ogp.png">
 
   <!-- ===== Apple Music スマートバナー ===== -->
   <meta name="apple-itunes-app" content="app-id=1108187390, app-argument=https://music.apple.com/jp/artist/t-act/1842221982">
@@ -40,7 +43,9 @@
     "@id": "https://t-act-official.github.io/t-act-site/#artist",
     "name": "T-ACT",
     "url": "https://t-act-official.github.io/t-act-site/",
+    "logo": "https://t-act-official.github.io/t-act-site/logo-main.png",
     "image": "https://t-act-official.github.io/t-act-site/ogp.png",
+    "description": "社会の当事者として現実から音楽を立ち上げる日本のインディペンデントアーティスト T-ACT の公式サイト。",
     "genre": ["Chill", "Electronic", "Hip-Hop", "R&B", "J-Pop"],
     "sameAs": [
       "https://music.apple.com/jp/artist/t-act/1842221982",
@@ -218,6 +223,8 @@
       max-width: 960px;
       margin: 0 auto;
       position: relative;
+      transition: opacity .16s linear, transform .16s linear, filter .16s linear;
+      will-change: opacity, transform, filter;
     }
 
     .eyebrow {
@@ -241,11 +248,7 @@
       display: block;
       margin: 0 auto 14px;
       box-shadow: var(--shadow);
-    }
-
-    .hero-inner {
-      transition: opacity .16s linear, transform .16s linear, filter .16s linear;
-      will-change: opacity, transform, filter;
+      animation: mintGlow 4s ease-in-out infinite;
     }
 
     .splash-screen {
@@ -285,48 +288,6 @@
       object-fit: cover;
       display: block;
       opacity: .92;
-    }
-
-    .splash-overlay {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 12px;
-      padding: 28px 18px;
-      background: linear-gradient(180deg, rgba(0,0,0,.06), rgba(0,0,0,.56));
-      text-align: center;
-    }
-
-    .splash-title {
-      margin: 0;
-      font-size: clamp(1.4rem, 4vw, 2.4rem);
-      letter-spacing: .14em;
-      color: var(--text);
-      text-shadow: 0 8px 24px rgba(0,0,0,.35);
-    }
-
-    .splash-copy {
-      margin: 0;
-      color: var(--text-soft);
-      font-size: .95rem;
-    }
-
-    .splash-skip {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      min-height: 40px;
-      padding: 8px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.16);
-      background: rgba(7,10,11,.56);
-      color: var(--text);
-      cursor: pointer;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
     }
 
     h1 {
@@ -596,6 +557,7 @@
       height: 100%;
       display: block;
       object-fit: cover;
+      transition: transform .25s ease;
     }
 
     .release:hover {
@@ -861,6 +823,99 @@
       margin: .45em 0;
     }
 
+    .topnav.scrolled .brand-mark{
+      transform:scale(.78);
+    }
+
+    .topnav.scrolled .brand span{
+      opacity:.75;
+    }
+
+    .brand-mark{
+      transition:transform .25s ease;
+    }
+
+    .brand span{
+      transition:opacity .25s ease;
+    }
+
+    @keyframes mintGlow{
+      0%{
+        box-shadow:0 0 0 rgba(52,211,153,0);
+      }
+      50%{
+        box-shadow:0 0 28px rgba(52,211,153,.35), 0 0 60px rgba(52,211,153,.18);
+      }
+      100%{
+        box-shadow:0 0 0 rgba(52,211,153,0);
+      }
+    }
+
+    .mini-player{
+      position:fixed;
+      left:18px;
+      right:18px;
+      bottom:18px;
+      z-index:40;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:12px 14px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(7,10,11,.82);
+      backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
+      box-shadow:0 10px 30px rgba(0,0,0,.4);
+      font-size:.85rem;
+    }
+
+    .mini-player-meta{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      gap:2px;
+      min-width:0;
+    }
+
+    .mini-player-title{
+      color:var(--text);
+      font-weight:700;
+      line-height:1.2;
+    }
+
+    .mini-player-status{
+      color:var(--muted);
+      font-size:.78rem;
+      line-height:1.2;
+    }
+
+    .mini-player-controls{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-shrink:0;
+    }
+
+    .mini-player button{
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(255,255,255,.06);
+      color:var(--mint);
+      border-radius:10px;
+      padding:8px 14px;
+      cursor:pointer;
+    }
+
+    .mini-player button:hover{
+      background:rgba(255,255,255,.12);
+    }
+
+    .mini-player button:disabled{
+      opacity:.5;
+      cursor:not-allowed;
+    }
+
     @media (max-width: 920px) {
       .profile-grid {
         grid-template-columns: 1fr;
@@ -907,15 +962,6 @@
       .splash-media-wrap {
         width: calc(100vw - 24px);
         border-radius: 18px;
-      }
-
-      .splash-overlay {
-        padding: 22px 14px;
-      }
-
-      .splash-skip {
-        top: 12px;
-        right: 12px;
       }
 
       .topnav {
@@ -984,6 +1030,14 @@
         border-top-width: 11px;
         border-bottom-width: 11px;
       }
+
+      .mini-player{
+        left:12px;
+        right:12px;
+        bottom:12px;
+        max-width:none;
+        padding:12px;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -994,134 +1048,7 @@
         transition-duration: .01ms !important;
       }
     }
-  
-
-/* ===== Scroll Logo Shrink ===== */
-.topnav.scrolled .brand-mark{
-  transform:scale(.78);
-}
-.topnav.scrolled .brand span{
-  opacity:.75;
-}
-.brand-mark{
-  transition:transform .25s ease;
-}
-.brand span{
-  transition:opacity .25s ease;
-}
-
-
-
-/* ===== Mint Glow Logo Effect ===== */
-.logo{
-  animation: mintGlow 4s ease-in-out infinite;
-}
-
-@keyframes mintGlow{
-  0%{
-    box-shadow:0 0 0 rgba(52,211,153,0);
-  }
-  50%{
-    box-shadow:0 0 28px rgba(52,211,153,.35), 0 0 60px rgba(52,211,153,.18);
-  }
-  100%{
-    box-shadow:0 0 0 rgba(52,211,153,0);
-  }
-}
-
-
-
-/* ===== Mini Music Player ===== */
-.mini-player{
-  position:fixed;
-  left:18px;
-  right:18px;
-  bottom:18px;
-  z-index:40;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  padding:12px 14px;
-  border-radius:16px;
-  border:1px solid rgba(255,255,255,.12);
-  background:rgba(7,10,11,.82);
-  backdrop-filter:blur(10px);
-  -webkit-backdrop-filter:blur(10px);
-  box-shadow:0 10px 30px rgba(0,0,0,.4);
-  font-size:.85rem;
-}
-
-.mini-player-meta{
-  display:flex;
-  flex-direction:column;
-  align-items:flex-start;
-  gap:2px;
-  min-width:0;
-}
-
-.mini-player-title{
-  color:var(--text);
-  font-weight:700;
-  line-height:1.2;
-}
-
-.mini-player-status{
-  color:var(--muted);
-  font-size:.78rem;
-  line-height:1.2;
-}
-
-.mini-player-controls{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  flex-shrink:0;
-}
-
-.mini-player button{
-  border:1px solid rgba(255,255,255,.18);
-  background:rgba(255,255,255,.06);
-  color:var(--mint);
-  border-radius:10px;
-  padding:8px 14px;
-  cursor:pointer;
-}
-
-.mini-player button:hover{
-  background:rgba(255,255,255,.12);
-}
-
-.mini-player button:disabled{
-  opacity:.55;
-  cursor:not-allowed;
-}
-
-@media (max-width: 780px) {
-  .mini-player{
-    left:12px;
-    right:12px;
-    bottom:12px;
-    padding:12px;
-  }
-}
-
-.mini-player button:disabled{
-  opacity:.5;
-  cursor:not-allowed;
-}
-
-@media (max-width: 780px) {
-  .mini-player{
-    left:12px;
-    right:12px;
-    bottom:12px;
-    max-width:none;
-    padding:12px;
-  }
-}
-
-</style>
+  </style>
 </head>
 <body>
   <canvas id="mint-bg" aria-hidden="true"></canvas>
@@ -1132,15 +1059,14 @@
       <video class="splash-media" id="splash-video" autoplay muted playsinline preload="metadata" poster="logo-main.png">
         <source src="splash.mp4" type="video/mp4">
       </video>
-      
     </div>
   </div>
 
   <nav class="topnav" aria-label="メインナビゲーション">
     <div class="topnav-inner">
       <a href="#top" class="brand" aria-label="T-ACT トップへ">
-        <img src="logo-main.png" alt="" class="brand-mark" width="30" height="30" decoding="async">
-        <span></span>
+        <img src="logo-main.png" alt="T-ACT ロゴ" class="brand-mark" width="30" height="30" decoding="async">
+        <span>T-ACT</span>
       </a>
       <div class="nav-links">
         <a href="#schedule">NEWS</a>
@@ -1156,7 +1082,7 @@
     <div class="hero-inner">
       <div class="eyebrow">Official Artist Site</div>
       <img src="logo-main.png" alt="T-ACT ロゴ" class="logo" width="720" height="720" decoding="async">
-      <h1></h1>
+      <h1>T-ACT Official Site</h1>
       <p class="hero-sub">社会の当事者として、現実から音楽を立ち上げる。</p>
 
       <div class="hero-panel">
@@ -1164,8 +1090,7 @@
           昼は、構造をつくる。<br>
           夜は、その重みを音に残す。<br><br>
           逃避でも幻想でもない。<br>
-          現実から生まれた、チルでミニマルな音楽。<br><br>
-          <strong style="color:var(--text); font-weight:700;"></strong>
+          現実から生まれた、チルでミニマルな音楽。
         </p>
 
         <div class="cta" aria-label="配信リンク">
@@ -1194,37 +1119,37 @@
   </header>
 
   <section id="featured">
-      <div class="section-inner">
-        <div class="section-head">
-          <h2>FEATURED VIDEO</h2>
-          <p class="section-note">現在のT-ACTの空気を最も象徴する映像作品。</p>
+    <div class="section-inner">
+      <div class="section-head">
+        <h2>FEATURED VIDEO</h2>
+        <p class="section-note">現在のT-ACTの空気を最も象徴する映像作品。</p>
+      </div>
+
+      <div class="profile-shell" style="max-width:1040px; padding:18px;">
+        <div class="yt-frame-wrap" style="border-radius:18px; box-shadow:0 20px 54px rgba(0,0,0,.42);">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/7oF0rDxDRWc"
+            title="Rain in Your Eyes"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
         </div>
 
-        <div class="profile-shell" style="max-width:1040px; padding:18px;">
-          <div class="yt-frame-wrap" style="border-radius:18px; box-shadow:0 20px 54px rgba(0,0,0,.42);">
-            <iframe
-              src="https://www.youtube-nocookie.com/embed/7oF0rDxDRWc"
-              title="Rain in Your Eyes"
-              loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen>
-            </iframe>
+        <div style="max-width:760px; margin:18px auto 2px; text-align:center;">
+          <div class="chips" style="justify-content:center; margin-top:0; margin-bottom:12px;">
+            <span class="chip">FEATURED</span>
+            <span class="chip">MV</span>
+            <span class="chip">Rain in Your Eyes</span>
           </div>
-
-          <div style="max-width:760px; margin:18px auto 2px; text-align:center;">
-            <div class="chips" style="justify-content:center; margin-top:0; margin-bottom:12px;">
-              <span class="chip">FEATURED</span>
-              <span class="chip">MV</span>
-              <span class="chip">Rain in Your Eyes</span>
-            </div>
-            <p style="margin:0; color:var(--text-soft); line-height:1.9;">
-              痛みを大声で叫ぶのではなく、濡れた視界のまま進み続ける気配を映像として残した代表作。
-              T-ACTの静けさ、余白、現実感がもっとも伝わる一本です。
-            </p>
-          </div>
+          <p style="margin:0; color:var(--text-soft); line-height:1.9;">
+            痛みを大声で叫ぶのではなく、濡れた視界のまま進み続ける気配を映像として残した代表作。
+            T-ACTの静けさ、余白、現実感がもっとも伝わる一本です。
+          </p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
   <main>
     <section id="schedule">
@@ -1493,7 +1418,7 @@
 
             <div class="profile-copy">
               <p>
-                <strong></strong> は、日本を拠点に活動するインディペンデントアーティスト。<br>
+                <strong>T-ACT</strong> は、日本を拠点に活動するインディペンデントアーティスト。<br>
                 ヒップホップやR&amp;Bを軸に、余白を意識したミニマルな楽曲を制作する。<br><br>
 
                 音楽活動の動機は、成功や承認ではなく「始めることそのもの」。<br>
@@ -1516,8 +1441,6 @@
         </div>
       </div>
     </section>
-
-    
   </main>
 
   <footer>
@@ -1636,10 +1559,8 @@
           p.x = Math.random() * width;
         }
 
-        // parallax base
         const parallaxY = p.y + scrollOffset * (0.08 + p.r * 0.02);
 
-        // attraction toward logo area based on scroll
         const targetX = width / 2;
         const targetY = height * 0.28;
 
@@ -1695,20 +1616,21 @@
     });
   })();
   </script>
-  <script>
-  (()=>{
-    const nav=document.querySelector('.topnav');
-    if(!nav) return;
 
-    const onScroll=()=>{
-      if(window.scrollY>60){
+  <script>
+  (() => {
+    const nav = document.querySelector('.topnav');
+    if (!nav) return;
+
+    const onScroll = () => {
+      if (window.scrollY > 60) {
         nav.classList.add('scrolled');
-      }else{
+      } else {
         nav.classList.remove('scrolled');
       }
     };
 
-    window.addEventListener('scroll',onScroll,{passive:true});
+    window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
   })();
   </script>
@@ -1728,62 +1650,62 @@
   </div>
 
   <script>
-  (()=>{
-    const audio=document.getElementById('miniAudio');
-    const btn=document.getElementById('miniPlay');
-    const status=document.getElementById('miniStatus');
-    const source=audio?.querySelector('source');
+  (() => {
+    const audio = document.getElementById('miniAudio');
+    const btn = document.getElementById('miniPlay');
+    const status = document.getElementById('miniStatus');
+    const source = audio?.querySelector('source');
 
-    if(!audio || !btn || !status || !source) return;
+    if (!audio || !btn || !status || !source) return;
 
-    const src=source.getAttribute('src') || '';
-    if(!src){
-      btn.disabled=true;
-      status.textContent='音源ファイル未設定';
+    const src = source.getAttribute('src') || '';
+    if (!src) {
+      btn.disabled = true;
+      status.textContent = '音源ファイル未設定';
       return;
     }
 
-    const setIdle=()=>{
-      btn.textContent='Play';
-      status.textContent='停止中';
+    const setIdle = () => {
+      btn.textContent = 'Play';
+      status.textContent = '停止中';
     };
 
-    audio.addEventListener('loadedmetadata',()=>{
-      status.textContent='再生準備OK';
+    audio.addEventListener('loadedmetadata', () => {
+      status.textContent = '再生準備OK';
     });
 
-    audio.addEventListener('playing',()=>{
-      btn.textContent='Pause';
-      status.textContent='再生中';
+    audio.addEventListener('playing', () => {
+      btn.textContent = 'Pause';
+      status.textContent = '再生中';
     });
 
-    audio.addEventListener('pause',()=>{
-      if(!audio.ended){
+    audio.addEventListener('pause', () => {
+      if (!audio.ended) {
         setIdle();
       }
     });
 
-    audio.addEventListener('ended',()=>{
-      audio.currentTime=0;
+    audio.addEventListener('ended', () => {
+      audio.currentTime = 0;
       setIdle();
     });
 
-    audio.addEventListener('error',()=>{
-      btn.disabled=true;
-      btn.textContent='Error';
-      status.textContent='音源を読み込めません';
+    audio.addEventListener('error', () => {
+      btn.disabled = true;
+      btn.textContent = 'Error';
+      status.textContent = '音源を読み込めません';
     });
 
-    btn.addEventListener('click', async ()=>{
-      if(audio.paused){
-        try{
+    btn.addEventListener('click', async () => {
+      if (audio.paused) {
+        try {
           await audio.play();
-        }catch(err){
-          btn.textContent='Play';
-          status.textContent='再生できませんでした';
+        } catch (err) {
+          btn.textContent = 'Play';
+          status.textContent = '再生できませんでした';
           console.error(err);
         }
-      }else{
+      } else {
         audio.pause();
       }
     });
