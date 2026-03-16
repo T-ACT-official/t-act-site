@@ -410,7 +410,6 @@
 
     .btn,
     .cta a,
-    .link-row a,
     .release-links a,
     .footer-links a {
       display: inline-flex;
@@ -428,7 +427,6 @@
 
     .btn:hover,
     .cta a:hover,
-    .link-row a:hover,
     .release-links a:hover,
     .footer-links a:hover {
       transform: translateY(-2px);
@@ -675,7 +673,6 @@
     }
 
     .release-links,
-    .link-row,
     .footer-links {
       margin-top: 14px;
       display: flex;
@@ -831,7 +828,6 @@
         <a href="#releases">RELEASES</a>
         <a href="#video">VIDEO</a>
         <a href="#manifesto">MANIFESTO</a>
-        <a href="#links">LINKS</a>
 
         <div class="lang-switch" aria-label="Language switch">
           <a href="https://t-act-official.site/">JP</a>
@@ -919,27 +915,50 @@
     <section id="releases">
       <div class="section-inner">
         <div class="section-head">
-          <h2>Selected Releases</h2>
-          <p class="section-note">Each track is a fragment of time, recorded through sound.</p>
+          <h2>Latest Release</h2>
+          <p class="section-note">The newest work that most strongly reflects the current phase of T-ACT.</p>
+        </div>
+
+        <div class="profile-shell" style="max-width:1040px; text-align:left;">
+          <div style="display:grid; grid-template-columns:minmax(260px, 360px) 1fr; gap:24px; align-items:start;" class="latest-grid">
+            <div class="release-cover" style="margin-bottom:0;">
+              <img src="../zanti.jpg" alt="残置 cover art" loading="lazy" decoding="async" width="1200" height="1200">
+            </div>
+
+            <div>
+              <div class="chips" style="justify-content:flex-start; margin-top:0; margin-bottom:12px;">
+                <span class="chip">LATEST</span>
+                <span class="chip">2026</span>
+                <span class="chip">Digital Single</span>
+              </div>
+
+              <h3 style="margin:0 0 12px; color:var(--mint); font-size:clamp(1.6rem, 3vw, 2.2rem); line-height:1.15;">残置</h3>
+
+              <p style="margin:0 0 14px; color:var(--text-soft); font-size:1rem; line-height:1.9;">
+                A work that quietly retrieves the outline of emotions left behind beneath an ordered daily life.<br>
+                Without adding too many words, it lets only the lingering trace of memory rise to the surface.
+              </p>
+
+              <p style="margin:0 0 18px; color:var(--muted); font-size:.92rem; line-height:1.85;">
+                Living inside rules, maintaining routine, and carrying what remains.<br>
+                This latest release captures that quiet friction through the space and restraint characteristic of T-ACT.
+              </p>
+
+              <div class="release-links" style="margin-top:0;">
+                <a href="https://music.apple.com/jp/album/%E6%AE%8B%E7%BD%AE-single/1877027727?l=en-US" target="_blank" rel="noreferrer noopener">Apple Music</a>
+                <a href="https://open.spotify.com/intl-ja/album/5QjedeXnR7x5IG49Yyakch" target="_blank" rel="noreferrer noopener">Spotify</a>
+                <a href="https://music.line.me/webapp/album/mb0000000005084848" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-head" style="margin-top:44px;">
+          <h2>Discography</h2>
+          <p class="section-note">An archive of temperature, space, and perspective across each release.</p>
         </div>
 
         <div class="releases">
-          <article class="release">
-            <div class="release-cover">
-              <img src="../zanti.jpg" alt="残置 cover art" loading="lazy" decoding="async" width="1200" height="1200">
-            </div>
-            <div class="chips" style="justify-content:flex-start;">
-              <span class="chip">2026</span>
-              <span class="chip">Latest</span>
-            </div>
-            <h3>残置</h3>
-            <p>A record of what remains, even after order, routine, and silence try to bury it.</p>
-            <div class="release-links">
-              <a href="https://music.apple.com/jp/album/%E6%AE%8B%E7%BD%AE-single/1877027727?l=en-US" target="_blank" rel="noreferrer noopener">Apple Music</a>
-              <a href="https://open.spotify.com/intl-ja/album/5QjedeXnR7x5IG49Yyakch" target="_blank" rel="noreferrer noopener">Spotify</a>
-            </div>
-          </article>
-
           <article class="release">
             <div class="release-cover">
               <img src="../iine.jpg" alt="いいね cover art" loading="lazy" decoding="async" width="1200" height="1200">
@@ -952,6 +971,7 @@
             <div class="release-links">
               <a href="https://music.apple.com/jp/album/%E3%81%84%E3%81%84%E3%81%AD-single/1871989088?l=en-US" target="_blank" rel="noreferrer noopener">Apple Music</a>
               <a href="https://open.spotify.com/intl-ja/album/4GRUelIFhMOQMx9yO07WkM?si=tblRppJZTXyVUCadGEstog" target="_blank" rel="noreferrer noopener">Spotify</a>
+              <a href="https://lin.ee/yrto4K0" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
             </div>
           </article>
 
@@ -967,6 +987,7 @@
             <div class="release-links">
               <a href="https://music.apple.com/jp/album/%E8%9F%B9%E7%A9%B4-single/1867369742?l=en&ls=1&app=music" target="_blank" rel="noreferrer noopener">Apple Music</a>
               <a href="https://open.spotify.com/album/0YmbmHT1sN7XpBxs14Fnp4" target="_blank" rel="noreferrer noopener">Spotify</a>
+              <a href="https://music.line.me/launch?target=album&item=mb0000000004edf2b2&cc=JP&v=1" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
             </div>
           </article>
 
@@ -982,6 +1003,7 @@
             <div class="release-links">
               <a href="https://music.apple.com/jp/album/baton/1858161005?i=1858161006" target="_blank" rel="noreferrer noopener">Apple Music</a>
               <a href="https://open.spotify.com/album/44Bq00HIJz3jXdJsIEHj6W?si=fhpAepe7SGiycFldcUJP2g" target="_blank" rel="noreferrer noopener">Spotify</a>
+              <a href="https://lin.ee/QcJr9CZ" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
             </div>
           </article>
 
@@ -997,6 +1019,7 @@
             <div class="release-links">
               <a href="https://music.apple.com/jp/song/%E6%B0%91%E6%84%8F/1849569797" target="_blank" rel="noreferrer noopener">Apple Music</a>
               <a href="https://open.spotify.com/intl-ja/track/3ZUQ3MExDqGBaJfETdHRGj?si=0cb63bd1eb14491d" target="_blank" rel="noreferrer noopener">Spotify</a>
+              <a href="https://lin.ee/YUxslGB" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
             </div>
           </article>
 
@@ -1012,6 +1035,7 @@
             <div class="release-links">
               <a href="https://music.apple.com/jp/song/rein-in-your-eyes/1846001693" target="_blank" rel="noreferrer noopener">Apple Music</a>
               <a href="https://open.spotify.com/intl-ja/track/1w0EC9a4tvC49bEs0OzhIL?si=1b4f30f6361e43f4" target="_blank" rel="noreferrer noopener">Spotify</a>
+              <a href="https://lin.ee/1JzZK3f" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
             </div>
           </article>
 
@@ -1027,6 +1051,7 @@
             <div class="release-links">
               <a href="https://music.apple.com/jp/song/sweet-bitter/1842222416" target="_blank" rel="noreferrer noopener">Apple Music</a>
               <a href="https://open.spotify.com/intl-ja/track/7LFWlx8t4IAkWLWxfkvQER?si=a03f22fee8524aeb" target="_blank" rel="noreferrer noopener">Spotify</a>
+              <a href="https://lin.ee/vIEXJ7J" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
             </div>
           </article>
         </div>
@@ -1099,23 +1124,6 @@
         </div>
       </div>
     </section>
-
-    <section id="links">
-      <div class="section-inner">
-        <div class="section-head">
-          <h2>Listen & Follow</h2>
-          <p class="section-note">Official platforms and links.</p>
-        </div>
-
-        <div class="link-row">
-          <a class="btn" href="https://youtube.com/@t_act_music" target="_blank" rel="noreferrer noopener">YouTube</a>
-          <a class="btn" href="https://open.spotify.com/intl-ja/artist/5FOiDuDN7NiDUrBtEciroP" target="_blank" rel="noreferrer noopener">Spotify</a>
-          <a class="btn" href="https://music.apple.com/jp/artist/t-act/1842221982" target="_blank" rel="noreferrer noopener">Apple Music</a>
-          <a class="btn" href="https://x.com/t_act_music" target="_blank" rel="noreferrer noopener">X</a>
-          <a class="btn" href="https://suzuri.jp/T-ACT/products" target="_blank" rel="noreferrer noopener">SUZURI</a>
-        </div>
-      </div>
-    </section>
   </main>
 
   <footer>
@@ -1133,6 +1141,7 @@
           <a class="btn" href="https://open.spotify.com/intl-ja/artist/5FOiDuDN7NiDUrBtEciroP" target="_blank" rel="noreferrer noopener">Spotify</a>
           <a class="btn" href="https://music.apple.com/jp/artist/t-act/1842221982" target="_blank" rel="noreferrer noopener">Apple Music</a>
           <a class="btn" href="https://x.com/t_act_music" target="_blank" rel="noreferrer noopener">X</a>
+          <a class="btn" href="https://suzuri.jp/T-ACT/products" target="_blank" rel="noreferrer noopener">SUZURI</a>
         </div>
 
         <p style="margin:.5em 0 0; color:#7f948b; font-size:.86rem; letter-spacing:.04em;">© 2026 T-ACT — All Rights Reserved.</p>
@@ -1266,5 +1275,13 @@
     onScroll();
   })();
   </script>
+
+  <style>
+    @media (max-width: 920px) {
+      .latest-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+  </style>
 </body>
 </html>
