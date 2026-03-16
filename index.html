@@ -8,10 +8,15 @@
   <meta name="description" content="T-ACT公式サイト。社会の当事者として現実から音楽を立ち上げる日本のインディペンデント音楽アーティスト T-ACT の公式サイト。最新リリース、MV、ディスコグラフィ、グッズ、プロフィールを掲載。">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="theme-color" content="#0b0f10">
-  <meta name="google-site-verification" content="v2V_zySwHXIOgg7nOymSmx_8UiwnfsP1LPav9OlIXaI" />
+  <meta name="google-site-verification" content="v2V_zySwHXIOgg7nOymSmx_8UiwnfsP1LPav9OlIXaI">
   <link rel="canonical" href="https://t-act-official.site/">
   <link rel="icon" href="logo-main.png">
   <link rel="me" href="https://x.com/t_act_music">
+
+  <!-- ===== 多言語 ===== -->
+  <link rel="alternate" hreflang="ja" href="https://t-act-official.site/">
+  <link rel="alternate" hreflang="en" href="https://t-act-official.site/en/">
+  <link rel="alternate" hreflang="x-default" href="https://t-act-official.site/">
 
   <!-- ===== OGP / SNSプレビュー ===== -->
   <meta property="og:title" content="T-ACT 公式サイト">
@@ -151,21 +156,21 @@
   }
   </script>
 
-<script type="application/ld+json">
-{
- "@context": "https://schema.org",
- "@type": "BreadcrumbList",
- "itemListElement": [
+  <script type="application/ld+json">
   {
-   "@type": "ListItem",
-   "position": 1,
-   "name": "Home",
-   "item": "https://t-act-official.site/"
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://t-act-official.site/"
+      }
+    ]
   }
- ]
-}
-</script>
-  
+  </script>
+
   <style>
     :root {
       --bg: #070a0b;
@@ -280,6 +285,13 @@
       object-fit: cover;
       border: 1px solid var(--border);
       box-shadow: var(--shadow-soft);
+      transition: transform .25s ease;
+    }
+
+    .brand span {
+      display: inline-block;
+      line-height: 1;
+      transition: opacity .25s ease;
     }
 
     .nav-links {
@@ -287,6 +299,7 @@
       flex-wrap: wrap;
       gap: 10px;
       justify-content: center;
+      align-items: center;
     }
 
     .nav-links a {
@@ -307,6 +320,29 @@
       border-color: var(--border);
       background: rgba(255,255,255,.04);
       outline: none;
+    }
+
+    .lang-switch {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-left: 4px;
+      padding-left: 6px;
+      border-left: 1px solid rgba(255,255,255,.10);
+    }
+
+    .lang-switch a {
+      min-height: auto;
+      padding: 4px 8px;
+      border-radius: 999px;
+      font-size: .82rem;
+      letter-spacing: .08em;
+    }
+
+    .lang-switch .current {
+      color: var(--text);
+      border: 1px solid var(--mint-line);
+      background: rgba(52,211,153,.08);
     }
 
     header {
@@ -333,6 +369,8 @@
       max-width: 960px;
       margin: 0 auto;
       position: relative;
+      transition: opacity .16s linear, transform .16s linear, filter .16s linear;
+      will-change: opacity, transform, filter;
     }
 
     .eyebrow {
@@ -356,11 +394,7 @@
       display: block;
       margin: 0 auto 14px;
       box-shadow: var(--shadow);
-    }
-
-    .hero-inner {
-      transition: opacity .16s linear, transform .16s linear, filter .16s linear;
-      will-change: opacity, transform, filter;
+      animation: mintGlow 4s ease-in-out infinite;
     }
 
     .splash-screen {
@@ -400,48 +434,6 @@
       object-fit: cover;
       display: block;
       opacity: .92;
-    }
-
-    .splash-overlay {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 12px;
-      padding: 28px 18px;
-      background: linear-gradient(180deg, rgba(0,0,0,.06), rgba(0,0,0,.56));
-      text-align: center;
-    }
-
-    .splash-title {
-      margin: 0;
-      font-size: clamp(1.4rem, 4vw, 2.4rem);
-      letter-spacing: .14em;
-      color: var(--text);
-      text-shadow: 0 8px 24px rgba(0,0,0,.35);
-    }
-
-    .splash-copy {
-      margin: 0;
-      color: var(--text-soft);
-      font-size: .95rem;
-    }
-
-    .splash-skip {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      min-height: 40px;
-      padding: 8px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.16);
-      background: rgba(7,10,11,.56);
-      color: var(--text);
-      cursor: pointer;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
     }
 
     h1 {
@@ -487,7 +479,8 @@
     .cta a,
     .goods-actions a,
     .sched-links a,
-    .video-links a {
+    .video-links a,
+    .footer-links a {
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -505,7 +498,8 @@
     .cta a:hover,
     .goods-actions a:hover,
     .sched-links a:hover,
-    .video-links a:hover {
+    .video-links a:hover,
+    .footer-links a:hover {
       transform: translateY(-2px);
       background: rgba(255,255,255,.10);
       border-color: rgba(52,211,153,.22);
@@ -719,11 +713,11 @@
       border-color: rgba(52,211,153,.35);
     }
 
-    .release:hover .release-cover img{
+    .release:hover .release-cover img {
       transform: scale(1.06);
     }
 
-    .release:hover h3{
+    .release:hover h3 {
       text-shadow: 0 0 10px rgba(52,211,153,.35);
     }
 
@@ -871,6 +865,7 @@
       background: #000;
       cursor: pointer;
       box-shadow: var(--shadow-soft);
+      padding: 0;
     }
 
     .yt-lite img {
@@ -942,21 +937,6 @@
       border: 0;
     }
 
-    .newsletter {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 24px;
-      border-radius: 24px;
-      border: 1px solid var(--border);
-      background: linear-gradient(180deg, rgba(52,211,153,.08), rgba(255,255,255,.02));
-      box-shadow: var(--shadow);
-    }
-
-    .newsletter p {
-      margin: 0;
-      color: var(--muted);
-    }
-
     .footer-links {
       margin-top: 18px;
       display: flex;
@@ -976,6 +956,91 @@
       margin: .45em 0;
     }
 
+    @keyframes mintGlow {
+      0% {
+        box-shadow: 0 0 0 rgba(52,211,153,0);
+      }
+      50% {
+        box-shadow: 0 0 28px rgba(52,211,153,.35), 0 0 60px rgba(52,211,153,.18);
+      }
+      100% {
+        box-shadow: 0 0 0 rgba(52,211,153,0);
+      }
+    }
+
+    .topnav.scrolled .brand-mark {
+      transform: scale(.78);
+    }
+
+    .topnav.scrolled .brand span {
+      opacity: .75;
+    }
+
+    .mini-player {
+      position: fixed;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      z-index: 40;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(7,10,11,.82);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0,0,0,.4);
+      font-size: .85rem;
+    }
+
+    .mini-player-meta {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2px;
+      min-width: 0;
+    }
+
+    .mini-player-title {
+      color: var(--text);
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .mini-player-status {
+      color: var(--muted);
+      font-size: .78rem;
+      line-height: 1.2;
+    }
+
+    .mini-player-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .mini-player button {
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.06);
+      color: var(--mint);
+      border-radius: 10px;
+      padding: 8px 14px;
+      cursor: pointer;
+    }
+
+    .mini-player button:hover {
+      background: rgba(255,255,255,.12);
+    }
+
+    .mini-player button:disabled {
+      opacity: .5;
+      cursor: not-allowed;
+    }
+
     @media (max-width: 920px) {
       .profile-grid {
         grid-template-columns: 1fr;
@@ -983,6 +1048,11 @@
 
       .hero-stats {
         grid-template-columns: 1fr;
+      }
+
+      .topnav-inner {
+        flex-direction: column;
+        justify-content: center;
       }
     }
 
@@ -1024,24 +1094,10 @@
         border-radius: 18px;
       }
 
-      .splash-overlay {
-        padding: 22px 14px;
-      }
-
-      .splash-skip {
-        top: 12px;
-        right: 12px;
-      }
-
       .topnav {
         min-height: var(--nav-h);
         padding-top: 10px;
         padding-bottom: 10px;
-      }
-
-      .topnav-inner {
-        flex-direction: column;
-        justify-content: center;
       }
 
       .brand {
@@ -1058,6 +1114,11 @@
         min-height: 36px;
       }
 
+      .lang-switch {
+        border-left: 0;
+        padding-left: 0;
+      }
+
       header {
         padding: 72px 18px 56px;
       }
@@ -1067,7 +1128,6 @@
       }
 
       .profile-shell,
-      .newsletter,
       .video-block {
         padding: 18px;
       }
@@ -1099,6 +1159,14 @@
         border-top-width: 11px;
         border-bottom-width: 11px;
       }
+
+      .mini-player {
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+        max-width: none;
+        padding: 12px;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1107,127 +1175,6 @@
         animation-duration: .01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: .01ms !important;
-      }
-    }
-
-    /* ===== Scroll Logo Shrink ===== */
-    .topnav.scrolled .brand-mark{
-      transform:scale(.78);
-    }
-    .topnav.scrolled .brand span{
-      opacity:.75;
-    }
-    .brand-mark{
-      transition:transform .25s ease;
-    }
-    .brand span{
-      transition:opacity .25s ease;
-    }
-
-    /* ===== Mint Glow Logo Effect ===== */
-    .logo{
-      animation: mintGlow 4s ease-in-out infinite;
-    }
-
-    @keyframes mintGlow{
-      0%{
-        box-shadow:0 0 0 rgba(52,211,153,0);
-      }
-      50%{
-        box-shadow:0 0 28px rgba(52,211,153,.35), 0 0 60px rgba(52,211,153,.18);
-      }
-      100%{
-        box-shadow:0 0 0 rgba(52,211,153,0);
-      }
-    }
-
-    /* ===== Mini Music Player ===== */
-    .mini-player{
-      position:fixed;
-      left:18px;
-      right:18px;
-      bottom:18px;
-      z-index:40;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      padding:12px 14px;
-      border-radius:16px;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(7,10,11,.82);
-      backdrop-filter:blur(10px);
-      -webkit-backdrop-filter:blur(10px);
-      box-shadow:0 10px 30px rgba(0,0,0,.4);
-      font-size:.85rem;
-    }
-
-    .mini-player-meta{
-      display:flex;
-      flex-direction:column;
-      align-items:flex-start;
-      gap:2px;
-      min-width:0;
-    }
-
-    .mini-player-title{
-      color:var(--text);
-      font-weight:700;
-      line-height:1.2;
-    }
-
-    .mini-player-status{
-      color:var(--muted);
-      font-size:.78rem;
-      line-height:1.2;
-    }
-
-    .mini-player-controls{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      flex-shrink:0;
-    }
-
-    .mini-player button{
-      border:1px solid rgba(255,255,255,.18);
-      background:rgba(255,255,255,.06);
-      color:var(--mint);
-      border-radius:10px;
-      padding:8px 14px;
-      cursor:pointer;
-    }
-
-    .mini-player button:hover{
-      background:rgba(255,255,255,.12);
-    }
-
-    .mini-player button:disabled{
-      opacity:.55;
-      cursor:not-allowed;
-    }
-
-    @media (max-width: 780px) {
-      .mini-player{
-        left:12px;
-        right:12px;
-        bottom:12px;
-        padding:12px;
-      }
-    }
-
-    .mini-player button:disabled{
-      opacity:.5;
-      cursor:not-allowed;
-    }
-
-    @media (max-width: 780px) {
-      .mini-player{
-        left:12px;
-        right:12px;
-        bottom:12px;
-        max-width:none;
-        padding:12px;
       }
     }
   </style>
@@ -1250,12 +1197,18 @@
         <img src="logo-main.png" alt="T-ACT ロゴ" class="brand-mark" width="30" height="30" decoding="async">
         <span>T-ACT</span>
       </a>
+
       <div class="nav-links">
         <a href="#schedule">NEWS</a>
         <a href="#releases">RELEASES</a>
         <a href="#video">VIDEO</a>
         <a href="#goods">GOODS</a>
         <a href="#profile">PROFILE</a>
+
+        <div class="lang-switch" aria-label="言語切替">
+          <a href="https://t-act-official.site/" class="current" aria-current="page">JP</a>
+          <a href="https://t-act-official.site/en/">EN</a>
+        </div>
       </div>
     </div>
   </nav>
@@ -1264,7 +1217,7 @@
     <div class="hero-inner">
       <div class="eyebrow">Official Artist Site</div>
       <img src="logo-main.png" alt="T-ACT ロゴ" class="logo" width="720" height="720" decoding="async">
-      <h1>T-ACT 公式サイト</h1>
+      <h1>T-ACT</h1>
       <p class="hero-sub">社会の当事者として、現実から音楽を立ち上げる。</p>
 
       <div class="hero-panel">
@@ -1302,37 +1255,32 @@
   </header>
 
   <section id="featured">
-      <div class="section-inner">
-        <div class="section-head">
-          <h2>FEATURED VIDEO</h2>
-          <p class="section-note">現在のT-ACTの空気を最も象徴する映像作品。</p>
-        </div>
+    <div class="section-inner">
+      <div class="section-head">
+        <h2>FEATURED VIDEO</h2>
+        <p class="section-note">現在のT-ACTの空気を最も象徴する映像作品。</p>
+      </div>
 
-        <div class="profile-shell" style="max-width:1040px; padding:18px;">
-          <div class="yt-frame-wrap" style="border-radius:18px; box-shadow:0 20px 54px rgba(0,0,0,.42);">
-            <iframe
-              src="https://www.youtube-nocookie.com/embed/7oF0rDxDRWc"
-              title="Rain in Your Eyes"
-              loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen>
-            </iframe>
-          </div>
+      <div class="profile-shell" style="max-width:1040px; padding:18px;">
+        <button class="yt-lite" type="button" data-youtube-id="7oF0rDxDRWc" aria-label="Rain in Your Eyes の動画を再生" style="border-radius:18px; box-shadow:0 20px 54px rgba(0,0,0,.42);">
+          <img src="https://i.ytimg.com/vi/7oF0rDxDRWc/hqdefault.jpg" alt="Rain in Your Eyes サムネイル" loading="lazy" width="1280" height="720">
+          <span class="yt-button" aria-hidden="true"><span></span></span>
+        </button>
 
-          <div style="max-width:760px; margin:18px auto 2px; text-align:center;">
-            <div class="chips" style="justify-content:center; margin-top:0; margin-bottom:12px;">
-              <span class="chip">FEATURED</span>
-              <span class="chip">MV</span>
-              <span class="chip">Rain in Your Eyes</span>
-            </div>
-            <p style="margin:0; color:var(--text-soft); line-height:1.9;">
-              痛みを大声で叫ぶのではなく、濡れた視界のまま進み続ける気配を映像として残した代表作。
-              T-ACTの静けさ、余白、現実感がもっとも伝わる一本です。
-            </p>
+        <div style="max-width:760px; margin:18px auto 2px; text-align:center;">
+          <div class="chips" style="justify-content:center; margin-top:0; margin-bottom:12px;">
+            <span class="chip">FEATURED</span>
+            <span class="chip">MV</span>
+            <span class="chip">Rain in Your Eyes</span>
           </div>
+          <p style="margin:0; color:var(--text-soft); line-height:1.9;">
+            痛みを大声で叫ぶのではなく、濡れた視界のまま進み続ける気配を映像として残した代表作。
+            T-ACTの静けさ、余白、現実感がもっとも伝わる一本です。
+          </p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
   <main>
     <section id="schedule">
@@ -1357,7 +1305,7 @@
           </article>
 
           <article class="sched-item">
-            <div class="sched-date">2026</div>
+            <div class="sched-date">2026-03</div>
             <div class="sched-main">
               <h3>Official Site Updated</h3>
               <div class="sched-meta">最新リリース導線、映像導線、ディスコグラフィ構成を更新</div>
@@ -1634,11 +1582,13 @@
           T-ACTの作品、映像、グッズ、最新情報は各プラットフォームでご覧いただけます。
         </p>
         <div class="footer-links" style="margin-top:0; margin-bottom:14px;">
+          <a class="btn" href="https://t-act-official.site/en/">English Page</a>
           <a class="btn" href="https://x.com/t_act_music" target="_blank" rel="noreferrer noopener">X</a>
           <a class="btn" href="https://youtube.com/@t_act_music" target="_blank" rel="noreferrer noopener">YouTube</a>
           <a class="btn" href="https://music.apple.com/jp/artist/t-act/1842221982" target="_blank" rel="noreferrer noopener">Apple Music</a>
           <a class="btn" href="https://open.spotify.com/intl-ja/artist/5FOiDuDN7NiDUrBtEciroP" target="_blank" rel="noreferrer noopener">Spotify</a>
           <a class="btn" href="https://suzuri.jp/T-ACT/products" target="_blank" rel="noreferrer noopener">SUZURI</a>
+          <a class="btn" href="/artist.html">Artist Profile</a>
         </div>
         <p style="margin:.5em 0 0; color:#92a99f; font-size:.9rem;">
           お問い合わせは
@@ -1647,7 +1597,6 @@
         </p>
         <p style="margin:.5em 0 0; color:#7f948b; font-size:.86rem; letter-spacing:.04em;">© 2026 T-ACT — All Rights Reserved.</p>
       </div>
-      <a class="btn" href="/artist.html">Artist Profile</a>
     </div>
   </footer>
 
@@ -1799,20 +1748,21 @@
     });
   })();
   </script>
-  <script>
-  (()=> {
-    const nav=document.querySelector('.topnav');
-    if(!nav) return;
 
-    const onScroll=()=> {
-      if(window.scrollY>60){
+  <script>
+  (() => {
+    const nav = document.querySelector('.topnav');
+    if (!nav) return;
+
+    const onScroll = () => {
+      if (window.scrollY > 60) {
         nav.classList.add('scrolled');
-      }else{
+      } else {
         nav.classList.remove('scrolled');
       }
     };
 
-    window.addEventListener('scroll',onScroll,{passive:true});
+    window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
   })();
   </script>
@@ -1832,62 +1782,62 @@
   </div>
 
   <script>
-  (()=> {
-    const audio=document.getElementById('miniAudio');
-    const btn=document.getElementById('miniPlay');
-    const status=document.getElementById('miniStatus');
-    const source=audio?.querySelector('source');
+  (() => {
+    const audio = document.getElementById('miniAudio');
+    const btn = document.getElementById('miniPlay');
+    const status = document.getElementById('miniStatus');
+    const source = audio?.querySelector('source');
 
-    if(!audio || !btn || !status || !source) return;
+    if (!audio || !btn || !status || !source) return;
 
-    const src=source.getAttribute('src') || '';
-    if(!src){
-      btn.disabled=true;
-      status.textContent='音源ファイル未設定';
+    const src = source.getAttribute('src') || '';
+    if (!src) {
+      btn.disabled = true;
+      status.textContent = '音源ファイル未設定';
       return;
     }
 
-    const setIdle=()=> {
-      btn.textContent='Play';
-      status.textContent='停止中';
+    const setIdle = () => {
+      btn.textContent = 'Play';
+      status.textContent = '停止中';
     };
 
-    audio.addEventListener('loadedmetadata',()=> {
-      status.textContent='再生準備OK';
+    audio.addEventListener('loadedmetadata', () => {
+      status.textContent = '再生準備OK';
     });
 
-    audio.addEventListener('playing',()=> {
-      btn.textContent='Pause';
-      status.textContent='再生中';
+    audio.addEventListener('playing', () => {
+      btn.textContent = 'Pause';
+      status.textContent = '再生中';
     });
 
-    audio.addEventListener('pause',()=> {
-      if(!audio.ended){
+    audio.addEventListener('pause', () => {
+      if (!audio.ended) {
         setIdle();
       }
     });
 
-    audio.addEventListener('ended',()=> {
-      audio.currentTime=0;
+    audio.addEventListener('ended', () => {
+      audio.currentTime = 0;
       setIdle();
     });
 
-    audio.addEventListener('error',()=> {
-      btn.disabled=true;
-      btn.textContent='Error';
-      status.textContent='音源を読み込めません';
+    audio.addEventListener('error', () => {
+      btn.disabled = true;
+      btn.textContent = 'Error';
+      status.textContent = '音源を読み込めません';
     });
 
-    btn.addEventListener('click', async ()=> {
-      if(audio.paused){
-        try{
+    btn.addEventListener('click', async () => {
+      if (audio.paused) {
+        try {
           await audio.play();
-        }catch(err){
-          btn.textContent='Play';
-          status.textContent='再生できませんでした';
+        } catch (err) {
+          btn.textContent = 'Play';
+          status.textContent = '再生できませんでした';
           console.error(err);
         }
-      }else{
+      } else {
         audio.pause();
       }
     });
