@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>T-ACT | Official English Page</title>
-  <meta name="description" content="T-ACT official English page. Independent music artist from Japan creating minimal, chill, reality-driven music.">
+  <meta name="description" content="T-ACT official English page. An independent music artist from Japan creating minimal, chill, reality-driven music.">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="theme-color" content="#0b0f10">
   <link rel="canonical" href="https://t-act-official.site/en/">
@@ -18,7 +18,7 @@
 
   <!-- ===== OGP ===== -->
   <meta property="og:title" content="T-ACT | Official English Page">
-  <meta property="og:description" content="Music born from reality. Independent artist from Japan.">
+  <meta property="og:description" content="As a participant in society, raising music out of reality.">
   <meta property="og:image" content="https://t-act-official.site/ogp.png">
   <meta property="og:url" content="https://t-act-official.site/en/">
   <meta property="og:type" content="website">
@@ -27,7 +27,7 @@
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="T-ACT | Official English Page">
-  <meta name="twitter:description" content="Music born from reality. Independent artist from Japan.">
+  <meta name="twitter:description" content="As a participant in society, raising music out of reality.">
   <meta name="twitter:image" content="https://t-act-official.site/ogp.png">
 
   <!-- ===== Performance ===== -->
@@ -79,7 +79,7 @@
         },
         "image": "https://t-act-official.site/ogp.png",
         "genre": ["Chill", "Minimal", "Hip-Hop", "R&B", "Electronic"],
-        "description": "Independent music artist from Japan creating music from reality.",
+        "description": "Independent music artist from Japan creating music out of reality.",
         "foundingLocation": {
           "@type": "Country",
           "name": "Japan"
@@ -340,7 +340,7 @@
 
     .hero-inner {
       width: 100%;
-      max-width: 920px;
+      max-width: 960px;
       margin: 0 auto;
       position: relative;
     }
@@ -378,21 +378,21 @@
 
     .hero-sub {
       margin: 0 auto 18px;
-      max-width: 760px;
+      max-width: 780px;
       color: var(--text-soft);
       font-size: clamp(1rem, 2.1vw, 1.1rem);
     }
 
     .lead {
       margin: 0 auto;
-      max-width: 720px;
+      max-width: 800px;
       color: #afc0ba;
       font-size: 1rem;
     }
 
     .hero-panel {
       margin: 28px auto 0;
-      max-width: 820px;
+      max-width: 860px;
       padding: 18px;
       border-radius: 22px;
       border: 1px solid var(--border);
@@ -476,7 +476,6 @@
 
     .surface-card,
     .release,
-    .manifesto-box,
     .profile-shell,
     .video-block {
       border: 1px solid var(--border);
@@ -489,7 +488,6 @@
 
     .surface-card:hover,
     .release:hover,
-    .manifesto-box:hover,
     .profile-shell:hover,
     .video-block:hover {
       transform: translateY(-4px);
@@ -498,16 +496,14 @@
     }
 
     .featured-shell,
-    .profile-shell,
-    .manifesto-box {
+    .profile-shell {
       max-width: 980px;
       margin: 0 auto;
       padding: 22px;
     }
 
-    .profile-copy,
-    .manifesto-copy,
-    .featured-copy {
+    .featured-copy,
+    .profile-copy {
       max-width: 760px;
       margin: 0 auto;
       color: var(--text-soft);
@@ -516,8 +512,7 @@
     }
 
     .featured-copy p,
-    .profile-copy p,
-    .manifesto-copy p {
+    .profile-copy p {
       margin: 0;
     }
 
@@ -721,6 +716,64 @@
       font-size: .95rem;
     }
 
+    /* =========================
+       STATEMENT
+    ========================= */
+    .manifesto-section {
+      padding: clamp(72px, 10vw, 128px) 20px;
+      background:
+        radial-gradient(900px 500px at 50% 0%, rgba(52,211,153,.06), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.018), rgba(255,255,255,0));
+      text-align: left;
+    }
+
+    .manifesto-wrap {
+      width: 100%;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .manifesto-kicker {
+      margin: 0 0 26px;
+      color: var(--mint-2);
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .manifesto-body p {
+      margin: 0 0 28px;
+      color: var(--text-soft);
+      font-size: clamp(1rem, 2vw, 1.08rem);
+      line-height: 2.02;
+      letter-spacing: .01em;
+      text-wrap: pretty;
+    }
+
+    .manifesto-closing {
+      margin-top: 46px;
+      padding-top: 26px;
+      border-top: 1px solid var(--mint-line);
+    }
+
+    .manifesto-closing p {
+      margin: 0 0 12px;
+      color: var(--text);
+      font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+      line-height: 1.65;
+      letter-spacing: .02em;
+    }
+
+    .manifesto-closing p:nth-child(2),
+    .manifesto-closing p:nth-child(3) {
+      font-weight: 700;
+    }
+
+    .manifesto-closing p:last-child {
+      margin-bottom: 0;
+    }
+
     footer {
       padding: 40px 20px 52px;
       color: #95aa9f;
@@ -745,6 +798,10 @@
       .topnav-inner {
         flex-direction: column;
         justify-content: center;
+      }
+
+      .latest-grid {
+        grid-template-columns: 1fr !important;
       }
     }
 
@@ -774,7 +831,6 @@
 
       .featured-shell,
       .profile-shell,
-      .manifesto-box,
       .video-block {
         padding: 18px;
       }
@@ -798,6 +854,24 @@
         border-left-width: 18px;
         border-top-width: 11px;
         border-bottom-width: 11px;
+      }
+
+      .manifesto-section {
+        padding: 60px 18px 72px;
+      }
+
+      .manifesto-body p {
+        margin-bottom: 24px;
+        line-height: 1.92;
+      }
+
+      .manifesto-closing {
+        margin-top: 38px;
+        padding-top: 22px;
+      }
+
+      .manifesto-closing p {
+        line-height: 1.55;
       }
     }
 
@@ -823,11 +897,11 @@
       </a>
 
       <div class="nav-links">
-        <a href="#about">ABOUT</a>
+        <a href="#statement">STATEMENT</a>
         <a href="#featured">FEATURED</a>
         <a href="#releases">RELEASES</a>
         <a href="#video">VIDEO</a>
-        <a href="#manifesto">MANIFESTO</a>
+        <a href="#profile">PROFILE</a>
 
         <div class="lang-switch" aria-label="Language switch">
           <a href="https://t-act-official.site/">JP</a>
@@ -841,15 +915,16 @@
     <div class="hero-inner">
       <div class="eyebrow">Official English Page</div>
       <img src="../logo-main.png" alt="T-ACT logo" class="logo" width="720" height="720" decoding="async">
-      <h1>Music from reality.</h1>
-      <p class="hero-sub">Independent music artist from Japan.</p>
+      <h1>T-ACT</h1>
+      <p class="hero-sub">As a participant in society, raising music out of reality.</p>
 
       <div class="hero-panel">
         <p class="lead">
-          No escape. No fantasy.<br>
-          Only what remains after reality leaves its mark.<br><br>
-          T-ACT creates minimal, chill, and emotionally restrained music<br>
-          shaped by friction, memory, and quiet reflection.
+          By day, building structure.<br>
+          By night, leaving its weight in sound.<br><br>
+          Neither escape nor fantasy.<br>
+          Minimal, chill music born from reality.<br><br>
+          T-ACT is an independent music artist based in Japan.
         </p>
 
         <div class="cta" aria-label="Streaming links">
@@ -862,56 +937,61 @@
     </div>
   </header>
 
+  <section id="statement" class="manifesto-section" aria-labelledby="manifesto-title">
+    <div class="manifesto-wrap">
+      <p class="manifesto-kicker" id="manifesto-title">T-ACT / STATEMENT</p>
+
+      <div class="manifesto-body">
+        <p>Anyone’s memory fades and turns uncertain.<br>That is why I leave music behind.</p>
+
+        <p>Music is not for success or approval.<br>It is a record of the thoughts and moments born within reality.</p>
+
+        <p>A society in which more people turn music into a tool,<br>and more others long for that, is not a healthy one.</p>
+
+        <p>To live by longing for someone else’s life<br>is the posture of those who do not act, and those who lack confidence.</p>
+
+        <p>The structure in which people long for other people<br>is something shaped by clever adults.</p>
+
+        <p>Do not let yourself be made to dance by longing.<br>Find the place where you are needed.</p>
+      </div>
+
+      <div class="manifesto-closing">
+        <p>My creation is not music.</p>
+        <p>It is the making of essential structure.</p>
+        <p>Music is the record of it.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="featured">
+    <div class="section-inner">
+      <div class="section-head">
+        <h2>Featured Video</h2>
+        <p class="section-note">The visual work that best represents the current atmosphere of T-ACT.</p>
+      </div>
+
+      <div class="featured-shell surface-card">
+        <button class="yt-lite" type="button" data-youtube-id="7oF0rDxDRWc" aria-label="Play Rain in Your Eyes">
+          <img src="https://i.ytimg.com/vi/7oF0rDxDRWc/hqdefault.jpg" alt="Rain in Your Eyes thumbnail" loading="lazy" width="1280" height="720">
+          <span class="yt-button" aria-hidden="true"><span></span></span>
+        </button>
+
+        <div class="featured-copy" style="margin-top:18px;">
+          <div class="chips">
+            <span class="chip">FEATURED</span>
+            <span class="chip">MV</span>
+            <span class="chip">Rain in Your Eyes</span>
+          </div>
+          <p>
+            A representative visual work that preserves the sense of moving forward with rain still clouding the eyes.<br>
+            One piece in which the quietness, space, and realism of T-ACT are most clearly felt.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <main>
-    <section id="about">
-      <div class="section-inner">
-        <div class="section-head">
-          <h2>About</h2>
-          <p class="section-note">A brief statement of perspective.</p>
-        </div>
-
-        <div class="profile-shell surface-card">
-          <div class="profile-copy">
-            <p>
-              <strong>T-ACT</strong> is an independent music artist based in Japan.<br><br>
-              His work transforms the friction of real life, emotional echoes,
-              and quiet reflection into minimal and chill soundscapes.<br><br>
-              Music is not an escape.<br>
-              It is a record of reality.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="featured">
-      <div class="section-inner">
-        <div class="section-head">
-          <h2>Featured Work</h2>
-          <p class="section-note">A piece that best represents the current atmosphere of T-ACT.</p>
-        </div>
-
-        <div class="featured-shell surface-card">
-          <button class="yt-lite" type="button" data-youtube-id="7oF0rDxDRWc" aria-label="Play Rain in Your Eyes">
-            <img src="https://i.ytimg.com/vi/7oF0rDxDRWc/hqdefault.jpg" alt="Rain in Your Eyes thumbnail" loading="lazy" width="1280" height="720">
-            <span class="yt-button" aria-hidden="true"><span></span></span>
-          </button>
-
-          <div class="featured-copy" style="margin-top:18px;">
-            <div class="chips">
-              <span class="chip">FEATURED</span>
-              <span class="chip">MV</span>
-              <span class="chip">Rain in Your Eyes</span>
-            </div>
-            <p>
-              A quiet piece about emotional echoes that remain after moments pass.<br>
-              Not a cry, but a trace.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section id="releases">
       <div class="section-inner">
         <div class="section-head">
@@ -920,7 +1000,7 @@
         </div>
 
         <div class="profile-shell" style="max-width:1040px; text-align:left;">
-          <div style="display:grid; grid-template-columns:minmax(260px, 360px) 1fr; gap:24px; align-items:start;" class="latest-grid">
+          <div class="latest-grid" style="display:grid; grid-template-columns:minmax(260px, 360px) 1fr; gap:24px; align-items:start;">
             <div class="release-cover" style="margin-bottom:0;">
               <img src="../zanti.jpg" alt="残置 cover art" loading="lazy" decoding="async" width="1200" height="1200">
             </div>
@@ -967,7 +1047,7 @@
               <span class="chip">2025</span>
             </div>
             <h3>いいね</h3>
-            <p>A track about holding onto inner temperature in an age where reaction looks like value.</p>
+            <p>A track about holding on to one’s own inner sense in an age where reaction itself is treated as value.</p>
             <div class="release-links">
               <a href="https://music.apple.com/jp/album/%E3%81%84%E3%81%84%E3%81%AD-single/1871989088?l=en-US" target="_blank" rel="noreferrer noopener">Apple Music</a>
               <a href="https://open.spotify.com/intl-ja/album/4GRUelIFhMOQMx9yO07WkM?si=tblRppJZTXyVUCadGEstog" target="_blank" rel="noreferrer noopener">Spotify</a>
@@ -983,7 +1063,7 @@
               <span class="chip">2025</span>
             </div>
             <h3>蟹穴</h3>
-            <p>Not a retreat from the world, but a place to preserve shape and keep standing.</p>
+            <p>Not a retreat from the world, but a place to preserve one’s outline and keep standing.</p>
             <div class="release-links">
               <a href="https://music.apple.com/jp/album/%E8%9F%B9%E7%A9%B4-single/1867369742?l=en&ls=1&app=music" target="_blank" rel="noreferrer noopener">Apple Music</a>
               <a href="https://open.spotify.com/album/0YmbmHT1sN7XpBxs14Fnp4" target="_blank" rel="noreferrer noopener">Spotify</a>
@@ -999,7 +1079,7 @@
               <span class="chip">2025</span>
             </div>
             <h3>Baton</h3>
-            <p>A restrained piece about inherited will, responsibility, and motion that continues quietly.</p>
+            <p>A restrained piece about inherited will, responsibility, and the quiet force that continues forward.</p>
             <div class="release-links">
               <a href="https://music.apple.com/jp/album/baton/1858161005?i=1858161006" target="_blank" rel="noreferrer noopener">Apple Music</a>
               <a href="https://open.spotify.com/album/44Bq00HIJz3jXdJsIEHj6W?si=fhpAepe7SGiycFldcUJP2g" target="_blank" rel="noreferrer noopener">Spotify</a>
@@ -1031,7 +1111,7 @@
               <span class="chip">2025</span>
             </div>
             <h3>Rain in Your Eyes</h3>
-            <p>A chill ballad that walks forward through blurred vision, carrying loss without dramatizing it.</p>
+            <p>A chill ballad that keeps walking through blurred vision, carrying loss without turning it into spectacle.</p>
             <div class="release-links">
               <a href="https://music.apple.com/jp/song/rein-in-your-eyes/1846001693" target="_blank" rel="noreferrer noopener">Apple Music</a>
               <a href="https://open.spotify.com/intl-ja/track/1w0EC9a4tvC49bEs0OzhIL?si=1b4f30f6361e43f4" target="_blank" rel="noreferrer noopener">Spotify</a>
@@ -1047,7 +1127,7 @@
               <span class="chip">2025</span>
             </div>
             <h3>Sweet &amp; Bitter</h3>
-            <p>A piece that accepts complexity, where comfort and friction exist in the same breath.</p>
+            <p>A piece that accepts complexity, where comfort and friction coexist within the same breath.</p>
             <div class="release-links">
               <a href="https://music.apple.com/jp/song/sweet-bitter/1842222416" target="_blank" rel="noreferrer noopener">Apple Music</a>
               <a href="https://open.spotify.com/intl-ja/track/7LFWlx8t4IAkWLWxfkvQER?si=a03f22fee8524aeb" target="_blank" rel="noreferrer noopener">Spotify</a>
@@ -1062,14 +1142,14 @@
       <div class="section-inner">
         <div class="section-head">
           <h2>Video</h2>
-          <p class="section-note">Sound leaves echoes. Visuals capture them.</p>
+          <p class="section-note">Visual works that preserve the remaining atmosphere of the music.</p>
         </div>
 
         <div class="video-list">
           <article class="video-block">
             <div class="video-head">
               <h3>Rain in Your Eyes (MV)</h3>
-              <p>A visual trace of what remains after feeling has already passed through.</p>
+              <p>A visual trace of continuing forward while carrying rain in the eyes.</p>
             </div>
             <button class="yt-lite" type="button" data-youtube-id="7oF0rDxDRWc" aria-label="Play Rain in Your Eyes MV">
               <img src="https://i.ytimg.com/vi/7oF0rDxDRWc/hqdefault.jpg" alt="Rain in Your Eyes MV thumbnail" loading="lazy" width="480" height="360">
@@ -1102,23 +1182,27 @@
       </div>
     </section>
 
-    <section id="manifesto">
+    <section id="profile">
       <div class="section-inner">
         <div class="section-head">
-          <h2>Manifesto</h2>
-          <p class="section-note">A concise statement of intent.</p>
+          <h2>Profile</h2>
+          <p class="section-note">Bearing the weight of reality, and quietly leaving it behind as music.</p>
         </div>
 
-        <div class="manifesto-box">
-          <div class="manifesto-copy">
+        <div class="profile-shell surface-card">
+          <div class="profile-copy">
             <p>
-              Music is not an escape.<br><br>
-              When you live as a participant in society,<br>
-              reality creates friction.<br><br>
-              Emotions remain.<br>
-              Echoes stay.<br><br>
-              Those echoes become sound.<br><br>
-              That is T-ACT.
+              <strong>T-ACT</strong> is an independent music artist based in Japan, creating works rooted in chill, minimal, hip-hop, and R&amp;B.<br><br>
+
+              Music is not for success or approval.<br>
+              It exists to leave behind, as a record, the thoughts and moments born within reality.<br><br>
+
+              The lyrics do not over-explain. Rather than describing emotion directly,<br>
+              they value what remains as traces and space.<br>
+              Room is intentionally left for the listener to lay their own experience into the work.<br><br>
+
+              Valuing continuity over spectacle, and lived sense over correct answers,<br>
+              T-ACT continues to create and release work from an independent position.
             </p>
           </div>
         </div>
@@ -1131,8 +1215,8 @@
       <div class="profile-shell" style="max-width:980px; padding:28px 24px; background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)); border-color:rgba(52,211,153,.16);">
         <p style="margin:0 0 8px; color:var(--mint-2); letter-spacing:.14em; text-transform:uppercase; font-size:.78rem;">T-ACT Official English Page</p>
         <p style="margin:0 auto 16px; max-width:700px; color:var(--text-soft); font-size:1rem; line-height:1.9;">
-          Music from reality.<br>
-          Independent artist from Japan.
+          Bearing the weight of reality without turning away,<br>
+          leaving even its silence and friction behind as sound.
         </p>
 
         <div class="footer-links" style="margin-top:0; margin-bottom:14px;">
@@ -1275,13 +1359,5 @@
     onScroll();
   })();
   </script>
-
-  <style>
-    @media (max-width: 920px) {
-      .latest-grid {
-        grid-template-columns: 1fr !important;
-      }
-    }
-  </style>
 </body>
 </html>
