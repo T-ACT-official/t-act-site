@@ -1041,6 +1041,65 @@
       cursor: not-allowed;
     }
 
+    /* =========================
+       MANIFESTO
+    ========================= */
+    .manifesto-section {
+      padding: clamp(72px, 10vw, 128px) 20px;
+      background:
+        radial-gradient(900px 500px at 50% 0%, rgba(52,211,153,.06), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.018), rgba(255,255,255,0));
+      text-align: left;
+    }
+
+    .manifesto-wrap {
+      width: 100%;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .manifesto-kicker {
+      margin: 0 0 26px;
+      color: var(--mint-2);
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .manifesto-body p {
+      margin: 0 0 28px;
+      color: var(--text-soft);
+      font-size: clamp(1rem, 2vw, 1.08rem);
+      line-height: 2.05;
+      letter-spacing: .02em;
+      text-wrap: pretty;
+    }
+
+    .manifesto-closing {
+      margin-top: 46px;
+      padding-top: 26px;
+      border-top: 1px solid var(--mint-line);
+    }
+
+    .manifesto-closing p {
+      margin: 0 0 12px;
+      color: var(--text);
+      font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+      line-height: 1.65;
+      letter-spacing: .03em;
+    }
+
+    .manifesto-closing p:nth-child(2),
+    .manifesto-closing p:nth-child(3) {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .manifesto-closing p:last-child {
+      margin-bottom: 0;
+    }
+
     @media (max-width: 920px) {
       .profile-grid {
         grid-template-columns: 1fr;
@@ -1167,6 +1226,24 @@
         max-width: none;
         padding: 12px;
       }
+
+      .manifesto-section {
+        padding: 60px 18px 72px;
+      }
+
+      .manifesto-body p {
+        margin-bottom: 24px;
+        line-height: 1.95;
+      }
+
+      .manifesto-closing {
+        margin-top: 38px;
+        padding-top: 22px;
+      }
+
+      .manifesto-closing p {
+        line-height: 1.55;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1253,6 +1330,32 @@
       </div>
     </div>
   </header>
+
+  <section class="manifesto-section" aria-labelledby="manifesto-title">
+    <div class="manifesto-wrap">
+      <p class="manifesto-kicker" id="manifesto-title">T-ACT / STATEMENT</p>
+
+      <div class="manifesto-body">
+        <p>何人たりとも記憶は薄れ、不確かなものになっていく。<br>だから音楽を残す。</p>
+
+        <p>音楽は成功や承認のためではない。<br>現実の中で生まれる思考や瞬間の記録だ。</p>
+
+        <p>音楽を道具にする者、<br>そしてそれに憧れる者が増える社会ではいけない。</p>
+
+        <p>誰かの人生に憧れるという生き方は、<br>行動しない者、自信のない者の姿だ。</p>
+
+        <p>人が人に憧れる構造は、<br>頭のいい大人たちが作ったものだ。</p>
+
+        <p>憧れに踊らされる必要はない。<br>自分が必要とされる場所を見つけてほしい。</p>
+      </div>
+
+      <div class="manifesto-closing">
+        <p>私の創造は音楽ではない。</p>
+        <p>本質的な構造を作ることだ。</p>
+        <p>音楽は、その記録。</p>
+      </div>
+    </div>
+  </section>
 
   <section id="featured">
     <div class="section-inner">
@@ -1551,16 +1654,15 @@
               <p>
                 <strong>T-ACT</strong> は、日本を拠点に活動するインディペンデント音楽アーティストであり、チル、ミニマル、ヒップホップ、R&amp;Bを軸に作品を発表している。<br><br>
 
-                音楽活動の動機は、成功や承認ではなく「始めることそのもの」。<br>
-                動かない理由を並べる前に、まず一歩踏み出すこと。<br>
-                その姿勢を、自身の作品を通して静かに提示し続けている。<br><br>
+                音楽は成功や承認のためではない。<br>
+                現実の中で生まれる思考や瞬間を、記録として残すためにある。<br><br>
 
-                歌詞は多くを語らない。感情を直接的に説明するのではなく、
-                余白や痕跡として残す表現を重視。<br>
-                聴き手がそれぞれの経験を重ねられる余地を意図的に残している。<br><br>
+                歌詞は多くを語らない。感情を直接的に説明するのではなく、<br>
+                余白や痕跡として残す表現を重視している。<br>
+                聴き手がそれぞれの経験を重ねられる余地を、意図的に残している。<br><br>
 
-                派手さよりも持続性を、正解よりも実感を大切にしながら、
-                現在も独立した立場で制作と発表を続けている。
+                派手さよりも持続性を、正解よりも実感を大切にしながら、<br>
+                独立した立場で制作と発表を続けている。
               </p>
             </div>
           </div>
