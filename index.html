@@ -98,6 +98,14 @@
       },
       {
         "@type": "MusicRecording",
+        "name": "再定義",
+        "url": "https://t-act-official.site/#releases",
+        "byArtist": {
+          "@id": "https://t-act-official.site/#artist"
+        }
+      },
+      {
+        "@type": "MusicRecording",
         "name": "残置",
         "url": "https://t-act-official.site/#releases",
         "byArtist": {
@@ -520,7 +528,7 @@
     .hero-stats {
       margin-top: 18px;
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 12px;
       text-align: left;
     }
@@ -705,6 +713,7 @@
       height: 100%;
       display: block;
       object-fit: cover;
+      transition: transform .35s ease;
     }
 
     .release:hover {
@@ -1106,7 +1115,7 @@
       }
 
       .hero-stats {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
       }
 
       .topnav-inner {
@@ -1244,6 +1253,10 @@
       .manifesto-closing p {
         line-height: 1.55;
       }
+
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1319,6 +1332,10 @@
             <span class="stat-value">残置</span>
           </div>
           <div class="stat">
+            <span class="stat-label">Upcoming</span>
+            <span class="stat-value">再定義 / 2026.04.17</span>
+          </div>
+          <div class="stat">
             <span class="stat-label">Style</span>
             <span class="stat-value">Minimal / Chill / Real</span>
           </div>
@@ -1388,6 +1405,43 @@
 
     <section id="releases">
       <div class="section-inner">
+
+        <div class="section-head">
+          <h2>UPCOMING RELEASE</h2>
+          <p class="section-note">次回リリース予定の最新作。</p>
+        </div>
+
+        <div class="profile-shell" style="max-width:1040px; text-align:left; margin-bottom:44px;">
+          <div class="profile-grid" style="grid-template-columns: minmax(260px, 360px) 1fr; align-items:start;">
+            <div class="release-cover" style="margin-bottom:0;">
+              <img src="redefine.jpg" alt="再定義 ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200">
+            </div>
+
+            <div>
+              <div class="chips" style="margin-top:0; margin-bottom:12px;">
+                <span class="chip">UPCOMING</span>
+                <span class="chip">2026.04.17</span>
+                <span class="chip">Digital Single</span>
+              </div>
+
+              <h3 style="margin:0 0 12px; color:var(--mint); font-size:clamp(1.6rem, 3vw, 2.2rem); line-height:1.15;">再定義</h3>
+
+              <p style="margin:0 0 14px; color:var(--text-soft); font-size:1rem; line-height:1.9;">
+                社会的に必要とされる責任を果たした上で、それでもなお残る表現の意味を問い直す一作。<br>
+                余剰という言葉が成立してしまう構造そのものへ、静かに切り込む。
+              </p>
+
+              <p style="margin:0 0 18px; color:var(--muted); font-size:.92rem; line-height:1.85;">
+                必要と不要、価値と余白、その境界を再び引き直すためのリリース。
+              </p>
+
+              <div class="chips" style="margin-top:0;">
+                <span class="chip">2026.04.17 配信開始予定</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="section-head">
           <h2>LATEST RELEASE</h2>
           <p class="section-note">現在のT-ACTを最も濃く映している最新作。</p>
@@ -1433,6 +1487,21 @@
         </div>
 
         <div class="releases">
+          <article class="release">
+            <div class="release-cover">
+              <img src="redefine.jpg" alt="再定義 ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200">
+            </div>
+            <div class="chips" style="margin-top:0; margin-bottom:10px;">
+              <span class="chip">2026</span>
+              <span class="chip">Coming Soon</span>
+            </div>
+            <h3>再定義</h3>
+            <p>社会的に必要とされる責任を果たした上で、それでもなお残る表現の意味を問い直す作品。余剰として切り捨てられるものの中に、本当に捨てていいものがあるのかを静かに問い返す。</p>
+            <div class="chips">
+              <span class="chip">2026.04.17 配信開始予定</span>
+            </div>
+          </article>
+
           <article class="release">
             <div class="release-cover">
               <img src="iine.jpg" alt="いいね ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200">
@@ -1538,7 +1607,8 @@
           <h2>VIDEO</h2>
           <p class="section-note">初期表示を軽くするため、埋め込みはクリック時に読み込みます。</p>
         </div>
-        
+
+        <div class="video-list">
           <article class="video-block">
             <div class="video-head">
               <h3>民意 (MV)</h3>
@@ -1549,8 +1619,7 @@
               <span class="yt-button" aria-hidden="true"><span></span></span>
             </button>
           </article>
-        
-        <div class="video-list">
+
           <article class="video-block">
             <div class="video-head">
               <h3>Rain in Your Eyes (MV)</h3>
