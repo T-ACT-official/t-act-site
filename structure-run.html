@@ -331,6 +331,7 @@
 
     const W = canvas.width;
     const H = canvas.height;
+    const OFFICIAL_URL = 'https://t-act-official.site/';
 
     const WORDS = ['ノイズ', '評価', '偏見', '流行', '承認', '供給過多', '幻想', '数字', '比較', '期待'];
     const COMMENT_MAP = {
@@ -460,13 +461,14 @@
         `<p>今回の記録: <span class="accent">${String(score).padStart(6, '0')}</span></p>`,
         `<p>最高記録: <span class="danger">${String(best).padStart(6, '0')}</span></p>`,
         `<p>衝突対象: <span class="danger">${escapeHtml(hitLabel)}</span></p>`,
-        `<p>${escapeHtml(comment)}</p>`
+        `<p>${escapeHtml(comment)}</p>`,
+        '<p style="opacity:.76;">この構造の正体を知るか？</p>'
       ];
 
       if (qualifies) {
         parts.push(
           `<p><span class="accent">AWARD ENTRY // RANK ${String(rankPos).padStart(2, '0')}</span></p>`,
-          '<div style="display:flex;gap:10px;justify-content:center;align-items:center;margin-top:10px;">',
+          '<div style="display:flex;gap:10px;justify-content:center;align-items:center;margin-top:10px;flex-wrap:wrap;">',
           '<input id="nameInput" class="name-input" type="text" maxlength="6" inputmode="latin" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="NAME">',
           '<button id="saveScoreBtn">Save</button>',
           '</div>',
@@ -476,7 +478,13 @@
         parts.push('<p>AWARD OUT</p>');
       }
 
-      parts.push('<button id="restartBtn">Re-Enter</button>');
+      parts.push(
+        '<div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:16px;">',
+        '<button id="restartBtn">Re-Enter</button>',
+        '<button id="officialBtn" type="button">Enter T-ACT World</button>',
+        '</div>'
+      );
+
       return parts.join('');
     }
 
@@ -581,6 +589,15 @@
       if (restartBtn) restartBtn.addEventListener('click', resetGame, { once: true });
     }
 
+    function attachOfficialHandler() {
+      const officialBtn = document.getElementById('officialBtn');
+      if (officialBtn) {
+        officialBtn.addEventListener('click', () => {
+          window.location.href = OFFICIAL_URL;
+        }, { once: true });
+      }
+    }
+
     function showTitleScreen() {
       pauseBgm();
       setCardHtml(titleCardHtml());
@@ -657,11 +674,13 @@
       setCardHtml(gameOverHtml(hitLabel, comment, rankPos, qualifies));
       overlay.style.display = 'flex';
       attachRestartHandler();
+      attachOfficialHandler();
 
       if (qualifies) {
         const nameInput = document.getElementById('nameInput');
         const saveScoreBtn = document.getElementById('saveScoreBtn');
         nameInput.value = getStoredPlayerName();
+
         nameInput.addEventListener('input', () => {
           nameInput.value = sanitizeName(nameInput.value);
         });
@@ -979,11 +998,12 @@
       console.assert(typeof COMMENT_MAP['評価'] === 'string', 'COMMENT_MAP should include known labels');
       console.assert(sanitizeName('a1b$cd') === 'A1BCD', 'sanitizeName should keep allowed letters and digits');
       console.assert(sanitizeName('abCD12-._') === 'ABCD12', 'sanitizeName should cap at six characters');
-      console.assert(NAME_PATTERN.test('T-ACT1') === true, 'NAME_PATTERN should allow letters numbers and dash');
+      console.assert(NAME_PATTERN.test('TACT-1') === true, 'NAME_PATTERN should allow up to six chars including dash');
       console.assert(NAME_PATTERN.test('AA@@') === false, 'NAME_PATTERN should reject unsupported symbols');
       console.assert(titleCardHtml().includes('TOP PLAYER'), 'title card html should render');
       console.assert(awardStoredHtml('TACT', 2).includes('AWARD STORED'), 'award stored html should render');
       console.assert(gameOverHtml('評価', 'test', 1, true).includes('saveScoreBtn'), 'game over html should include save button when qualified');
+      console.assert(gameOverHtml('評価', 'test', 1, true).includes('officialBtn'), 'game over html should include official site button');
       console.assert(typeof phaseName() === 'string', 'phaseName should return a string');
       console.assert(getRankPosition(999999) === 1 || getRankPosition(999999) !== null, 'getRankPosition should return a valid position for large score');
       console.assert(typeof getLiveRank(500) === 'string', 'getLiveRank should return a display string');
