@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>T-ACT 公式サイト | T-ACT Official Site</title>
-  <meta name="description" content="T-ACT公式サイト。社会の当事者として現実から音楽を立ち上げる日本のインディペンデント音楽アーティスト T-ACT の公式サイト。最新リリース、MV、ディスコグラフィ、グッズ、プロフィールを掲載。">
+  <meta name="description" content="T-ACT公式サイト。社会の当事者として現実から音楽を立ち上げる日本のインディペンデント音楽アーティスト T-ACT の公式サイト。最新リリース、MV、ブラウザゲーム、ディスコグラフィ、グッズ、プロフィールを掲載。">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="theme-color" content="#0b0f10">
   <meta name="google-site-verification" content="v2V_zySwHXIOgg7nOymSmx_8UiwnfsP1LPav9OlIXaI">
@@ -95,6 +95,23 @@
           "https://x.com/t_act_music",
           "https://youtube.com/@t_act_music"
         ]
+      },
+      {
+        "@type": "CreativeWork",
+        "name": "STRUCTURE RUN",
+        "url": "https://t-act-official.site/structure-run.html",
+        "creator": {
+          "@id": "https://t-act-official.site/#artist"
+        },
+        "description": "T-ACTの世界観をもとにしたブラウザゲーム。構造の中をぶつからずに抜けるランゲーム。"
+      },
+      {
+        "@type": "MusicRecording",
+        "name": "現場監督",
+        "url": "https://t-act-official.site/#releases",
+        "byArtist": {
+          "@id": "https://t-act-official.site/#artist"
+        }
       },
       {
         "@type": "MusicRecording",
@@ -222,7 +239,7 @@
     img { max-width: 100%; height: auto; }
     a { color: var(--mint); text-decoration: none; }
     a:hover { opacity: .92; }
-    button, input, iframe { font: inherit; }
+    button, input { font: inherit; }
 
     #mint-bg {
       position: fixed;
@@ -488,7 +505,8 @@
     .goods-actions a,
     .sched-links a,
     .video-links a,
-    .footer-links a {
+    .footer-links a,
+    .game-actions a {
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -507,7 +525,8 @@
     .goods-actions a:hover,
     .sched-links a:hover,
     .video-links a:hover,
-    .footer-links a:hover {
+    .footer-links a:hover,
+    .game-actions a:hover {
       transform: translateY(-2px);
       background: rgba(255,255,255,.10);
       border-color: rgba(52,211,153,.22);
@@ -750,7 +769,8 @@
     }
 
     .sched-links,
-    .video-links {
+    .video-links,
+    .game-actions {
       margin-top: 14px;
       display: flex;
       flex-wrap: wrap;
@@ -758,7 +778,8 @@
     }
 
     .sched-links a,
-    .video-links a {
+    .video-links a,
+    .game-actions a {
       min-height: 38px;
       padding: 8px 12px;
       border-radius: 999px;
@@ -965,6 +986,65 @@
       margin: .45em 0;
     }
 
+    .game-shell {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 22px;
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.02));
+      box-shadow: var(--shadow);
+      text-align: left;
+    }
+
+    .game-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 360px);
+      gap: 22px;
+      align-items: start;
+    }
+
+    .game-frame-wrap {
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.02);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .game-frame {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      border: 0;
+      background: #030407;
+    }
+
+    .game-copy h3 {
+      margin: 0 0 10px;
+      color: var(--mint);
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      line-height: 1.2;
+    }
+
+    .game-copy p {
+      margin: 0 0 14px;
+      color: var(--text-soft);
+      line-height: 1.9;
+      font-size: .98rem;
+    }
+
+    .game-meta {
+      margin-top: 14px;
+    }
+
+    .game-note {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: .88rem;
+      line-height: 1.8;
+    }
+
     @keyframes mintGlow {
       0% {
         box-shadow: 0 0 0 rgba(52,211,153,0);
@@ -1050,9 +1130,6 @@
       cursor: not-allowed;
     }
 
-    /* =========================
-       MANIFESTO
-    ========================= */
     .manifesto-section {
       padding: clamp(72px, 10vw, 128px) 20px;
       background:
@@ -1085,30 +1162,6 @@
       text-wrap: pretty;
     }
 
-    .manifesto-closing {
-      margin-top: 46px;
-      padding-top: 26px;
-      border-top: 1px solid var(--mint-line);
-    }
-
-    .manifesto-closing p {
-      margin: 0 0 12px;
-      color: var(--text);
-      font-size: clamp(1.2rem, 2.5vw, 1.8rem);
-      line-height: 1.65;
-      letter-spacing: .03em;
-    }
-
-    .manifesto-closing p:nth-child(2),
-    .manifesto-closing p:nth-child(3) {
-      color: var(--text);
-      font-weight: 700;
-    }
-
-    .manifesto-closing p:last-child {
-      margin-bottom: 0;
-    }
-
     @media (max-width: 920px) {
       .profile-grid {
         grid-template-columns: 1fr;
@@ -1121,6 +1174,10 @@
       .topnav-inner {
         flex-direction: column;
         justify-content: center;
+      }
+
+      .game-grid {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -1196,7 +1253,8 @@
       }
 
       .profile-shell,
-      .video-block {
+      .video-block,
+      .game-shell {
         padding: 18px;
       }
 
@@ -1245,15 +1303,6 @@
         line-height: 1.95;
       }
 
-      .manifesto-closing {
-        margin-top: 38px;
-        padding-top: 22px;
-      }
-
-      .manifesto-closing p {
-        line-height: 1.55;
-      }
-
       .hero-stats {
         grid-template-columns: 1fr;
       }
@@ -1289,6 +1338,7 @@
       </a>
 
       <div class="nav-links">
+        <a href="#game-feature">GAME</a>
         <a href="#schedule">NEWS</a>
         <a href="#releases">RELEASES</a>
         <a href="#video">VIDEO</a>
@@ -1315,35 +1365,35 @@
           昼は、構造をつくる。<br>
           夜は、その重みを音に残す。<br><br>
           逃避でも幻想でもない。<br>
-          現実から生まれた、チルでミニマルな音楽。<br><br>
-          T-ACTは、日本を拠点に活動するインディペンデント音楽アーティストです。
+          現実から生まれた、チルでミニマルな音楽。<br>
         </p>
 
-        <div class="cta" aria-label="配信リンク">
-          <a class="btn btn-primary" href="https://music.apple.com/jp/artist/t-act/1842221982" target="_blank" rel="noreferrer noopener">Apple Music</a>
+        <div class="cta" aria-label="主要導線">
+          <a class="btn btn-primary" href="structure-run.html">Play Game</a>
+          <a class="btn" href="https://music.apple.com/jp/artist/t-act/1842221982" target="_blank" rel="noreferrer noopener">Apple Music</a>
           <a class="btn" href="https://open.spotify.com/intl-ja/artist/5FOiDuDN7NiDUrBtEciroP" target="_blank" rel="noreferrer noopener">Spotify</a>
           <a class="btn" href="https://lin.ee/L5MxMC0" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
           <a class="btn" href="https://youtube.com/@t_act_music" target="_blank" rel="noreferrer noopener">YouTube</a>
         </div>
 
-<div class="hero-stats" aria-label="活動概要">
-  <div class="stat">
-    <span class="stat-label">Latest Release</span>
-    <span class="stat-value">現場監督</span>
-  </div>
-  <div class="stat">
-    <span class="stat-label">Now Streaming</span>
-    <span class="stat-value">2026.05.15</span>
-  </div>
-  <div class="stat">
-    <span class="stat-label">Style</span>
-    <span class="stat-value">Minimal / Chill / Real</span>
-  </div>
-  <div class="stat">
-    <span class="stat-label">Base</span>
-    <span class="stat-value">Japan</span>
-  </div>
-</div>
+        <div class="hero-stats" aria-label="活動概要">
+          <div class="stat">
+            <span class="stat-label">Featured Work</span>
+            <span class="stat-value">STRUCTURE RUN</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Upcoming Release</span>
+            <span class="stat-value">現場監督 / 2026.05.15</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Style</span>
+            <span class="stat-value">Minimal / Chill / Real</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Based In</span>
+            <span class="stat-value">Japan</span>
+          </div>
+        </div>
       </div>
     </div>
   </header>
@@ -1353,20 +1403,78 @@
       <p class="manifesto-kicker" id="manifesto-title">T-ACT / STATEMENT</p>
 
       <div class="manifesto-body">
-        <p>何人たりとも記憶は薄れ、不確かなものになっていく。<br>だから音楽を残す。</p>
-
-        <p>音楽は成功や承認のためではない。<br>現実の中で生まれる思考や瞬間の記録。</p>
-      </div>
-
-      <div class="manifesto-closing">
-        <p>創造は音楽ではない。</p>
-        <p>本質的な構造を作ること。</p>
-        <p>音楽は、その記録。</p>
+        <p>記憶はやがて薄れ、不確かなものになる。<br>だから音楽として残す。</p>
+        <p>音楽は成功や承認のためではない。<br>現実の中で生まれた思考と瞬間の記録である。</p>
       </div>
     </div>
   </section>
 
   <main>
+    <section id="game-feature">
+      <div class="section-inner">
+        <div class="section-head">
+          <h2>FEATURED GAME</h2>
+          <p class="section-note">当分の目玉として公開する、T-ACTの世界観を走るブラウザゲーム。</p>
+        </div>
+
+        <div class="game-shell">
+          <div class="game-grid">
+            <div class="game-frame-wrap">
+              <iframe
+                class="game-frame"
+                src="structure-run.html"
+                title="T-ACT // STRUCTURE RUN"
+                loading="lazy"
+                allow="autoplay"
+                referrerpolicy="no-referrer">
+              </iframe>
+            </div>
+
+            <div class="game-copy">
+              <div class="chips" style="margin-top:0; margin-bottom:12px;">
+                <span class="chip">FEATURED</span>
+                <span class="chip">BROWSER GAME</span>
+                <span class="chip">T-ACT WORLD</span>
+              </div>
+
+              <h3>STRUCTURE RUN</h3>
+
+              <p>
+                都市、ノイズ、評価、供給過多。<br>
+                ぶつからずに構造を抜けるためのラン。
+              </p>
+
+              <p>
+                障害物はただの壁ではなく、言葉として迫ってくる。<br>
+                衝突すると、何にぶつかったのかが記録される。
+              </p>
+
+              <p>
+                さらに、6文字までの名前登録とランキング保存に対応。<br>
+                同じ名前は最高スコアだけ残る、アーケード寄りの仕様。
+              </p>
+
+              <div class="chips game-meta">
+                <span class="chip">Ranking</span>
+                <span class="chip">Local Save</span>
+                <span class="chip">BGM</span>
+                <span class="chip">Award Board</span>
+              </div>
+
+              <div class="game-actions">
+                <a class="btn btn-primary" href="structure-run.html">Full Screen</a>
+                <a class="btn" href="#releases">Listen to T-ACT</a>
+              </div>
+
+              <p class="game-note">
+                ※ ランキングとプレイヤー名は、このブラウザのローカルストレージに保存されます。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="schedule">
       <div class="section-inner">
         <div class="section-head">
@@ -1375,24 +1483,28 @@
         </div>
 
         <div class="schedule">
-
           <article class="sched-item">
-  <div class="sched-date">2026-05-15</div>
-  <div class="sched-main">
-    <h3>New Single「現場監督」Release</h3>
-    <div class="sched-meta">各種サブスクにて配信開始</div>
-  </div>
-</article>
-          
+            <div class="sched-date">2026-05-15</div>
+            <div class="sched-main">
+              <h3>New Single「現場監督」Coming</h3>
+              <div class="sched-meta">各種サブスクにて配信開始予定</div>
+              <div class="chips">
+                <span class="chip">NEWS</span>
+                <span class="chip">UPCOMING</span>
+                <span class="chip">RELEASE</span>
+              </div>
+            </div>
+          </article>
+
           <article class="sched-item">
             <div class="sched-date">2026-04-17</div>
             <div class="sched-main">
-              <h3>New Single「再定義」Release</h3>
+              <h3>Single「再定義」Now Streaming</h3>
               <div class="sched-meta">各種サブスクにて配信中</div>
               <div class="chips">
                 <span class="chip">NEWS</span>
                 <span class="chip">RELEASE</span>
-                <span class="chip">Latest</span>
+                <span class="chip">STREAMING</span>
               </div>
             </div>
           </article>
@@ -1400,8 +1512,8 @@
           <article class="sched-item">
             <div class="sched-date">2026-03</div>
             <div class="sched-main">
-              <h3>Official Site Updated</h3>
-              <div class="sched-meta">最新リリース導線、映像導線、ディスコグラフィ構成を更新</div>
+              <h3>Official Site Refined</h3>
+              <div class="sched-meta">最新リリース導線、映像導線、ゲーム導線、ディスコグラフィ構成を更新</div>
               <div class="chips">
                 <span class="chip">UPDATE</span>
                 <span class="chip">SITE</span>
@@ -1414,7 +1526,6 @@
 
     <section id="releases">
       <div class="section-inner">
-
         <div class="section-head">
           <h2>LATEST RELEASE</h2>
           <p class="section-note">現在のT-ACTを最も濃く映している最新作。</p>
@@ -1423,12 +1534,59 @@
         <div class="profile-shell" style="max-width:1040px; text-align:left; margin-bottom:44px;">
           <div class="profile-grid" style="grid-template-columns: minmax(260px, 360px) 1fr; align-items:start;">
             <div class="release-cover" style="margin-bottom:0;">
-              <img src="redefine.jpg" alt="再定義 ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200">
+              <img src="genba-kantoku.jpg" alt="現場監督 ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200">
             </div>
 
             <div>
               <div class="chips" style="margin-top:0; margin-bottom:12px;">
                 <span class="chip">LATEST</span>
+                <span class="chip">2026.05.15</span>
+                <span class="chip">Digital Single</span>
+              </div>
+
+              <h3 style="margin:0 0 12px; color:var(--mint); font-size:clamp(1.6rem, 3vw, 2.2rem); line-height:1.15;">現場監督</h3>
+
+              <p style="margin:0 0 10px; color:var(--text); font-size:1rem; line-height:1.9; font-weight:700;">
+                人気では測れない責任が、ここにはある。
+              </p>
+
+              <p style="margin:0 0 14px; color:var(--text-soft); font-size:1rem; line-height:1.9;">
+                ラッパーや表現者が職人であるように、人気がなくても、人手が足りなくても、現場を回し続ける者にも確かな格好よさがある。<br>
+                誰にも称賛されない朝や、数字にならない責任の重みを、T-ACTの視点で静かに刻んだ一作。
+              </p>
+
+              <p style="margin:0 0 18px; color:var(--muted); font-size:.92rem; line-height:1.85;">
+                目立つことより、崩さないこと。<br>
+                支える側の現実と美学を、そのまま音として残したリリース。
+              </p>
+
+              <div class="chips" style="margin-top:0; margin-bottom:14px;">
+                <span class="chip">Coming Soon</span>
+              </div>
+
+              <div class="sched-links" style="margin-top:0;">
+                <a href="#" aria-disabled="true" onclick="return false;">Apple Music</a>
+                <a href="#" aria-disabled="true" onclick="return false;">Spotify</a>
+                <a href="#" aria-disabled="true" onclick="return false;">LINE MUSIC</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-head">
+          <h2>PREVIOUS RELEASE</h2>
+          <p class="section-note">ひとつ前のリリース。</p>
+        </div>
+
+        <div class="profile-shell" style="max-width:1040px; text-align:left;">
+          <div class="profile-grid" style="grid-template-columns: minmax(260px, 360px) 1fr; align-items:start;">
+            <div class="release-cover" style="margin-bottom:0;">
+              <img src="redefine.jpg" alt="再定義 ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200">
+            </div>
+
+            <div>
+              <div class="chips" style="margin-top:0; margin-bottom:12px;">
+                <span class="chip">PREVIOUS</span>
                 <span class="chip">2026.04.17</span>
                 <span class="chip">Digital Single</span>
               </div>
@@ -1461,183 +1619,159 @@
           </div>
         </div>
 
-        <div class="section-head">
-          <h2>PREVIOUS RELEASE</h2>
-          <p class="section-note">ひとつ前のリリース。</p>
-        </div>
-
-        <div class="profile-shell" style="max-width:1040px; text-align:left;">
-          <div class="profile-grid" style="grid-template-columns: minmax(260px, 360px) 1fr; align-items:start;">
-            <div class="release-cover" style="margin-bottom:0;">
-              <img src="zanti.jpg" alt="残置 ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200">
-            </div>
-
-            <div>
-              <div class="chips" style="margin-top:0; margin-bottom:12px;">
-                <span class="chip">PREVIOUS</span>
-                <span class="chip">2026</span>
-                <span class="chip">Digital Single</span>
-              </div>
-
-              <h3 style="margin:0 0 12px; color:var(--mint); font-size:clamp(1.6rem, 3vw, 2.2rem); line-height:1.15;">残置</h3>
-
-              <p style="margin:0 0 14px; color:var(--text-soft); font-size:1rem; line-height:1.9;">
-                整えられた日常の奥に、置き去りのまま残っていた感情の輪郭をそっと拾い上げる作品。<br>
-                言葉を足しすぎず、消えきらなかった記憶の気配だけを静かに浮かび上がらせる。
-              </p>
-
-              <p style="margin:0 0 18px; color:var(--muted); font-size:.92rem; line-height:1.85;">
-                ルールの中で生きること、整えてきた毎日、残してきたもの。<br>
-                その静かな摩擦を、T-ACTらしい余白と温度で描いたリリース。
-              </p>
-
-              <div class="sched-links" style="margin-top:0;">
-                <a href="https://music.apple.com/jp/album/%E6%AE%8B%E7%BD%AE-single/1877027727?l=en-US" target="_blank" rel="noreferrer noopener">Apple Music</a>
-                <a href="https://open.spotify.com/intl-ja/album/5QjedeXnR7x5IG49Yyakch" target="_blank" rel="noreferrer noopener">Spotify</a>
-                <a href="https://music.line.me/webapp/album/mb0000000005084848" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <div class="section-head" style="margin-top:44px;">
           <h2>DISCOGRAPHY</h2>
           <p class="section-note">作品ごとの温度、余白、視点を残したアーカイブ。</p>
         </div>
 
-<div class="releases">
-  <article class="release">
-    <div class="release-cover">
-      <img src="redefine.jpg" alt="再定義 ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200">
-    </div>
-    <div class="chips" style="margin-top:0; margin-bottom:10px;">
-      <span class="chip">2026</span>
-      <span class="chip">LATEST</span>
-    </div>
-    <h3>再定義</h3>
-    <p>社会的に必要とされる責任を果たした上で、それでもなお残る表現の意味を問い直す作品。余剰として切り捨てられるものの中に、本当に捨てていいものがあるのかを静かに問い返す。</p>
-    <div class="chips">
-      <span class="chip">Now Streaming</span>
-    </div>
-    <div class="sched-links">
-      <a href="https://music.apple.com/jp/album/%E5%86%8D%E5%AE%9A%E7%BE%A9-single/1889746636?l=en-US" target="_blank" rel="noreferrer noopener">Apple Music</a>
-      <a href="https://open.spotify.com/intl-ja/album/4OImPPky9GDXf5ziExUNYt" target="_blank" rel="noreferrer noopener">Spotify</a>
-      <a href="https://music.line.me/webapp/album/mb00000000052a6a84" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
-    </div>
-  </article>
+        <div class="releases">
+          <article class="release">
+            <div class="release-cover">
+              <img src="genba-kantoku.jpg" alt="現場監督 ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200">
+            </div>
+            <div class="chips" style="margin-top:0; margin-bottom:10px;">
+              <span class="chip">2026</span>
+              <span class="chip">UPCOMING</span>
+            </div>
+            <h3>現場監督</h3>
+            <p>目立つことも、称賛されることもないまま、朝から現場を動かし続ける者の責任と格好よさを描いた作品。人気では測れない重みと、支える側の現実を静かに刻みつける。</p>
+            <div class="chips">
+              <span class="chip">2026.05.15 Release</span>
+            </div>
+          </article>
 
-  <article class="release">
-    <div class="release-cover">
-      <img src="zanti.jpg" alt="残置 ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200">
-    </div>
-    <div class="chips" style="margin-top:0; margin-bottom:10px;">
-      <span class="chip">2026</span>
-    </div>
-    <h3>残置</h3>
-    <p>整えられた日常の奥に、置き去りのまま残っていた感情の輪郭をそっと拾い上げる作品。言葉を足しすぎず、消えきらなかった記憶の気配だけを静かに浮かび上がらせる。</p>
-    <div class="sched-links">
-      <a href="https://music.apple.com/jp/album/%E6%AE%8B%E7%BD%AE-single/1877027727?l=en-US" target="_blank" rel="noreferrer noopener">Apple Music</a>
-      <a href="https://open.spotify.com/intl-ja/album/5QjedeXnR7x5IG49Yyakch" target="_blank" rel="noreferrer noopener">Spotify</a>
-      <a href="https://music.line.me/webapp/album/mb0000000005084848" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
-    </div>
-  </article>
+          <article class="release">
+            <div class="release-cover">
+              <img src="redefine.jpg" alt="再定義 ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200">
+            </div>
+            <div class="chips" style="margin-top:0; margin-bottom:10px;">
+              <span class="chip">2026</span>
+              <span class="chip">LATEST STREAMING</span>
+            </div>
+            <h3>再定義</h3>
+            <p>社会的に必要とされる責任を果たした上で、それでもなお残る表現の意味を問い直す作品。余剰として切り捨てられるものの中に、本当に捨てていいものがあるのかを静かに問い返す。</p>
+            <div class="chips">
+              <span class="chip">Now Streaming</span>
+            </div>
+            <div class="sched-links">
+              <a href="https://music.apple.com/jp/album/%E5%86%8D%E5%AE%9A%E7%BE%A9-single/1889746636?l=en-US" target="_blank" rel="noreferrer noopener">Apple Music</a>
+              <a href="https://open.spotify.com/intl-ja/album/4OImPPky9GDXf5ziExUNYt" target="_blank" rel="noreferrer noopener">Spotify</a>
+              <a href="https://music.line.me/webapp/album/mb00000000052a6a84" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
+            </div>
+          </article>
 
-  <article class="release">
-    <div class="release-cover">
-      <img src="iine.jpg" alt="いいね ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200">
-    </div>
-    <div class="chips" style="margin-top:0; margin-bottom:10px;">
-      <span class="chip">2025</span>
-    </div>
-    <h3>いいね</h3>
-    <p>反応が価値を決めるように見える時代のノイズの中で、自分の感覚を手放さないための一曲。賞賛にも無関心にも飲まれず、内側の温度を守ろうとする意思が流れている。</p>
-    <div class="sched-links">
-      <a href="https://music.apple.com/jp/album/%E3%81%84%E3%81%84%E3%81%AD-single/1871989088?l=en-US" target="_blank" rel="noreferrer noopener">Apple Music</a>
-      <a href="https://open.spotify.com/intl-ja/album/4GRUelIFhMOQMx9yO07WkM?si=tblRppJZTXyVUCadGEstog" target="_blank" rel="noreferrer noopener">Spotify</a>
-      <a href="https://lin.ee/yrto4K0" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
-    </div>
-  </article>
+          <article class="release">
+            <div class="release-cover">
+              <img src="zanti.jpg" alt="残置 ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200">
+            </div>
+            <div class="chips" style="margin-top:0; margin-bottom:10px;">
+              <span class="chip">2026</span>
+            </div>
+            <h3>残置</h3>
+            <p>整えられた日常の奥に、置き去りのまま残っていた感情の輪郭をそっと拾い上げる作品。言葉を足しすぎず、消えきらなかった記憶の気配だけを静かに浮かび上がらせる。</p>
+            <div class="sched-links">
+              <a href="https://music.apple.com/jp/album/%E6%AE%8B%E7%BD%AE-single/1877027727?l=en-US" target="_blank" rel="noreferrer noopener">Apple Music</a>
+              <a href="https://open.spotify.com/intl-ja/album/5QjedeXnR7x5IG49Yyakch" target="_blank" rel="noreferrer noopener">Spotify</a>
+              <a href="https://music.line.me/webapp/album/mb0000000005084848" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
+            </div>
+          </article>
 
-  <article class="release">
-    <div class="release-cover">
-      <img src="kaniana.jpg" alt="蟹穴 ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200">
-    </div>
-    <div class="chips" style="margin-top:0; margin-bottom:10px;">
-      <span class="chip">2025</span>
-    </div>
-    <h3>蟹穴</h3>
-    <p>世界から身を引くためではなく、自分の輪郭を保ったまま踏ん張るための場所を描いた作品。小さな穴の中から見える景色にこそ、その人の哲学と生き方が滲む。</p>
-    <div class="sched-links">
-      <a href="https://music.apple.com/jp/album/%E8%9F%B9%E7%A9%B4-single/1867369742?l=en&ls=1&app=music" target="_blank" rel="noreferrer noopener">Apple Music</a>
-      <a href="https://open.spotify.com/album/0YmbmHT1sN7XpBxs14Fnp4" target="_blank" rel="noreferrer noopener">Spotify</a>
-      <a href="https://music.line.me/launch?target=album&item=mb0000000004edf2b2&cc=JP&v=1" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
-    </div>
-  </article>
+          <article class="release">
+            <div class="release-cover">
+              <img src="iine.jpg" alt="いいね ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200">
+            </div>
+            <div class="chips" style="margin-top:0; margin-bottom:10px;">
+              <span class="chip">2025</span>
+            </div>
+            <h3>いいね</h3>
+            <p>反応が価値を決めるように見える時代のノイズの中で、自分の感覚を手放さないための一曲。賞賛にも無関心にも飲まれず、内側の温度を守ろうとする意思が流れている。</p>
+            <div class="sched-links">
+              <a href="https://music.apple.com/jp/album/%E3%81%84%E3%81%84%E3%81%AD-single/1871989088?l=en-US" target="_blank" rel="noreferrer noopener">Apple Music</a>
+              <a href="https://open.spotify.com/intl-ja/album/4GRUelIFhMOQMx9yO07WkM?si=tblRppJZTXyVUCadGEstog" target="_blank" rel="noreferrer noopener">Spotify</a>
+              <a href="https://lin.ee/yrto4K0" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
+            </div>
+          </article>
 
-  <article class="release">
-    <div class="release-cover">
-      <img src="baton.jpg" alt="Baton ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200">
-    </div>
-    <div class="chips" style="margin-top:0; margin-bottom:10px;">
-      <span class="chip">2025</span>
-    </div>
-    <h3>Baton</h3>
-    <p>言葉にならないまま受け継がれてきた責任、期待、祈り。その重さを誇張せず、静かな推進力として描くことで、継承とは前へ進むための宿命でもあると語りかける。</p>
-    <div class="sched-links">
-      <a href="https://music.apple.com/jp/album/baton/1858161005?i=1858161006" target="_blank" rel="noreferrer noopener">Apple Music</a>
-      <a href="https://open.spotify.com/album/44Bq00HIJz3jXdJsIEHj6W?si=fhpAepe7SGiycFldcUJP2g" target="_blank" rel="noreferrer noopener">Spotify</a>
-      <a href="https://lin.ee/QcJr9CZ" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
-    </div>
-  </article>
+          <article class="release">
+            <div class="release-cover">
+              <img src="kaniana.jpg" alt="蟹穴 ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200">
+            </div>
+            <div class="chips" style="margin-top:0; margin-bottom:10px;">
+              <span class="chip">2025</span>
+            </div>
+            <h3>蟹穴</h3>
+            <p>世界から身を引くためではなく、自分の輪郭を保ったまま踏ん張るための場所を描いた作品。小さな穴の中から見える景色にこそ、その人の哲学と生き方が滲む。</p>
+            <div class="sched-links">
+              <a href="https://music.apple.com/jp/album/%E8%9F%B9%E7%A9%B4-single/1867369742?l=en&ls=1&app=music" target="_blank" rel="noreferrer noopener">Apple Music</a>
+              <a href="https://open.spotify.com/album/0YmbmHT1sN7XpBxs14Fnp4" target="_blank" rel="noreferrer noopener">Spotify</a>
+              <a href="https://music.line.me/launch?target=album&item=mb0000000004edf2b2&cc=JP&v=1" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
+            </div>
+          </article>
 
-  <article class="release">
-    <div class="release-cover">
-      <img src="min-i.jpg" alt="民意 ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200">
-    </div>
-    <div class="chips" style="margin-top:0; margin-bottom:10px;">
-      <span class="chip">2025</span>
-    </div>
-    <h3>民意</h3>
-    <p>数字や熱量が真実のように扱われる空気を切り裂き、見えているものと信じ込まされているものの境界を問い直す作品。冷たさの奥に、思考することへの執着がある。</p>
-    <div class="sched-links">
-      <a href="https://music.apple.com/jp/song/%E6%B0%91%E6%84%8F/1849569797" target="_blank" rel="noreferrer noopener">Apple Music</a>
-      <a href="https://open.spotify.com/intl-ja/track/3ZUQ3MExDqGBaJfETdHRGj?si=0cb63bd1eb14491d" target="_blank" rel="noreferrer noopener">Spotify</a>
-      <a href="https://lin.ee/YUxslGB" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
-    </div>
-  </article>
+          <article class="release">
+            <div class="release-cover">
+              <img src="baton.jpg" alt="Baton ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200">
+            </div>
+            <div class="chips" style="margin-top:0; margin-bottom:10px;">
+              <span class="chip">2025</span>
+            </div>
+            <h3>Baton</h3>
+            <p>言葉にならないまま受け継がれてきた責任、期待、祈り。その重さを誇張せず、静かな推進力として描くことで、継承とは前へ進むための宿命でもあると語りかける。</p>
+            <div class="sched-links">
+              <a href="https://music.apple.com/jp/album/baton/1858161005?i=1858161006" target="_blank" rel="noreferrer noopener">Apple Music</a>
+              <a href="https://open.spotify.com/album/44Bq00HIJz3jXdJsIEHj6W?si=fhpAepe7SGiycFldcUJP2g" target="_blank" rel="noreferrer noopener">Spotify</a>
+              <a href="https://lin.ee/QcJr9CZ" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
+            </div>
+          </article>
 
-  <article class="release">
-    <div class="release-cover">
-      <img src="Rain-in-Your-Eyes.jpg" alt="Rain in Your Eyes ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200">
-    </div>
-    <div class="chips" style="margin-top:0; margin-bottom:10px;">
-      <span class="chip">2025</span>
-    </div>
-    <h3>Rain in Your Eyes</h3>
-    <p>痛みを劇的に叫ぶのではなく、濡れた視界のまま歩き続ける気配を描いたチル・バラード。喪失のあとに残る静けさと、そこからもう一度立ち上がる微かな意思が同居している。</p>
-    <div class="sched-links">
-      <a href="https://music.apple.com/jp/song/rein-in-your-eyes/1846001693" target="_blank" rel="noreferrer noopener">Apple Music</a>
-      <a href="https://open.spotify.com/intl-ja/track/1w0EC9a4tvC49bEs0OzhIL?si=1b4f30f6361e43f4" target="_blank" rel="noreferrer noopener">Spotify</a>
-      <a href="https://lin.ee/1JzZK3f" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
-    </div>
-  </article>
+          <article class="release">
+            <div class="release-cover">
+              <img src="min-i.jpg" alt="民意 ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200">
+            </div>
+            <div class="chips" style="margin-top:0; margin-bottom:10px;">
+              <span class="chip">2025</span>
+            </div>
+            <h3>民意</h3>
+            <p>数字や熱量が真実のように扱われる空気を切り裂き、見えているものと信じ込まされているものの境界を問い直す作品。冷たさの奥に、思考することへの執着がある。</p>
+            <div class="sched-links">
+              <a href="https://music.apple.com/jp/song/%E6%B0%91%E6%84%8F/1849569797" target="_blank" rel="noreferrer noopener">Apple Music</a>
+              <a href="https://open.spotify.com/intl-ja/track/3ZUQ3MExDqGBaJfETdHRGj?si=0cb63bd1eb14491d" target="_blank" rel="noreferrer noopener">Spotify</a>
+              <a href="https://lin.ee/YUxslGB" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
+            </div>
+          </article>
 
-  <article class="release">
-    <div class="release-cover">
-      <img src="sweet-bitter.jpg" alt="Sweet &amp; Bitter ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200">
-    </div>
-    <div class="chips" style="margin-top:0; margin-bottom:10px;">
-      <span class="chip">2025</span>
-    </div>
-    <h3>Sweet &amp; Bitter</h3>
-    <p>甘さだけでも、苦さだけでも語れない自分自身の複層性をそのまま映した作品。心地よさの中に少しだけ残る引っかかりが、T-ACTの感性を象徴している。</p>
-    <div class="sched-links">
-      <a href="https://music.apple.com/jp/song/sweet-bitter/1842222416" target="_blank" rel="noreferrer noopener">Apple Music</a>
-      <a href="https://open.spotify.com/intl-ja/track/7LFWlx8t4IAkWLWxfkvQER?si=a03f22fee8524aeb" target="_blank" rel="noreferrer noopener">Spotify</a>
-      <a href="https://lin.ee/vIEXJ7J" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
-    </div>
-  </article>
-</div>
+          <article class="release">
+            <div class="release-cover">
+              <img src="Rain-in-Your-Eyes.jpg" alt="Rain in Your Eyes ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200">
+            </div>
+            <div class="chips" style="margin-top:0; margin-bottom:10px;">
+              <span class="chip">2025</span>
+            </div>
+            <h3>Rain in Your Eyes</h3>
+            <p>痛みを劇的に叫ぶのではなく、濡れた視界のまま歩き続ける気配を描いたチル・バラード。喪失のあとに残る静けさと、そこからもう一度立ち上がる微かな意思が同居している。</p>
+            <div class="sched-links">
+              <a href="https://music.apple.com/jp/song/rein-in-your-eyes/1846001693" target="_blank" rel="noreferrer noopener">Apple Music</a>
+              <a href="https://open.spotify.com/intl-ja/track/1w0EC9a4tvC49bEs0OzhIL?si=1b4f30f6361e43f4" target="_blank" rel="noreferrer noopener">Spotify</a>
+              <a href="https://lin.ee/1JzZK3f" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
+            </div>
+          </article>
+
+          <article class="release">
+            <div class="release-cover">
+              <img src="sweet-bitter.jpg" alt="Sweet &amp; Bitter ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200">
+            </div>
+            <div class="chips" style="margin-top:0; margin-bottom:10px;">
+              <span class="chip">2025</span>
+            </div>
+            <h3>Sweet &amp; Bitter</h3>
+            <p>甘さだけでも、苦さだけでも語れない自分自身の複層性をそのまま映した作品。心地よさの中に少しだけ残る引っかかりが、T-ACTの感性を象徴している。</p>
+            <div class="sched-links">
+              <a href="https://music.apple.com/jp/song/sweet-bitter/1842222416" target="_blank" rel="noreferrer noopener">Apple Music</a>
+              <a href="https://open.spotify.com/intl-ja/track/7LFWlx8t4IAkWLWxfkvQER?si=a03f22fee8524aeb" target="_blank" rel="noreferrer noopener">Spotify</a>
+              <a href="https://lin.ee/vIEXJ7J" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -1730,6 +1864,9 @@
                 音楽は成功や承認のためではない。<br>
                 現実の中で生まれる思考や瞬間を、記録として残すためにある。<br><br>
 
+                現実の構造や責任に日々向き合う立場から、<br>
+                その沈黙や摩擦までも音楽として記録している。<br><br>
+
                 歌詞は多くを語らない。感情を直接的に説明するのではなく、<br>
                 余白や痕跡として残す表現を重視している。<br>
                 聴き手がそれぞれの経験を重ねられる余地を、意図的に残している。<br><br>
@@ -1754,10 +1891,11 @@
         <p style="margin:0 0 8px; color:var(--mint-2); letter-spacing:.14em; text-transform:uppercase; font-size:.78rem;">T-ACT Official</p>
         <p style="margin:0 auto 16px; max-width:700px; color:var(--text-soft); font-size:1rem; line-height:1.9;">
           現実の重みから逃げず、その沈黙や摩擦までも音として残していく。<br>
-          T-ACTの作品、映像、グッズ、最新情報は各プラットフォームでご覧いただけます。
+          T-ACTの作品、映像、ゲーム、グッズ、最新情報は各プラットフォームでご覧いただけます。
         </p>
         <div class="footer-links" style="margin-top:0; margin-bottom:14px;">
           <a class="btn" href="https://t-act-official.site/en/">English Page</a>
+          <a class="btn" href="structure-run.html">Play Game</a>
           <a class="btn" href="https://x.com/t_act_music" target="_blank" rel="noreferrer noopener">X</a>
           <a class="btn" href="https://youtube.com/@t_act_music" target="_blank" rel="noreferrer noopener">YouTube</a>
           <a class="btn" href="https://music.apple.com/jp/artist/t-act/1842221982" target="_blank" rel="noreferrer noopener">Apple Music</a>
@@ -1794,7 +1932,7 @@
         video.addEventListener('error', closeSplash);
       }
 
-      window.setTimeout(closeSplash, 3800);
+      window.setTimeout(closeSplash, 7000);
     }
 
     if (hero) {
@@ -1814,19 +1952,24 @@
   <script>
   (() => {
     const canvas = document.getElementById('mint-bg');
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas?.getContext('2d');
+
+    if (!canvas || !ctx) return;
+
     let particles = [];
     let width = 0;
     let height = 0;
-    let running = true;
     let scrollOffset = 0;
 
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const isMobile = window.innerWidth <= 768;
 
     if (prefersReduced) {
       canvas.style.display = 'none';
       return;
+    }
+
+    function isMobileView() {
+      return window.innerWidth <= 768;
     }
 
     function spawn() {
@@ -1845,15 +1988,15 @@
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
       const density = Math.floor((width * height) / 32000);
-      const count = isMobile
+      const mobile = isMobileView();
+      const count = mobile
         ? Math.max(18, Math.min(36, Math.floor(density * 0.35)))
         : Math.max(34, Math.min(96, density));
       particles = Array.from({ length: count }, spawn);
     }
 
     function step() {
-      if (!running) return;
-
+      const mobile = isMobileView();
       ctx.clearRect(0, 0, width, height);
 
       for (const p of particles) {
@@ -1867,10 +2010,8 @@
         }
 
         const parallaxY = p.y + scrollOffset * (0.08 + p.r * 0.02);
-
         const targetX = width / 2;
         const targetY = height * 0.28;
-
         const attract = Math.min(scrollOffset / 1200, 0.02);
 
         p.x += (targetX - p.x) * attract;
@@ -1878,10 +2019,10 @@
 
         ctx.beginPath();
         ctx.arc(p.x, drawY, p.r, 0, Math.PI * 2);
-        const mobileAlpha = isMobile ? p.a * 0.9 : p.a;
+        const mobileAlpha = mobile ? p.a * 0.9 : p.a;
         ctx.fillStyle = `rgba(52,211,153,${mobileAlpha})`;
-        ctx.shadowColor = isMobile ? 'rgba(52,211,153,0.10)' : 'rgba(52,211,153,0.22)';
-        ctx.shadowBlur = isMobile ? 2 : 5;
+        ctx.shadowColor = mobile ? 'rgba(52,211,153,0.10)' : 'rgba(52,211,153,0.22)';
+        ctx.shadowBlur = mobile ? 2 : 5;
         ctx.fill();
       }
 
@@ -1893,6 +2034,7 @@
     window.addEventListener('scroll', () => {
       scrollOffset = window.scrollY;
     }, { passive: true });
+
     resize();
     requestAnimationFrame(step);
   })();
