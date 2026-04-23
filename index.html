@@ -986,65 +986,107 @@
       margin: .45em 0;
     }
 
-    .game-shell {
-      max-width: 1040px;
-      margin: 0 auto;
-      padding: 22px;
-      border-radius: 24px;
-      border: 1px solid var(--border);
-      background: linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.02));
-      box-shadow: var(--shadow);
-      text-align: left;
-    }
+.game-teaser {
+  display: block;
+  max-width: 1040px;
+  margin: 0 auto;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.02));
+  box-shadow: var(--shadow);
+  transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+}
 
-    .game-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 360px);
-      gap: 22px;
-      align-items: start;
-    }
+.game-teaser:hover {
+  transform: translateY(-4px);
+  border-color: var(--mint-line);
+  box-shadow: 0 18px 48px rgba(0,0,0,.42);
+}
 
-    .game-frame-wrap {
-      border-radius: 18px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.02);
-      box-shadow: var(--shadow-soft);
-    }
+.game-teaser-media {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: #05070d;
+  overflow: hidden;
+}
 
-    .game-frame {
-      display: block;
-      width: 100%;
-      aspect-ratio: 16 / 10;
-      border: 0;
-      background: #030407;
-    }
+.game-teaser-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: scale(1.01);
+  transition: transform .4s ease, opacity .3s ease;
+  opacity: .82;
+}
 
-    .game-copy h3 {
-      margin: 0 0 10px;
-      color: var(--mint);
-      font-size: clamp(1.4rem, 2.5vw, 2rem);
-      line-height: 1.2;
-    }
+.game-teaser:hover .game-teaser-media img {
+  transform: scale(1.05);
+  opacity: .96;
+}
 
-    .game-copy p {
-      margin: 0 0 14px;
-      color: var(--text-soft);
-      line-height: 1.9;
-      font-size: .98rem;
-    }
+.game-teaser-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: clamp(20px, 4vw, 34px);
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.60) 62%, rgba(0,0,0,.82)),
+    radial-gradient(circle at 20% 20%, rgba(52,211,153,.12), transparent 34%);
+  text-align: left;
+}
 
-    .game-meta {
-      margin-top: 14px;
-    }
+.game-teaser-kicker {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.08);
+  color: var(--text);
+  font-size: .76rem;
+  letter-spacing: .08em;
+  margin-bottom: 12px;
+}
 
-    .game-note {
-      margin-top: 12px;
-      color: var(--muted);
-      font-size: .88rem;
-      line-height: 1.8;
-    }
+.game-teaser-overlay h3 {
+  margin: 0 0 10px;
+  color: var(--text);
+  font-size: clamp(2rem, 5vw, 3.8rem);
+  line-height: 1.02;
+  letter-spacing: .06em;
+  text-shadow: 0 0 18px rgba(52,211,153,.18);
+}
 
+.game-teaser-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(124,242,192,.26);
+  background: rgba(52,211,153,.10);
+  color: var(--mint-2);
+  font-size: .88rem;
+  letter-spacing: .10em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 780px) {
+  .game-teaser-media {
+    aspect-ratio: 16 / 10;
+  }
+
+  .game-teaser-overlay h3 {
+    font-size: clamp(1.7rem, 8vw, 2.5rem);
+  }
+}
     @keyframes mintGlow {
       0% {
         box-shadow: 0 0 0 rgba(52,211,153,0);
@@ -1369,7 +1411,7 @@
         </p>
 
         <div class="cta" aria-label="主要導線">
-          <a class="btn btn-primary" href="structure-run.html">Play Game</a>
+<a class="btn btn-primary" href="structure-run.html">Enter Structure</a>
           <a class="btn" href="https://music.apple.com/jp/artist/t-act/1842221982" target="_blank" rel="noreferrer noopener">Apple Music</a>
           <a class="btn" href="https://open.spotify.com/intl-ja/artist/5FOiDuDN7NiDUrBtEciroP" target="_blank" rel="noreferrer noopener">Spotify</a>
           <a class="btn" href="https://lin.ee/L5MxMC0" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
@@ -1378,8 +1420,10 @@
 
         <div class="hero-stats" aria-label="活動概要">
           <div class="stat">
-            <span class="stat-label">Featured Work</span>
-            <span class="stat-value">STRUCTURE RUN</span>
+          <div class="stat">
+  <span class="stat-label">Now Featured</span>
+  <span class="stat-value">STRUCTURE RUN</span>
+</div>
           </div>
           <div class="stat">
             <span class="stat-label">Upcoming Release</span>
@@ -1410,63 +1454,25 @@
   </section>
 
   <main>
-    <section id="game-feature">
-      <div class="section-inner">
-        <div class="section-head">
-          <h2>FEATURED GAME</h2>
-          <p class="section-note">T-ACTの世界観を走るブラウザゲーム</p>
-        </div>
+<section id="game-feature">
+  <div class="section-inner">
+    <div class="section-head">
+      <h2>FEATURED GAME</h2>
+      <p class="section-note">T-ACTの世界観を走るブラウザゲーム。</p>
+    </div>
 
-        <div class="game-shell">
-          <div class="game-grid">
-            <div class="game-frame-wrap">
-              <iframe
-                class="game-frame"
-                src="structure-run.html"
-                title="T-ACT // STRUCTURE RUN"
-                loading="lazy"
-                allow="autoplay"
-                referrerpolicy="no-referrer">
-              </iframe>
-            </div>
-
-            <div class="game-copy">
-              <div class="chips" style="margin-top:0; margin-bottom:12px;">
-                <span class="chip">FEATURED</span>
-                <span class="chip">BROWSER GAME</span>
-                <span class="chip">T-ACT WORLD</span>
-              </div>
-
-              <h3>STRUCTURE RUN</h3>
-
-              <p>
-                ノイズ、評価。<br>
-                ぶつからずに構造を抜ける、思考をゲーム化
-              <p>
-                6文字までの名前登録とランキング保存に対応。<br>
-                同じ名前は最高スコアだけ残る、アーケード仕様。
-              </p>
-
-              <div class="chips game-meta">
-                <span class="chip">Ranking</span>
-                <span class="chip">Local Save</span>
-                <span class="chip">BGM</span>
-                <span class="chip">Award Board</span>
-              </div>
-
-              <div class="game-actions">
-                <a class="btn btn-primary" href="structure-run.html">Full Screen</a>
-                <a class="btn" href="#releases">Listen to T-ACT</a>
-              </div>
-
-              <p class="game-note">
-                ※ ランキングとプレイヤー名は、このブラウザのローカルストレージに保存されます。
-              </p>
-            </div>
-          </div>
+    <a class="game-teaser" href="structure-run.html" aria-label="STRUCTURE RUN を開く">
+      <div class="game-teaser-media">
+        <img src="structure-run-cover.jpg" alt="STRUCTURE RUN プレビュー画像" loading="lazy" decoding="async">
+        <div class="game-teaser-overlay">
+          <span class="game-teaser-kicker">BROWSER GAME</span>
+          <h3>STRUCTURE RUN</h3>
+          <span class="game-teaser-cta">ENTER STRUCTURE</span>
         </div>
       </div>
-    </section>
+    </a>
+  </div>
+</section>
 
     <section id="schedule">
       <div class="section-inner">
