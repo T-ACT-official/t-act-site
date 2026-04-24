@@ -6,6 +6,7 @@
   <title>T-ACT // STRUCTURE RUN</title>
   <style>
     * { box-sizing: border-box; }
+
     html, body {
       margin: 0;
       width: 100%;
@@ -114,7 +115,7 @@
     }
 
     .card {
-      width: min(88vw, 540px);
+      width: min(88vw, 560px);
       padding: 28px;
       border-radius: 24px;
       background: rgba(7, 10, 18, 0.70);
@@ -148,6 +149,37 @@
     .danger {
       color: #bda7ff;
       text-shadow: 0 0 10px rgba(189,167,255,0.5);
+    }
+
+    .hit-view {
+      margin: 18px auto 14px;
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(189,167,255,.18);
+      background:
+        radial-gradient(circle at top, rgba(189,167,255,.10), transparent 55%),
+        rgba(255,255,255,.035);
+      box-shadow: inset 0 0 20px rgba(255,255,255,.025);
+    }
+
+    .hit-label {
+      margin: 0 0 8px;
+      font-family: "Yu Mincho", "Hiragino Mincho ProN", "HGS明朝E", "MS Mincho", serif;
+      font-size: clamp(20px, 3vw, 27px);
+      line-height: 1.55;
+      letter-spacing: .08em;
+      color: #d8c9ff;
+      text-shadow: 0 0 14px rgba(189,167,255,.42);
+    }
+
+    .tact-opinion {
+      margin: 0;
+      font-family: "Yu Mincho", "Hiragino Mincho ProN", "HGS明朝E", "MS Mincho", serif;
+      font-size: clamp(19px, 2.7vw, 25px);
+      line-height: 1.9;
+      letter-spacing: .035em;
+      color: rgba(255,255,255,.94);
+      text-shadow: 0 0 12px rgba(121,255,240,.16);
     }
 
     button {
@@ -208,20 +240,31 @@
         top: 10px;
         padding: 0 10px;
       }
+
       .hud-right { gap: 8px; }
+
       .panel { padding: 8px 12px; }
+
       .value { font-size: 18px; }
+
       #controls {
         bottom: 12px;
         gap: 12px;
       }
+
       .control-btn {
         min-width: 78px;
         padding: 14px 18px;
       }
+
+      .card {
+        width: min(92vw, 560px);
+        padding: 22px;
+      }
     }
   </style>
 </head>
+
 <body>
   <div id="wrap">
     <canvas id="game" width="1280" height="720"></canvas>
@@ -231,6 +274,7 @@
         <div class="label">score</div>
         <div class="value" id="score">000000</div>
       </div>
+
       <div class="hud-right">
         <div class="panel">
           <div class="label">status</div>
@@ -268,6 +312,7 @@
 
     const W = canvas.width;
     const H = canvas.height;
+    const OFFICIAL_URL = 'https://t-act-official.site/';
 
     const WORDS = ['ノイズ', '評価', '偏見', '流行', '承認', '供給過多', '幻想', '数字', '比較', '期待'];
 
@@ -284,7 +329,21 @@
       '期待': '他人の期待に乗ったな。自分で決めろ。'
     };
 
+    const TACT_VIEW_MAP = {
+      'ノイズ': '情報を削ぎ落とせ。選択は生産だ。',
+      '評価': '評価は他人の都合だ。基準は自分で作れ。',
+      '偏見': '固定観念は思考停止の入口だ。',
+      '流行': '流行に乗るな。構造を読め。',
+      '承認': '承認は依存だ。自立しろ。',
+      '供給過多': '量で勝つな。設計で勝て。',
+      '幻想': '幻想は逃げだ。現実で戦え。',
+      '数字': '数字は結果であって目的じゃない。',
+      '比較': '比較した時点で軸を失っている。',
+      '期待': '他人の期待は責任を奪う。'
+    };
+
     const BEST_KEY = 'tactStructureRunBest';
+
     const input = { left: false, right: false };
 
     let lastHitWord = '';
@@ -307,7 +366,7 @@
       h: 28,
       speed: 9,
       glow: 0,
-      alive: true,
+      alive: true
     };
 
     function escapeHtml(value) {
@@ -333,13 +392,21 @@
     }
 
     function gameOverHtml(hitLabel, comment) {
+      const tactOpinion = TACT_VIEW_MAP[hitLabel] || '構造を見ろ。';
+
       return [
         '<h1>LOG ENDED</h1>',
         `<p>今回の記録: <span class="accent">${String(score).padStart(6, '0')}</span></p>`,
         `<p>最高記録: <span class="danger">${String(best).padStart(6, '0')}</span></p>`,
-        `<p>衝突対象: <span class="danger">${escapeHtml(hitLabel)}</span></p>`,
+        '<div class="hit-view">',
+        `<p class="hit-label">衝突対象：${escapeHtml(hitLabel)}</p>`,
+        `<p class="tact-opinion">${escapeHtml(tactOpinion)}</p>`,
+        '</div>',
         `<p>${escapeHtml(comment)}</p>`,
-        '<button id="restartBtn">Re-Enter</button>'
+        '<div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:16px;">',
+        '<button id="restartBtn">Re-Enter</button>',
+        '<button id="officialBtn" type="button">Enter T-ACT World</button>',
+        '</div>'
       ].join('');
     }
 
@@ -371,7 +438,7 @@
           life: 20 + Math.random() * 30,
           maxLife: 40,
           size: 1 + Math.random() * 3,
-          color,
+          color
         });
       }
     }
@@ -379,6 +446,15 @@
     function attachRestartHandler() {
       const restartBtn = document.getElementById('restartBtn');
       if (restartBtn) restartBtn.addEventListener('click', resetGame, { once: true });
+    }
+
+    function attachOfficialHandler() {
+      const officialBtn = document.getElementById('officialBtn');
+      if (officialBtn) {
+        officialBtn.addEventListener('click', () => {
+          window.location.href = OFFICIAL_URL;
+        }, { once: true });
+      }
     }
 
     function showTitleScreen() {
@@ -453,6 +529,7 @@
       setCardHtml(gameOverHtml(hitLabel, comment));
       overlay.style.display = 'flex';
       attachRestartHandler();
+      attachOfficialHandler();
       updateHud();
     }
 
@@ -521,16 +598,20 @@
         event.preventDefault();
         setState(true);
       });
+
       button.addEventListener('mouseup', () => setState(false));
       button.addEventListener('mouseleave', () => setState(false));
+
       button.addEventListener('touchstart', (event) => {
         event.preventDefault();
         setState(true);
       }, { passive: false });
+
       button.addEventListener('touchend', (event) => {
         event.preventDefault();
         setState(false);
       }, { passive: false });
+
       button.addEventListener('touchcancel', () => setState(false));
     }
 
@@ -551,7 +632,7 @@
         h: 22 + Math.random() * 22,
         speed,
         pulse: Math.random() * Math.PI * 2,
-        word,
+        word
       });
     }
 
@@ -561,6 +642,7 @@
       frame += 1;
       score += 1;
       player.glow += 0.12;
+
       if (shake > 0) shake *= 0.9;
       if (flash > 0) flash *= 0.9;
 
@@ -620,6 +702,7 @@
       }
 
       if (frame % 8 === 0) emitParticles(player.x, player.y + 8, '121,255,240', 1, 0.25);
+
       updateHud();
     }
 
@@ -666,6 +749,7 @@
       ctx.font = '700 62px Segoe UI, sans-serif';
       ctx.fillStyle = 'rgba(255,255,255,0.028)';
       ctx.fillText('T-ACT', W / 2, H * 0.22);
+
       ctx.font = '500 20px Segoe UI, sans-serif';
       ctx.fillText('REALITY / STRUCTURE / RECORD', W / 2, H * 0.27);
     }
@@ -682,11 +766,13 @@
 
     function drawPlayer() {
       const pulse = 0.8 + Math.sin(player.glow) * 0.15;
+
       ctx.save();
       ctx.translate(player.x, player.y);
       ctx.shadowBlur = 28;
       ctx.shadowColor = 'rgba(121,255,240,0.95)';
       ctx.fillStyle = `rgba(121,255,240,${0.82 * pulse})`;
+
       ctx.beginPath();
       ctx.moveTo(0, -24);
       ctx.lineTo(18, -2);
@@ -696,29 +782,36 @@
       ctx.lineTo(-18, -2);
       ctx.closePath();
       ctx.fill();
+
       ctx.shadowBlur = 12;
       ctx.fillStyle = 'rgba(255,255,255,0.16)';
       ctx.fillRect(-2, -12, 4, 18);
+
       ctx.shadowBlur = 50;
       ctx.fillStyle = 'rgba(180,245,255,0.26)';
       ctx.beginPath();
       ctx.arc(0, 4, 22 * pulse, 0, Math.PI * 2);
       ctx.fill();
+
       ctx.restore();
     }
 
     function drawObstacles() {
       ctx.textAlign = 'center';
       ctx.font = '700 11px Segoe UI, sans-serif';
+
       for (const ob of obstacles) {
         const p = 0.45 + Math.sin(ob.pulse) * 0.12;
+
         ctx.save();
         ctx.shadowBlur = 22;
         ctx.shadowColor = 'rgba(155,140,255,0.7)';
         ctx.fillStyle = `rgba(155,140,255,${0.68 + p * 0.25})`;
         ctx.fillRect(ob.x, ob.y, ob.w, ob.h);
+
         ctx.fillStyle = 'rgba(255,255,255,0.18)';
         ctx.fillRect(ob.x, ob.y, ob.w, 3);
+
         ctx.fillStyle = 'rgba(255,255,255,0.60)';
         ctx.fillText(ob.word, ob.x + ob.w / 2, ob.y + ob.h - 6);
         ctx.restore();
@@ -745,17 +838,23 @@
 
     function render() {
       ctx.save();
-      if (shake > 0) ctx.translate((Math.random() - 0.5) * shake, (Math.random() - 0.5) * shake);
+
+      if (shake > 0) {
+        ctx.translate((Math.random() - 0.5) * shake, (Math.random() - 0.5) * shake);
+      }
+
       drawBackground();
       drawTrails();
       drawObstacles();
       drawPlayer();
       drawParticles();
       drawVignette();
+
       if (flash > 0.02) {
         ctx.fillStyle = `rgba(255,255,255,${flash * 0.35})`;
         ctx.fillRect(0, 0, W, H);
       }
+
       ctx.restore();
     }
 
