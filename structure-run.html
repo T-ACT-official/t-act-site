@@ -108,7 +108,7 @@
       {
         "@type": "MusicRecording",
         "name": "現場監督",
-        "url": "https://t-act-official.site/#discography",
+        "url": "https://t-act-official.site/#releases",
         "byArtist": {
           "@id": "https://t-act-official.site/#artist"
         }
@@ -116,7 +116,7 @@
       {
         "@type": "MusicRecording",
         "name": "再定義",
-        "url": "https://t-act-official.site/#discography",
+        "url": "https://t-act-official.site/#releases",
         "byArtist": {
           "@id": "https://t-act-official.site/#artist"
         }
@@ -124,7 +124,7 @@
       {
         "@type": "MusicRecording",
         "name": "残置",
-        "url": "https://t-act-official.site/#discography",
+        "url": "https://t-act-official.site/#releases",
         "byArtist": {
           "@id": "https://t-act-official.site/#artist"
         }
@@ -132,7 +132,7 @@
       {
         "@type": "MusicRecording",
         "name": "いいね",
-        "url": "https://t-act-official.site/#discography",
+        "url": "https://t-act-official.site/#releases",
         "byArtist": {
           "@id": "https://t-act-official.site/#artist"
         }
@@ -140,7 +140,7 @@
       {
         "@type": "MusicRecording",
         "name": "蟹穴",
-        "url": "https://t-act-official.site/#discography",
+        "url": "https://t-act-official.site/#releases",
         "byArtist": {
           "@id": "https://t-act-official.site/#artist"
         }
@@ -148,7 +148,7 @@
       {
         "@type": "MusicRecording",
         "name": "Baton",
-        "url": "https://t-act-official.site/#discography",
+        "url": "https://t-act-official.site/#releases",
         "byArtist": {
           "@id": "https://t-act-official.site/#artist"
         }
@@ -156,7 +156,7 @@
       {
         "@type": "MusicRecording",
         "name": "民意",
-        "url": "https://t-act-official.site/#discography",
+        "url": "https://t-act-official.site/#releases",
         "byArtist": {
           "@id": "https://t-act-official.site/#artist"
         }
@@ -164,7 +164,7 @@
       {
         "@type": "MusicRecording",
         "name": "Rain in Your Eyes",
-        "url": "https://t-act-official.site/#discography",
+        "url": "https://t-act-official.site/#releases",
         "byArtist": {
           "@id": "https://t-act-official.site/#artist"
         }
@@ -172,7 +172,7 @@
       {
         "@type": "MusicRecording",
         "name": "Sweet & Bitter",
-        "url": "https://t-act-official.site/#discography",
+        "url": "https://t-act-official.site/#releases",
         "byArtist": {
           "@id": "https://t-act-official.site/#artist"
         }
@@ -1111,16 +1111,6 @@
       text-shadow: 0 0 18px rgba(52,211,153,.18);
     }
 
-
-    .legacy-anchor {
-      position: relative;
-      top: calc(-1 * (var(--nav-h) + 18px));
-      display: block;
-      height: 0;
-      overflow: hidden;
-      visibility: hidden;
-    }
-
     .game-teaser-cta {
       display: inline-flex;
       align-items: center;
@@ -1306,12 +1296,13 @@
       </a>
 
       <div class="nav-links">
-        <a href="#schedule">NEWS</a>
-        <a href="#discography">DISCOGRAPHY</a>
+                <a href="#schedule">NEWS</a>
+        <a href="#releases">DISCOGRAPHY</a>
         <a href="#video">VIDEO</a>
         <a href="#game">GAME</a>
         <a href="#goods">GOODS</a>
         <a href="#profile">PROFILE</a>
+
 
         <div class="lang-switch" aria-label="言語切替">
           <a href="https://t-act-official.site/" class="current" aria-current="page">JP</a>
@@ -1370,13 +1361,13 @@
     <div class="manifesto-wrap">
       <p class="manifesto-kicker" id="manifesto-title">T-ACT / STATEMENT</p>
 
-      <div class="manifesto-body">
-        <p>記憶はやがて薄れ<br>不確かなものになる<br>だから音楽として残すだけ</p>
+  <div class="manifesto-body">
+  <p>記憶はやがて薄れ<br>不確かなものになる<br>だから音楽として残すだけ</p>
 
-        <p>音楽は成功や承認のためではない<br>現実の中で生まれた思考と瞬間の記録</p>
+  <p>音楽は成功や承認のためではない<br>現実の中で生まれた思考と瞬間の記録</p>
 
-        <p>だから大げさなものではない</p>
-      </div>
+  <p>だから大げさなものではない</p>
+</div>
     </div>
   </section>
 
@@ -1406,7 +1397,7 @@
             <div class="sched-date">2026-04-17</div>
             <div class="sched-main">
               <h3>Single「再定義」Now Streaming</h3>
-              <div class="sched-meta">各種サブスクにて配信中！</div>
+              <div class="sched-meta">各種サブスクにて配信中</div>
               <div class="chips">
                 <span class="chip">NEWS</span>
                 <span class="chip">RELEASE</span>
@@ -1430,8 +1421,7 @@
       </div>
     </section>
 
-    <section id="discography">
-      <span id="releases" class="legacy-anchor" aria-hidden="true"></span>
+    <section id="releases">
       <div class="section-inner">
 <div class="section-head" style="margin-top:44px;">
           <h2>DISCOGRAPHY</h2>
@@ -1748,133 +1738,5 @@
       </div>
     </div>
   </footer>
-
-  <script>
-    (() => {
-      "use strict";
-
-      const nav = document.querySelector(".topnav");
-      const hero = document.querySelector(".hero-inner");
-      const splash = document.getElementById("splash-screen");
-      const splashVideo = document.getElementById("splash-video");
-      const canvas = document.getElementById("mint-bg");
-      const ctx = canvas ? canvas.getContext("2d") : null;
-
-      const hideSplash = () => {
-        if (!splash || splash.classList.contains("is-hidden")) return;
-        splash.classList.add("is-hidden");
-        window.setTimeout(() => splash.remove(), 900);
-      };
-
-      if (splash) {
-        if (splashVideo) {
-          splashVideo.addEventListener("ended", hideSplash, { once: true });
-          splashVideo.addEventListener("error", hideSplash, { once: true });
-          splashVideo.play().catch(() => hideSplash());
-        }
-        window.setTimeout(hideSplash, 3200);
-        splash.addEventListener("click", hideSplash);
-      }
-
-      const onScroll = () => {
-        const y = window.scrollY || 0;
-
-        if (nav) {
-          nav.classList.toggle("scrolled", y > 24);
-        }
-
-        if (hero) {
-          const progress = Math.min(y / 420, 1);
-          hero.style.opacity = String(1 - progress * 0.34);
-          hero.style.transform = `translateY(${progress * 18}px)`;
-          hero.style.filter = `blur(${progress * 1.2}px)`;
-        }
-      };
-
-      window.addEventListener("scroll", onScroll, { passive: true });
-      onScroll();
-
-      document.querySelectorAll(".yt-lite").forEach((button) => {
-        button.addEventListener("click", () => {
-          const id = button.getAttribute("data-youtube-id");
-          if (!id) return;
-
-          const wrap = document.createElement("div");
-          wrap.className = "yt-frame-wrap";
-          wrap.innerHTML = `
-            <iframe
-              src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?autoplay=1&rel=0"
-              title="YouTube video player"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-              loading="lazy"></iframe>
-          `;
-          button.replaceWith(wrap);
-        });
-      });
-
-      if (canvas && ctx) {
-        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-        let w = 0;
-        let h = 0;
-        let particles = [];
-        let raf = 0;
-
-        const resize = () => {
-          const dpr = Math.min(window.devicePixelRatio || 1, 2);
-          w = window.innerWidth;
-          h = window.innerHeight;
-          canvas.width = Math.floor(w * dpr);
-          canvas.height = Math.floor(h * dpr);
-          canvas.style.width = `${w}px`;
-          canvas.style.height = `${h}px`;
-          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-          const count = Math.max(28, Math.min(90, Math.floor((w * h) / 18000)));
-          particles = Array.from({ length: count }, () => ({
-            x: Math.random() * w,
-            y: Math.random() * h,
-            r: 0.8 + Math.random() * 2.2,
-            vx: (Math.random() - 0.5) * 0.18,
-            vy: -0.08 - Math.random() * 0.22,
-            a: 0.10 + Math.random() * 0.28
-          }));
-        };
-
-        const draw = () => {
-          ctx.clearRect(0, 0, w, h);
-
-          for (const p of particles) {
-            p.x += p.vx;
-            p.y += p.vy;
-
-            if (p.y < -10) p.y = h + 10;
-            if (p.x < -10) p.x = w + 10;
-            if (p.x > w + 10) p.x = -10;
-
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(124, 242, 192, ${p.a})`;
-            ctx.fill();
-          }
-
-          if (!reduceMotion) raf = window.requestAnimationFrame(draw);
-        };
-
-        window.addEventListener("resize", resize, { passive: true });
-        resize();
-        draw();
-
-        document.addEventListener("visibilitychange", () => {
-          if (document.hidden) {
-            window.cancelAnimationFrame(raf);
-          } else if (!reduceMotion) {
-            draw();
-          }
-        });
-      }
-    })();
-  </script>
-
 </body>
 </html>
