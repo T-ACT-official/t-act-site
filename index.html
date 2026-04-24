@@ -606,16 +606,6 @@
       font-size: .97rem;
     }
 
-    .goods-grid,
-    .releases {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-      max-width: 1040px;
-      margin: 0 auto;
-      text-align: left;
-    }
-
     .goods-embed,
     .release,
     .surface-card {
@@ -1247,15 +1237,6 @@
         grid-template-columns: 1fr !important;
       }
 
-      #releases .profile-shell {
-        padding: 18px;
-      }
-
-      #releases .sched-links {
-        flex-direction: row;
-        align-items: center;
-      }
-
       .splash-media-wrap {
         width: calc(100vw - 24px);
         border-radius: 18px;
@@ -1382,7 +1363,6 @@
       <div class="nav-links">
         <a href="#game-feature">GAME</a>
         <a href="#schedule">NEWS</a>
-        <a href="#releases">RELEASES</a>
         <a href="#video">VIDEO</a>
         <a href="#goods">GOODS</a>
         <a href="#profile">PROFILE</a>
@@ -1523,101 +1503,7 @@
       </div>
     </section>
 
-    <section id="releases">
-      <div class="section-inner">
-        <div class="section-head">
-          <h2>LATEST RELEASE</h2>
-          <p class="section-note">現在のT-ACTを最も濃く映している最新作。</p>
-        </div>
-
-        <div class="profile-shell" style="max-width:1040px; text-align:left; margin-bottom:44px;">
-          <div class="profile-grid" style="grid-template-columns: minmax(260px, 360px) 1fr; align-items:start;">
-            <div class="release-cover" style="margin-bottom:0;">
-              <img src="genba-kantoku.jpg" alt="現場監督 ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200">
-            </div>
-
-            <div>
-              <div class="chips" style="margin-top:0; margin-bottom:12px;">
-                <span class="chip">LATEST</span>
-                <span class="chip">2026.05.15</span>
-                <span class="chip">Digital Single</span>
-              </div>
-
-              <h3 style="margin:0 0 12px; color:var(--mint); font-size:clamp(1.6rem, 3vw, 2.2rem); line-height:1.15;">現場監督</h3>
-
-              <p style="margin:0 0 10px; color:var(--text); font-size:1rem; line-height:1.9; font-weight:700;">
-                人気では測れない責任が、ここにはある。
-              </p>
-
-              <p style="margin:0 0 14px; color:var(--text-soft); font-size:1rem; line-height:1.9;">
-                ラッパーや表現者が職人であるように、人気がなくても、人手が足りなくても、現場を回し続ける者にも確かな格好よさがある。<br>
-                誰にも称賛されない朝や、数字にならない責任の重みを、T-ACTの視点で静かに刻んだ一作。
-              </p>
-
-              <p style="margin:0 0 18px; color:var(--muted); font-size:.92rem; line-height:1.85;">
-                目立つことより、崩さないこと。<br>
-                支える側の現実と美学を、そのまま音として残したリリース。
-              </p>
-
-              <div class="chips" style="margin-top:0; margin-bottom:14px;">
-                <span class="chip">Coming Soon</span>
-              </div>
-
-              <div class="sched-links" style="margin-top:0;">
-                <a href="#" aria-disabled="true" onclick="return false;">Apple Music</a>
-                <a href="#" aria-disabled="true" onclick="return false;">Spotify</a>
-                <a href="#" aria-disabled="true" onclick="return false;">LINE MUSIC</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="section-head">
-          <h2>PREVIOUS RELEASE</h2>
-          <p class="section-note">ひとつ前のリリース。</p>
-        </div>
-
-        <div class="profile-shell" style="max-width:1040px; text-align:left;">
-          <div class="profile-grid" style="grid-template-columns: minmax(260px, 360px) 1fr; align-items:start;">
-            <div class="release-cover" style="margin-bottom:0;">
-              <img src="redefine.jpg" alt="再定義 ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200">
-            </div>
-
-            <div>
-              <div class="chips" style="margin-top:0; margin-bottom:12px;">
-                <span class="chip">PREVIOUS</span>
-                <span class="chip">2026.04.17</span>
-                <span class="chip">Digital Single</span>
-              </div>
-
-              <h3 style="margin:0 0 12px; color:var(--mint); font-size:clamp(1.6rem, 3vw, 2.2rem); line-height:1.15;">再定義</h3>
-
-              <p style="margin:0 0 10px; color:var(--text); font-size:1rem; line-height:1.9; font-weight:700;">
-                余剰がある時点で、設計は破綻している。
-              </p>
-
-              <p style="margin:0 0 14px; color:var(--text-soft); font-size:1rem; line-height:1.9;">
-                社会的に必要とされる責任を果たした上で、それでもなお残る表現の意味を問い直す一作。<br>
-                余剰という言葉が成立してしまう構造そのものへ、静かに切り込む。
-              </p>
-
-              <p style="margin:0 0 18px; color:var(--muted); font-size:.92rem; line-height:1.85;">
-                必要と不要、価値と余白、その境界を再び引き直すためのリリース。
-              </p>
-
-              <div class="chips" style="margin-top:0; margin-bottom:14px;">
-                <span class="chip">Now Streaming</span>
-              </div>
-
-              <div class="sched-links" style="margin-top:0;">
-                <a href="https://music.apple.com/jp/album/%E5%86%8D%E5%AE%9A%E7%BE%A9-single/1889746636?l=en-US" target="_blank" rel="noreferrer noopener">Apple Music</a>
-                <a href="https://open.spotify.com/intl-ja/album/4OImPPky9GDXf5ziExUNYt" target="_blank" rel="noreferrer noopener">Spotify</a>
-                <a href="https://music.line.me/webapp/album/mb00000000052a6a84" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
+  
         <div class="section-head" style="margin-top:44px;">
           <h2>DISCOGRAPHY</h2>
           <p class="section-note">作品ごとの温度、余白、視点を残したアーカイブ。</p>
