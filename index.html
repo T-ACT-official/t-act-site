@@ -1125,64 +1125,7 @@
       letter-spacing: .10em;
       text-transform: uppercase;
     }
-
-    .game-modal {
-      position: fixed;
-      inset: 0;
-      z-index: 80;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 18px;
-      background: rgba(3, 6, 8, .82);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-    }
-
-    .game-modal.is-open {
-      display: flex;
-    }
-
-    .game-modal-dialog {
-      position: relative;
-      width: min(1280px, 96vw);
-      height: min(90vh, 760px);
-      border-radius: 22px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,.14);
-      box-shadow: 0 24px 80px rgba(0,0,0,.48);
-      background: #05070d;
-    }
-
-    .game-modal-close {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      z-index: 2;
-      min-width: 44px;
-      min-height: 44px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.16);
-      background: rgba(7,10,11,.72);
-      color: var(--text);
-      cursor: pointer;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-    }
-
-    .game-modal-close:hover {
-      background: rgba(255,255,255,.10);
-    }
-
-    .game-modal-frame {
-      display: block;
-      width: 100%;
-      height: 100%;
-      border: 0;
-      background: #000;
-    }
-
-    @media (max-width: 920px) {
+@media (max-width: 920px) {
       .profile-grid {
         grid-template-columns: 1fr;
       }
@@ -1321,17 +1264,7 @@
       .game-teaser-overlay h3 {
         font-size: clamp(1.7rem, 8vw, 2.5rem);
       }
-
-      .game-modal {
-        padding: 10px;
-      }
-
-      .game-modal-dialog {
-        width: 100vw;
-        height: 88vh;
-        border-radius: 16px;
-      }
-    }
+}
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
@@ -1364,7 +1297,7 @@
 
       <div class="nav-links">
         <a href="#schedule">NEWS</a>
-        <a href="#releases">DISCOGRAPHY</a>
+        <a href="#discography">DISCOGRAPHY</a>
         <a href="#video">VIDEO</a>
         <a href="#game">GAME</a>
         <a href="#goods">GOODS</a>
@@ -1430,7 +1363,7 @@
       <div class="manifesto-body">
         <p>記憶はやがて薄れ<br>不確かなものになる<br>だから音楽として残すだけ</p>
 
-        <p>音楽は成功や承認のためではない<br>現実の中で生まれた思考と瞬間の記録</p>
+        <p>音楽は成功や承認のためではない<br>現実の中で生まれた思考と瞬間の記録</p>だから大げさなものではない</p>
     </div>
   </section>
 
@@ -1692,7 +1625,7 @@
           <p class="section-note">STRUCTURE RUN</p>
         </div>
 
-        <a href="structure-run.html" aria-label="STRUCTURE RUN を開く">
+        <a href="structure-run.html" class="game-teaser" aria-label="STRUCTURE RUN を開く">
           <div class="game-teaser-media">
             <img src="structure-run-cover.jpg" alt="STRUCTURE RUN プレビュー画像" loading="lazy" decoding="async">
             <div class="game-teaser-overlay">
@@ -1801,226 +1734,5 @@
       </div>
     </div>
   </footer>
-
-  <div class="game-modal" id="gameModal" aria-hidden="true">
-    <div class="game-modal-dialog" role="dialog" aria-modal="true" aria-label="STRUCTURE RUN">
-      <button class="game-modal-close" id="closeGameModal" type="button" aria-label="ゲームを閉じる">✕</button>
-      <iframe
-        class="game-modal-frame"
-        id="gameModalFrame"
-        src=""
-        data-src="structure-run.html"
-        title="STRUCTURE RUN"
-        loading="lazy"
-        allow="autoplay">
-      </iframe>
-    </div>
-  </div>
-
-  <script>
-  (() => {
-    const splash = document.getElementById('splash-screen');
-    const video = document.getElementById('splash-video');
-    const hero = document.querySelector('.hero-inner');
-
-    if (splash) {
-      let closed = false;
-      const closeSplash = () => {
-        if (closed) return;
-        closed = true;
-        splash.classList.add('is-hidden');
-      };
-
-      if (video) {
-        video.addEventListener('ended', closeSplash);
-        video.addEventListener('error', closeSplash);
-      }
-
-      window.setTimeout(closeSplash, 7000);
-    }
-
-    if (hero) {
-      const onScroll = () => {
-        const y = Math.min(window.scrollY, 220);
-        const ratio = y / 220;
-        hero.style.opacity = String(1 - ratio * 0.12);
-        hero.style.transform = `translateY(${y * 0.04}px)`;
-        hero.style.filter = `blur(${ratio * 0.35}px)`;
-      };
-      onScroll();
-      window.addEventListener('scroll', onScroll, { passive: true });
-    }
-  })();
-  </script>
-
-  <script>
-  (() => {
-    const canvas = document.getElementById('mint-bg');
-    const ctx = canvas?.getContext('2d');
-
-    if (!canvas || !ctx) return;
-
-    let particles = [];
-    let width = 0;
-    let height = 0;
-    let scrollOffset = 0;
-
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    if (prefersReduced) {
-      canvas.style.display = 'none';
-      return;
-    }
-
-    function isMobileView() {
-      return window.innerWidth <= 768;
-    }
-
-    function spawn() {
-      return {
-        x: Math.random() * width,
-        y: Math.random() * height,
-        r: 0.8 + Math.random() * 2.2,
-        vy: 0.12 + Math.random() * 0.55,
-        vx: (Math.random() - 0.5) * 0.28,
-        a: 0.18 + Math.random() * 0.28,
-        tw: Math.random() * Math.PI * 2
-      };
-    }
-
-    function resize() {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-      const density = Math.floor((width * height) / 32000);
-      const mobile = isMobileView();
-      const count = mobile
-        ? Math.max(18, Math.min(36, Math.floor(density * 0.35)))
-        : Math.max(34, Math.min(96, density));
-      particles = Array.from({ length: count }, spawn);
-    }
-
-    function step() {
-      const mobile = isMobileView();
-      ctx.clearRect(0, 0, width, height);
-
-      for (const p of particles) {
-        p.tw += 0.01;
-        p.x += p.vx + Math.sin(p.tw) * 0.11;
-        p.y += p.vy;
-
-        if (p.y - p.r > height) {
-          p.y = -p.r;
-          p.x = Math.random() * width;
-        }
-
-        const parallaxY = p.y + scrollOffset * (0.08 + p.r * 0.02);
-        const targetX = width / 2;
-        const targetY = height * 0.28;
-        const attract = Math.min(scrollOffset / 1200, 0.02);
-
-        p.x += (targetX - p.x) * attract;
-        const drawY = parallaxY + (targetY - parallaxY) * attract;
-
-        ctx.beginPath();
-        ctx.arc(p.x, drawY, p.r, 0, Math.PI * 2);
-        const mobileAlpha = mobile ? p.a * 0.9 : p.a;
-        ctx.fillStyle = `rgba(52,211,153,${mobileAlpha})`;
-        ctx.shadowColor = mobile ? 'rgba(52,211,153,0.10)' : 'rgba(52,211,153,0.22)';
-        ctx.shadowBlur = mobile ? 2 : 5;
-        ctx.fill();
-      }
-
-      ctx.shadowBlur = 0;
-      requestAnimationFrame(step);
-    }
-
-    window.addEventListener('resize', resize, { passive: true });
-    window.addEventListener('scroll', () => {
-      scrollOffset = window.scrollY;
-    }, { passive: true });
-
-    resize();
-    requestAnimationFrame(step);
-  })();
-  </script>
-
-  <script>
-  (() => {
-    const buttons = document.querySelectorAll('.yt-lite');
-
-    buttons.forEach((button) => {
-      button.addEventListener('click', () => {
-        const videoId = button.dataset.youtubeId;
-        if (!videoId) return;
-
-        const wrap = document.createElement('div');
-        wrap.className = 'yt-frame-wrap';
-
-        const iframe = document.createElement('iframe');
-        iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0`;
-        iframe.title = 'YouTube video player';
-        iframe.loading = 'lazy';
-        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-        iframe.allowFullscreen = true;
-
-        wrap.appendChild(iframe);
-        button.replaceWith(wrap);
-      }, { once: true });
-    });
-  })();
-  </script>
-
-  <script>
-  (() => {
-    const nav = document.querySelector('.topnav');
-    if (!nav) return;
-
-    const onScroll = () => {
-      if (window.scrollY > 60) {
-        nav.classList.add('scrolled');
-      } else {
-        nav.classList.remove('scrolled');
-      }
-    };
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-  })();
-  </script>
-
-    if (!openBtn || !modal || !closeBtn || !frame) return;
-
-    const openModal = (event) => {
-      event.preventDefault();
-      if (!frame.src) {
-        frame.src = frame.dataset.src || 'structure-run.html';
-      }
-      modal.classList.add('is-open');
-      modal.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-    };
-
-    const closeModal = () => {
-      modal.classList.remove('is-open');
-      modal.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-    };
-
-    openBtn.addEventListener('click', openModal);
-    closeBtn.addEventListener('click', closeModal);
-
-    modal.addEventListener('click', (event) => {
-      if (event.target === modal) {
-        closeModal();
-      }
-    });
-
-    window.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && modal.classList.contains('is-open')) {
-        closeModal();
-      }
-    });
-  })();
-  </script>
 </body>
 </html>
