@@ -114,7 +114,7 @@
     }
 
     .card {
-      width: min(88vw, 560px);
+      width: min(88vw, 540px);
       padding: 28px;
       border-radius: 24px;
       background: rgba(7, 10, 18, 0.70);
@@ -148,37 +148,6 @@
     .danger {
       color: #bda7ff;
       text-shadow: 0 0 10px rgba(189,167,255,0.5);
-    }
-
-    .hit-view {
-      margin: 18px auto 14px;
-      padding: 16px 18px;
-      border-radius: 18px;
-      border: 1px solid rgba(189,167,255,.18);
-      background:
-        radial-gradient(circle at top, rgba(189,167,255,.10), transparent 55%),
-        rgba(255,255,255,.035);
-      box-shadow: inset 0 0 20px rgba(255,255,255,.025);
-    }
-
-    .hit-label {
-      margin: 0 0 8px;
-      font-family: "Yu Mincho", "Hiragino Mincho ProN", "HGS明朝E", "MS Mincho", serif;
-      font-size: clamp(20px, 3vw, 27px);
-      line-height: 1.55;
-      letter-spacing: .08em;
-      color: #d8c9ff;
-      text-shadow: 0 0 14px rgba(189,167,255,.42);
-    }
-
-    .tact-opinion {
-      margin: 0;
-      font-family: "Yu Mincho", "Hiragino Mincho ProN", "HGS明朝E", "MS Mincho", serif;
-      font-size: clamp(19px, 2.7vw, 25px);
-      line-height: 1.9;
-      letter-spacing: .035em;
-      color: rgba(255,255,255,.94);
-      text-shadow: 0 0 12px rgba(121,255,240,.16);
     }
 
     button {
@@ -234,71 +203,6 @@
       line-height: 1;
     }
 
-    #rankingPanel {
-      position: absolute;
-      right: 18px;
-      bottom: 18px;
-      z-index: 2;
-      width: min(320px, 42vw);
-      padding: 14px 16px;
-      border: 1px solid rgba(120,255,240,0.12);
-      background: rgba(8,12,22,0.45);
-      backdrop-filter: blur(10px);
-      border-radius: 16px;
-      box-shadow: 0 0 18px rgba(0,255,220,0.08);
-    }
-
-    .ranking-title {
-      font-size: 11px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: rgba(210,250,255,0.7);
-      margin-bottom: 8px;
-    }
-
-    #rankingList {
-      font-size: 14px;
-      line-height: 1.8;
-      color: rgba(232,250,255,0.88);
-      min-height: 24px;
-    }
-
-    .name-input {
-      width: 120px;
-      padding: 12px 14px;
-      border-radius: 12px;
-      border: 1px solid rgba(120,255,240,.18);
-      background: rgba(0,0,0,.28);
-      color: #eafcff;
-      text-align: center;
-      font-size: 20px;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      outline: none;
-    }
-
-    .name-input:focus {
-      border-color: rgba(121,255,240,.48);
-      box-shadow: 0 0 18px rgba(121,255,240,.16);
-    }
-
-    .top-player-label {
-      font-size: 12px;
-      opacity: .6;
-      letter-spacing: .2em;
-      margin-bottom: 0;
-    }
-
-    .top-player-name {
-      margin-top: 4px;
-      font-size: 24px;
-      letter-spacing: .18em;
-    }
-
-    @media (max-width: 900px) {
-      #rankingPanel { width: min(260px, 48vw); }
-    }
-
     @media (max-width: 768px) {
       .hud {
         top: 10px;
@@ -314,16 +218,6 @@
       .control-btn {
         min-width: 78px;
         padding: 14px 18px;
-      }
-      #rankingPanel {
-        top: 74px;
-        right: 10px;
-        bottom: auto;
-        width: min(240px, 46vw);
-      }
-      .card {
-        width: min(92vw, 560px);
-        padding: 22px;
       }
     }
   </style>
@@ -342,21 +236,11 @@
           <div class="label">status</div>
           <div class="value" id="phase">STANDBY</div>
         </div>
-        <div class="panel">
-          <div class="label">rank</div>
-          <div class="value" id="liveRank">--</div>
-        </div>
       </div>
     </div>
 
     <div class="overlay" id="overlay">
       <div class="card" id="card"></div>
-    </div>
-
-    <div id="rankingPanel">
-      <div class="ranking-title">award board</div>
-      <div style="font-size:12px;opacity:.72;margin-bottom:8px;">PLAY中も表示</div>
-      <div id="rankingList"></div>
     </div>
 
     <div class="footer-note">T-ACT WORLD / REALITY / STRUCTURE / RECORD</div>
@@ -372,12 +256,11 @@
     const ctx = canvas.getContext('2d');
     const scoreEl = document.getElementById('score');
     const phaseEl = document.getElementById('phase');
-    const liveRankEl = document.getElementById('liveRank');
     const overlay = document.getElementById('overlay');
     const card = document.getElementById('card');
     const btnLeft = document.getElementById('btnLeft');
     const btnRight = document.getElementById('btnRight');
-    const rankingList = document.getElementById('rankingList');
+
     const bgm = new Audio('genbakantoku_bgm.mp3');
     bgm.loop = true;
     bgm.preload = 'auto';
@@ -385,9 +268,9 @@
 
     const W = canvas.width;
     const H = canvas.height;
-    const OFFICIAL_URL = 'https://t-act-official.site/';
 
     const WORDS = ['ノイズ', '評価', '偏見', '流行', '承認', '供給過多', '幻想', '数字', '比較', '期待'];
+
     const COMMENT_MAP = {
       'ノイズ': '余計な情報に埋もれたな。取捨選択が甘い。',
       '評価': '他人の物差しに引っかかったな。自分で測れ。',
@@ -401,38 +284,7 @@
       '期待': '他人の期待に乗ったな。自分で決めろ。'
     };
 
-    const TACT_VIEW_MAP = {
-      'ノイズ': '情報を削ぎ落とせ。選択は生産だ。',
-      '評価': '評価は他人の都合だ。基準は自分で作れ。',
-      '偏見': '固定観念は思考停止の入口だ。',
-      '流行': '流行に乗るな。構造を読め。',
-      '承認': '承認は依存だ。自立しろ。',
-      '供給過多': '量で勝つな。設計で勝て。',
-      '幻想': '幻想は逃げだ。現実で戦え。',
-      '数字': '数字は結果であって目的じゃない。',
-      '比較': '比較した時点で軸を失っている。',
-      '期待': '他人の期待は責任を奪う。'
-    };
-
-    const INITIAL_RANKING = [
-      { name: 'T-ACT', score: 8512 },
-      { name: 'VOID', score: 7430 },
-      { name: 'GENBA', score: 6890 },
-      { name: 'NOISE', score: 6320 },
-      { name: 'REX', score: 5900 },
-      { name: 'ZERO', score: 5520 },
-      { name: 'ALPHA', score: 5110 },
-      { name: 'MINT', score: 4760 },
-      { name: 'BUILD', score: 4410 },
-      { name: 'LOG', score: 3980 }
-    ];
-
-    const RANKING_KEY = 'tactStructureRunRanking';
     const BEST_KEY = 'tactStructureRunBest';
-    const PLAYER_NAME_KEY = 'tactStructureRunPlayerName';
-    const MAX_RANKING = 10;
-    const NAME_PATTERN = /^[A-Z0-9._-]{1,6}$/;
-
     const input = { left: false, right: false };
 
     let lastHitWord = '';
@@ -446,7 +298,6 @@
     let obstacles = [];
     let trails = [];
     let spawnTimer = 0;
-    let crownTimer = 0;
     let ending = false;
 
     const player = {
@@ -458,79 +309,6 @@
       glow: 0,
       alive: true,
     };
-
-    function sanitizeName(value) {
-      return String(value || '').toUpperCase().replace(/[^A-Z0-9._-]/g, '').slice(0, 6);
-    }
-
-    function normalizeRankingList(list) {
-      const map = new Map();
-
-      for (const item of list) {
-        if (!item || !NAME_PATTERN.test(item.name) || !Number.isFinite(item.score)) continue;
-        const existing = map.get(item.name);
-        if (!existing || item.score > existing.score) {
-          map.set(item.name, { name: item.name, score: item.score });
-        }
-      }
-
-      return Array.from(map.values())
-        .sort((a, b) => b.score - a.score)
-        .slice(0, MAX_RANKING);
-    }
-
-    function seedInitialRankingIfNeeded() {
-      try {
-        const raw = localStorage.getItem(RANKING_KEY);
-        if (!raw) {
-          localStorage.setItem(RANKING_KEY, JSON.stringify(INITIAL_RANKING));
-          return;
-        }
-
-        const parsed = JSON.parse(raw);
-        if (!Array.isArray(parsed) || parsed.length === 0) {
-          localStorage.setItem(RANKING_KEY, JSON.stringify(INITIAL_RANKING));
-          return;
-        }
-
-        const merged = normalizeRankingList([...parsed, ...INITIAL_RANKING]);
-        localStorage.setItem(RANKING_KEY, JSON.stringify(merged));
-      } catch {
-        localStorage.setItem(RANKING_KEY, JSON.stringify(INITIAL_RANKING));
-      }
-    }
-
-    function loadRanking() {
-      try {
-        const parsed = JSON.parse(localStorage.getItem(RANKING_KEY) || '[]');
-        if (!Array.isArray(parsed)) return [];
-        return parsed.filter((item) => NAME_PATTERN.test(item.name) && Number.isFinite(item.score));
-      } catch {
-        return [];
-      }
-    }
-
-    function saveRanking(list) {
-      localStorage.setItem(RANKING_KEY, JSON.stringify(normalizeRankingList(list)));
-    }
-
-    function getRanking() {
-      return normalizeRankingList(loadRanking());
-    }
-
-    function getStoredPlayerName() {
-      return sanitizeName(localStorage.getItem(PLAYER_NAME_KEY) || '');
-    }
-
-    function setStoredPlayerName(name) {
-      const clean = sanitizeName(name);
-      if (clean) localStorage.setItem(PLAYER_NAME_KEY, clean);
-    }
-
-    function getTopPlayerName() {
-      const ranking = getRanking();
-      return ranking.length ? ranking[0].name : '----';
-    }
 
     function escapeHtml(value) {
       return String(value)
@@ -548,128 +326,21 @@
     function titleCardHtml() {
       return [
         '<h1>T-ACT // STRUCTURE RUN</h1>',
-        '<p class="top-player-label">TOP PLAYER</p>',
-        `<p class="accent top-player-name" id="champName">${escapeHtml(getTopPlayerName())}</p>`,
         '<p><span class="danger">構造を抜けろ。</span></p>',
         '<p>都市、ノイズ、評価、供給過多。<br><span class="accent">左右ボタン / マウス左右クリック / キーボード</span></p>',
         '<button id="startBtn">Enter Structure</button>'
       ].join('');
     }
 
-    function awardStoredHtml(name, rank) {
-      if (rank === 1) {
-        return [
-          '<h1 style="color:#ffd54a;text-shadow:0 0 20px rgba(255,213,74,.6);">1ST PLACE</h1>',
-          `<p><span class="accent">${escapeHtml(name)}</span></p>`,
-          '<p>頂点を更新した。</p>',
-          '<button id="restartBtn">Re-Enter</button>'
-        ].join('');
-      }
+    function gameOverHtml(hitLabel, comment) {
       return [
-        '<h1>AWARD STORED</h1>',
-        `<p><span class="accent">${escapeHtml(name)}</span> // RANK ${String(rank).padStart(2, '0')}</p>`,
-        '<p>記録を登録した。</p>',
-        '<button id="restartBtn">Re-Enter</button>'
-      ].join('');
-    }
-
-    function gameOverHtml(hitLabel, comment, rankPos, qualifies) {
-      const tactOpinion = TACT_VIEW_MAP[hitLabel] || '構造を見ろ。';
-
-      const parts = [
         '<h1>LOG ENDED</h1>',
         `<p>今回の記録: <span class="accent">${String(score).padStart(6, '0')}</span></p>`,
         `<p>最高記録: <span class="danger">${String(best).padStart(6, '0')}</span></p>`,
-        '<div class="hit-view">',
-        `<p class="hit-label">衝突対象：${escapeHtml(hitLabel)}</p>`,
-        `<p class="tact-opinion">${escapeHtml(tactOpinion)}</p>`,
-        '</div>',
-        `<p>${escapeHtml(comment)}</p>`
-      ];
-
-      if (qualifies) {
-        parts.push(
-          `<p><span class="accent">AWARD ENTRY // RANK ${String(rankPos).padStart(2, '0')}</span></p>`,
-          '<div style="display:flex;gap:10px;justify-content:center;align-items:center;margin-top:10px;flex-wrap:wrap;">',
-          '<input id="nameInput" class="name-input" type="text" maxlength="6" inputmode="latin" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="NAME">',
-          '<button id="saveScoreBtn">Save</button>',
-          '</div>',
-          '<p style="font-size:12px;opacity:.75;">6文字まで / 英字・数字・ . _ - のみ</p>'
-        );
-      } else {
-        parts.push('<p>AWARD OUT</p>');
-      }
-
-      parts.push(
-        '<div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:16px;">',
-        '<button id="restartBtn">Re-Enter</button>',
-        '<button id="officialBtn" type="button">Enter T-ACT World</button>',
-        '</div>'
-      );
-
-      return parts.join('');
-    }
-
-    function renderRanking(highlightName = '', highlightScore = null) {
-      const ranking = getRanking();
-      if (!ranking.length) {
-        rankingList.innerHTML = '<div style="opacity:.7;">NO ENTRY</div>';
-      } else {
-        rankingList.innerHTML = ranking.map((item, index) => {
-          const highlight = item.name === highlightName && item.score === highlightScore;
-          let medalStyle = '';
-          if (index === 0) medalStyle = 'color:#ffd54a;text-shadow:0 0 10px rgba(255,213,74,.35);';
-          if (index === 1) medalStyle = 'color:#d9e4f2;text-shadow:0 0 10px rgba(217,228,242,.25);';
-          if (index === 2) medalStyle = 'color:#d49a6a;text-shadow:0 0 10px rgba(212,154,106,.25);';
-          const style = highlight
-            ? `${medalStyle}outline:1px solid rgba(121,255,240,.18);border-radius:8px;padding:2px 6px;background:rgba(121,255,240,.06);`
-            : medalStyle;
-          return `<div style="display:flex;justify-content:space-between;gap:12px;${style}"><span>${String(index + 1).padStart(2, '0')}.</span><span style="flex:1;text-align:center;letter-spacing:.18em;">${escapeHtml(item.name)}</span><span>${String(item.score).padStart(6, '0')}</span></div>`;
-        }).join('');
-      }
-
-      const champ = document.getElementById('champName');
-      if (champ) champ.textContent = getTopPlayerName();
-    }
-
-    function getRankPosition(scoreValue) {
-      const ranking = getRanking();
-      const position = ranking.findIndex((item) => scoreValue > item.score);
-      if (position !== -1) return position + 1;
-      if (ranking.length < MAX_RANKING) return ranking.length + 1;
-      return null;
-    }
-
-    function getLiveRank(scoreValue) {
-      const position = getRankPosition(scoreValue);
-      return position === null ? 'OUT' : String(position).padStart(2, '0');
-    }
-
-    function submitScore(name, scoreValue) {
-      const cleanName = sanitizeName(name);
-      if (!NAME_PATTERN.test(cleanName)) {
-        return { ok: false, reason: 'invalid_name' };
-      }
-
-      const currentRanking = getRanking();
-      const existing = currentRanking.find((item) => item.name === cleanName);
-      const bestScoreForName = existing ? Math.max(existing.score, scoreValue) : scoreValue;
-      const merged = currentRanking.filter((item) => item.name !== cleanName);
-      merged.push({ name: cleanName, score: bestScoreForName });
-      merged.sort((a, b) => b.score - a.score);
-
-      const trimmed = normalizeRankingList(merged);
-      saveRanking(trimmed);
-      setStoredPlayerName(cleanName);
-      renderRanking(cleanName, bestScoreForName);
-
-      return {
-        ok: true,
-        rank: trimmed.findIndex((item) => item.name === cleanName) + 1,
-        name: cleanName,
-        score: bestScoreForName,
-        updated: !existing || bestScoreForName > existing.score,
-      };
+        `<p>衝突対象: <span class="danger">${escapeHtml(hitLabel)}</span></p>`,
+        `<p>${escapeHtml(comment)}</p>`,
+        '<button id="restartBtn">Re-Enter</button>'
+      ].join('');
     }
 
     function difficulty() {
@@ -688,7 +359,6 @@
     function updateHud() {
       scoreEl.textContent = String(score).padStart(6, '0');
       phaseEl.textContent = gameState === 'running' ? phaseName() : 'STANDBY';
-      liveRankEl.textContent = gameState === 'running' ? getLiveRank(score) : '--';
     }
 
     function emitParticles(x, y, color, count, spread = 1) {
@@ -711,22 +381,12 @@
       if (restartBtn) restartBtn.addEventListener('click', resetGame, { once: true });
     }
 
-    function attachOfficialHandler() {
-      const officialBtn = document.getElementById('officialBtn');
-      if (officialBtn) {
-        officialBtn.addEventListener('click', () => {
-          window.location.href = OFFICIAL_URL;
-        }, { once: true });
-      }
-    }
-
     function showTitleScreen() {
       ending = false;
       pauseBgm();
       setCardHtml(titleCardHtml());
       overlay.style.display = 'flex';
       document.getElementById('startBtn').addEventListener('click', resetGame, { once: true });
-      renderRanking();
       updateHud();
     }
 
@@ -771,18 +431,6 @@
       updateHud();
     }
 
-    function showAwardStored(name, rank) {
-      pauseBgm();
-      if (rank === 1) {
-        flash = 2;
-        crownTimer = 180;
-        emitParticles(W / 2, H / 2, '255,215,0', 120, 2.5);
-      }
-      setCardHtml(awardStoredHtml(name, rank));
-      overlay.style.display = 'flex';
-      attachRestartHandler();
-    }
-
     function playCrashTransition(callback) {
       canvas.classList.add('crash-zoom');
 
@@ -801,38 +449,10 @@
       }, 650);
     }
 
-    function renderGameOverScreen(hitLabel, comment, rankPos, qualifies) {
-      setCardHtml(gameOverHtml(hitLabel, comment, rankPos, qualifies));
+    function renderGameOverScreen(hitLabel, comment) {
+      setCardHtml(gameOverHtml(hitLabel, comment));
       overlay.style.display = 'flex';
       attachRestartHandler();
-      attachOfficialHandler();
-
-      if (qualifies) {
-        const nameInput = document.getElementById('nameInput');
-        const saveScoreBtn = document.getElementById('saveScoreBtn');
-        nameInput.value = getStoredPlayerName();
-
-        nameInput.addEventListener('input', () => {
-          nameInput.value = sanitizeName(nameInput.value);
-        });
-
-        const saveHandler = () => {
-          const result = submitScore(nameInput.value, score);
-          if (!result.ok) {
-            nameInput.value = sanitizeName(nameInput.value);
-            nameInput.focus();
-            return;
-          }
-          showAwardStored(result.name, result.rank);
-        };
-
-        saveScoreBtn.addEventListener('click', saveHandler, { once: true });
-        nameInput.addEventListener('keydown', (event) => {
-          if (event.key === 'Enter') saveHandler();
-        });
-        setTimeout(() => nameInput.focus(), 30);
-      }
-
       updateHud();
     }
 
@@ -850,11 +470,9 @@
 
       const hitLabel = lastHitWord || '構造';
       const comment = COMMENT_MAP[hitLabel] || '構造に負けたな。';
-      const rankPos = getRankPosition(score);
-      const qualifies = rankPos !== null;
 
       playCrashTransition(() => {
-        renderGameOverScreen(hitLabel, comment, rankPos, qualifies);
+        renderGameOverScreen(hitLabel, comment);
       });
     }
 
@@ -938,7 +556,6 @@
     }
 
     function update() {
-      if (crownTimer > 0) crownTimer -= 1;
       if (gameState !== 'running') return;
 
       frame += 1;
@@ -1014,11 +631,6 @@
       g.addColorStop(1, '#030407');
       ctx.fillStyle = g;
       ctx.fillRect(0, 0, W, H);
-
-      if (crownTimer > 0) {
-        ctx.fillStyle = 'rgba(255,215,0,0.08)';
-        ctx.fillRect(0, 0, W, H);
-      }
 
       ctx.fillStyle = 'rgba(255,255,255,0.02)';
       for (let i = 0; i < 80; i++) {
@@ -1147,44 +759,12 @@
       ctx.restore();
     }
 
-    function runSelfChecks() {
-      console.assert(Array.isArray(WORDS) && WORDS.length > 0, 'WORDS should be a non-empty array');
-      console.assert(typeof COMMENT_MAP['評価'] === 'string', 'COMMENT_MAP should include known labels');
-      console.assert(sanitizeName('a1b$cd') === 'A1BCD', 'sanitizeName should keep allowed letters and digits');
-      console.assert(sanitizeName('abCD12-._') === 'ABCD12', 'sanitizeName should cap at six characters');
-      console.assert(NAME_PATTERN.test('TACT-1') === true, 'NAME_PATTERN should allow up to six chars including dash');
-      console.assert(NAME_PATTERN.test('AA@@') === false, 'NAME_PATTERN should reject unsupported symbols');
-      console.assert(titleCardHtml().includes('TOP PLAYER'), 'title card html should render');
-      console.assert(awardStoredHtml('TACT', 2).includes('AWARD STORED'), 'award stored html should render');
-      console.assert(gameOverHtml('評価', 'test', 1, true).includes('saveScoreBtn'), 'game over html should include save button when qualified');
-      console.assert(gameOverHtml('評価', 'test', 1, true).includes('officialBtn'), 'game over html should include official site button');
-      console.assert(gameOverHtml('評価', 'test', 1, true).includes('hit-view'), 'game over html should include T-ACT view block');
-      console.assert(typeof phaseName() === 'string', 'phaseName should return a string');
-      console.assert(getRankPosition(999999) === 1 || getRankPosition(999999) !== null, 'getRankPosition should return a valid position for large score');
-      console.assert(typeof getLiveRank(500) === 'string', 'getLiveRank should return a display string');
-      console.assert(typeof playBgm === 'function' && typeof stopBgm === 'function', 'BGM control functions should exist');
-
-      const before = getRanking().length;
-      const valid = submitScore('T-ACT', 1234);
-      console.assert(valid.ok === true, 'submitScore should accept up to 6 allowed chars');
-      const improved = submitScore('T-ACT', 2222);
-      console.assert(improved.ok === true && improved.score === 8512, 'same name should keep highest score');
-      const invalid = submitScore('T3!@@', 999);
-      console.assert(invalid.ok === false, 'submitScore should reject invalid names');
-      const after = getRanking().length;
-      console.assert(after >= before, 'ranking length should not shrink after valid submit');
-      console.assert(getTopPlayerName().length >= 1, 'top player name should be available after test submit');
-    }
-
     function loop() {
       update();
       render();
       requestAnimationFrame(loop);
     }
 
-    seedInitialRankingIfNeeded();
-    runSelfChecks();
-    renderRanking();
     showTitleScreen();
     loop();
   </script>
