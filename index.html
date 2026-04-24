@@ -1288,6 +1288,65 @@
     </div>
   </div>
 
+    <script>
+  (() => {
+    const splash = document.getElementById('splash-screen');
+    const video = document.getElementById('splash-video');
+    const hero = document.querySelector('.hero-inner');
+
+    if (splash) {
+      let closed = false;
+
+      const closeSplash = () => {
+        if (closed) return;
+        closed = true;
+
+        splash.classList.add('is-hidden');
+
+        window.setTimeout(() => {
+          if (splash && splash.parentNode) {
+            splash.parentNode.removeChild(splash);
+          }
+        }, 500);
+      };
+
+      if (video) {
+        video.muted = true;
+        video.playsInline = true;
+
+        video.addEventListener('ended', closeSplash, { once: true });
+        video.addEventListener('error', closeSplash, { once: true });
+        video.addEventListener('stalled', () => window.setTimeout(closeSplash, 800), { once: true });
+        video.addEventListener('suspend', () => window.setTimeout(closeSplash, 1200), { once: true });
+
+        const playPromise = video.play && video.play();
+        if (playPromise && typeof playPromise.catch === 'function') {
+          playPromise.catch(() => {
+            window.setTimeout(closeSplash, 800);
+          });
+        }
+      } else {
+        window.setTimeout(closeSplash, 300);
+      }
+
+      window.setTimeout(closeSplash, 3500);
+    }
+
+    if (hero) {
+      const onScroll = () => {
+        const y = Math.min(window.scrollY || 0, 220);
+        const ratio = y / 220;
+        hero.style.opacity = String(1 - ratio * 0.12);
+        hero.style.transform = `translateY(${y * 0.04}px)`;
+        hero.style.filter = `blur(${ratio * 0.35}px)`;
+      };
+
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+    }
+  })();
+  </script>
+
   <nav class="topnav" aria-label="メインナビゲーション">
     <div class="topnav-inner">
       <a href="#top" class="brand" aria-label="T-ACT トップへ">
@@ -1296,12 +1355,14 @@
       </a>
 
       <div class="nav-links">
-        <a href="#schedule">NEWS</a>
+                        <a href="#schedule">NEWS</a>
         <a href="#releases">DISCOGRAPHY</a>
         <a href="#video">VIDEO</a>
         <a href="#game">GAME</a>
         <a href="#goods">GOODS</a>
         <a href="#profile">PROFILE</a>
+
+
 
         <div class="lang-switch" aria-label="言語切替">
           <a href="https://t-act-official.site/" class="current" aria-current="page">JP</a>
@@ -1367,6 +1428,7 @@
 
   <p>だから大げさなものではない</p>
 </div>
+    </div>
   </section>
 
   <main>
@@ -1622,7 +1684,7 @@
       <div class="section-inner">
 
 
-        <div class="section-head" id="game">
+        <div class="section-head">
           <h2>GAME</h2>
           <p class="section-note">STRUCTURE RUN</p>
         </div>
