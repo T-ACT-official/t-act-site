@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>T-ACT 公式サイト | T-ACT Official Site</title>
-  <meta name="description" content="T-ACT公式サイト。社会の当事者として現実から音楽を立ち上げる日本のインディペンデント音楽アーティスト T-ACT の公式サイト。最新リリース、MV、ブラウザゲーム、ディスコグラフィ、グッズ、プロフィールを掲載。">
+  <meta name="description" content="T-ACT公式サイト。社会の当事者として現実から音楽を立ち上げる日本のインディペンデント音楽アーティスト T-ACT の公式サイト。最新リリース、ブラウザゲーム、MV、ディスコグラフィ、グッズ、プロフィールを掲載。">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="theme-color" content="#0b0f10">
   <meta name="google-site-verification" content="v2V_zySwHXIOgg7nOymSmx_8UiwnfsP1LPav9OlIXaI">
@@ -103,7 +103,7 @@
         "creator": {
           "@id": "https://t-act-official.site/#artist"
         },
-        "description": "T-ACTの世界観をもとにしたブラウザゲーム。構造の中をぶつからずに抜けるランゲーム。"
+        "description": "T-ACTの世界観をもとにしたブラウザゲーム。構造の中を抜けるランゲーム。"
       },
       {
         "@type": "MusicRecording",
@@ -505,8 +505,7 @@
     .goods-actions a,
     .sched-links a,
     .video-links a,
-    .footer-links a,
-    .game-actions a {
+    .footer-links a {
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -525,8 +524,7 @@
     .goods-actions a:hover,
     .sched-links a:hover,
     .video-links a:hover,
-    .footer-links a:hover,
-    .game-actions a:hover {
+    .footer-links a:hover {
       transform: translateY(-2px);
       background: rgba(255,255,255,.10);
       border-color: rgba(52,211,153,.22);
@@ -604,6 +602,16 @@
       margin: 0 auto;
       color: var(--muted);
       font-size: .97rem;
+    }
+
+    .goods-grid,
+    .releases {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      max-width: 1040px;
+      margin: 0 auto;
+      text-align: left;
     }
 
     .goods-embed,
@@ -759,8 +767,7 @@
     }
 
     .sched-links,
-    .video-links,
-    .game-actions {
+    .video-links {
       margin-top: 14px;
       display: flex;
       flex-wrap: wrap;
@@ -768,8 +775,7 @@
     }
 
     .sched-links a,
-    .video-links a,
-    .game-actions a {
+    .video-links a {
       min-height: 38px;
       padding: 8px 12px;
       border-radius: 999px;
@@ -976,117 +982,10 @@
       margin: .45em 0;
     }
 
-.game-teaser {
-  display: block;
-  max-width: 1040px;
-  margin: 0 auto;
-  border-radius: 24px;
-  overflow: hidden;
-  border: 1px solid var(--border);
-  background: linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.02));
-  box-shadow: var(--shadow);
-  transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
-}
-
-.game-teaser:hover {
-  transform: translateY(-4px);
-  border-color: var(--mint-line);
-  box-shadow: 0 18px 48px rgba(0,0,0,.42);
-}
-
-.game-teaser-media {
-  position: relative;
-  aspect-ratio: 16 / 9;
-  background: #05070d;
-  overflow: hidden;
-}
-
-.game-teaser-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transform: scale(1.01);
-  transition: transform .4s ease, opacity .3s ease;
-  opacity: .82;
-}
-
-.game-teaser:hover .game-teaser-media img {
-  transform: scale(1.05);
-  opacity: .96;
-}
-
-.game-teaser-overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-start;
-  padding: clamp(20px, 4vw, 34px);
-  background:
-    linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.60) 62%, rgba(0,0,0,.82)),
-    radial-gradient(circle at 20% 20%, rgba(52,211,153,.12), transparent 34%);
-  text-align: left;
-}
-
-.game-teaser-kicker {
-  display: inline-flex;
-  align-items: center;
-  min-height: 28px;
-  padding: 4px 10px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,.14);
-  background: rgba(255,255,255,.08);
-  color: var(--text);
-  font-size: .76rem;
-  letter-spacing: .08em;
-  margin-bottom: 12px;
-}
-
-.game-teaser-overlay h3 {
-  margin: 0 0 10px;
-  color: var(--text);
-  font-size: clamp(2rem, 5vw, 3.8rem);
-  line-height: 1.02;
-  letter-spacing: .06em;
-  text-shadow: 0 0 18px rgba(52,211,153,.18);
-}
-
-.game-teaser-cta {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 42px;
-  padding: 10px 16px;
-  border-radius: 999px;
-  border: 1px solid rgba(124,242,192,.26);
-  background: rgba(52,211,153,.10);
-  color: var(--mint-2);
-  font-size: .88rem;
-  letter-spacing: .10em;
-  text-transform: uppercase;
-}
-
-@media (max-width: 780px) {
-  .game-teaser-media {
-    aspect-ratio: 16 / 10;
-  }
-
-  .game-teaser-overlay h3 {
-    font-size: clamp(1.7rem, 8vw, 2.5rem);
-  }
-}
     @keyframes mintGlow {
-      0% {
-        box-shadow: 0 0 0 rgba(52,211,153,0);
-      }
-      50% {
-        box-shadow: 0 0 28px rgba(52,211,153,.35), 0 0 60px rgba(52,211,153,.18);
-      }
-      100% {
-        box-shadow: 0 0 0 rgba(52,211,153,0);
-      }
+      0% { box-shadow: 0 0 0 rgba(52,211,153,0); }
+      50% { box-shadow: 0 0 28px rgba(52,211,153,.35), 0 0 60px rgba(52,211,153,.18); }
+      100% { box-shadow: 0 0 0 rgba(52,211,153,0); }
     }
 
     .topnav.scrolled .brand-mark {
@@ -1097,71 +996,9 @@
       opacity: .75;
     }
 
-    .mini-player {
-      position: fixed;
-      left: 18px;
-      right: 18px;
-      bottom: 18px;
-      z-index: 40;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 12px 14px;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(7,10,11,.82);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      box-shadow: 0 10px 30px rgba(0,0,0,.4);
-      font-size: .85rem;
-    }
-
-    .mini-player-meta {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 2px;
-      min-width: 0;
-    }
-
-    .mini-player-title {
-      color: var(--text);
-      font-weight: 700;
-      line-height: 1.2;
-    }
-
-    .mini-player-status {
-      color: var(--muted);
-      font-size: .78rem;
-      line-height: 1.2;
-    }
-
-    .mini-player-controls {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-shrink: 0;
-    }
-
-    .mini-player button {
-      border: 1px solid rgba(255,255,255,.18);
-      background: rgba(255,255,255,.06);
-      color: var(--mint);
-      border-radius: 10px;
-      padding: 8px 14px;
-      cursor: pointer;
-    }
-
-    .mini-player button:hover {
-      background: rgba(255,255,255,.12);
-    }
-
-    .mini-player button:disabled {
-      opacity: .5;
-      cursor: not-allowed;
-    }
-
+    /* =========================
+       MANIFESTO
+    ========================= */
     .manifesto-section {
       padding: clamp(72px, 10vw, 128px) 20px;
       background:
@@ -1194,6 +1031,157 @@
       text-wrap: pretty;
     }
 
+    /* =========================
+       GAME MODAL
+    ========================= */
+    .game-teaser {
+      display: block;
+      max-width: 1040px;
+      margin: 0 auto 44px;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.02));
+      box-shadow: var(--shadow);
+      transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+    }
+
+    .game-teaser:hover {
+      transform: translateY(-4px);
+      border-color: var(--mint-line);
+      box-shadow: 0 18px 48px rgba(0,0,0,.42);
+    }
+
+    .game-teaser-media {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      background: #05070d;
+      overflow: hidden;
+    }
+
+    .game-teaser-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transform: scale(1.01);
+      transition: transform .4s ease, opacity .3s ease;
+      opacity: .84;
+    }
+
+    .game-teaser:hover .game-teaser-media img {
+      transform: scale(1.05);
+      opacity: .98;
+    }
+
+    .game-teaser-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-start;
+      padding: clamp(20px, 4vw, 34px);
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.60) 62%, rgba(0,0,0,.82)),
+        radial-gradient(circle at 20% 20%, rgba(52,211,153,.12), transparent 34%);
+      text-align: left;
+    }
+
+    .game-teaser-kicker {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.08);
+      color: var(--text);
+      font-size: .76rem;
+      letter-spacing: .08em;
+      margin-bottom: 12px;
+    }
+
+    .game-teaser-overlay h3 {
+      margin: 0 0 10px;
+      color: var(--text);
+      font-size: clamp(2rem, 5vw, 3.8rem);
+      line-height: 1.02;
+      letter-spacing: .06em;
+      text-shadow: 0 0 18px rgba(52,211,153,.18);
+    }
+
+    .game-teaser-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(124,242,192,.26);
+      background: rgba(52,211,153,.10);
+      color: var(--mint-2);
+      font-size: .88rem;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+    }
+
+    .game-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      background: rgba(3, 6, 8, .82);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .game-modal.is-open {
+      display: flex;
+    }
+
+    .game-modal-dialog {
+      position: relative;
+      width: min(1280px, 96vw);
+      height: min(90vh, 760px);
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.14);
+      box-shadow: 0 24px 80px rgba(0,0,0,.48);
+      background: #05070d;
+    }
+
+    .game-modal-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 2;
+      min-width: 44px;
+      min-height: 44px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(7,10,11,.72);
+      color: var(--text);
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .game-modal-close:hover {
+      background: rgba(255,255,255,.10);
+    }
+
+    .game-modal-frame {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background: #000;
+    }
+
     @media (max-width: 920px) {
       .profile-grid {
         grid-template-columns: 1fr;
@@ -1206,10 +1194,6 @@
       .topnav-inner {
         flex-direction: column;
         justify-content: center;
-      }
-
-      .game-grid {
-        grid-template-columns: 1fr;
       }
     }
 
@@ -1235,6 +1219,15 @@
 
       .profile-grid[style*="minmax(260px, 360px) 1fr"] {
         grid-template-columns: 1fr !important;
+      }
+
+      #releases .profile-shell {
+        padding: 18px;
+      }
+
+      #releases .sched-links {
+        flex-direction: row;
+        align-items: center;
       }
 
       .splash-media-wrap {
@@ -1276,8 +1269,7 @@
       }
 
       .profile-shell,
-      .video-block,
-      .game-shell {
+      .video-block {
         padding: 18px;
       }
 
@@ -1309,14 +1301,6 @@
         border-bottom-width: 11px;
       }
 
-      .mini-player {
-        left: 12px;
-        right: 12px;
-        bottom: 12px;
-        max-width: none;
-        padding: 12px;
-      }
-
       .manifesto-section {
         padding: 60px 18px 72px;
       }
@@ -1328,6 +1312,24 @@
 
       .hero-stats {
         grid-template-columns: 1fr;
+      }
+
+      .game-teaser-media {
+        aspect-ratio: 16 / 10;
+      }
+
+      .game-teaser-overlay h3 {
+        font-size: clamp(1.7rem, 8vw, 2.5rem);
+      }
+
+      .game-modal {
+        padding: 10px;
+      }
+
+      .game-modal-dialog {
+        width: 100vw;
+        height: 88vh;
+        border-radius: 16px;
       }
     }
 
@@ -1361,8 +1363,9 @@
       </a>
 
       <div class="nav-links">
-        <a href="#game-feature">GAME</a>
+        <a href="#game">GAME</a>
         <a href="#schedule">NEWS</a>
+        <a href="#releases">RELEASES</a>
         <a href="#video">VIDEO</a>
         <a href="#goods">GOODS</a>
         <a href="#profile">PROFILE</a>
@@ -1391,7 +1394,7 @@
         </p>
 
         <div class="cta" aria-label="主要導線">
-<a class="btn btn-primary" href="structure-run.html">Enter Structure</a>
+          <a class="btn btn-primary" href="#game">Play Game</a>
           <a class="btn" href="https://music.apple.com/jp/artist/t-act/1842221982" target="_blank" rel="noreferrer noopener">Apple Music</a>
           <a class="btn" href="https://open.spotify.com/intl-ja/artist/5FOiDuDN7NiDUrBtEciroP" target="_blank" rel="noreferrer noopener">Spotify</a>
           <a class="btn" href="https://lin.ee/L5MxMC0" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
@@ -1400,10 +1403,8 @@
 
         <div class="hero-stats" aria-label="活動概要">
           <div class="stat">
-          <div class="stat">
-  <span class="stat-label">Now Featured</span>
-  <span class="stat-value">STRUCTURE RUN</span>
-</div>
+            <span class="stat-label">Game</span>
+            <span class="stat-value">STRUCTURE RUN</span>
           </div>
           <div class="stat">
             <span class="stat-label">Upcoming Release</span>
@@ -1428,32 +1429,13 @@
 
       <div class="manifesto-body">
         <p>記憶はやがて薄れ、不確かなものになる。<br>だから音楽として残す。</p>
-        <p>音楽は成功や承認のためではない。<br>現実の中で生まれた思考と瞬間の記録。</p>
+
+        <p>音楽は成功や承認のためではない。<br>現実の中で生まれた思考と瞬間の記録である。</p>
       </div>
     </div>
   </section>
 
   <main>
-<section id="game-feature">
-  <div class="section-inner">
-    <div class="section-head">
-      <h2>FEATURED GAME</h2>
-      <p class="section-note">T-ACTの世界観を走るブラウザゲーム。</p>
-    </div>
-
-    <a class="game-teaser" href="structure-run.html" aria-label="STRUCTURE RUN を開く">
-      <div class="game-teaser-media">
-        <img src="structure-run-cover.jpg" alt="STRUCTURE RUN プレビュー画像" loading="lazy" decoding="async">
-        <div class="game-teaser-overlay">
-          <span class="game-teaser-kicker">BROWSER GAME</span>
-          <h3>STRUCTURE RUN</h3>
-          <span class="game-teaser-cta">ENTER STRUCTURE</span>
-        </div>
-      </div>
-    </a>
-  </div>
-</section>
-
     <section id="schedule">
       <div class="section-inner">
         <div class="section-head">
@@ -1492,7 +1474,7 @@
             <div class="sched-date">2026-03</div>
             <div class="sched-main">
               <h3>Official Site Refined</h3>
-              <div class="sched-meta">最新リリース導線、映像導線、ゲーム導線、ディスコグラフィ構成を更新</div>
+              <div class="sched-meta">ゲーム導線、映像導線、ディスコグラフィ構成を更新</div>
               <div class="chips">
                 <span class="chip">UPDATE</span>
                 <span class="chip">SITE</span>
@@ -1503,7 +1485,25 @@
       </div>
     </section>
 
-  
+    <section id="releases">
+      <div class="section-inner">
+
+        <div class="section-head" id="game">
+          <h2>GAME</h2>
+          <p class="section-note">T-ACTの世界観を走るブラウザゲーム。</p>
+        </div>
+
+        <a href="#" class="game-teaser" id="openGameModal" aria-label="STRUCTURE RUN を開く">
+          <div class="game-teaser-media">
+            <img src="structure-run-cover.jpg" alt="STRUCTURE RUN プレビュー画像" loading="lazy" decoding="async">
+            <div class="game-teaser-overlay">
+              <span class="game-teaser-kicker">BROWSER GAME</span>
+              <h3>STRUCTURE RUN</h3>
+              <span class="game-teaser-cta">PLAY</span>
+            </div>
+          </div>
+        </a>
+
         <div class="section-head" style="margin-top:44px;">
           <h2>DISCOGRAPHY</h2>
           <p class="section-note">作品ごとの温度、余白、視点を残したアーカイブ。</p>
@@ -1531,13 +1531,10 @@
             </div>
             <div class="chips" style="margin-top:0; margin-bottom:10px;">
               <span class="chip">2026</span>
-              <span class="chip">LATEST STREAMING</span>
+              <span class="chip">Now Streaming</span>
             </div>
             <h3>再定義</h3>
             <p>社会的に必要とされる責任を果たした上で、それでもなお残る表現の意味を問い直す作品。余剰として切り捨てられるものの中に、本当に捨てていいものがあるのかを静かに問い返す。</p>
-            <div class="chips">
-              <span class="chip">Now Streaming</span>
-            </div>
             <div class="sched-links">
               <a href="https://music.apple.com/jp/album/%E5%86%8D%E5%AE%9A%E7%BE%A9-single/1889746636?l=en-US" target="_blank" rel="noreferrer noopener">Apple Music</a>
               <a href="https://open.spotify.com/intl-ja/album/4OImPPky9GDXf5ziExUNYt" target="_blank" rel="noreferrer noopener">Spotify</a>
@@ -1780,7 +1777,7 @@
         </p>
         <div class="footer-links" style="margin-top:0; margin-bottom:14px;">
           <a class="btn" href="https://t-act-official.site/en/">English Page</a>
-          <a class="btn" href="structure-run.html">Play Game</a>
+          <a class="btn" href="#game">Play Game</a>
           <a class="btn" href="https://x.com/t_act_music" target="_blank" rel="noreferrer noopener">X</a>
           <a class="btn" href="https://youtube.com/@t_act_music" target="_blank" rel="noreferrer noopener">YouTube</a>
           <a class="btn" href="https://music.apple.com/jp/artist/t-act/1842221982" target="_blank" rel="noreferrer noopener">Apple Music</a>
@@ -1797,6 +1794,21 @@
       </div>
     </div>
   </footer>
+
+  <div class="game-modal" id="gameModal" aria-hidden="true">
+    <div class="game-modal-dialog" role="dialog" aria-modal="true" aria-label="STRUCTURE RUN">
+      <button class="game-modal-close" id="closeGameModal" type="button" aria-label="ゲームを閉じる">✕</button>
+      <iframe
+        class="game-modal-frame"
+        id="gameModalFrame"
+        src=""
+        data-src="structure-run.html"
+        title="STRUCTURE RUN"
+        loading="lazy"
+        allow="autoplay">
+      </iframe>
+    </div>
+  </div>
 
   <script>
   (() => {
@@ -1969,78 +1981,43 @@
   })();
   </script>
 
-  <!-- Mini Music Player -->
-  <div class="mini-player" aria-label="ミニプレイヤー">
-    <div class="mini-player-meta">
-      <span class="mini-player-title">Now Playing</span>
-      <span class="mini-player-status" id="miniStatus">再生準備OK</span>
-    </div>
-    <div class="mini-player-controls">
-      <button id="miniPlay" type="button">Play</button>
-      <audio id="miniAudio" preload="metadata" playsinline>
-        <source src="nowplaying.m4a" type="audio/mp4">
-      </audio>
-    </div>
-  </div>
-
   <script>
   (() => {
-    const audio = document.getElementById('miniAudio');
-    const btn = document.getElementById('miniPlay');
-    const status = document.getElementById('miniStatus');
-    const source = audio?.querySelector('source');
+    const openBtn = document.getElementById('openGameModal');
+    const modal = document.getElementById('gameModal');
+    const closeBtn = document.getElementById('closeGameModal');
+    const frame = document.getElementById('gameModalFrame');
 
-    if (!audio || !btn || !status || !source) return;
+    if (!openBtn || !modal || !closeBtn || !frame) return;
 
-    const src = source.getAttribute('src') || '';
-    if (!src) {
-      btn.disabled = true;
-      status.textContent = '音源ファイル未設定';
-      return;
-    }
-
-    const setIdle = () => {
-      btn.textContent = 'Play';
-      status.textContent = '停止中';
+    const openModal = (event) => {
+      event.preventDefault();
+      if (!frame.src) {
+        frame.src = frame.dataset.src || 'structure-run.html';
+      }
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
     };
 
-    audio.addEventListener('loadedmetadata', () => {
-      status.textContent = '再生準備OK';
-    });
+    const closeModal = () => {
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    };
 
-    audio.addEventListener('playing', () => {
-      btn.textContent = 'Pause';
-      status.textContent = '再生中';
-    });
+    openBtn.addEventListener('click', openModal);
+    closeBtn.addEventListener('click', closeModal);
 
-    audio.addEventListener('pause', () => {
-      if (!audio.ended) {
-        setIdle();
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        closeModal();
       }
     });
 
-    audio.addEventListener('ended', () => {
-      audio.currentTime = 0;
-      setIdle();
-    });
-
-    audio.addEventListener('error', () => {
-      btn.disabled = true;
-      btn.textContent = 'Error';
-      status.textContent = '音源を読み込めません';
-    });
-
-    btn.addEventListener('click', async () => {
-      if (audio.paused) {
-        try {
-          await audio.play();
-        } catch (err) {
-          btn.textContent = 'Play';
-          status.textContent = '再生できませんでした';
-          console.error(err);
-        }
-      } else {
-        audio.pause();
+    window.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && modal.classList.contains('is-open')) {
+        closeModal();
       }
     });
   })();
