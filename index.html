@@ -1362,13 +1362,13 @@
         <span>T-ACT</span>
       </a>
 
-<div class="nav-links">
-  <a href="#schedule">NEWS</a>
-  <a href="#discography">DISCOGRAPHY</a>
-  <a href="#video">VIDEO</a>
-  <a href="#game">GAME</a>
-  <a href="#goods">GOODS</a>
-  <a href="#profile">PROFILE</a>
+      <div class="nav-links">
+        <a href="#schedule">NEWS</a>
+        <a href="#releases">DISCOGRAPHY</a>
+        <a href="#video">VIDEO</a>
+        <a href="#game">GAME</a>
+        <a href="#goods">GOODS</a>
+        <a href="#profile">PROFILE</a>
 
         <div class="lang-switch" aria-label="言語切替">
           <a href="https://t-act-official.site/" class="current" aria-current="page">JP</a>
@@ -1487,24 +1487,7 @@
 
     <section id="releases">
       <div class="section-inner">
-
-        <div class="section-head" id="game">
-          <h2>GAME</h2>
-          <p class="section-note"></p>
-        </div>
-
-        <a href="structure-run.html" class="game-teaser" aria-label="STRUCTURE RUN を開く">
-          <div class="game-teaser-media">
-            <img src="structure-run-cover.jpg" alt="STRUCTURE RUN プレビュー画像" loading="lazy" decoding="async">
-            <div class="game-teaser-overlay">
-              <span class="game-teaser-kicker">BROWSER GAME</span>
-              <h3>STRUCTURE RUN</h3>
-              <span class="game-teaser-cta">PLAY</span>
-            </div>
-          </div>
-        </a>
-
-        <div class="section-head" style="margin-top:44px;">
+<div class="section-head" style="margin-top:44px;">
           <h2>DISCOGRAPHY</h2>
           <p class="section-note">作品ごとの温度、余白、視点を残したアーカイブ。</p>
         </div>
@@ -1700,6 +1683,31 @@
         </div>
       </div>
     </section>
+
+    <section id="game">
+      <div class="section-inner">
+
+
+        <div class="section-head" id="game">
+          <h2>GAME</h2>
+          <p class="section-note">STRUCTURE RUN</p>
+        </div>
+
+        <a href="#" class="game-teaser" id="openGameModal" aria-label="STRUCTURE RUN を開く">
+          <div class="game-teaser-media">
+            <img src="structure-run-cover.jpg" alt="STRUCTURE RUN プレビュー画像" loading="lazy" decoding="async">
+            <div class="game-teaser-overlay">
+              <span class="game-teaser-kicker">BROWSER GAME</span>
+              <h3>STRUCTURE RUN</h3>
+              <span class="game-teaser-cta">PLAY</span>
+            </div>
+          </div>
+        </a>
+
+        
+      </div>
+    </section>
+
 
     <section id="goods">
       <div class="section-inner">
@@ -1983,6 +1991,8 @@
 
   <script>
   (() => {
+    const openBtn = document.getElementById('openGameModal');
+    const modal = document.getElementById('gameModal');
     const closeBtn = document.getElementById('closeGameModal');
     const frame = document.getElementById('gameModalFrame');
 
