@@ -1316,8 +1316,6 @@
 
         video.addEventListener('ended', closeSplash, { once: true });
         video.addEventListener('error', closeSplash, { once: true });
-        video.addEventListener('stalled', () => window.setTimeout(closeSplash, 800), { once: true });
-        video.addEventListener('suspend', () => window.setTimeout(closeSplash, 1200), { once: true });
 
         const playPromise = video.play && video.play();
         if (playPromise && typeof playPromise.catch === 'function') {
