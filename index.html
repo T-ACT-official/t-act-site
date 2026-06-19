@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>T-ACT 公式サイト | T-ACT Official Site</title>
-  <meta name="description" content="T-ACT公式サイト。社会の当事者として現実から音楽を立ち上げる日本のインディペンデント音楽アーティスト T-ACT の公式サイト。最新リリース、ブラウザゲーム、MV、ディスコグラフィ、グッズ、プロフィールを掲載。">
+  <meta name="description" content="T-ACT公式サイト。T-ACT × KONOMI「Still, I Be…」2026.07.23 Release。社会の当事者として現実から音楽を立ち上げる日本のインディペンデント音楽アーティスト T-ACT の公式サイト。">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="theme-color" content="#0b0f10">
   <meta name="google-site-verification" content="v2V_zySwHXIOgg7nOymSmx_8UiwnfsP1LPav9OlIXaI">
@@ -20,7 +20,7 @@
 
   <!-- ===== OGP / SNSプレビュー ===== -->
   <meta property="og:title" content="T-ACT 公式サイト">
-  <meta property="og:description" content="社会の当事者として現実から音楽を立ち上げる。">
+  <meta property="og:description" content="T-ACT × KONOMI「Still, I Be…」2026.07.23 Release。社会の当事者として現実から音楽を立ち上げる。">
   <meta property="og:image" content="https://t-act-official.site/ogp.png">
   <meta property="og:url" content="https://t-act-official.site/">
   <meta property="og:type" content="website">
@@ -29,7 +29,7 @@
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="T-ACT 公式サイト">
-  <meta name="twitter:description" content="社会の当事者として現実から音楽を立ち上げる。">
+  <meta name="twitter:description" content="T-ACT × KONOMI「Still, I Be…」2026.07.23 Release。社会の当事者として現実から音楽を立ち上げる。">
   <meta name="twitter:image" content="https://t-act-official.site/ogp.png">
 
   <!-- ===== Apple Music スマートバナー ===== -->
@@ -104,6 +104,22 @@
           "@id": "https://t-act-official.site/#artist"
         },
         "description": "T-ACTの世界観をもとにしたブラウザゲーム。構造の中を抜けるランゲーム。"
+      },
+      {
+        "@type": "MusicRecording",
+        "name": "Still, I Be…",
+        "url": "https://t-act-official.site/#releases",
+        "datePublished": "2026-07-23",
+        "inLanguage": "ja",
+        "byArtist": [
+          {
+            "@id": "https://t-act-official.site/#artist"
+          },
+          {
+            "@type": "MusicGroup",
+            "name": "KONOMI"
+          }
+        ]
       },
       {
         "@type": "MusicRecording",
@@ -542,6 +558,58 @@
       background: linear-gradient(180deg, #8ff6ca, #49dca3);
     }
 
+    .hero-release {
+      margin: 22px auto 0;
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(52,211,153,.24);
+      background:
+        radial-gradient(700px 220px at 50% 0%, rgba(52,211,153,.10), transparent 64%),
+        rgba(52,211,153,.055);
+      text-align: center;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .hero-release-label {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 28px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--mint-line);
+      color: var(--mint-2);
+      background: rgba(52,211,153,.06);
+      font-size: .76rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .hero-release strong {
+      display: block;
+      margin-top: 8px;
+      color: var(--text);
+      font-size: clamp(1.6rem, 4vw, 2.6rem);
+      line-height: 1.12;
+      letter-spacing: .06em;
+    }
+
+    .hero-release-meta {
+      display: block;
+      margin-top: 6px;
+      color: var(--text-soft);
+      font-weight: 700;
+      letter-spacing: .03em;
+    }
+
+    .hero-release-copy {
+      margin: 10px auto 0;
+      max-width: 620px;
+      color: var(--muted);
+      font-size: .96rem;
+      line-height: 1.8;
+    }
+
     .hero-stats {
       margin-top: 18px;
       display: grid;
@@ -709,6 +777,13 @@
       background: var(--chip);
       font-size: .76rem;
       color: var(--text);
+    }
+
+    .release-featured {
+      border-color: rgba(52,211,153,.26);
+      background:
+        radial-gradient(760px 260px at 50% 0%, rgba(52,211,153,.10), transparent 68%),
+        linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.025));
     }
 
     .release {
@@ -1385,8 +1460,16 @@
           現実から生まれた、チルでミニマルな音楽<br>
         </p>
 
+        <div class="hero-release" aria-label="Upcoming Release">
+          <span class="hero-release-label">Upcoming Release</span>
+          <strong>Still, I Be…</strong>
+          <span class="hero-release-meta">T-ACT × KONOMI / 2026.07.23 Release</span>
+          <p class="hero-release-copy">揺れても、戻れる。それでも、ここに在る。</p>
+        </div>
+
         <div class="cta" aria-label="主要導線">
-          <a class="btn btn-primary" href="#game">Play Game</a>
+          <a class="btn btn-primary" href="#releases">Upcoming Release</a>
+          <a class="btn" href="#game">Play Game</a>
           <a class="btn" href="https://music.apple.com/jp/artist/t-act/1842221982" target="_blank" rel="noreferrer noopener">Apple Music</a>
           <a class="btn" href="https://open.spotify.com/intl-ja/artist/5FOiDuDN7NiDUrBtEciroP" target="_blank" rel="noreferrer noopener">Spotify</a>
           <a class="btn" href="https://lin.ee/L5MxMC0" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
@@ -1400,15 +1483,15 @@
           </div>
           <div class="stat">
             <span class="stat-label">Upcoming Release</span>
-            <span class="stat-value">現場監督 / 2026.05.15</span>
+            <span class="stat-value">Still, I Be… / 2026.07.23</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Collaboration</span>
+            <span class="stat-value">T-ACT × KONOMI</span>
           </div>
           <div class="stat">
             <span class="stat-label">Style</span>
             <span class="stat-value">Minimal / Chill / Real</span>
-          </div>
-          <div class="stat">
-            <span class="stat-label">Based In</span>
-            <span class="stat-value">Japan</span>
           </div>
         </div>
       </div>
@@ -1436,14 +1519,28 @@
 
         <div class="schedule">
           <article class="sched-item">
-            <div class="sched-date">2026-05-15</div>
+            <div class="sched-date">2026-07-23</div>
             <div class="sched-main">
-              <h3>New Single「現場監督」Coming</h3>
-              <div class="sched-meta">各種サブスクにて配信開始予定</div>
+              <h3>New Single「Still, I Be…」Coming</h3>
+              <div class="sched-meta">T-ACT × KONOMI によるコラボレーション作品。不安、鼓動、体温、そして揺れても戻ろうとする生命の感覚を、チルでミニマルな音像に落とし込む。</div>
               <div class="chips">
                 <span class="chip">NEWS</span>
                 <span class="chip">UPCOMING</span>
                 <span class="chip">RELEASE</span>
+                <span class="chip">COLLABORATION</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="sched-item">
+            <div class="sched-date">2026-05-15</div>
+            <div class="sched-main">
+              <h3>New Single「現場監督」Now Streaming</h3>
+              <div class="sched-meta">各種サブスクにて配信中</div>
+              <div class="chips">
+                <span class="chip">NEWS</span>
+                <span class="chip">RELEASE</span>
+                <span class="chip">STREAMING</span>
               </div>
             </div>
           </article>
@@ -1484,13 +1581,29 @@
         </div>
 
         <div class="releases">
+          <article class="release release-featured">
+            <div class="release-cover">
+              <img src="still-i-be.jpg" alt="Still, I Be… ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200" onerror="this.onerror=null; this.src='ogp.png';">
+            </div>
+            <div class="chips" style="margin-top:0; margin-bottom:10px;">
+              <span class="chip">2026</span>
+              <span class="chip">UPCOMING</span>
+              <span class="chip">COLLABORATION</span>
+            </div>
+            <h3>Still, I Be…</h3>
+            <p>砂のように崩れそうな感覚の中で、それでも残り続ける鼓動と体温を描いた T-ACT × KONOMI のコラボレーション作品。不安に飲まれるのではなく、揺れながらも自分の内側へ戻っていく感覚を、静かに刻み込む。</p>
+            <div class="chips">
+              <span class="chip">2026.07.23 Release</span>
+            </div>
+          </article>
+
           <article class="release">
             <div class="release-cover">
               <img src="genba-kantoku.jpg" alt="現場監督 ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200">
             </div>
             <div class="chips" style="margin-top:0; margin-bottom:10px;">
               <span class="chip">2026</span>
-              <span class="chip">UPCOMING</span>
+              <span class="chip">Now Streaming</span>
             </div>
             <h3>現場監督</h3>
             <p>目立つことも、称賛されることもないまま、朝から現場を動かし続ける者の責任。人気では測れない重みと、支える側の現実を静かに刻みつける。</p>
