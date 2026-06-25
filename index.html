@@ -610,6 +610,32 @@
       line-height: 1.8;
     }
 
+    .hero-release-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 12px;
+      min-height: 36px;
+      padding: 7px 13px;
+      border-radius: 999px;
+      border: 1px solid var(--mint-line);
+      background: rgba(52,211,153,.08);
+      color: var(--mint-2);
+      font-size: .82rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      transition: transform .22s ease, background .22s ease, border-color .22s ease, opacity .22s ease;
+    }
+
+    .hero-release-link:hover,
+    .hero-release-link:focus-visible {
+      transform: translateY(-2px);
+      background: rgba(52,211,153,.14);
+      border-color: rgba(124,242,192,.34);
+      opacity: 1;
+      outline: none;
+    }
+
     .hero-stats {
       margin-top: 18px;
       display: grid;
@@ -1678,7 +1704,6 @@
       <div class="nav-links">
                         <a href="#schedule">NEWS</a>
         <a href="#releases">DISCOGRAPHY</a>
-        <a href="konomi.html">KONOMI</a>
         <a href="#video">VIDEO</a>
         <a href="#game">GAME</a>
         <a href="#goods">GOODS</a>
@@ -1706,6 +1731,7 @@
         <strong>Still, I Be…</strong>
         <span class="hero-release-meta">T-ACT × KONOMI / 2026.07.23 Release</span>
         <p class="hero-release-copy">揺れても、戻れる。それでも、ここに在る。</p>
+        <a class="hero-release-link" href="konomi.html">KONOMI Artist Page</a>
       </div>
 
       <div class="hero-panel">
@@ -1718,7 +1744,6 @@
 
         <div class="cta" aria-label="主要導線">
           <a class="btn btn-primary" href="#releases">Still, I Be…</a>
-          <a class="btn" href="konomi.html">KONOMI</a>
           <a class="btn" href="https://music.apple.com/jp/artist/t-act/1842221982" target="_blank" rel="noreferrer noopener">Apple Music</a>
           <a class="btn" href="https://open.spotify.com/intl-ja/artist/5FOiDuDN7NiDUrBtEciroP" target="_blank" rel="noreferrer noopener">Spotify</a>
           <a class="btn" href="https://lin.ee/L5MxMC0" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
@@ -2105,7 +2130,6 @@
         </p>
         <div class="footer-links" style="margin-top:0; margin-bottom:14px;">
           <a class="btn" href="https://t-act-official.site/en/">English Page</a>
-          <a class="btn" href="konomi.html">KONOMI</a>
           <a class="btn" href="#game">Play Game</a>
           <a class="btn" href="https://x.com/t_act_music" target="_blank" rel="noreferrer noopener">X</a>
           <a class="btn" href="https://youtube.com/@t_act_music" target="_blank" rel="noreferrer noopener">YouTube</a>
