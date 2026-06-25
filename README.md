@@ -1,75 +1,74 @@
 # T-ACT Official Website
 
-Official website repository for **T-ACT**, a Japanese independent music artist.
+Official website repository for **T-ACT**, a Japan-based independent music artist and creative project.
 
-🌐 Official Site  
+🌐 **Official Site**
 https://t-act-official.site
 
 ---
 
-# About T-ACT
+## About T-ACT
 
-T-ACT is a Japan-based independent music artist and creative project.
+**T-ACT** is a Japan-based independent music artist and creative project.
 
-The music blends **chill, minimal, hip-hop, R&B, and electronic influences**,  
-focusing on atmosphere, reality, and emotional space rather than spectacle.
+The sound blends elements of **chill, minimal hip-hop, R&B, and electronic music**, with a focus on atmosphere, realism, and emotional space.
 
-Rather than chasing trends or approval, the project explores the quiet weight of everyday life and the traces of feeling that remain within it.
+Rather than chasing trends or spectacle, T-ACT explores the quiet weight of everyday life, the feelings that remain beneath the surface, and the traces of emotion left behind in ordinary moments.
 
-T-ACT continues to release music independently while maintaining full creative control over production and distribution.
-
----
-
-# Latest Release
-
-**残置 (Zanchi)**  
-A minimal and reflective piece exploring the emotions that remain quietly beneath structured daily life.
-
-Listen on:
-
-- Apple Music  
-https://music.apple.com/jp/artist/t-act/1842221982
-
-- Spotify  
-https://open.spotify.com/intl-ja/artist/5FOiDuDN7NiDUrBtEciroP
-
-- LINE MUSIC  
-https://lin.ee/L5MxMC0
+T-ACT releases music independently while maintaining creative control over production, direction, and distribution.
 
 ---
 
-# Official Links
+## Music
 
-Official Website  
-https://t-act-official.site
+Listen to T-ACT on major streaming platforms:
 
-X (Twitter)  
-https://x.com/t_act_music
+* **Apple Music**
+  https://music.apple.com/jp/artist/t-act/1842221982
 
-YouTube  
-https://youtube.com/@t_act_music
+* **Spotify**
+  https://open.spotify.com/intl-ja/artist/5FOiDuDN7NiDUrBtEciroP
 
-Apple Music  
-https://music.apple.com/jp/artist/t-act/1842221982
-
-Spotify  
-https://open.spotify.com/intl-ja/artist/5FOiDuDN7NiDUrBtEciroP
-
-SUZURI Store  
-https://suzuri.jp/T-ACT/products
+* **LINE MUSIC**
+  https://lin.ee/L5MxMC0
 
 ---
 
-# Repository Purpose
+## Official Links
 
-This repository contains the source files for the **T-ACT official website**, including:
+* **Official Website**
+  https://t-act-official.site
 
-- HTML website structure
-- release information
-- video integration
-- artist profile content
-- visual assets
-- SEO structured data
+* **X / Twitter**
+  https://x.com/t_act_music
+
+* **YouTube**
+  https://youtube.com/@t_act_music
+
+* **Apple Music**
+  https://music.apple.com/jp/artist/t-act/1842221982
+
+* **Spotify**
+  https://open.spotify.com/intl-ja/artist/5FOiDuDN7NiDUrBtEciroP
+
+* **SUZURI Store**
+  https://suzuri.jp/T-ACT/products
+
+---
+
+## Repository Purpose
+
+This repository contains the source files for the **T-ACT Official Website**.
+
+The website includes:
+
+* Static HTML website structure
+* Artist profile content
+* Release and discography information
+* Video and streaming platform integration
+* Visual assets
+* SEO metadata and structured data
+* Custom domain configuration for GitHub Pages
 
 The site is deployed using **GitHub Pages** and connected to the custom domain:
 
@@ -77,99 +76,17 @@ https://t-act-official.site
 
 ---
 
-# Technology
+## Technology Stack
 
-- HTML
-- CSS
-- JavaScript
-- GitHub Pages
-
-- # T-ACT Official Website
-
-Official website repository for **T-ACT**, a Japanese independent music artist.
-
-🌐 Official Site  
-https://t-act-official.site
+* HTML
+* CSS
+* JavaScript
+* GitHub Pages
 
 ---
 
-# About T-ACT
+## Project Direction
 
-T-ACT is a Japan-based independent music artist and creative project.
+The website is designed to function as the official digital home for T-ACT.
 
-The music blends **chill, minimal, hip-hop, R&B, and electronic influences**,  
-focusing on atmosphere, reality, and emotional space rather than spectacle.
-
-Rather than chasing trends or approval, the project explores the quiet weight of everyday life and the traces of feeling that remain within it.
-
-T-ACT continues to release music independently while maintaining full creative control over production and distribution.
-
----
-
-# Latest Release
-
-**残置 (Zanchi)**  
-A minimal and reflective piece exploring the emotions that remain quietly beneath structured daily life.
-
-Listen on:
-
-- Apple Music  
-https://music.apple.com/jp/artist/t-act/1842221982
-
-- Spotify  
-https://open.spotify.com/intl-ja/artist/5FOiDuDN7NiDUrBtEciroP
-
-- LINE MUSIC  
-https://lin.ee/L5MxMC0
-
----
-
-# Official Links
-
-Official Website  
-https://t-act-official.site
-
-X (Twitter)  
-https://x.com/t_act_music
-
-YouTube  
-https://youtube.com/@t_act_music
-
-Apple Music  
-https://music.apple.com/jp/artist/t-act/1842221982
-
-Spotify  
-https://open.spotify.com/intl-ja/artist/5FOiDuDN7NiDUrBtEciroP
-
-SUZURI Store  
-https://suzuri.jp/T-ACT/products
-
----
-
-# Repository Purpose
-
-This repository contains the source files for the **T-ACT official website**, including:
-
-- HTML website structure
-- release information
-- video integration
-- artist profile content
-- visual assets
-- SEO structured data
-
-The site is deployed using **GitHub Pages** and connected to the custom domain:
-
-https://t-act-official.site
-
----
-
-# Technology
-
-- HTML
-- CSS
-- JavaScript
-- GitHub Pages
-
-
-Official website repository for T-ACT
-https://t-act-official.site
+It presents music, visuals, releases, and artist information in a minimal and atmospheric format that reflects the tone of the project: quiet, emotional, independent, and intentional.
