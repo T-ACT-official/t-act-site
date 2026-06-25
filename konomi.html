@@ -15,7 +15,7 @@
   <!-- ===== OGP / SNS Preview ===== -->
   <meta property="og:title" content="KONOMI（このみの.asobiba）| Vocalist / Cover / Chorus">
   <meta property="og:description" content="歌ってみた、カバー、ハモリ、コーラスを中心に活動するボーカリスト。YouTubeチャンネル music.あそびば で活動中。T-ACT × KONOMI『Still, I Be…』に参加。">
-  <meta property="og:image" content="https://t-act-official.site/ogp.png">
+  <meta property="og:image" content="https://t-act-official.site/konomi-profile.jpg">
   <meta property="og:url" content="https://t-act-official.site/konomi.html">
   <meta property="og:type" content="profile">
   <meta property="og:locale" content="ja_JP">
@@ -24,7 +24,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="KONOMI（このみの.asobiba）| Vocalist / Cover / Chorus">
   <meta name="twitter:description" content="歌ってみた、カバー、ハモリ、コーラスを中心に活動するボーカリスト。YouTubeチャンネル music.あそびば で活動中。">
-  <meta name="twitter:image" content="https://t-act-official.site/ogp.png">
+  <meta name="twitter:image" content="https://t-act-official.site/konomi-profile.jpg">
 
   <!-- ===== Structured Data ===== -->
   <script type="application/ld+json">
@@ -46,6 +46,10 @@
         },
         "mainEntity": {
           "@id": "https://t-act-official.site/konomi.html#konomi"
+        },
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "url": "https://t-act-official.site/konomi-profile.jpg"
         }
       },
       {
@@ -57,6 +61,7 @@
           "music.あそびば"
         ],
         "url": "https://t-act-official.site/konomi.html",
+        "image": "https://t-act-official.site/konomi-profile.jpg",
         "sameAs": [
           "https://www.youtube.com/@%E3%81%93%E3%81%AE%E3%81%BF%E3%81%AE.asobiba"
         ],
@@ -278,6 +283,84 @@
       will-change: opacity, transform, filter;
     }
 
+    .hero-layout {
+      max-width: 1080px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 520px);
+      align-items: center;
+      gap: clamp(28px, 5vw, 58px);
+      text-align: left;
+    }
+
+    .hero-layout h1 {
+      text-indent: 0;
+    }
+
+    .hero-layout .hero-copy {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    .hero-layout .cta {
+      justify-content: flex-start;
+    }
+
+    .hero-photo-wrap {
+      position: relative;
+      margin: 0;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.03);
+      box-shadow: 0 24px 70px rgba(0,0,0,.42);
+      isolation: isolate;
+    }
+
+    .hero-photo-wrap::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      z-index: 2;
+      pointer-events: none;
+      background:
+        linear-gradient(90deg, rgba(7,10,11,.12), transparent 42%),
+        radial-gradient(circle at 18% 18%, rgba(124,242,192,.12), transparent 36%),
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(0,0,0,.22));
+    }
+
+    .hero-photo-wrap::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      pointer-events: none;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.05), inset 0 -44px 80px rgba(0,0,0,.22);
+    }
+
+    .hero-photo {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.012);
+      filter: saturate(.96) contrast(.98);
+    }
+
+    .hero-photo-credit {
+      position: absolute;
+      left: 14px;
+      bottom: 12px;
+      z-index: 4;
+      margin: 0;
+      color: rgba(244,251,247,.82);
+      font-size: .72rem;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+      text-shadow: 0 2px 12px rgba(0,0,0,.55);
+    }
+
     .eyebrow {
       display: inline-flex;
       align-items: center;
@@ -409,6 +492,60 @@
       margin: 0 auto;
       padding: clamp(22px, 4vw, 34px);
       text-align: left;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(240px, 360px) minmax(0, 1fr);
+      gap: clamp(20px, 4vw, 34px);
+      align-items: center;
+      margin-bottom: 26px;
+    }
+
+    .about-photo-wrap {
+      position: relative;
+      margin: 0;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.03);
+      box-shadow: 0 18px 44px rgba(0,0,0,.34);
+      isolation: isolate;
+    }
+
+    .about-photo-wrap::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      z-index: 2;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 18% 18%, rgba(124,242,192,.10), transparent 36%),
+        linear-gradient(180deg, rgba(255,255,255,.04), rgba(0,0,0,.18));
+    }
+
+    .about-photo {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.012);
+      filter: saturate(.98) contrast(.98);
+    }
+
+    .about-photo-credit {
+      position: absolute;
+      left: 12px;
+      bottom: 10px;
+      z-index: 4;
+      margin: 0;
+      color: rgba(244,251,247,.82);
+      font-size: .70rem;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+      text-shadow: 0 2px 12px rgba(0,0,0,.55);
     }
 
     .profile-lines {
@@ -571,7 +708,27 @@
       }
 
       header { min-height: auto; padding: 76px 18px 64px; }
+      .hero-layout {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 24px;
+      }
+      .hero-layout .hero-copy {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .hero-layout .cta {
+        justify-content: center;
+      }
+      .hero-photo-wrap {
+        order: -1;
+        max-width: 560px;
+        margin: 0 auto 8px;
+        border-radius: 22px;
+      }
       header::before { background-size: 86%; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-photo-wrap { max-width: 560px; margin: 0 auto; }
       .grid, .facts { grid-template-columns: 1fr; }
       .surface { padding: 22px; }
       .nav-links { gap: 6px; }
@@ -610,17 +767,19 @@
 
   <header id="top">
     <div class="hero-inner">
-      <div class="eyebrow">Artist Namecard</div>
-      <h1>KONOMI</h1>
-      <p class="alias">このみの.asobiba</p>
-      <p class="role">Vocalist / Cover / Harmony / Chorus</p>
-      <p class="hero-copy">
-        歌、カバー、ハモリ、コーラスを中心に活動するボーカリスト。<br>
-        YouTubeチャンネル「music.あそびば」にて、声の表現を公開している。
-      </p>
-      <div class="cta" aria-label="主要リンク">
-        <a class="btn btn-primary" href="https://www.youtube.com/@%E3%81%93%E3%81%AE%E3%81%BF%E3%81%AE.asobiba" target="_blank" rel="noreferrer noopener">YouTube</a>
-        <a class="btn" href="#release">Still, I Be…</a>
+      <div class="hero-text">
+        <div class="eyebrow">Artist Namecard</div>
+        <h1>KONOMI</h1>
+        <p class="alias">このみの.asobiba</p>
+        <p class="role">Vocalist / Cover / Harmony / Chorus</p>
+        <p class="hero-copy">
+          歌、カバー、ハモリ、コーラスを中心に活動するボーカリスト。<br>
+          YouTubeチャンネル「music.あそびば」にて、声の表現を公開している。
+        </p>
+        <div class="cta" aria-label="主要リンク">
+          <a class="btn btn-primary" href="https://www.youtube.com/@%E3%81%93%E3%81%AE%E3%81%BF%E3%81%AE.asobiba" target="_blank" rel="noreferrer noopener">YouTube</a>
+          <a class="btn" href="#release">Still, I Be…</a>
+        </div>
       </div>
     </div>
   </header>
@@ -634,10 +793,17 @@
         </div>
 
         <div class="surface">
-          <div class="profile-lines">
-            <p><strong>KONOMI</strong> は、「このみの.asobiba」として、歌ってみた、カバー、ハモリ、コーラスを中心に活動しているボーカリスト。</p>
-            <p>YouTubeチャンネル「music.あそびば」では、カバー楽曲やハモリ、コーラスを取り入れた歌の表現を公開している。</p>
-            <p>2026年7月23日リリースの <strong>T-ACT × KONOMI「Still, I Be…」</strong> に参加。</p>
+          <div class="about-grid">
+            <figure class="about-photo-wrap">
+              <img src="konomi-profile.jpg" alt="KONOMI（このみの.asobiba）宣材写真" class="about-photo" width="1672" height="941" loading="lazy" decoding="async">
+              <figcaption class="about-photo-credit">KONOMI / music.あそびば</figcaption>
+            </figure>
+
+            <div class="profile-lines">
+              <p><strong>KONOMI</strong> は、「このみの.asobiba」として、歌ってみた、カバー、ハモリ、コーラスを中心に活動しているボーカリスト。</p>
+              <p>YouTubeチャンネル「music.あそびば」では、カバー楽曲やハモリ、コーラスを取り入れた歌の表現を公開している。</p>
+              <p>2026年7月23日リリースの <strong>T-ACT × KONOMI「Still, I Be…」</strong> に参加。</p>
+            </div>
           </div>
 
           <div class="facts" aria-label="KONOMIの活動情報">
