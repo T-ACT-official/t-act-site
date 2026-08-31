@@ -72,6 +72,9 @@
       "about": {
         "@id": "https://t-act-official.site/#artist"
       },
+      "hasPart": {
+        "@id": "https://t-act-official.site/#still-i-be-mv"
+      },
       "primaryImageOfPage": {
         "@type": "ImageObject",
         "url": "https://t-act-official.site/ogp.png"
@@ -132,6 +135,19 @@
         "@id": "https://t-act-official.site/#artist"
       },
       "description": "T-ACTの世界観をもとにしたブラウザゲーム。構造の中を抜けるランゲーム。"
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://t-act-official.site/#still-i-be-mv",
+      "name": "T-ACT – Still, I Be… (Official Music Video)",
+      "description": "揺れながらも、自分の内側へ戻っていく。T-ACT × KONOMIによる「Still, I Be…」Official Music Video。",
+      "thumbnailUrl": "https://i.ytimg.com/vi/ErafVaWezAY/hqdefault.jpg",
+      "uploadDate": "2026-07-22T08:30:47-07:00",
+      "embedUrl": "https://www.youtube-nocookie.com/embed/ErafVaWezAY",
+      "url": "https://t-act-official.site/#featured-video",
+      "publisher": {
+        "@id": "https://t-act-official.site/#organization"
+      }
     },
     {
       "@type": "MusicRecording",
@@ -727,6 +743,30 @@
       transition: transform .22s ease, background .22s ease, border-color .22s ease, opacity .22s ease;
     }
 
+    .hero-release-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .hero-release-actions .hero-release-link {
+      margin-top: 0;
+    }
+
+    .hero-release-link-primary {
+      color: #062117;
+      background: linear-gradient(180deg, #7cf2c0, #34d399);
+      border-color: rgba(124,242,192,.42);
+    }
+
+    .hero-release-link-primary:hover,
+    .hero-release-link-primary:focus-visible {
+      color: #03150f;
+      background: linear-gradient(180deg, #8ff6ca, #49dca3);
+    }
+
     .hero-release-link:hover,
     .hero-release-link:focus-visible {
       transform: translateY(-2px);
@@ -1062,6 +1102,16 @@
     .video-block:hover {
       border-color: var(--mint-line);
       box-shadow: var(--shadow);
+    }
+
+    #video {
+      background:
+        radial-gradient(900px 420px at 50% 16%, rgba(52,211,153,.09), transparent 64%),
+        linear-gradient(180deg, rgba(255,255,255,.018), rgba(255,255,255,0));
+    }
+
+    #video .video-block {
+      border-color: rgba(52,211,153,.24);
     }
 
     .video-head {
@@ -1581,13 +1631,31 @@
     const video = document.getElementById('splash-video');
     const skipSplash = document.getElementById('splash-skip');
     const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let hasSeenSplash = false;
+
+    try {
+      hasSeenSplash = window.sessionStorage.getItem('tact-splash-seen') === '1';
+    } catch (error) {
+      hasSeenSplash = false;
+    }
 
     if (splash) {
       let closed = false;
 
-      const closeSplash = () => {
+      const closeSplash = (immediate = false) => {
         if (closed) return;
         closed = true;
+
+        try {
+          window.sessionStorage.setItem('tact-splash-seen', '1');
+        } catch (error) {
+          // Storage may be unavailable in privacy-focused browser modes.
+        }
+
+        if (immediate) {
+          splash.remove();
+          return;
+        }
 
         splash.classList.add('is-hidden');
 
@@ -1599,18 +1667,18 @@
       };
 
       if (skipSplash) {
-        skipSplash.addEventListener('click', closeSplash, { once: true });
+        skipSplash.addEventListener('click', () => closeSplash(), { once: true });
       }
 
-      if (prefersReducedMotion) {
+      if (prefersReducedMotion || hasSeenSplash) {
         if (video) video.pause();
-        closeSplash();
+        closeSplash(true);
       } else if (video) {
         video.muted = true;
         video.playsInline = true;
 
-        video.addEventListener('ended', closeSplash, { once: true });
-        video.addEventListener('error', closeSplash, { once: true });
+        video.addEventListener('ended', () => closeSplash(), { once: true });
+        video.addEventListener('error', () => closeSplash(), { once: true });
 
         const playPromise = video.play && video.play();
         if (playPromise && typeof playPromise.catch === 'function') {
@@ -1843,12 +1911,12 @@
       </a>
 
       <div class="nav-links">
-        <a href="#schedule">NEWS</a>
-        <a href="#releases">DISCOGRAPHY</a>
         <a href="#video">VIDEO</a>
+        <a href="#latest-releases">MUSIC</a>
+        <a href="#schedule">NEWS</a>
+        <a href="#profile">PROFILE</a>
         <a href="#game">GAME</a>
         <a href="#goods">GOODS</a>
-        <a href="#profile">PROFILE</a>
 
 
 
@@ -1872,7 +1940,10 @@
         <strong>Still, I Be… / 感Do</strong>
         <span class="hero-release-meta">T-ACT × KONOMI / T-ACT</span>
         <p class="hero-release-copy">揺れても、戻れる。見慣れた街にも、まだ感Doがある。</p>
-        <a class="hero-release-link" href="#releases">Release Details</a>
+        <div class="hero-release-actions">
+          <a class="hero-release-link hero-release-link-primary" href="#video">Still, I Be… MVを見る</a>
+          <a class="hero-release-link" href="#latest-releases">音源を聴く</a>
+        </div>
       </div>
 
       <div class="hero-panel">
@@ -1884,7 +1955,8 @@
         </p>
 
         <div class="cta" aria-label="主要導線">
-          <a class="btn btn-primary" href="#releases">Now Streaming</a>
+          <a class="btn btn-primary" href="#video">Watch MV</a>
+          <a class="btn" href="#latest-releases">Music</a>
           <a class="btn" href="https://music.apple.com/jp/artist/t-act/1842221982" target="_blank" rel="noreferrer noopener">Apple Music</a>
           <a class="btn" href="https://open.spotify.com/intl-ja/artist/5FOiDuDN7NiDUrBtEciroP" target="_blank" rel="noreferrer noopener">Spotify</a>
           <a class="btn" href="https://lin.ee/L5MxMC0" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
@@ -1896,6 +1968,88 @@
   </header>
 
   <main id="main-content">
+    <section id="video" aria-labelledby="video-title">
+      <div class="section-inner">
+        <div class="section-head">
+          <h2 id="video-title">FEATURED VIDEO</h2>
+          <p class="section-note">「Still, I Be…」Official Music Video。ほかのMVもT-ACT公式YouTubeチャンネルで公開中です。</p>
+        </div>
+
+        <div class="video-list">
+          <article class="video-block" id="featured-video">
+            <div class="video-head">
+              <h3>T-ACT – Still, I Be… (Official Music Video)</h3>
+              <p>揺れながらも、自分の内側へ戻っていく。T-ACT × KONOMIによる「Still, I Be…」Official Music Video。</p>
+            </div>
+            <button class="yt-lite" type="button" data-youtube-id="ErafVaWezAY" aria-label="Still, I Be… Official Music Videoを再生">
+              <img src="https://i.ytimg.com/vi/ErafVaWezAY/hqdefault.jpg" alt="T-ACT – Still, I Be… Official Music Videoのサムネイル" loading="lazy" decoding="async" width="480" height="360">
+              <span class="yt-button" aria-hidden="true"><span></span></span>
+            </button>
+            <div class="video-links">
+              <a href="https://www.youtube.com/watch?v=ErafVaWezAY" target="_blank" rel="noreferrer noopener">MVをYouTubeで見る</a>
+              <a href="https://youtube.com/@t_act_music" target="_blank" rel="noreferrer noopener">ほかのMVを見る</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="latest-releases" aria-labelledby="latest-releases-title">
+      <div class="section-inner">
+        <div class="section-head">
+          <h2 id="latest-releases-title">LATEST RELEASES</h2>
+          <p class="section-note">2026.07.23、二つの視点から生まれた最新作。</p>
+        </div>
+
+        <div class="releases">
+          <article class="release release-featured" id="still-i-be">
+            <div class="release-cover">
+              <img src="still-i-be.jpg" alt="Still, I Be… ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200" onerror="this.onerror=null; this.src='ogp.png';">
+            </div>
+            <div class="chips" style="margin-top:0; margin-bottom:10px;">
+              <span class="chip">2026</span>
+              <span class="chip">NOW STREAMING</span>
+              <span class="chip">COLLABORATION</span>
+            </div>
+            <h3>Still, I Be…</h3>
+            <p>砂のように崩れそうな感覚の中で、それでも残り続ける鼓動と体温を描いた T-ACT × KONOMI のコラボレーション作品。不安に飲まれるのではなく、揺れながらも自分の内側へ戻っていく感覚を、静かに刻み込む。</p>
+            <div class="chips">
+              <span class="chip">2026.07.23 Release</span>
+              <span class="chip">T-ACT × KONOMI</span>
+            </div>
+            <div class="sched-links">
+              <a href="https://open.spotify.com/intl-ja/album/0ejjKr9sP1qGpuIh8VIWWC" target="_blank" rel="noreferrer noopener">Spotify</a>
+              <a href="https://music.apple.com/jp/album/still-l-be-feat-konomi-single/6784488432?l=en-US&amp;ls=1" target="_blank" rel="noreferrer noopener">Apple Music</a>
+              <a href="https://music.line.me/webapp/album/mb00000000056ab2cd" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
+              <a href="konomi.html">KONOMI Profile</a>
+            </div>
+          </article>
+
+          <article class="release release-featured" id="kando">
+            <div class="release-cover">
+              <img src="kando.jpg" alt="感Do ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200" onerror="this.onerror=null; this.src='ogp.png';">
+            </div>
+            <div class="chips" style="margin-top:0; margin-bottom:10px;">
+              <span class="chip">2026</span>
+              <span class="chip">NOW STREAMING</span>
+              <span class="chip">NEW SINGLE</span>
+            </div>
+            <h3>感Do</h3>
+            <p>見慣れた街の中で、名もなき誰かが静かに役割を果たしている。その姿に残る感度、感動、そしてDo。日常をただ通り過ぎず、まだ心が動く瞬間を拾い上げる T-ACT のChill Hip-Hop / Conscious Hip-Hop。</p>
+            <div class="chips">
+              <span class="chip">2026.07.23 Release</span>
+              <span class="chip">T-ACT</span>
+            </div>
+            <div class="sched-links">
+              <a href="https://open.spotify.com/album/4EEkQ6TYw2pWNxa4ACoq7t" target="_blank" rel="noreferrer noopener">Spotify</a>
+              <a href="https://music.apple.com/jp/album/%E6%84%9Fdo-single/6788598273?l=en-US" target="_blank" rel="noreferrer noopener">Apple Music</a>
+              <a href="https://music.line.me/webapp/album/mb0000000005760515" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
   <section class="manifesto-section" aria-labelledby="manifesto-title">
     <div class="manifesto-wrap">
       <p class="manifesto-kicker" id="manifesto-title">T-ACT / STATEMENT</p>
@@ -1958,57 +2112,12 @@
 
     <section id="releases">
       <div class="section-inner">
-<div class="section-head" style="margin-top:44px;">
-          <h2>DISCOGRAPHY</h2>
-          <p class="section-note">作品ごとの温度、余白、視点を残したアーカイブ。</p>
+        <div class="section-head">
+          <h2>DISCOGRAPHY / ARCHIVE</h2>
+          <p class="section-note">これまでの作品に残る温度、余白、視点のアーカイブ。</p>
         </div>
 
         <div class="releases">
-          <article class="release release-featured" id="still-i-be">
-            <div class="release-cover">
-              <img src="still-i-be.jpg" alt="Still, I Be… ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200" onerror="this.onerror=null; this.src='ogp.png';">
-            </div>
-            <div class="chips" style="margin-top:0; margin-bottom:10px;">
-              <span class="chip">2026</span>
-              <span class="chip">NOW STREAMING</span>
-              <span class="chip">COLLABORATION</span>
-            </div>
-            <h3>Still, I Be…</h3>
-            <p>砂のように崩れそうな感覚の中で、それでも残り続ける鼓動と体温を描いた T-ACT × KONOMI のコラボレーション作品。不安に飲まれるのではなく、揺れながらも自分の内側へ戻っていく感覚を、静かに刻み込む。</p>
-            <div class="chips">
-              <span class="chip">2026.07.23 Release</span>
-              <span class="chip">T-ACT × KONOMI</span>
-            </div>
-            <div class="sched-links">
-              <a href="https://open.spotify.com/intl-ja/album/0ejjKr9sP1qGpuIh8VIWWC" target="_blank" rel="noreferrer noopener">Spotify</a>
-              <a href="https://music.apple.com/jp/album/still-l-be-feat-konomi-single/6784488432?l=en-US&amp;ls=1" target="_blank" rel="noreferrer noopener">Apple Music</a>
-              <a href="https://music.line.me/webapp/album/mb00000000056ab2cd" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
-              <a href="konomi.html">KONOMI Profile</a>
-            </div>
-          </article>
-
-          <article class="release release-featured" id="kando">
-            <div class="release-cover">
-              <img src="kando.jpg" alt="感Do ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200" onerror="this.onerror=null; this.src='ogp.png';">
-            </div>
-            <div class="chips" style="margin-top:0; margin-bottom:10px;">
-              <span class="chip">2026</span>
-              <span class="chip">NOW STREAMING</span>
-              <span class="chip">NEW SINGLE</span>
-            </div>
-            <h3>感Do</h3>
-            <p>見慣れた街の中で、名もなき誰かが静かに役割を果たしている。その姿に残る感度、感動、そしてDo。日常をただ通り過ぎず、まだ心が動く瞬間を拾い上げる T-ACT のChill Hip-Hop / Conscious Hip-Hop。</p>
-            <div class="chips">
-              <span class="chip">2026.07.23 Release</span>
-              <span class="chip">T-ACT</span>
-            </div>
-            <div class="sched-links">
-              <a href="https://open.spotify.com/album/4EEkQ6TYw2pWNxa4ACoq7t" target="_blank" rel="noreferrer noopener">Spotify</a>
-              <a href="https://music.apple.com/jp/album/%E6%84%9Fdo-single/6788598273?l=en-US" target="_blank" rel="noreferrer noopener">Apple Music</a>
-              <a href="https://music.line.me/webapp/album/mb0000000005760515" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
-            </div>
-          </article>
-
           <article class="release" id="genba-kantoku">
             <div class="release-cover">
               <img src="genba-kantoku.jpg" alt="現場監督 ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200" onerror="this.onerror=null; this.src='ogp.png';">
@@ -2152,32 +2261,6 @@
               <a href="https://music.apple.com/jp/song/sweet-bitter/1842222416" target="_blank" rel="noreferrer noopener">Apple Music</a>
               <a href="https://open.spotify.com/intl-ja/track/7LFWlx8t4IAkWLWxfkvQER?si=a03f22fee8524aeb" target="_blank" rel="noreferrer noopener">Spotify</a>
               <a href="https://lin.ee/vIEXJ7J" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="video">
-      <div class="section-inner">
-        <div class="section-head">
-          <h2>VIDEO</h2>
-          <p class="section-note">注目の映像作品を掲載。ほかのMVもT-ACT公式YouTubeチャンネルで公開中です。</p>
-        </div>
-
-        <div class="video-list">
-          <article class="video-block" id="featured-video">
-            <div class="video-head">
-              <h3>FEATURED VIDEO</h3>
-              <p>T-ACTの注目映像作品。</p>
-            </div>
-            <button class="yt-lite" type="button" data-youtube-id="ErafVaWezAY" aria-label="T-ACTの注目映像作品を再生">
-              <img src="https://i.ytimg.com/vi/ErafVaWezAY/hqdefault.jpg" alt="T-ACT 注目映像作品のサムネイル" loading="lazy" decoding="async" width="480" height="360">
-              <span class="yt-button" aria-hidden="true"><span></span></span>
-            </button>
-            <div class="video-links">
-              <a href="https://www.youtube.com/watch?v=ErafVaWezAY" target="_blank" rel="noreferrer noopener">この動画をYouTubeで見る</a>
-              <a href="https://youtube.com/@t_act_music" target="_blank" rel="noreferrer noopener">ほかのMVを見る</a>
             </div>
           </article>
         </div>
