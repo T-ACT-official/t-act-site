@@ -1007,6 +1007,59 @@
       overflow-wrap: anywhere;
     }
 
+    .discography-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      max-width: 1120px;
+    }
+
+    .release-compact {
+      padding: 12px;
+    }
+
+    .release-compact .release-cover {
+      margin-bottom: 10px;
+      border-radius: 10px;
+    }
+
+    .release-compact .chips {
+      gap: 6px;
+      margin-top: 7px;
+    }
+
+    .release-compact .chip {
+      min-height: 24px;
+      padding: 3px 8px;
+      font-size: .68rem;
+    }
+
+    .release-compact h3 {
+      margin-bottom: 6px;
+      font-size: 1rem;
+    }
+
+    .release-compact p {
+      min-height: 4.5em;
+      display: -webkit-box;
+      overflow: hidden;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+      color: #9fb2ab;
+      font-size: .82rem;
+      line-height: 1.5;
+    }
+
+    .release-compact .sched-links {
+      margin-top: 10px;
+      gap: 6px;
+    }
+
+    .release-compact .sched-links a {
+      min-height: 32px;
+      padding: 6px 9px;
+      font-size: .76rem;
+    }
+
     .sched-links,
     .video-links {
       margin-top: 14px;
@@ -1475,8 +1528,21 @@
     }
 
     @media (max-width: 780px) {
+      .discography-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
       .release {
         padding: 14px;
+      }
+
+      .release-compact {
+        padding: 10px;
+      }
+
+      .release-compact p {
+        display: none;
       }
 
       .release p {
@@ -2002,7 +2068,7 @@
         </div>
 
         <div class="releases">
-          <article class="release release-featured" id="still-i-be">
+          <article class="release release-featured" id="latest-still-i-be">
             <div class="release-cover">
               <img src="still-i-be.jpg" alt="Still, I Be… ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200" onerror="this.onerror=null; this.src='ogp.png';">
             </div>
@@ -2025,7 +2091,7 @@
             </div>
           </article>
 
-          <article class="release release-featured" id="kando">
+          <article class="release release-featured" id="latest-kando">
             <div class="release-cover">
               <img src="kando.jpg" alt="感Do ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200" onerror="this.onerror=null; this.src='ogp.png';">
             </div>
@@ -2065,10 +2131,25 @@
       <div class="section-inner">
         <div class="section-head">
           <h2>NEWS / UPDATE</h2>
-          <p class="section-note">直近のリリースと重要なお知らせを掲載しています。</p>
+          <p class="section-note">直近2か月の動きと、現在の制作状況を掲載しています。</p>
         </div>
 
         <div class="schedule">
+          <article class="sched-item">
+            <time class="sched-date" datetime="2026-08-31">2026-08-31</time>
+            <div class="sched-main">
+              <h3>新曲制作中 / NEW MUSIC IN PROGRESS</h3>
+              <div class="sched-meta">次の作品に向けて、新しい楽曲を制作中です。進捗や公開時期は、決まり次第このサイトと公式SNSでお知らせします。</div>
+              <div class="chips">
+                <span class="chip">UPDATE</span>
+                <span class="chip">IN PRODUCTION</span>
+              </div>
+              <div class="sched-links">
+                <a href="https://x.com/t_act_music" target="_blank" rel="noreferrer noopener">最新情報をXで見る</a>
+              </div>
+            </div>
+          </article>
+
           <article class="sched-item">
             <time class="sched-date" datetime="2026-07-23">2026-07-23</time>
             <div class="sched-main">
@@ -2089,23 +2170,6 @@
             </div>
           </article>
 
-          <article class="sched-item">
-            <time class="sched-date" datetime="2026-05-15">2026-05-15</time>
-            <div class="sched-main">
-              <h3>New Single「現場監督」Now Streaming</h3>
-              <div class="sched-meta">各種サブスクにて配信中</div>
-              <div class="chips">
-                <span class="chip">NEWS</span>
-                <span class="chip">RELEASE</span>
-                <span class="chip">STREAMING</span>
-              </div>
-              <div class="sched-links">
-                <a href="https://music.apple.com/jp/album/%E7%8F%BE%E5%A0%B4%E7%9B%A3%E7%9D%A3-single/1895693307?l=en-US" target="_blank" rel="noreferrer noopener">Apple Music</a>
-                <a href="https://open.spotify.com/intl-ja/album/7A5BV4JCmfubsWa9ICRg2o" target="_blank" rel="noreferrer noopener">Spotify</a>
-                <a href="https://music.line.me/webapp/album/mb00000000053e23ec" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
-              </div>
-            </div>
-          </article>
         </div>
       </div>
     </section>
@@ -2113,12 +2177,46 @@
     <section id="releases">
       <div class="section-inner">
         <div class="section-head">
-          <h2>DISCOGRAPHY / ARCHIVE</h2>
-          <p class="section-note">これまでの作品に残る温度、余白、視点のアーカイブ。</p>
+          <h2>DISCOGRAPHY</h2>
+          <p class="section-note">最新作からこれまでの作品まで、コンパクトに一覧できます。</p>
         </div>
 
-        <div class="releases">
-          <article class="release" id="genba-kantoku">
+        <div class="releases discography-grid">
+          <article class="release release-compact release-featured" id="still-i-be">
+            <div class="release-cover">
+              <img src="still-i-be.jpg" alt="Still, I Be… ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200" onerror="this.onerror=null; this.src='ogp.png';">
+            </div>
+            <div class="chips" style="margin-top:0; margin-bottom:8px;">
+              <span class="chip">2026.07.23</span>
+              <span class="chip">LATEST</span>
+            </div>
+            <h3>Still, I Be…</h3>
+            <p>揺れながらも自分の内側へ戻っていく感覚を描いた、T-ACT × KONOMIのコラボレーション作品。</p>
+            <div class="sched-links">
+              <a href="https://open.spotify.com/intl-ja/album/0ejjKr9sP1qGpuIh8VIWWC" target="_blank" rel="noreferrer noopener">Spotify</a>
+              <a href="https://music.apple.com/jp/album/still-l-be-feat-konomi-single/6784488432?l=en-US&amp;ls=1" target="_blank" rel="noreferrer noopener">Apple Music</a>
+              <a href="https://music.line.me/webapp/album/mb00000000056ab2cd" target="_blank" rel="noreferrer noopener">LINE</a>
+            </div>
+          </article>
+
+          <article class="release release-compact release-featured" id="kando">
+            <div class="release-cover">
+              <img src="kando.jpg" alt="感Do ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200" onerror="this.onerror=null; this.src='ogp.png';">
+            </div>
+            <div class="chips" style="margin-top:0; margin-bottom:8px;">
+              <span class="chip">2026.07.23</span>
+              <span class="chip">LATEST</span>
+            </div>
+            <h3>感Do</h3>
+            <p>見慣れた日常の中にある感度、感動、そしてDoを見つめるChill Hip-Hop。</p>
+            <div class="sched-links">
+              <a href="https://open.spotify.com/album/4EEkQ6TYw2pWNxa4ACoq7t" target="_blank" rel="noreferrer noopener">Spotify</a>
+              <a href="https://music.apple.com/jp/album/%E6%84%9Fdo-single/6788598273?l=en-US" target="_blank" rel="noreferrer noopener">Apple Music</a>
+              <a href="https://music.line.me/webapp/album/mb0000000005760515" target="_blank" rel="noreferrer noopener">LINE</a>
+            </div>
+          </article>
+
+          <article class="release release-compact" id="genba-kantoku">
             <div class="release-cover">
               <img src="genba-kantoku.jpg" alt="現場監督 ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200" onerror="this.onerror=null; this.src='ogp.png';">
             </div>
@@ -2135,7 +2233,7 @@
             </div>
           </article>
 
-          <article class="release" id="redefine">
+          <article class="release release-compact" id="redefine">
             <div class="release-cover">
               <img src="redefine.jpg" alt="再定義 ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200" onerror="this.onerror=null; this.src='ogp.png';">
             </div>
@@ -2152,7 +2250,7 @@
             </div>
           </article>
 
-          <article class="release" id="zanti">
+          <article class="release release-compact" id="zanti">
             <div class="release-cover">
               <img src="zanti.jpg" alt="残置 ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200" onerror="this.onerror=null; this.src='ogp.png';">
             </div>
@@ -2168,7 +2266,7 @@
             </div>
           </article>
 
-          <article class="release" id="iine">
+          <article class="release release-compact" id="iine">
             <div class="release-cover">
               <img src="iine.jpg" alt="いいね ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200" onerror="this.onerror=null; this.src='ogp.png';">
             </div>
@@ -2184,7 +2282,7 @@
             </div>
           </article>
 
-          <article class="release" id="kaniana">
+          <article class="release release-compact" id="kaniana">
             <div class="release-cover">
               <img src="kaniana.jpg" alt="蟹穴 ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200" onerror="this.onerror=null; this.src='ogp.png';">
             </div>
@@ -2200,7 +2298,7 @@
             </div>
           </article>
 
-          <article class="release" id="baton">
+          <article class="release release-compact" id="baton">
             <div class="release-cover">
               <img src="baton.jpg" alt="Baton ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200" onerror="this.onerror=null; this.src='ogp.png';">
             </div>
@@ -2216,7 +2314,7 @@
             </div>
           </article>
 
-          <article class="release" id="min-i">
+          <article class="release release-compact" id="min-i">
             <div class="release-cover">
               <img src="min-i.jpg" alt="民意 ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200" onerror="this.onerror=null; this.src='ogp.png';">
             </div>
@@ -2232,7 +2330,7 @@
             </div>
           </article>
 
-          <article class="release" id="rain-in-your-eyes">
+          <article class="release release-compact" id="rain-in-your-eyes">
             <div class="release-cover">
               <img src="Rain-in-Your-Eyes.jpg" alt="Rain in Your Eyes ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200" onerror="this.onerror=null; this.src='ogp.png';">
             </div>
@@ -2248,7 +2346,7 @@
             </div>
           </article>
 
-          <article class="release" id="sweet-and-bitter">
+          <article class="release release-compact" id="sweet-and-bitter">
             <div class="release-cover">
               <img src="sweet-bitter.jpg" alt="Sweet &amp; Bitter ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200" onerror="this.onerror=null; this.src='ogp.png';">
             </div>
