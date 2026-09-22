@@ -811,7 +811,7 @@
 
     .release-countdown {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(5, minmax(0, 1fr));
       gap: 8px;
       max-width: 520px;
       margin: 16px auto 0;
@@ -831,7 +831,7 @@
     .hero-stats {
       margin-top: 18px;
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(5, minmax(0, 1fr));
       gap: 12px;
       text-align: left;
     }
@@ -1060,7 +1060,7 @@
     }
 
     .discography-grid {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(5, minmax(0, 1fr));
       gap: 14px;
       max-width: 1120px;
     }
@@ -1598,7 +1598,7 @@
 
     @media (max-width: 780px) {
       .discography-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 10px;
       }
 
@@ -1743,6 +1743,177 @@
         transition-duration: .01ms !important;
       }
     }
+  
+    /* ===== DISCOGRAPHY / compact artwork shelf ===== */
+    .discography-grid {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 16px;
+      max-width: 1180px;
+      align-items: start;
+    }
+
+    .discography-grid .release-compact {
+      position: relative;
+      padding: 10px;
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .discography-grid .release-compact .release-cover {
+      margin-bottom: 10px;
+      aspect-ratio: 1 / 1;
+    }
+
+    .discography-grid .release-compact .release-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .discography-grid .release-compact h3 {
+      margin-bottom: 5px;
+      font-size: 1rem;
+    }
+
+    .discography-grid .release-compact .chips {
+      margin-bottom: 7px !important;
+    }
+
+    .discography-grid .release-compact p,
+    .discography-grid .release-compact .sched-links {
+      display: none;
+    }
+
+    .discography-grid .release-compact::after {
+      content: "DETAILS ＋";
+      display: block;
+      margin-top: 8px;
+      color: var(--text-soft);
+      font-size: .67rem;
+      letter-spacing: .12em;
+      opacity: .72;
+    }
+
+    .discography-grid .release-compact.is-open {
+      grid-column: span 2;
+      cursor: default;
+    }
+
+    .discography-grid .release-compact.is-open p {
+      display: block;
+      min-height: 0;
+      margin-top: 8px;
+      animation: discFade .22s ease both;
+    }
+
+    .discography-grid .release-compact.is-open .sched-links {
+      display: flex;
+      margin-top: 12px;
+      animation: discFade .22s ease both;
+    }
+
+    .discography-grid .release-compact.is-open::after {
+      content: "CLOSE －";
+      cursor: pointer;
+    }
+
+    .discography-grid .release-compact:focus-visible {
+      outline: 2px solid var(--mint);
+      outline-offset: 3px;
+    }
+
+    @keyframes discFade {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 920px) {
+      .discography-grid {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 10px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .discography-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .discography-grid .release-compact,
+      .discography-grid .release-compact.is-open {
+        grid-column: span 1;
+        padding: 8px;
+      }
+
+      .discography-grid .release-compact h3 {
+        font-size: .9rem;
+      }
+
+      .discography-grid .release-compact .chip {
+        font-size: .61rem;
+        padding: 3px 6px;
+      }
+
+      .discography-grid .release-compact.is-open p {
+        font-size: .82rem;
+        line-height: 1.62;
+      }
+
+      .discography-grid .release-compact::after {
+        font-size: .61rem;
+      }
+    }
+
+  
+    @media (max-width: 680px) {
+      .discography-grid .release-compact {
+        min-width: 0;
+      }
+      .discography-grid .release-compact h3 {
+        font-size: .76rem;
+        line-height: 1.35;
+        overflow-wrap: anywhere;
+      }
+      .discography-grid .release-compact .chips {
+        gap: 3px;
+      }
+      .discography-grid .release-compact .chip {
+        font-size: .52rem;
+        padding: 2px 4px;
+        letter-spacing: .02em;
+      }
+      .discography-grid .release-compact::after {
+        font-size: .52rem;
+        letter-spacing: .06em;
+      }
+      .discography-grid .release-compact.is-open {
+        grid-column: 1 / -1;
+      }
+      .discography-grid .release-compact.is-open h3 {
+        font-size: 1rem;
+      }
+      .discography-grid .release-compact.is-open p {
+        font-size: .88rem;
+      }
+    }
+
+  
+    .hero-statement {
+      margin: 28px auto 22px;
+      max-width: 720px;
+      text-align: center;
+    }
+    .hero-statement .manifesto-kicker {
+      margin-bottom: 16px;
+    }
+    .hero-statement .manifesto-body {
+      margin: 0 auto;
+    }
+    .hero-statement .manifesto-body p {
+      margin: 0 0 18px;
+    }
+
   </style>
   <noscript><style>.splash-screen { display: none !important; }</style></noscript>
 </head>
@@ -2046,7 +2217,6 @@
       </a>
 
       <div class="nav-links">
-        <a href="#video">VIDEO</a>
         <a href="#latest-releases">MUSIC</a>
         <a href="#schedule">NEWS</a>
         <a href="#profile">PROFILE</a>
@@ -2086,15 +2256,15 @@
       </div>
 
       <div class="hero-panel">
-        <p class="lead">
-          昼は、構造をつくる<br>
-          夜は、その重みを音に残す<br><br>
-          逃避でも幻想でもない<br>
-          現実から生まれた、チルでミニマルな音楽<br>
-        </p>
+        <div class="hero-statement" aria-labelledby="hero-statement-title">
+  <p class="manifesto-kicker" id="hero-statement-title">T-ACT / STATEMENT</p>
+  <div class="manifesto-body">
+    <p>記憶は薄れる<br>不確かなものになる<br>どう残すか</p>
+    <p>成功や承認のためではない<br>これは現実の中で生まれた思考と瞬間の記録</p>
+  </div>
+</div>
 
         <div class="cta" aria-label="主要導線">
-          <a class="btn btn-primary" href="https://www.youtube.com/watch?v=ErafVaWezAY" target="_blank" rel="noreferrer noopener">Watch MV on YouTube</a>
           <a class="btn" href="#latest-releases">Music</a>
           <a class="btn" href="https://music.apple.com/jp/artist/t-act/1842221982" target="_blank" rel="noreferrer noopener">Apple Music</a>
           <a class="btn" href="https://open.spotify.com/intl-ja/artist/5FOiDuDN7NiDUrBtEciroP" target="_blank" rel="noreferrer noopener">Spotify</a>
@@ -2107,33 +2277,6 @@
   </header>
 
   <main id="main-content">
-    <section id="video" aria-labelledby="video-title">
-      <div class="section-inner">
-        <div class="section-head">
-          <h2 id="video-title">FEATURED VIDEO</h2>
-          <p class="section-note">「Still, I Be…」Official Music Video。ほかのMVもT-ACT公式YouTubeチャンネルで公開中です。</p>
-        </div>
-
-        <div class="video-list">
-          <article class="video-block" id="featured-video">
-            <div class="video-head">
-              <h3>T-ACT – Still, I Be… (Official Music Video)</h3>
-              <p>揺れながらも、自分の内側へ戻っていく。T-ACT × KONOMIによる「Still, I Be…」Official Music Video。</p>
-            </div>
-            <button class="yt-lite" type="button" data-youtube-id="ErafVaWezAY" aria-label="Still, I Be… Official Music Videoを再生">
-              <img src="https://i.ytimg.com/vi/ErafVaWezAY/hqdefault.jpg" alt="T-ACT – Still, I Be… Official Music Videoのサムネイル" loading="lazy" decoding="async" width="480" height="360">
-              <span class="yt-button" aria-hidden="true"><span></span></span>
-            </button>
-            <div class="video-links">
-              <a class="mv-link" href="https://www.youtube.com/watch?v=ErafVaWezAY" target="_blank" rel="noreferrer noopener">フルMVをYouTubeで見る</a>
-              <a href="https://twitter.com/intent/tweet?text=T-ACT%20%E2%80%93%20Still%2C%20I%20Be%E2%80%A6%20%28Official%20Music%20Video%29&amp;url=https%3A%2F%2Fyoutu.be%2FErafVaWezAY" target="_blank" rel="noreferrer noopener">Xでシェア</a>
-              <a href="https://youtube.com/@t_act_music" target="_blank" rel="noreferrer noopener">ほかのMVを見る</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
     <section id="latest-releases" aria-labelledby="latest-releases-title">
       <div class="section-inner">
         <div class="section-head">
@@ -2153,22 +2296,11 @@
       </div>
     </section>
 
-  <section class="manifesto-section" aria-labelledby="manifesto-title">
-    <div class="manifesto-wrap">
-      <p class="manifesto-kicker" id="manifesto-title">T-ACT / STATEMENT</p>
-
-  <div class="manifesto-body">
-  <p>記憶は薄れる<br>不確かなものになる<br>どう残すか</p>
-  <p>成功や承認のためではない<br>これは現実の中で生まれた思考と瞬間の記録</p>
-</div>
-    </div>
-  </section>
-
     <section id="schedule">
       <div class="section-inner">
         <div class="section-head">
           <h2>NEWS / UPDATE</h2>
-          <p class="section-note">直近2か月の動きと、現在の制作状況を掲載しています。</p>
+          
         </div>
 
         <div class="schedule">
@@ -2177,21 +2309,6 @@
           </article>
           <article class="sched-item">
             <time class="sched-date" datetime="2026-09-18">2026-09-18</time><div class="sched-main"><h3>「Morning Rolls」配信開始</h3><div class="sched-meta">T-ACT「Morning Rolls」の配信を開始。</div><div class="chips"><span class="chip">NOW STREAMING</span><span class="chip">RELEASE</span></div><div class="sched-links"><a href="https://linkco.re/tP9vp0hQ" target="_blank" rel="noreferrer noopener">Listen</a></div></div>
-          </article>
-
-          <article class="sched-item">
-            <time class="sched-date" datetime="2026-08-31">2026-08-31</time>
-            <div class="sched-main">
-              <h3>新曲制作中 / NEW MUSIC IN PROGRESS</h3>
-              <div class="sched-meta">次の作品に向けて、新しい楽曲を制作中です。進捗や公開時期は、決まり次第このサイトと公式SNSでお知らせします。</div>
-              <div class="chips">
-                <span class="chip">UPDATE</span>
-                <span class="chip">IN PRODUCTION</span>
-              </div>
-              <div class="sched-links">
-                <a href="https://x.com/t_act_music" target="_blank" rel="noreferrer noopener">最新情報をXで見る</a>
-              </div>
-            </div>
           </article>
 
           <article class="sched-item">
@@ -2223,15 +2340,15 @@
       <div class="section-inner">
         <div class="section-head">
           <h2>DISCOGRAPHY</h2>
-          <p class="section-note">最新作からこれまでの作品まで、コンパクトに一覧できます。</p>
+          <p class="section-note">ジャケットから作品を選択。タップすると楽曲情報と配信リンクが開きます。</p>
         </div>
 
         <div class="releases discography-grid">
-          <article class="release release-compact release-featured" id="boku-no-me-no-mae"><div class="release-cover"><img src="boku-no-me-no-mae.jpg" alt="僕の目の前 ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200" onerror="this.onerror=null; this.src='ogp.png';"></div><div class="chips" style="margin-top:0; margin-bottom:8px;"><span class="chip">2026.09.25</span><span class="chip">LATEST</span></div><h3>僕の目の前</h3><p>映画館の横顔、帰り道、水槽の青。大切な人と過ごす何気ない時間が、あとから記憶になっていく。その瞬間を静かに残した一曲。</p><div class="sched-links"><a href="https://linkco.re/gXyuBQ2H" target="_blank" rel="noreferrer noopener">LinkCore</a></div></article>
+          <article class="release release-compact release-featured" id="boku-no-me-no-mae" tabindex="0" role="button" aria-expanded="false"><div class="release-cover"><img src="boku-no-me-no-mae.jpg" alt="僕の目の前 ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200" onerror="this.onerror=null; this.src='ogp.png';"></div><div class="chips" style="margin-top:0; margin-bottom:8px;"><span class="chip">2026.09.25</span><span class="chip">LATEST</span></div><h3>僕の目の前</h3><p>映画館の横顔、帰り道、水槽の青。大切な人と過ごす何気ない時間が、あとから記憶になっていく。その瞬間を静かに残した一曲。</p><div class="sched-links"><a href="https://linkco.re/gXyuBQ2H" target="_blank" rel="noreferrer noopener">LinkCore</a></div></article>
 
-          <article class="release release-compact release-featured" id="morning-rolls"><div class="release-cover"><img src="morning-rolls.jpg" alt="Morning Rolls ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200" onerror="this.onerror=null; this.src='ogp.png';"></div><div class="chips" style="margin-top:0; margin-bottom:8px;"><span class="chip">2026.09.18</span><span class="chip">NEW</span></div><h3>Morning Rolls</h3><p>朝は、誰かの仕事によって動き続ける。目立たなくても日常を支え、次の朝へつないでいく人たちを記録した一曲。</p><div class="sched-links"><a href="https://linkco.re/tP9vp0hQ" target="_blank" rel="noreferrer noopener">LinkCore</a></div></article>
+          <article class="release release-compact release-featured" id="morning-rolls" tabindex="0" role="button" aria-expanded="false"><div class="release-cover"><img src="morning-rolls.jpg" alt="Morning Rolls ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200" onerror="this.onerror=null; this.src='ogp.png';"></div><div class="chips" style="margin-top:0; margin-bottom:8px;"><span class="chip">2026.09.18</span><span class="chip">NEW</span></div><h3>Morning Rolls</h3><p>朝は、誰かの仕事によって動き続ける。目立たなくても日常を支え、次の朝へつないでいく人たちを記録した一曲。</p><div class="sched-links"><a href="https://linkco.re/tP9vp0hQ" target="_blank" rel="noreferrer noopener">LinkCore</a></div></article>
 
-          <article class="release release-compact release-featured" id="still-i-be">
+          <article class="release release-compact release-featured" id="still-i-be" tabindex="0" role="button" aria-expanded="false">
             <div class="release-cover">
               <img src="still-i-be.jpg" alt="Still, I Be… ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200" onerror="this.onerror=null; this.src='ogp.png';">
             </div>
@@ -2249,7 +2366,7 @@
             </div>
           </article>
 
-          <article class="release release-compact release-featured" id="kando">
+          <article class="release release-compact release-featured" id="kando" tabindex="0" role="button" aria-expanded="false">
             <div class="release-cover">
               <img src="kando.jpg" alt="感Do ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200" onerror="this.onerror=null; this.src='ogp.png';">
             </div>
@@ -2266,7 +2383,7 @@
             </div>
           </article>
 
-          <article class="release release-compact" id="genba-kantoku">
+          <article class="release release-compact" id="genba-kantoku" tabindex="0" role="button" aria-expanded="false">
             <div class="release-cover">
               <img src="genba-kantoku.jpg" alt="現場監督 ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200" onerror="this.onerror=null; this.src='ogp.png';">
             </div>
@@ -2283,7 +2400,7 @@
             </div>
           </article>
 
-          <article class="release release-compact" id="redefine">
+          <article class="release release-compact" id="redefine" tabindex="0" role="button" aria-expanded="false">
             <div class="release-cover">
               <img src="redefine.jpg" alt="再定義 ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200" onerror="this.onerror=null; this.src='ogp.png';">
             </div>
@@ -2300,7 +2417,7 @@
             </div>
           </article>
 
-          <article class="release release-compact" id="zanti">
+          <article class="release release-compact" id="zanti" tabindex="0" role="button" aria-expanded="false">
             <div class="release-cover">
               <img src="zanti.jpg" alt="残置 ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200" onerror="this.onerror=null; this.src='ogp.png';">
             </div>
@@ -2316,7 +2433,7 @@
             </div>
           </article>
 
-          <article class="release release-compact" id="iine">
+          <article class="release release-compact" id="iine" tabindex="0" role="button" aria-expanded="false">
             <div class="release-cover">
               <img src="iine.jpg" alt="いいね ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200" onerror="this.onerror=null; this.src='ogp.png';">
             </div>
@@ -2332,7 +2449,7 @@
             </div>
           </article>
 
-          <article class="release release-compact" id="kaniana">
+          <article class="release release-compact" id="kaniana" tabindex="0" role="button" aria-expanded="false">
             <div class="release-cover">
               <img src="kaniana.jpg" alt="蟹穴 ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200" onerror="this.onerror=null; this.src='ogp.png';">
             </div>
@@ -2348,7 +2465,7 @@
             </div>
           </article>
 
-          <article class="release release-compact" id="baton">
+          <article class="release release-compact" id="baton" tabindex="0" role="button" aria-expanded="false">
             <div class="release-cover">
               <img src="baton.jpg" alt="Baton ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200" onerror="this.onerror=null; this.src='ogp.png';">
             </div>
@@ -2364,7 +2481,7 @@
             </div>
           </article>
 
-          <article class="release release-compact" id="min-i">
+          <article class="release release-compact" id="min-i" tabindex="0" role="button" aria-expanded="false">
             <div class="release-cover">
               <img src="min-i.jpg" alt="民意 ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200" onerror="this.onerror=null; this.src='ogp.png';">
             </div>
@@ -2380,7 +2497,7 @@
             </div>
           </article>
 
-          <article class="release release-compact" id="rain-in-your-eyes">
+          <article class="release release-compact" id="rain-in-your-eyes" tabindex="0" role="button" aria-expanded="false">
             <div class="release-cover">
               <img src="Rain-in-Your-Eyes.jpg" alt="Rain in Your Eyes ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200" onerror="this.onerror=null; this.src='ogp.png';">
             </div>
@@ -2396,7 +2513,7 @@
             </div>
           </article>
 
-          <article class="release release-compact" id="sweet-and-bitter">
+          <article class="release release-compact" id="sweet-and-bitter" tabindex="0" role="button" aria-expanded="false">
             <div class="release-cover">
               <img src="sweet-bitter.jpg" alt="Sweet &amp; Bitter ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200" onerror="this.onerror=null; this.src='ogp.png';">
             </div>
@@ -2551,5 +2668,38 @@
       const timer = setInterval(() => { if (!tick()) clearInterval(timer); }, 1000);
     })();
   </script>
+
+  <script>
+    (() => {
+      const cards = document.querySelectorAll('.discography-grid .release-compact');
+
+      const toggleCard = (card) => {
+        const opening = !card.classList.contains('is-open');
+        cards.forEach((item) => {
+          if (item !== card) {
+            item.classList.remove('is-open');
+            item.setAttribute('aria-expanded', 'false');
+          }
+        });
+        card.classList.toggle('is-open', opening);
+        card.setAttribute('aria-expanded', opening ? 'true' : 'false');
+      };
+
+      cards.forEach((card) => {
+        card.addEventListener('click', (event) => {
+          if (event.target.closest('a')) return;
+          toggleCard(card);
+        });
+
+        card.addEventListener('keydown', (event) => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            toggleCard(card);
+          }
+        });
+      });
+    })();
+  </script>
+
 </body>
 </html>
