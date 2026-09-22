@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>T-ACT 公式サイト｜Chill / Hip-Hop / R&amp;B アーティスト</title>
-  <meta name="description" content="T-ACT公式サイト。2026.07.23リリース、T-ACT × KONOMI「Still, I Be…」とT-ACT「感Do」を配信中。Chill、Hip-Hop、R&amp;Bを軸に、楽曲・MV・プロフィール・グッズ・最新情報を掲載。">
+  <meta name="description" content="T-ACT公式サイト。2026.09.18「Morning Rolls」配信開始。2026.09.25「僕の目の前」リリース。Chill、Hip-Hop、R&amp;Bを軸に、楽曲・MV・プロフィール・グッズ・最新情報を掲載。">
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <meta name="theme-color" content="#0b0f10">
   <meta name="google-site-verification" content="v2V_zySwHXIOgg7nOymSmx_8UiwnfsP1LPav9OlIXaI">
@@ -21,7 +21,7 @@
 
   <!-- ===== OGP / SNSプレビュー ===== -->
   <meta property="og:title" content="T-ACT 公式サイト｜Chill / Hip-Hop / R&amp;B アーティスト">
-  <meta property="og:description" content="2026.07.23リリース、T-ACT × KONOMI「Still, I Be…」とT-ACT「感Do」を配信中。Chill、Hip-Hop、R&amp;Bを軸に現実から音楽を立ち上げる。">
+  <meta property="og:description" content="2026.09.18「Morning Rolls」配信開始。2026.09.25「僕の目の前」リリース。Chill、Hip-Hop、R&amp;Bを軸に現実から音楽を立ち上げる。">
   <meta property="og:image" content="https://t-act-official.site/ogp.png">
   <meta property="og:image:alt" content="T-ACT 公式サイト — Chill / Hip-Hop / R&amp;B アーティスト">
   <meta property="og:url" content="https://t-act-official.site/">
@@ -32,7 +32,7 @@
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="T-ACT 公式サイト｜Chill / Hip-Hop / R&amp;B アーティスト">
-  <meta name="twitter:description" content="2026.07.23リリース、T-ACT × KONOMI「Still, I Be…」とT-ACT「感Do」を配信中。Chill、Hip-Hop、R&amp;Bを軸に現実から音楽を立ち上げる。">
+  <meta name="twitter:description" content="2026.09.18「Morning Rolls」配信開始。2026.09.25「僕の目の前」リリース。Chill、Hip-Hop、R&amp;Bを軸に現実から音楽を立ち上げる。">
   <meta name="twitter:image" content="https://t-act-official.site/ogp.png">
   <meta name="twitter:image:alt" content="T-ACT 公式サイト — Chill / Hip-Hop / R&amp;B アーティスト">
 
@@ -149,6 +149,38 @@
       "publisher": {
         "@id": "https://t-act-official.site/#organization"
       }
+    },
+    {
+      "@type": "MusicRecording",
+      "@id": "https://t-act-official.site/#boku-no-me-no-mae",
+      "name": "僕の目の前",
+      "url": "https://t-act-official.site/#boku-no-me-no-mae",
+      "datePublished": "2026-09-25",
+      "inLanguage": "ja",
+      "image": "https://t-act-official.site/boku-no-me-no-mae.jpg",
+      "byArtist": {
+        "@id": "https://t-act-official.site/#artist"
+      },
+      "description": "映画館の横顔、帰り道、水槽の青。大切な人と過ごす何気ない時間が、あとから記憶になっていく。その瞬間を静かに残した一曲。",
+      "sameAs": [
+        "https://linkco.re/gXyuBQ2H"
+      ]
+    },
+    {
+      "@type": "MusicRecording",
+      "@id": "https://t-act-official.site/#morning-rolls",
+      "name": "Morning Rolls",
+      "url": "https://t-act-official.site/#morning-rolls",
+      "datePublished": "2026-09-18",
+      "inLanguage": "ja",
+      "image": "https://t-act-official.site/morning-rolls.jpg",
+      "byArtist": {
+        "@id": "https://t-act-official.site/#artist"
+      },
+      "description": "朝は、誰かの仕事によって動き続ける。目立たなくても日常を支え、次の朝へつないでいく人たちを記録した一曲。",
+      "sameAs": [
+        "https://linkco.re/tP9vp0hQ"
+      ]
     },
     {
       "@type": "MusicRecording",
@@ -776,6 +808,25 @@
       opacity: 1;
       outline: none;
     }
+
+    .release-countdown {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      max-width: 520px;
+      margin: 16px auto 0;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .release-countdown div {
+      padding: 10px 6px 8px;
+      border: 1px solid var(--mint-line);
+      border-radius: 12px;
+      background: rgba(0,0,0,.18);
+    }
+
+    .release-countdown b { display:block; color:var(--text); font-size:clamp(1.35rem,4vw,2rem); line-height:1.1; }
+    .release-countdown span { display:block; margin-top:4px; color:var(--muted); font-size:.66rem; letter-spacing:.12em; }
 
     .hero-stats {
       margin-top: 18px;
@@ -2019,14 +2070,18 @@
       <h1>T-ACT</h1>
       <p class="hero-sub">日本を拠点に、Chill / Hip-Hop / R&amp;Bを軸に現実から音楽を立ち上げるインディペンデントアーティスト。</p>
 
-      <div class="hero-release" aria-label="Latest Releases">
-        <span class="hero-release-label">2026.07.23 Two Singles Out Now</span>
-        <strong>Still, I Be… / 感Do</strong>
-        <span class="hero-release-meta">T-ACT × KONOMI / T-ACT</span>
-        <p class="hero-release-copy">揺れても、戻れる。見慣れた街にも、まだ感Doがある。</p>
+      <div class="hero-release" aria-label="Latest Release">
+        <span class="hero-release-label" id="latest-release-label">2026.09.25 NEW SINGLE</span>
+        <strong>僕の目の前</strong>
+        <span class="hero-release-meta">T-ACT / 2026.09.25 0:00 JST</span>
+        <div class="release-countdown" id="release-countdown" data-release="2026-09-25T00:00:00+09:00" aria-label="僕の目の前 リリースまでのカウントダウン">
+          <div><b id="cd-days">--</b><span>DAYS</span></div><div><b id="cd-hours">--</b><span>HOURS</span></div><div><b id="cd-minutes">--</b><span>MIN</span></div><div><b id="cd-seconds">--</b><span>SEC</span></div>
+        </div>
+        <p class="hero-release-copy">映画館の横顔、帰り道、水槽の青。大切な人と過ごす何気ない時間が、あとから記憶になっていく。その瞬間を静かに残した一曲。</p>
+        <p class="hero-release-copy" id="release-countdown-copy">9月25日 0:00、配信開始。</p>
         <div class="hero-release-actions">
-          <a class="hero-release-link hero-release-link-primary" href="https://www.youtube.com/watch?v=ErafVaWezAY" target="_blank" rel="noreferrer noopener">YouTubeでMVを見る</a>
-          <a class="hero-release-link" href="#latest-releases">音源を聴く</a>
+          <a class="hero-release-link hero-release-link-primary" href="https://linkco.re/gXyuBQ2H" target="_blank" rel="noreferrer noopener">Pre-Save / Pre-Add</a>
+          <a class="hero-release-link" href="#latest-releases">最新楽曲を見る</a>
         </div>
       </div>
 
@@ -2083,54 +2138,16 @@
       <div class="section-inner">
         <div class="section-head">
           <h2 id="latest-releases-title">LATEST RELEASES</h2>
-          <p class="section-note">2026.07.23、二つの視点から生まれた最新作。</p>
+          <p class="section-note">2026.09、新しい二つの記録。</p>
         </div>
 
         <div class="releases">
-          <article class="release release-featured" id="latest-still-i-be">
-            <div class="release-cover">
-              <img src="still-i-be.jpg" alt="Still, I Be… ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200" onerror="this.onerror=null; this.src='ogp.png';">
-            </div>
-            <div class="chips" style="margin-top:0; margin-bottom:10px;">
-              <span class="chip">2026</span>
-              <span class="chip">NOW STREAMING</span>
-              <span class="chip">COLLABORATION</span>
-            </div>
-            <h3>Still, I Be…</h3>
-            <p>砂のように崩れそうな感覚の中で、それでも残り続ける鼓動と体温を描いた T-ACT × KONOMI のコラボレーション作品。不安に飲まれるのではなく、揺れながらも自分の内側へ戻っていく感覚を、静かに刻み込む。</p>
-            <div class="chips">
-              <span class="chip">2026.07.23 Release</span>
-              <span class="chip">T-ACT × KONOMI</span>
-            </div>
-            <div class="sched-links">
-              <a class="mv-link" href="https://www.youtube.com/watch?v=ErafVaWezAY" target="_blank" rel="noreferrer noopener">Official MV</a>
-              <a href="https://open.spotify.com/intl-ja/album/0ejjKr9sP1qGpuIh8VIWWC" target="_blank" rel="noreferrer noopener">Spotify</a>
-              <a href="https://music.apple.com/jp/album/still-l-be-feat-konomi-single/6784488432?l=en-US&amp;ls=1" target="_blank" rel="noreferrer noopener">Apple Music</a>
-              <a href="https://music.line.me/webapp/album/mb00000000056ab2cd" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
-              <a href="konomi.html">KONOMI Profile</a>
-            </div>
-          </article>
-
-          <article class="release release-featured" id="latest-kando">
-            <div class="release-cover">
-              <img src="kando.jpg" alt="感Do ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200" onerror="this.onerror=null; this.src='ogp.png';">
-            </div>
-            <div class="chips" style="margin-top:0; margin-bottom:10px;">
-              <span class="chip">2026</span>
-              <span class="chip">NOW STREAMING</span>
-              <span class="chip">NEW SINGLE</span>
-            </div>
-            <h3>感Do</h3>
-            <p>見慣れた街の中で、名もなき誰かが静かに役割を果たしている。その姿に残る感度、感動、そしてDo。日常をただ通り過ぎず、まだ心が動く瞬間を拾い上げる T-ACT のChill Hip-Hop / Conscious Hip-Hop。</p>
-            <div class="chips">
-              <span class="chip">2026.07.23 Release</span>
-              <span class="chip">T-ACT</span>
-            </div>
-            <div class="sched-links">
-              <a href="https://open.spotify.com/album/4EEkQ6TYw2pWNxa4ACoq7t" target="_blank" rel="noreferrer noopener">Spotify</a>
-              <a href="https://music.apple.com/jp/album/%E6%84%9Fdo-single/6788598273?l=en-US" target="_blank" rel="noreferrer noopener">Apple Music</a>
-              <a href="https://music.line.me/webapp/album/mb0000000005760515" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
-            </div>
+          <article class="release release-featured" id="latest-morning-rolls">
+            <div class="release-cover"><img src="morning-rolls.jpg" alt="Morning Rolls ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200" onerror="this.onerror=null; this.src='ogp.png';"></div>
+            <div class="chips" style="margin-top:0; margin-bottom:10px;"><span class="chip">2026.09.18</span><span class="chip">NOW STREAMING</span><span class="chip">NEW SINGLE</span></div>
+            <h3>Morning Rolls</h3>
+            <p>朝は、誰かの仕事によって動き続ける。目立たなくても日常を支え、次の朝へつないでいく人たちを記録した一曲。</p>
+            <div class="sched-links"><a class="mv-link" href="https://linkco.re/tP9vp0hQ" target="_blank" rel="noreferrer noopener">Listen</a></div>
           </article>
         </div>
       </div>
@@ -2155,6 +2172,13 @@
         </div>
 
         <div class="schedule">
+          <article class="sched-item">
+            <time class="sched-date" datetime="2026-09-25">2026-09-25</time><div class="sched-main"><h3>「僕の目の前」リリース</h3><div class="sched-meta">T-ACTの新曲「僕の目の前」を2026年9月25日0:00にリリース。</div><div class="chips"><span class="chip">NEW SINGLE</span><span class="chip">2026.09.25</span></div><div class="sched-links"><a href="https://linkco.re/gXyuBQ2H" target="_blank" rel="noreferrer noopener">Pre-Save / Pre-Add</a></div></div>
+          </article>
+          <article class="sched-item">
+            <time class="sched-date" datetime="2026-09-18">2026-09-18</time><div class="sched-main"><h3>「Morning Rolls」配信開始</h3><div class="sched-meta">T-ACT「Morning Rolls」の配信を開始。</div><div class="chips"><span class="chip">NOW STREAMING</span><span class="chip">RELEASE</span></div><div class="sched-links"><a href="https://linkco.re/tP9vp0hQ" target="_blank" rel="noreferrer noopener">Listen</a></div></div>
+          </article>
+
           <article class="sched-item">
             <time class="sched-date" datetime="2026-08-31">2026-08-31</time>
             <div class="sched-main">
@@ -2203,13 +2227,17 @@
         </div>
 
         <div class="releases discography-grid">
+          <article class="release release-compact release-featured" id="boku-no-me-no-mae"><div class="release-cover"><img src="boku-no-me-no-mae.jpg" alt="僕の目の前 ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200" onerror="this.onerror=null; this.src='ogp.png';"></div><div class="chips" style="margin-top:0; margin-bottom:8px;"><span class="chip">2026.09.25</span><span class="chip">LATEST</span></div><h3>僕の目の前</h3><p>映画館の横顔、帰り道、水槽の青。大切な人と過ごす何気ない時間が、あとから記憶になっていく。その瞬間を静かに残した一曲。</p><div class="sched-links"><a href="https://linkco.re/gXyuBQ2H" target="_blank" rel="noreferrer noopener">LinkCore</a></div></article>
+
+          <article class="release release-compact release-featured" id="morning-rolls"><div class="release-cover"><img src="morning-rolls.jpg" alt="Morning Rolls ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200" onerror="this.onerror=null; this.src='ogp.png';"></div><div class="chips" style="margin-top:0; margin-bottom:8px;"><span class="chip">2026.09.18</span><span class="chip">NEW</span></div><h3>Morning Rolls</h3><p>朝は、誰かの仕事によって動き続ける。目立たなくても日常を支え、次の朝へつないでいく人たちを記録した一曲。</p><div class="sched-links"><a href="https://linkco.re/tP9vp0hQ" target="_blank" rel="noreferrer noopener">LinkCore</a></div></article>
+
           <article class="release release-compact release-featured" id="still-i-be">
             <div class="release-cover">
               <img src="still-i-be.jpg" alt="Still, I Be… ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200" onerror="this.onerror=null; this.src='ogp.png';">
             </div>
             <div class="chips" style="margin-top:0; margin-bottom:8px;">
               <span class="chip">2026.07.23</span>
-              <span class="chip">LATEST</span>
+              <span class="chip">2026</span>
             </div>
             <h3>Still, I Be…</h3>
             <p>揺れながらも自分の内側へ戻っていく感覚を描いた、T-ACT × KONOMIのコラボレーション作品。</p>
@@ -2227,7 +2255,7 @@
             </div>
             <div class="chips" style="margin-top:0; margin-bottom:8px;">
               <span class="chip">2026.07.23</span>
-              <span class="chip">LATEST</span>
+              <span class="chip">2026</span>
             </div>
             <h3>感Do</h3>
             <p>見慣れた日常の中にある感度、感動、そしてDoを見つめるChill Hip-Hop。</p>
@@ -2473,7 +2501,7 @@
       <div class="profile-shell" style="max-width:980px; padding:28px 24px; background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)); border-color:rgba(52,211,153,.16);">
         <p style="margin:0 0 8px; color:var(--mint-2); letter-spacing:.14em; text-transform:uppercase; font-size:.78rem;">T-ACT Official</p>
         <p style="margin:0 auto 16px; max-width:700px; color:var(--text-soft); font-size:1rem; line-height:1.9;">
-          2026.07.23「Still, I Be…」/「感Do」配信開始。<br>
+          2026.09.18「Morning Rolls」配信開始。2026.09.25「僕の目の前」リリース。<br>
           T-ACTの作品、映像、ゲーム、グッズ、最新情報は日本語・英語サイトと各プラットフォームでご覧いただけます。
         </p>
         <div class="footer-links" style="margin-top:0; margin-bottom:14px;">
@@ -2495,5 +2523,33 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    (() => {
+      const root = document.getElementById('release-countdown');
+      if (!root) return;
+      const target = new Date(root.dataset.release).getTime();
+      const ids = { days:'cd-days', hours:'cd-hours', minutes:'cd-minutes', seconds:'cd-seconds' };
+      const label = document.getElementById('latest-release-label');
+      const copy = document.getElementById('release-countdown-copy');
+      const status = document.getElementById('boku-status');
+      const tick = () => {
+        const diff = target - Date.now();
+        if (diff <= 0) {
+          root.innerHTML = '<div style="grid-column:1/-1"><b>OUT NOW</b><span>僕の目の前</span></div>';
+          if (label) label.textContent = '2026.09.25 OUT NOW';
+          if (copy) copy.textContent = '「僕の目の前」配信開始。';
+          if (status) status.textContent = 'NOW STREAMING';
+          return false;
+        }
+        const total = Math.floor(diff / 1000);
+        const values = { days:Math.floor(total/86400), hours:Math.floor((total%86400)/3600), minutes:Math.floor((total%3600)/60), seconds:total%60 };
+        Object.entries(ids).forEach(([k,id]) => { const el=document.getElementById(id); if(el) el.textContent=String(values[k]).padStart(2,'0'); });
+        return true;
+      };
+      tick();
+      const timer = setInterval(() => { if (!tick()) clearInterval(timer); }, 1000);
+    })();
+  </script>
 </body>
 </html>
