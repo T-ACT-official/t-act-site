@@ -1914,7 +1914,265 @@
       margin: 0 0 18px;
     }
 
-  </style>
+  
+    /* ===== LATEST RELEASES / visual-first ===== */
+    #latest-releases .section-head {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    #latest-releases .section-note { margin-top: 8px; }
+
+    #latest-releases .releases {
+      display: block;
+      max-width: 920px;
+      margin-inline: auto;
+    }
+
+    #latest-releases .release-featured {
+      border-color: rgba(74,232,180,.34);
+      background: linear-gradient(180deg, rgba(21,37,32,.72), rgba(12,15,14,.96));
+      padding: clamp(14px,3vw,28px);
+      box-shadow: 0 20px 60px rgba(0,0,0,.22);
+    }
+
+    #latest-releases .release-cover {
+      max-width: 720px;
+      margin: 0 auto 22px;
+      padding: clamp(10px,2vw,20px);
+      border-radius: 20px;
+      background: #f5f0e5;
+      overflow: hidden;
+    }
+
+    #latest-releases .release-cover img {
+      width: 100%;
+      height: auto;
+      max-height: 650px;
+      object-fit: contain;
+      display: block;
+      margin: auto;
+    }
+
+    #latest-releases .release-featured h3 {
+      font-size: clamp(1.35rem,3vw,2rem);
+      color: var(--mint);
+      margin-top: 14px;
+    }
+
+    #latest-releases .release-featured > p {
+      max-width: 760px;
+      font-size: clamp(.98rem,2vw,1.08rem);
+      line-height: 1.9;
+    }
+
+    #latest-releases .sched-links {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    #latest-releases .sched-links a {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding-inline: 22px;
+    }
+
+    @media (max-width:680px) {
+      #latest-releases .section-head { margin-bottom: 20px; }
+
+      #latest-releases .release-featured {
+        padding: 14px;
+        border-radius: 22px;
+      }
+
+      #latest-releases .release-cover {
+        margin-bottom: 14px;
+        padding: 10px;
+        border-radius: 16px;
+      }
+
+      #latest-releases .release-cover img { max-height: none; }
+
+      #latest-releases .release-featured .chips { gap: 6px; }
+
+      #latest-releases .release-featured .chip {
+        font-size: .68rem;
+        padding: 6px 9px;
+      }
+
+      #latest-releases .release-featured h3 { margin-top: 10px; }
+
+      #latest-releases .release-featured > p { line-height: 1.75; }
+
+      #latest-releases .sched-links a {
+        flex: 1 1 auto;
+        min-width: 120px;
+      }
+    }
+
+  
+    /* ===== Direct streaming service buttons ===== */
+    .streaming-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .stream-btn {
+      min-height: 46px;
+      padding: 10px 17px;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      background: rgba(255,255,255,.055);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: .86rem;
+      line-height: 1;
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+    }
+    .stream-btn:hover {
+      transform: translateY(-2px);
+      border-color: rgba(86,255,196,.55);
+      background: rgba(86,255,196,.08);
+    }
+    .stream-btn svg {
+      width: 20px;
+      height: 20px;
+      flex: 0 0 20px;
+    }
+    .stream-btn.spotify svg { color: #1ed760; }
+    .stream-btn.line-music svg { color: #06c755; }
+    .stream-btn.apple-music svg { color: #fff; }
+
+    @media (max-width: 680px) {
+      .streaming-buttons {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0,1fr));
+        gap: 7px;
+      }
+      .stream-btn {
+        min-width: 0;
+        min-height: 44px;
+        padding: 9px 6px;
+        gap: 5px;
+        font-size: .68rem;
+        white-space: nowrap;
+      }
+      .stream-btn svg {
+        width: 17px;
+        height: 17px;
+        flex-basis: 17px;
+      }
+    }
+
+
+    /* ===== Unified inline SVG icon system ===== */
+    .ui-icon {
+      width: 1.05em;
+      height: 1.05em;
+      flex: 0 0 auto;
+      display: inline-block;
+      vertical-align: -0.16em;
+      color: currentColor;
+    }
+
+    a:has(> .ui-icon),
+    button:has(> .ui-icon),
+    .manifesto-kicker:has(> .ui-icon),
+    h2:has(> .ui-icon) {
+      display: inline-flex;
+      align-items: center;
+      gap: .48em;
+    }
+
+    .manifesto-kicker:has(> .ui-icon) {
+      justify-content: center;
+    }
+
+    h2:has(> .ui-icon) {
+      justify-content: center;
+    }
+
+    a:has(> .ui-icon) .ui-icon,
+    button:has(> .ui-icon) .ui-icon {
+      transition: color .18s ease, transform .18s ease;
+    }
+
+    a:has(> .ui-icon):hover .ui-icon,
+    button:has(> .ui-icon):hover .ui-icon {
+      color: var(--mint);
+      transform: translateY(-1px);
+    }
+
+    /* Streaming SVGs share the same sizing rhythm */
+    .stream-btn svg {
+      display: block;
+    }
+
+    @media (max-width: 680px) {
+      .ui-icon {
+        width: 1em;
+        height: 1em;
+      }
+    }
+
+
+    /* ===== Complete icon treatment: navigation + statement links ===== */
+    header nav a,
+    .nav a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .42em;
+    }
+
+    .hero-statement a,
+    .manifesto-section a,
+    .manifesto-wrap a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .48em;
+    }
+
+    header nav .ui-icon,
+    .nav .ui-icon {
+      width: .9em;
+      height: .9em;
+      opacity: .92;
+    }
+
+    .hero-statement a .ui-icon,
+    .manifesto-section a .ui-icon,
+    .manifesto-wrap a .ui-icon {
+      width: 1.05em;
+      height: 1.05em;
+    }
+
+    .spotify-svg { color: #1ed760; }
+    .line-svg { color: #06c755; }
+
+    @media (max-width: 680px) {
+      header nav a,
+      .nav a { gap: .28em; }
+
+      header nav .ui-icon,
+      .nav .ui-icon {
+        width: .78em;
+        height: .78em;
+      }
+    }
+
+</style>
   <noscript><style>.splash-screen { display: none !important; }</style></noscript>
 </head>
 <body>
@@ -2217,11 +2475,11 @@
       </a>
 
       <div class="nav-links">
-        <a href="#latest-releases">MUSIC</a>
-        <a href="#schedule">NEWS</a>
-        <a href="#profile">PROFILE</a>
-        <a href="#game">GAME</a>
-        <a href="#goods">GOODS</a>
+        <a href="#latest-releases"><svg class="ui-icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="2.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 3.5v3M20.5 12h-3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>DISCOGRAPHY</span></a>
+        <a href="#schedule"><svg class="ui-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 5.5h11.5v13H6.5A1.5 1.5 0 0 1 5 17V5.5Z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M16.5 8H19v9a1.5 1.5 0 0 1-1.5 1.5M8 9h5M8 12h5M8 15h3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>NEWS</span></a>
+        <a href="#profile"><svg class="ui-icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M5.5 19c.8-3.4 3.1-5.2 6.5-5.2s5.7 1.8 6.5 5.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>PROFILE</span></a>
+        <a href="#game"><svg class="ui-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M8 8h8a4 4 0 0 1 3.8 2.8l1 3.2a2.5 2.5 0 0 1-4.1 2.6L15 15H9l-1.7 1.6A2.5 2.5 0 0 1 3.2 14l1-3.2A4 4 0 0 1 8 8Z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 11v3M6.5 12.5h3M16.5 11.5h.01M18 13h.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>GAME</span></a>
+        <a href="#goods"><svg class="ui-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 9V6.5a3 3 0 0 1 6 0V9" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>GOODS</span></a>
 
 
 
@@ -2257,7 +2515,7 @@
 
       <div class="hero-panel">
         <div class="hero-statement" aria-labelledby="hero-statement-title">
-  <p class="manifesto-kicker" id="hero-statement-title">T-ACT / STATEMENT</p>
+  <p class="manifesto-kicker" id="hero-statement-title"><svg class="ui-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M7 7h4v5H8.5A3.5 3.5 0 0 1 5 8.5V7h2Zm10 0h2v1.5A3.5 3.5 0 0 1 15.5 12H13V7h4Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>T-ACT / STATEMENT</span></p>
   <div class="manifesto-body">
     <p>記憶は薄れる<br>不確かなものになる<br>どう残すか</p>
     <p>成功や承認のためではない<br>これは現実の中で生まれた思考と瞬間の記録</p>
@@ -2266,10 +2524,10 @@
 
         <div class="cta" aria-label="主要導線">
           <a class="btn" href="#latest-releases">Music</a>
-          <a class="btn" href="https://music.apple.com/jp/artist/t-act/1842221982" target="_blank" rel="noreferrer noopener">Apple Music</a>
-          <a class="btn" href="https://open.spotify.com/intl-ja/artist/5FOiDuDN7NiDUrBtEciroP" target="_blank" rel="noreferrer noopener">Spotify</a>
-          <a class="btn" href="https://lin.ee/L5MxMC0" target="_blank" rel="noreferrer noopener">LINE MUSIC</a>
-          <a class="btn" href="https://youtube.com/@t_act_music" target="_blank" rel="noreferrer noopener">YouTube</a>
+          <a class="btn" href="https://music.apple.com/jp/artist/t-act/1842221982" target="_blank" rel="noreferrer noopener"><svg class="ui-icon brand-icon" aria-hidden="true" viewBox="0 0 24 24"><path fill="currentColor" d="M16.7 12.9c0-2.5 2.1-3.7 2.2-3.8-1.2-1.8-3.1-2-3.8-2-1.6-.2-3.2 1-4 1-.9 0-2.2-1-3.6-1-1.8 0-3.5 1.1-4.5 2.7-1.9 3.3-.5 8.2 1.4 10.9.9 1.3 2 2.8 3.5 2.7 1.4-.1 1.9-.9 3.7-.9 1.7 0 2.2.9 3.7.9 1.5 0 2.5-1.3 3.4-2.7 1.1-1.5 1.5-3 1.5-3.1-.1 0-3.5-1.4-3.5-4.7ZM14 5.4c.8-1 1.4-2.4 1.2-3.7-1.2.1-2.7.8-3.6 1.8-.8.9-1.5 2.3-1.3 3.6 1.4.1 2.8-.7 3.7-1.7Z"/></svg><span>Apple Music</span></a>
+          <a class="btn" href="https://open.spotify.com/intl-ja/artist/5FOiDuDN7NiDUrBtEciroP" target="_blank" rel="noreferrer noopener"><svg class="ui-icon brand-icon spotify-svg" aria-hidden="true" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.6 14.4a.62.62 0 0 1-.85.2c-2.34-1.43-5.29-1.75-8.76-.96a.62.62 0 1 1-.27-1.21c3.8-.87 7.06-.5 9.68 1.1.29.18.38.56.2.87Zm1.22-2.72a.78.78 0 0 1-1.07.26c-2.68-1.65-6.77-2.12-9.94-1.16a.78.78 0 1 1-.45-1.49c3.63-1.1 8.14-.57 11.2 1.31.37.23.49.71.26 1.08Zm.1-2.83C14.7 8.94 9.4 8.76 6.33 9.69a.94.94 0 1 1-.54-1.8c3.52-1.06 9.38-.85 13.08 1.35a.94.94 0 0 1-.96 1.61Z"/></svg><span>Spotify</span></a>
+          <a class="btn" href="https://lin.ee/L5MxMC0" target="_blank" rel="noreferrer noopener"><svg class="ui-icon brand-icon line-svg" aria-hidden="true" viewBox="0 0 24 24"><path fill="currentColor" d="M21.5 10.5c0-4.25-4.26-7.7-9.5-7.7s-9.5 3.45-9.5 7.7c0 3.81 3.38 7 7.94 7.6.31.07.73.21.84.48.1.25.06.64.03.89l-.13.84c-.04.25-.2.98.82.53 1.02-.43 5.5-3.24 7.5-5.55 1.38-1.51 2-3.04 2-4.79Z"/></svg><span>LINE MUSIC</span></a>
+          <a class="btn" href="https://youtube.com/@t_act_music" target="_blank" rel="noreferrer noopener"><svg class="ui-icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m10 9 5 3-5 3V9Z" fill="currentColor"/></svg><span>YouTube</span></a>
         </div>
 
       </div>
@@ -2281,7 +2539,7 @@
       <div class="section-inner">
         <div class="section-head">
           <h2 id="latest-releases-title">LATEST RELEASES</h2>
-          <p class="section-note">2026.09、新しい二つの記録。</p>
+          <p class="section-note">最新のリリース。</p>
         </div>
 
         <div class="releases">
@@ -2290,7 +2548,11 @@
             <div class="chips" style="margin-top:0; margin-bottom:10px;"><span class="chip">2026.09.18</span><span class="chip">NOW STREAMING</span><span class="chip">NEW SINGLE</span></div>
             <h3>Morning Rolls</h3>
             <p>朝は、誰かの仕事によって動き続ける。目立たなくても日常を支え、次の朝へつないでいく人たちを記録した一曲。</p>
-            <div class="sched-links"><a class="mv-link" href="https://linkco.re/tP9vp0hQ" target="_blank" rel="noreferrer noopener">Listen</a></div>
+            <div class="streaming-buttons" aria-label="Morning Rolls streaming services">
+<a class="stream-btn apple-music" href="https://music.apple.com/jp/album/morning-rolls-single/6812295089" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 24 24"><path fill="currentColor" d="M16.7 12.9c0-2.5 2.1-3.7 2.2-3.8-1.2-1.8-3.1-2-3.8-2-1.6-.2-3.2 1-4 1-0.9 0-2.2-1-3.6-1-1.8 0-3.5 1.1-4.5 2.7-1.9 3.3-.5 8.2 1.4 10.9.9 1.3 2 2.8 3.5 2.7 1.4-.1 1.9-.9 3.7-.9 1.7 0 2.2.9 3.7.9 1.5 0 2.5-1.3 3.4-2.7 1.1-1.5 1.5-3 1.5-3.1-.1 0-3.5-1.4-3.5-4.7ZM14 5.4c.8-1 1.4-2.4 1.2-3.7-1.2.1-2.7.8-3.6 1.8-.8.9-1.5 2.3-1.3 3.6 1.4.1 2.8-.7 3.7-1.7Z"/></svg><span>Apple Music</span></a>
+<a class="stream-btn spotify" href="https://open.spotify.com/album/0bC4a9EXAlE8CJx9z7T17R?si=3_xnfRBZTWu-UIuMvmIj3w&utm_source=copy-link" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.6 14.4a.62.62 0 0 1-.85.2c-2.34-1.43-5.29-1.75-8.76-.96a.62.62 0 1 1-.27-1.21c3.8-.87 7.06-.5 9.68 1.1.29.18.38.56.2.87Zm1.22-2.72a.78.78 0 0 1-1.07.26c-2.68-1.65-6.77-2.12-9.94-1.16a.78.78 0 1 1-.45-1.49c3.63-1.1 8.14-.57 11.2 1.31.37.23.49.71.26 1.08Zm.1-2.83C14.7 8.94 9.4 8.76 6.33 9.69a.94.94 0 1 1-.54-1.8c3.52-1.06 9.38-.85 13.08 1.35a.94.94 0 0 1-.96 1.61Z"/></svg><span>Spotify</span></a>
+<a class="stream-btn line-music" href="https://lin.ee/zfxBvhm" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 24 24"><path fill="currentColor" d="M21.5 10.5c0-4.25-4.26-7.7-9.5-7.7s-9.5 3.45-9.5 7.7c0 3.81 3.38 7 7.94 7.6.31.07.73.21.84.48.1.25.06.64.03.89l-.13.84c-.04.25-.2.98.82.53 1.02-.43 5.5-3.24 7.5-5.55 1.38-1.51 2-3.04 2-4.79Z"/></svg><span>LINE MUSIC</span></a>
+</div>
           </article>
         </div>
       </div>
@@ -2299,16 +2561,24 @@
     <section id="schedule">
       <div class="section-inner">
         <div class="section-head">
-          <h2>NEWS / UPDATE</h2>
+          <h2><svg class="ui-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 5.5h11.5v13H6.5A1.5 1.5 0 0 1 5 17V5.5Z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M16.5 8H19v9a1.5 1.5 0 0 1-1.5 1.5M8 9h5M8 12h5M8 15h3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>NEWS / UPDATE</span></h2>
           
         </div>
 
         <div class="schedule">
           <article class="sched-item">
-            <time class="sched-date" datetime="2026-09-25">2026-09-25</time><div class="sched-main"><h3>「僕の目の前」リリース</h3><div class="sched-meta">T-ACTの新曲「僕の目の前」を2026年9月25日0:00にリリース。</div><div class="chips"><span class="chip">NEW SINGLE</span><span class="chip">2026.09.25</span></div><div class="sched-links"><a href="https://linkco.re/gXyuBQ2H" target="_blank" rel="noreferrer noopener">Pre-Save / Pre-Add</a></div></div>
+            <time class="sched-date" datetime="2026-09-25">2026-09-25</time><div class="sched-main"><h3>「僕の目の前」リリース</h3><div class="sched-meta">T-ACTの新曲「僕の目の前」を2026年9月25日0:00にリリース。</div><div class="chips"><span class="chip">NEW SINGLE</span><span class="chip">2026.09.25</span></div><div class="streaming-buttons" aria-label="Morning Rolls streaming services">
+<a class="stream-btn apple-music" href="https://music.apple.com/jp/album/morning-rolls-single/6812295089" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 24 24"><path fill="currentColor" d="M16.7 12.9c0-2.5 2.1-3.7 2.2-3.8-1.2-1.8-3.1-2-3.8-2-1.6-.2-3.2 1-4 1-0.9 0-2.2-1-3.6-1-1.8 0-3.5 1.1-4.5 2.7-1.9 3.3-.5 8.2 1.4 10.9.9 1.3 2 2.8 3.5 2.7 1.4-.1 1.9-.9 3.7-.9 1.7 0 2.2.9 3.7.9 1.5 0 2.5-1.3 3.4-2.7 1.1-1.5 1.5-3 1.5-3.1-.1 0-3.5-1.4-3.5-4.7ZM14 5.4c.8-1 1.4-2.4 1.2-3.7-1.2.1-2.7.8-3.6 1.8-.8.9-1.5 2.3-1.3 3.6 1.4.1 2.8-.7 3.7-1.7Z"/></svg><span>Apple Music</span></a>
+<a class="stream-btn spotify" href="https://open.spotify.com/album/0bC4a9EXAlE8CJx9z7T17R?si=3_xnfRBZTWu-UIuMvmIj3w&utm_source=copy-link" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.6 14.4a.62.62 0 0 1-.85.2c-2.34-1.43-5.29-1.75-8.76-.96a.62.62 0 1 1-.27-1.21c3.8-.87 7.06-.5 9.68 1.1.29.18.38.56.2.87Zm1.22-2.72a.78.78 0 0 1-1.07.26c-2.68-1.65-6.77-2.12-9.94-1.16a.78.78 0 1 1-.45-1.49c3.63-1.1 8.14-.57 11.2 1.31.37.23.49.71.26 1.08Zm.1-2.83C14.7 8.94 9.4 8.76 6.33 9.69a.94.94 0 1 1-.54-1.8c3.52-1.06 9.38-.85 13.08 1.35a.94.94 0 0 1-.96 1.61Z"/></svg><span>Spotify</span></a>
+<a class="stream-btn line-music" href="https://lin.ee/zfxBvhm" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 24 24"><path fill="currentColor" d="M21.5 10.5c0-4.25-4.26-7.7-9.5-7.7s-9.5 3.45-9.5 7.7c0 3.81 3.38 7 7.94 7.6.31.07.73.21.84.48.1.25.06.64.03.89l-.13.84c-.04.25-.2.98.82.53 1.02-.43 5.5-3.24 7.5-5.55 1.38-1.51 2-3.04 2-4.79Z"/></svg><span>LINE MUSIC</span></a>
+</div></div>
           </article>
           <article class="sched-item">
-            <time class="sched-date" datetime="2026-09-18">2026-09-18</time><div class="sched-main"><h3>「Morning Rolls」配信開始</h3><div class="sched-meta">T-ACT「Morning Rolls」の配信を開始。</div><div class="chips"><span class="chip">NOW STREAMING</span><span class="chip">RELEASE</span></div><div class="sched-links"><a href="https://linkco.re/tP9vp0hQ" target="_blank" rel="noreferrer noopener">Listen</a></div></div>
+            <time class="sched-date" datetime="2026-09-18">2026-09-18</time><div class="sched-main"><h3>「Morning Rolls」配信開始</h3><div class="sched-meta">T-ACT「Morning Rolls」の配信を開始。</div><div class="chips"><span class="chip">NOW STREAMING</span><span class="chip">RELEASE</span></div><div class="streaming-buttons" aria-label="Morning Rolls streaming services">
+<a class="stream-btn apple-music" href="https://music.apple.com/jp/album/morning-rolls-single/6812295089" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 24 24"><path fill="currentColor" d="M16.7 12.9c0-2.5 2.1-3.7 2.2-3.8-1.2-1.8-3.1-2-3.8-2-1.6-.2-3.2 1-4 1-0.9 0-2.2-1-3.6-1-1.8 0-3.5 1.1-4.5 2.7-1.9 3.3-.5 8.2 1.4 10.9.9 1.3 2 2.8 3.5 2.7 1.4-.1 1.9-.9 3.7-.9 1.7 0 2.2.9 3.7.9 1.5 0 2.5-1.3 3.4-2.7 1.1-1.5 1.5-3 1.5-3.1-.1 0-3.5-1.4-3.5-4.7ZM14 5.4c.8-1 1.4-2.4 1.2-3.7-1.2.1-2.7.8-3.6 1.8-.8.9-1.5 2.3-1.3 3.6 1.4.1 2.8-.7 3.7-1.7Z"/></svg><span>Apple Music</span></a>
+<a class="stream-btn spotify" href="https://open.spotify.com/album/0bC4a9EXAlE8CJx9z7T17R?si=3_xnfRBZTWu-UIuMvmIj3w&utm_source=copy-link" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.6 14.4a.62.62 0 0 1-.85.2c-2.34-1.43-5.29-1.75-8.76-.96a.62.62 0 1 1-.27-1.21c3.8-.87 7.06-.5 9.68 1.1.29.18.38.56.2.87Zm1.22-2.72a.78.78 0 0 1-1.07.26c-2.68-1.65-6.77-2.12-9.94-1.16a.78.78 0 1 1-.45-1.49c3.63-1.1 8.14-.57 11.2 1.31.37.23.49.71.26 1.08Zm.1-2.83C14.7 8.94 9.4 8.76 6.33 9.69a.94.94 0 1 1-.54-1.8c3.52-1.06 9.38-.85 13.08 1.35a.94.94 0 0 1-.96 1.61Z"/></svg><span>Spotify</span></a>
+<a class="stream-btn line-music" href="https://lin.ee/zfxBvhm" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 24 24"><path fill="currentColor" d="M21.5 10.5c0-4.25-4.26-7.7-9.5-7.7s-9.5 3.45-9.5 7.7c0 3.81 3.38 7 7.94 7.6.31.07.73.21.84.48.1.25.06.64.03.89l-.13.84c-.04.25-.2.98.82.53 1.02-.43 5.5-3.24 7.5-5.55 1.38-1.51 2-3.04 2-4.79Z"/></svg><span>LINE MUSIC</span></a>
+</div></div>
           </article>
 
           <article class="sched-item">
@@ -2339,14 +2609,18 @@
     <section id="releases">
       <div class="section-inner">
         <div class="section-head">
-          <h2>DISCOGRAPHY</h2>
+          <h2><svg class="ui-icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="2.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 3.5v3M20.5 12h-3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>DISCOGRAPHY</span></h2>
           <p class="section-note">ジャケットから作品を選択。タップすると楽曲情報と配信リンクが開きます。</p>
         </div>
 
         <div class="releases discography-grid">
           <article class="release release-compact release-featured" id="boku-no-me-no-mae" tabindex="0" role="button" aria-expanded="false"><div class="release-cover"><img src="boku-no-me-no-mae.jpg" alt="僕の目の前 ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200" onerror="this.onerror=null; this.src='ogp.png';"></div><div class="chips" style="margin-top:0; margin-bottom:8px;"><span class="chip">2026.09.25</span><span class="chip">LATEST</span></div><h3>僕の目の前</h3><p>映画館の横顔、帰り道、水槽の青。大切な人と過ごす何気ない時間が、あとから記憶になっていく。その瞬間を静かに残した一曲。</p><div class="sched-links"><a href="https://linkco.re/gXyuBQ2H" target="_blank" rel="noreferrer noopener">LinkCore</a></div></article>
 
-          <article class="release release-compact release-featured" id="morning-rolls" tabindex="0" role="button" aria-expanded="false"><div class="release-cover"><img src="morning-rolls.jpg" alt="Morning Rolls ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200" onerror="this.onerror=null; this.src='ogp.png';"></div><div class="chips" style="margin-top:0; margin-bottom:8px;"><span class="chip">2026.09.18</span><span class="chip">NEW</span></div><h3>Morning Rolls</h3><p>朝は、誰かの仕事によって動き続ける。目立たなくても日常を支え、次の朝へつないでいく人たちを記録した一曲。</p><div class="sched-links"><a href="https://linkco.re/tP9vp0hQ" target="_blank" rel="noreferrer noopener">LinkCore</a></div></article>
+          <article class="release release-compact release-featured" id="morning-rolls" tabindex="0" role="button" aria-expanded="false"><div class="release-cover"><img src="morning-rolls.jpg" alt="Morning Rolls ジャケット画像" loading="lazy" decoding="async" width="1200" height="1200" onerror="this.onerror=null; this.src='ogp.png';"></div><div class="chips" style="margin-top:0; margin-bottom:8px;"><span class="chip">2026.09.18</span><span class="chip">NEW</span></div><h3>Morning Rolls</h3><p>朝は、誰かの仕事によって動き続ける。目立たなくても日常を支え、次の朝へつないでいく人たちを記録した一曲。</p><div class="streaming-buttons" aria-label="Morning Rolls streaming services">
+<a class="stream-btn apple-music" href="https://music.apple.com/jp/album/morning-rolls-single/6812295089" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 24 24"><path fill="currentColor" d="M16.7 12.9c0-2.5 2.1-3.7 2.2-3.8-1.2-1.8-3.1-2-3.8-2-1.6-.2-3.2 1-4 1-0.9 0-2.2-1-3.6-1-1.8 0-3.5 1.1-4.5 2.7-1.9 3.3-.5 8.2 1.4 10.9.9 1.3 2 2.8 3.5 2.7 1.4-.1 1.9-.9 3.7-.9 1.7 0 2.2.9 3.7.9 1.5 0 2.5-1.3 3.4-2.7 1.1-1.5 1.5-3 1.5-3.1-.1 0-3.5-1.4-3.5-4.7ZM14 5.4c.8-1 1.4-2.4 1.2-3.7-1.2.1-2.7.8-3.6 1.8-.8.9-1.5 2.3-1.3 3.6 1.4.1 2.8-.7 3.7-1.7Z"/></svg><span>Apple Music</span></a>
+<a class="stream-btn spotify" href="https://open.spotify.com/album/0bC4a9EXAlE8CJx9z7T17R?si=3_xnfRBZTWu-UIuMvmIj3w&utm_source=copy-link" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.6 14.4a.62.62 0 0 1-.85.2c-2.34-1.43-5.29-1.75-8.76-.96a.62.62 0 1 1-.27-1.21c3.8-.87 7.06-.5 9.68 1.1.29.18.38.56.2.87Zm1.22-2.72a.78.78 0 0 1-1.07.26c-2.68-1.65-6.77-2.12-9.94-1.16a.78.78 0 1 1-.45-1.49c3.63-1.1 8.14-.57 11.2 1.31.37.23.49.71.26 1.08Zm.1-2.83C14.7 8.94 9.4 8.76 6.33 9.69a.94.94 0 1 1-.54-1.8c3.52-1.06 9.38-.85 13.08 1.35a.94.94 0 0 1-.96 1.61Z"/></svg><span>Spotify</span></a>
+<a class="stream-btn line-music" href="https://lin.ee/zfxBvhm" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 24 24"><path fill="currentColor" d="M21.5 10.5c0-4.25-4.26-7.7-9.5-7.7s-9.5 3.45-9.5 7.7c0 3.81 3.38 7 7.94 7.6.31.07.73.21.84.48.1.25.06.64.03.89l-.13.84c-.04.25-.2.98.82.53 1.02-.43 5.5-3.24 7.5-5.55 1.38-1.51 2-3.04 2-4.79Z"/></svg><span>LINE MUSIC</span></a>
+</div></article>
 
           <article class="release release-compact release-featured" id="still-i-be" tabindex="0" role="button" aria-expanded="false">
             <div class="release-cover">
@@ -2537,7 +2811,7 @@
 
 
         <div class="section-head">
-          <h2>GAME</h2>
+          <h2><svg class="ui-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M8 8h8a4 4 0 0 1 3.8 2.8l1 3.2a2.5 2.5 0 0 1-4.1 2.6L15 15H9l-1.7 1.6A2.5 2.5 0 0 1 3.2 14l1-3.2A4 4 0 0 1 8 8Z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 11v3M6.5 12.5h3M16.5 11.5h.01M18 13h.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>GAME</span></h2>
           <p class="section-note">STRUCTURE RUN</p>
         </div>
 
@@ -2560,7 +2834,7 @@
     <section id="goods">
       <div class="section-inner">
         <div class="section-head">
-          <h2>GOODS</h2>
+          <h2><svg class="ui-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 9V6.5a3 3 0 0 1 6 0V9" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>GOODS</span></h2>
           <p class="section-note">T-ACTのオフィシャルグッズをSUZURIにて展開中。ピックアップ商品を掲載しています。</p>
         </div>
 
@@ -2585,7 +2859,7 @@
     <section id="profile">
       <div class="section-inner">
         <div class="section-head">
-          <h2>PROFILE</h2>
+          <h2><svg class="ui-icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M5.5 19c.8-3.4 3.1-5.2 6.5-5.2s5.7 1.8 6.5 5.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>PROFILE</span></h2>
           <p class="section-note">日本を拠点に、Chill / Hip-Hop / R&amp;Bを軸に制作するインディペンデントアーティスト。</p>
         </div>
 
