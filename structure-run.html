@@ -676,7 +676,7 @@
     let finalSequence=false,finalGateSpawned=false,finalGatePassed=false,clearTimer=0;
     let captionLocked=false;
 
-    const player={x:W/2,y:H-165,w:30,h:38,vx:0,tilt:0,glow:0};
+    const player={x:W/2,y:H-250,w:32,h:40,vx:0,tilt:0,glow:0};
 
 
     function resizeGame(){
@@ -697,7 +697,7 @@
 
       canvas.width=W;
       canvas.height=H;
-      player.y=H-(portraitMode?190:165);
+      player.y=H-(portraitMode?285:165);
       player.x=clamp(player.x,28,W-28);
       input.targetX=clamp(input.targetX,0,W);
       seedWorld();
@@ -821,7 +821,7 @@
       lastHit={word:'構造',truth:'構造を見ろ。',en:'READ THE STRUCTURE.'};
       shake=0;obstacles=[];particles=[];trails=[];signals=[];
       finalSequence=false;finalGateSpawned=false;finalGatePassed=false;clearTimer=0;captionLocked=false;
-      player.x=W/2;player.y=H-(portraitMode?190:165);player.vx=0;player.tilt=0;player.glow=0;
+      player.x=W/2;player.y=H-(portraitMode?285:165);player.vx=0;player.tilt=0;player.glow=0;
       input.left=false;input.right=false;input.pointer=false;input.targetX=W/2;
       countdown=165;state='countdown';overlay.style.display='none';
       writeLog('> route reset / '+(portraitMode?'PORTRAIT READ MODE':'WIDE IMMERSION MODE'),'live');
@@ -1192,16 +1192,74 @@
 
     function drawPlayer(){
       const pulse=.88+Math.sin(player.glow)*.10,focus=focusTimer>0;
-      ctx.save();ctx.translate(player.x,player.y);ctx.rotate(player.tilt*.26);
-      ctx.shadowBlur=focus?46:28;ctx.shadowColor=focus?'rgba(255,255,255,.95)':'rgba(115,255,241,.92)';
-      const grad=ctx.createLinearGradient(0,-30,0,24);grad.addColorStop(0,focus?'#ffffff':'#c8fffb');grad.addColorStop(.55,focus?'#ebffff':'#73fff1');grad.addColorStop(1,focus?'#b69cff':'#1cc9bd');
-      ctx.fillStyle=grad;
-      ctx.beginPath();ctx.moveTo(0,-32);ctx.lineTo(20,-5);ctx.lineTo(13,25);ctx.lineTo(0,16);ctx.lineTo(-13,25);ctx.lineTo(-20,-5);ctx.closePath();ctx.fill();
-      ctx.lineWidth=2.4;
-      ctx.strokeStyle=focus?'rgba(255,255,255,.95)':'rgba(220,255,252,.90)';
+      ctx.save();
+      ctx.translate(player.x,player.y);
+      ctx.rotate(player.tilt*.24);
+
+      // vertical beam so the eye can immediately lock onto the player
+      const beam=ctx.createLinearGradient(0,-230,0,34);
+      beam.addColorStop(0,'rgba(115,255,241,0)');
+      beam.addColorStop(.28,focus?'rgba(255,255,255,.11)':'rgba(115,255,241,.10)');
+      beam.addColorStop(1,'rgba(115,255,241,0)');
+      ctx.fillStyle=beam;
+      ctx.fillRect(-18,-230,36,264);
+
+      // locator ring
+      ctx.shadowBlur=24;
+      ctx.shadowColor=focus?'rgba(255,255,255,.55)':'rgba(115,255,241,.55)';
+      ctx.strokeStyle=focus?'rgba(255,255,255,.78)':'rgba(115,255,241,.72)';
+      ctx.lineWidth=2.2;
+      ctx.beginPath();
+      ctx.ellipse(0,18,30+pulse*4,12+pulse*2.4,0,0,Math.PI*2);
       ctx.stroke();
-      ctx.shadowBlur=12;ctx.fillStyle='rgba(255,255,255,.68)';ctx.fillRect(-2,-15,4,25);
-      ctx.fillStyle=`rgba(255,255,255,${.08+.06*pulse})`;ctx.beginPath();ctx.arc(0,3,24*pulse,0,Math.PI*2);ctx.fill();
+
+      // small "YOU" tag in portrait so the ship is never lost
+      if(portraitMode){
+        ctx.shadowBlur=10;
+        ctx.fillStyle='rgba(115,255,241,.82)';
+        ctx.font='800 10px "Arial Black","Avenir Next","Hiragino Sans",sans-serif';
+        ctx.textAlign='center';
+        ctx.fillText('YOU',0,-42);
+      }
+
+      // glow core
+      ctx.shadowBlur=focus?52:34;
+      ctx.shadowColor=focus?'rgba(255,255,255,.95)':'rgba(115,255,241,.95)';
+      const grad=ctx.createLinearGradient(0,-34,0,26);
+      grad.addColorStop(0,focus?'#ffffff':'#d9fffd');
+      grad.addColorStop(.54,focus?'#f4ffff':'#8bfff5');
+      grad.addColorStop(1,focus?'#c8b8ff':'#1fd8ca');
+      ctx.fillStyle=grad;
+
+      // ship body
+      ctx.beginPath();
+      ctx.moveTo(0,-35);
+      ctx.lineTo(22,-5);
+      ctx.lineTo(14,27);
+      ctx.lineTo(0,16);
+      ctx.lineTo(-14,27);
+      ctx.lineTo(-22,-5);
+      ctx.closePath();
+      ctx.fill();
+
+      // dual outline for a crazier cyberpunk feel
+      ctx.lineWidth=2.6;
+      ctx.strokeStyle='rgba(255,255,255,.96)';
+      ctx.stroke();
+      ctx.lineWidth=1.2;
+      ctx.strokeStyle='rgba(255,92,160,.60)';
+      ctx.stroke();
+
+      // center spine
+      ctx.shadowBlur=14;
+      ctx.fillStyle='rgba(255,255,255,.82)';
+      ctx.fillRect(-2,-17,4,28);
+
+      // tiny side fins
+      ctx.fillStyle='rgba(115,255,241,.88)';
+      ctx.beginPath(); ctx.moveTo(-22,-2); ctx.lineTo(-28,10); ctx.lineTo(-20,8); ctx.closePath(); ctx.fill();
+      ctx.beginPath(); ctx.moveTo(22,-2); ctx.lineTo(28,10); ctx.lineTo(20,8); ctx.closePath(); ctx.fill();
+
       ctx.restore();
     }
 
@@ -1225,16 +1283,38 @@
       ctx.fillStyle=focus?'rgba(115,255,241,.38)':'rgba(255,255,255,.17)';ctx.fillRect(ob.x,ob.y,ob.w,2);
       ctx.textAlign='center';
       const approach=clamp((ob.y-(H*.08))/(H*.78),0,1);
-      const portraitBase=portraitMode?(ob.w>W*.32?23:20):(ob.w>150?19:17);
-      const labelSize=Math.round(portraitBase+approach*(portraitMode?12:9));
-      const labelY=ob.y+ob.h/2+labelSize*.33;
-      const labelW=Math.min(ob.w-8,Math.max(portraitMode?68:54,ob.data.word.length*labelSize*.96));
-      ctx.fillStyle=focus?'rgba(3,15,18,.70)':'rgba(4,5,12,.66)';
-      ctx.fillRect(ob.x+ob.w/2-labelW/2,labelY-labelSize*.88,labelW,labelSize*1.18);
-      ctx.shadowBlur=focus?18:16;
-      ctx.shadowColor=focus?'rgba(115,255,241,.82)':'rgba(0,0,0,.98)';
-      ctx.fillStyle=focus?'rgba(232,255,253,1)':'rgba(255,255,255,1)';
-      ctx.font=`900 ${labelSize}px "Avenir Next","Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif`;
+      const portraitBase=portraitMode?(ob.w>W*.32?25:22):(ob.w>150?20:18);
+      const labelSize=Math.round(portraitBase+approach*(portraitMode?15:11));
+      const labelY=ob.y+ob.h/2+labelSize*.34;
+      const glitch=Math.sin(ob.pulse*3.3)*1.35;
+      const fontSpec=`italic 900 ${labelSize}px "Arial Black","Impact","Avenir Next Condensed","Hiragino Kaku Gothic StdN","Yu Gothic",sans-serif`;
+
+      ctx.textAlign='center';
+      ctx.font=fontSpec;
+
+      // magenta ghost
+      ctx.save();
+      ctx.globalAlpha=focus?.18:.42;
+      ctx.translate(-2.4+glitch,0);
+      ctx.fillStyle='rgba(255,75,146,.88)';
+      ctx.fillText(ob.data.word,ob.x+ob.w/2,labelY);
+      ctx.restore();
+
+      // cyan ghost
+      ctx.save();
+      ctx.globalAlpha=focus?.30:.55;
+      ctx.translate(2.1-glitch*.55,0);
+      ctx.fillStyle='rgba(96,255,246,.92)';
+      ctx.fillText(ob.data.word,ob.x+ob.w/2,labelY);
+      ctx.restore();
+
+      // main type
+      ctx.lineWidth=Math.max(2.4,labelSize*.10);
+      ctx.strokeStyle=focus?'rgba(14,36,41,.78)':'rgba(7,9,20,.96)';
+      ctx.shadowBlur=focus?24:18;
+      ctx.shadowColor=focus?'rgba(115,255,241,.85)':'rgba(115,255,241,.32)';
+      ctx.fillStyle=focus?'rgba(240,255,254,1)':'rgba(255,255,255,.98)';
+      ctx.strokeText(ob.data.word,ob.x+ob.w/2,labelY);
       ctx.fillText(ob.data.word,ob.x+ob.w/2,labelY);
       if(focus&&ob.w>120){
         ctx.font='800 9px "Avenir Next","Helvetica Neue",sans-serif';ctx.fillStyle='rgba(115,255,241,.68)';
