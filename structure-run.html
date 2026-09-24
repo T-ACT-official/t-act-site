@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>STRUCTURE RUN｜T-ACTの思考を追体験するブラウザゲーム</title>
   <meta name="description" content="評価、偏見、流行、承認、数字、比較。現実にある“構造”を自分の操作で抜けていく、T-ACTによるブラウザゲーム。音楽とは異なるメディアでT-ACTの思考を追体験する。">
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
@@ -107,7 +107,7 @@
     *{box-sizing:border-box}
     html,body{
       margin:0;width:100%;height:100%;overflow:hidden;
-      font-family:"Segoe UI","Hiragino Sans","Yu Gothic UI",sans-serif;
+      font-family:"Avenir Next","Helvetica Neue","Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
       background:
         radial-gradient(circle at 50% -15%,rgba(52,230,211,.11),transparent 34%),
         radial-gradient(circle at 86% 118%,rgba(156,106,255,.14),transparent 39%),
@@ -123,24 +123,27 @@
       isolation:isolate;
     }
     #game-shell{
-      position:relative;
-      width:min(100vw,100vh * 1.7777778);
-      height:min(56.25vw,100vh);
-      max-width:100vw;max-height:100vh;
-      overflow:hidden;border-radius:20px;
-      box-shadow:0 36px 100px rgba(0,0,0,.54);
+      position:fixed;
+      inset:0;
+      width:100dvw;
+      height:100dvh;
+      max-width:none;
+      max-height:none;
+      overflow:hidden;
+      border-radius:0;
+      box-shadow:none;
       background:#03050a;
     }
     canvas{
       position:absolute;inset:0;width:100%;height:100%;display:block;
       touch-action:none;background:#03050a;
-      border:1px solid rgba(115,255,241,.13);border-radius:20px;
+      border:0;border-radius:0;
       transition:transform .45s cubic-bezier(.2,.8,.2,1),filter .45s ease;
       transform-origin:center;
     }
     canvas.crash-zoom{transform:scale(1.065);filter:contrast(1.45) brightness(1.35) blur(.8px)}
     .scanlines,.grain,.chromatic,.vignette{
-      position:absolute;inset:0;pointer-events:none;border-radius:20px;
+      position:absolute;inset:0;pointer-events:none;border-radius:0;
     }
     .scanlines{
       z-index:3;opacity:.43;
@@ -169,7 +172,7 @@
     }
 
     .hud{
-      position:absolute;top:15px;left:15px;right:15px;z-index:7;
+      position:absolute;top:max(10px,env(safe-area-inset-top));left:max(10px,env(safe-area-inset-left));right:max(10px,env(safe-area-inset-right));z-index:7;
       display:grid;grid-template-columns:1fr minmax(300px,460px) 1fr;
       gap:10px;align-items:start;pointer-events:none;
     }
@@ -202,7 +205,7 @@
     @keyframes meterPulse{to{filter:brightness(1.65);box-shadow:0 0 25px rgba(115,255,241,.85)}}
 
     .top-tools{
-      position:absolute;right:16px;bottom:15px;z-index:8;display:flex;gap:7px;
+      position:absolute;right:max(10px,env(safe-area-inset-right));bottom:max(10px,env(safe-area-inset-bottom));z-index:8;display:flex;gap:7px;
     }
     .tool-btn{
       min-width:38px;height:38px;padding:0 10px;margin:0;border-radius:11px;
@@ -213,12 +216,12 @@
     }
     .tool-btn:hover{border-color:var(--line-strong);color:#fff}
     .brand-chip{
-      position:absolute;left:17px;bottom:15px;z-index:6;pointer-events:none;
+      position:absolute;left:max(12px,env(safe-area-inset-left));bottom:max(12px,env(safe-area-inset-bottom));z-index:6;pointer-events:none;
       font-size:8px;letter-spacing:.18em;color:rgba(207,242,246,.27);text-transform:uppercase;
     }
 
     #controls{
-      position:absolute;left:50%;bottom:15px;transform:translateX(-50%);
+      position:absolute;left:50%;bottom:max(10px,env(safe-area-inset-bottom));transform:translateX(-50%);
       z-index:8;display:flex;gap:8px;align-items:center;
     }
     .control-btn{
@@ -295,7 +298,7 @@
     }
 
     .focus-flash,.crash-flash,.whiteout{
-      position:absolute;inset:0;pointer-events:none;border-radius:20px;
+      position:absolute;inset:0;pointer-events:none;border-radius:0;
     }
     .focus-flash{z-index:10;opacity:0;background:radial-gradient(circle,rgba(255,255,255,.22),rgba(115,255,241,.07) 44%,transparent 72%)}
     .focus-flash.on{animation:focusPulse .72s ease}
@@ -308,7 +311,7 @@
     .overlay{
       position:absolute;inset:0;z-index:12;
       display:flex;align-items:center;justify-content:center;
-      padding:18px;border-radius:20px;
+      padding:18px;border-radius:0;
       background:
         radial-gradient(circle at 50% 36%,rgba(30,58,69,.24),transparent 37%),
         rgba(1,3,8,.76);
@@ -383,17 +386,17 @@
     @media(max-width:760px){
       #game-shell{width:100vw;height:100vh;border-radius:0}
       canvas,.scanlines,.grain,.chromatic,.vignette,.overlay,.focus-flash,.crash-flash,.whiteout{border-radius:0}
-      .hud{top:8px;left:8px;right:8px;grid-template-columns:1fr 1.3fr 1fr;gap:5px}
+      .hud{top:max(7px,env(safe-area-inset-top));left:max(7px,env(safe-area-inset-left));right:max(7px,env(safe-area-inset-right));grid-template-columns:1fr 1.3fr 1fr;gap:5px}
       .panel{min-width:0;padding:7px 8px;border-radius:9px}
       .value{font-size:14px}.label{font-size:7px}
       .hud-side{gap:4px}.hud-side .panel:nth-child(2){display:none}
       .hud-center{padding:6px 8px 7px}
       .phase-name{font-size:8px}.clarity-label{font-size:7px}
       .system-log{left:10px;top:67px;width:42vw}.log-line{font-size:7px;margin-bottom:3px}
-      #controls{bottom:9px;gap:5px}
+      #controls{bottom:max(8px,env(safe-area-inset-bottom));gap:5px}
       .control-btn{min-width:58px;min-height:42px;padding:9px 11px}
       .focus-btn{min-width:96px;font-size:8px}
-      .brand-chip{display:none}.top-tools{right:8px;bottom:9px;gap:4px}
+      .brand-chip{display:none}.top-tools{right:max(7px,env(safe-area-inset-right));bottom:max(8px,env(safe-area-inset-bottom));gap:4px}
       .tool-btn{height:36px;min-width:34px;padding:0 7px;font-size:8px}
       .story-caption{bottom:59px;width:88%}.story-caption strong{font-size:13px}
       .card{padding:25px 17px 21px}
@@ -507,7 +510,7 @@
     const soundBtn = document.getElementById('soundBtn');
     const pauseBtn = document.getElementById('pauseBtn');
 
-    const W = canvas.width, H = canvas.height;
+    let W = canvas.width, H = canvas.height;
     const OFFICIAL_URL = 'https://t-act-official.site/';
     const BEST_KEY = 'tactStructureRunBestV3';
     const CLEAR_KEY = 'tactStructureRunClearV3';
@@ -587,6 +590,20 @@
 
     const player={x:W/2,y:H-112,w:27,h:34,vx:0,tilt:0,glow:0};
 
+
+    function resizeGame(){
+      const rect=shell.getBoundingClientRect();
+      const aspect=Math.max(.9,rect.width/Math.max(1,rect.height));
+      H=720;
+      W=Math.round(H*aspect);
+      canvas.width=W;
+      canvas.height=H;
+      player.y=H-112;
+      player.x=clamp(player.x,28,W-28);
+      input.targetX=clamp(input.targetX,0,W);
+      seedWorld();
+    }
+
     const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
     const pad=n=>String(Math.max(0,Math.floor(n))).padStart(6,'0');
     const rand=(a,b)=>a+Math.random()*(b-a);
@@ -599,6 +616,9 @@
       for(let i=0;i<12;i++) backgroundWords.push({data:WORD_DATA[i%WORD_DATA.length],x:rand(65,W-65),y:rand(90,H-40),speed:rand(.16,.43),alpha:rand(.02,.05)});
     }
     seedWorld();
+    resizeGame();
+    addEventListener("resize",()=>{ clearTimeout(window.__srResize); window.__srResize=setTimeout(resizeGame,80); });
+    if(window.visualViewport){ visualViewport.addEventListener("resize",()=>{ clearTimeout(window.__srVV); window.__srVV=setTimeout(resizeGame,60); }); }
 
     function titleHtml(){
       return `
@@ -773,15 +793,15 @@
         const center=clamp(rand(220,W-220),gapW/2+70,W-gapW/2-70);
         const leftW=center-gapW/2, rightX=center+gapW/2;
         const drift=(Math.random()-.5)*(d>3?1.0:.45);
-        obstacle(datum,0,y,leftW,31,'gate',drift);
-        obstacle(WORD_DATA[Math.floor(Math.random()*WORD_DATA.length)],rightX,y,W-rightX,31,'gate',drift);
+        obstacle(datum,0,y,leftW,46,'gate',drift);
+        obstacle(WORD_DATA[Math.floor(Math.random()*WORD_DATA.length)],rightX,y,W-rightX,46,'gate',drift);
       }else if(d>2.8 && roll<.48){
         // Moving narrow blockers
         const w=rand(72,115), x=rand(70,W-w-70);
-        obstacle(datum,x,y,w,38,'scanner',(Math.random()<.5?-1:1)*rand(.55,1.25));
+        obstacle(datum,x,y,w,52,'scanner',(Math.random()<.5?-1:1)*rand(.55,1.25));
       }else{
         const wide=Math.random()<.34, w=wide?rand(165,320):rand(52,105), x=rand(35,W-w-35);
-        obstacle(datum,x,y,w,rand(25,45),wide?'wall':'block',d>3.1?(Math.random()-.5)*.85:0);
+        obstacle(datum,x,y,w,rand(40,58),wide?'wall':'block',d>3.1?(Math.random()-.5)*.85:0);
       }
     }
 
@@ -975,9 +995,9 @@
 
       // hologram billboards
       const billboards=[
-        {x:145,y:210,w:185,h:58,t:'VALUE // INDEX'},
-        {x:870,y:175,w:225,h:66,t:'APPROVAL MARKET'},
-        {x:970,y:355,w:170,h:50,t:'TREND / LIVE'}
+        {x:W*.10,y:H*.29,w:Math.min(185,W*.18),h:58,t:'VALUE // INDEX'},
+        {x:W*.68,y:H*.24,w:Math.min(225,W*.22),h:66,t:'APPROVAL MARKET'},
+        {x:W*.76,y:H*.49,w:Math.min(170,W*.17),h:50,t:'TREND / LIVE'}
       ];
       billboards.forEach((b,i)=>{
         const flick=.45+Math.sin(frame*.035+i)*.14;
@@ -1060,10 +1080,12 @@
 
       // top tech line
       ctx.fillStyle=focus?'rgba(115,255,241,.38)':'rgba(255,255,255,.17)';ctx.fillRect(ob.x,ob.y,ob.w,2);
-      ctx.textAlign='center';ctx.fillStyle=focus?'rgba(211,255,252,.88)':'rgba(249,245,255,.77)';
-      ctx.font=`800 ${ob.w>150?11:9}px "Segoe UI",sans-serif`;ctx.fillText(ob.data.word,ob.x+ob.w/2,ob.y+ob.h/2+4);
+      ctx.textAlign='center';ctx.shadowBlur=focus?16:13;
+      ctx.shadowColor=focus?'rgba(115,255,241,.70)':'rgba(0,0,0,.92)';
+      ctx.fillStyle=focus?'rgba(225,255,253,.98)':'rgba(255,252,255,.96)';
+      ctx.font=`900 ${ob.w>150?18:15}px "Avenir Next","Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif`;ctx.fillText(ob.data.word,ob.x+ob.w/2,ob.y+ob.h/2+6);
       if(focus&&ob.w>120){
-        ctx.font='700 7px ui-monospace,monospace';ctx.fillStyle='rgba(115,255,241,.56)';
+        ctx.font='800 9px "Avenir Next","Helvetica Neue",sans-serif';ctx.fillStyle='rgba(115,255,241,.68)';
         const msg=ob.data.en.length>30?ob.data.en.slice(0,30)+'…':ob.data.en;ctx.fillText(msg,ob.x+ob.w/2,ob.y+ob.h-6);
       }
       ctx.restore();
