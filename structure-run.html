@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>STRUCTURE RUN｜T-ACTの思考を追体験するブラウザゲーム</title>
-  <meta name="description" content="評価、偏見、流行、承認、数字、比較。現実にある“構造”を自分の操作で抜けていく、T-ACTによるブラウザゲーム。音楽とは異なるメディアでT-ACTの思考を追体験する。">
+  <meta name="description" content="評価、偏見、流行、承認、飽和、数字、比較、雑音、混線、雑念。現実にある“構造”を自分の操作で抜けていく、T-ACTによるブラウザゲーム。音楽とは異なるメディアでT-ACTの思考を追体験する。">
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
   <meta name="author" content="T-ACT">
   <meta name="theme-color" content="#05060a">
@@ -62,7 +62,7 @@
         "alternateName": "T-ACT // STRUCTURE RUN",
         "url": "https://t-act-official.site/structure-run.html",
         "image": "https://t-act-official.site/structure-run-cover.jpg",
-        "description": "評価、偏見、流行、承認、数字、比較など、現実にある構造をプレイヤー自身の操作で抜けていくブラウザゲーム。T-ACTの思考を、音楽とは異なるメディアで追体験する作品。",
+        "description": "評価、偏見、流行、承認、飽和、数字、比較、雑音、混線、雑念など、現実にある構造をプレイヤー自身の操作で抜けていくブラウザゲーム。T-ACTの思考を、音楽とは異なるメディアで追体験する作品。",
         "inLanguage": "ja",
         "genre": ["Browser Game", "Arcade", "Conceptual"],
         "gamePlatform": "Web Browser",
@@ -205,7 +205,7 @@
     @keyframes meterPulse{to{filter:brightness(1.65);box-shadow:0 0 25px rgba(115,255,241,.85)}}
 
     .top-tools{
-      position:absolute;right:max(10px,env(safe-area-inset-right));bottom:max(10px,env(safe-area-inset-bottom));z-index:8;display:flex;gap:7px;
+      position:absolute;right:max(10px,env(safe-area-inset-right));bottom:max(96px,calc(env(safe-area-inset-bottom) + 92px));z-index:8;display:flex;gap:7px;
     }
     .tool-btn{
       min-width:38px;height:38px;padding:0 10px;margin:0;border-radius:11px;
@@ -461,20 +461,20 @@
       #btnFocus{justify-self:center}
       #btnRight{justify-self:end}
       .control-btn{
-        min-width:72px;
-        min-height:52px;
+        min-width:64px;
+        min-height:46px;
         border-radius:16px;
         font-size:20px;
       }
       .focus-btn{
-        min-width:126px;
+        min-width:110px;
         font-size:9px;
         letter-spacing:.13em;
       }
 
       .story-caption{
-        bottom:max(84px,calc(env(safe-area-inset-bottom) + 76px));
-        width:88%;
+        bottom:max(164px,calc(env(safe-area-inset-bottom) + 152px));
+        width:84%;
       }
       .story-caption small{font-size:7px}
       .story-caption strong{
@@ -604,16 +604,18 @@
     const CLEAR_KEY = 'tactStructureRunClearV3';
 
     const WORD_DATA = [
-      {word:'評価', truth:'他人の物差しは、あなたの軸ではない。', en:'WHO SET THE VALUE?'},
-      {word:'偏見', truth:'固定観念は、考える前に答えを決めてしまう。', en:'THINK BEFORE LABELS.'},
-      {word:'流行', truth:'流れを見ることと、流されることは違う。', en:'READ THE FLOW. KEEP YOUR AXIS.'},
-      {word:'承認', truth:'認められることを目的にすると、自分が遠くなる。', en:'APPROVAL IS NOT IDENTITY.'},
-      {word:'供給過多', truth:'量の中で埋もれるなら、設計で抜ける。', en:'DESIGN BEATS VOLUME.'},
-      {word:'幻想', truth:'現実を見ることは、夢を捨てることではない。', en:'REALITY IS NOT SURRENDER.'},
-      {word:'数字', truth:'数字は結果を映す。目的までは決めない。', en:'NUMBERS ARE NOT THE PURPOSE.'},
-      {word:'比較', truth:'比べる相手を間違えると、軸を失う。', en:'COMPARE LESS. OBSERVE MORE.'},
-      {word:'期待', truth:'期待に応えることと、期待に支配されることは違う。', en:'EXPECTATION IS NOT OWNERSHIP.'},
-      {word:'ノイズ', truth:'全部を受け取る必要はない。選ぶことも創作だ。', en:'FILTER THE NOISE.'}
+      {word:'評価', truth:'他人の目はなくならない。でも、それを進む方向まで決めるものにしなくていい。', en:'OTHER PEOPLE CAN RATE YOU. THEY DO NOT SET YOUR DIRECTION.'},
+      {word:'偏見', truth:'見る前に決めつけると、見えるはずだったものまで見えなくなる。', en:'LABELS CAN HIDE WHAT IS ACTUALLY THERE.'},
+      {word:'流行', truth:'流れを知ることと、流れに進路を預けることは違う。', en:'READ THE FLOW. DO NOT GIVE IT YOUR DIRECTION.'},
+      {word:'承認', truth:'認められることは嬉しい。でも、それが目的になると自分の声が小さくなる。', en:'APPROVAL FEELS GOOD. IT IS NOT YOUR PURPOSE.'},
+      {word:'飽和', truth:'多すぎる世界では、増やすことより何を残すかの方が難しい。', en:'WHEN EVERYTHING IS TOO MUCH, CHOOSE WHAT REMAINS.'},
+      {word:'幻想', truth:'理想を見ることは悪くない。ただ、足元の現実を見失うと進めなくなる。', en:'DREAM. BUT KEEP CONTACT WITH REALITY.'},
+      {word:'数字', truth:'数字は現実を映す。でも、数字だけでは残したいものまでは決められない。', en:'NUMBERS SHOW RESULTS. THEY DO NOT CHOOSE YOUR PURPOSE.'},
+      {word:'比較', truth:'他人を見るほど、自分の現在地が分からなくなることがある。', en:'COMPARISON CAN BLUR YOUR OWN POSITION.'},
+      {word:'期待', truth:'応えたい気持ちはあっていい。ただ、誰の人生を進んでいるかは忘れない。', en:'MEET EXPECTATIONS WITHOUT LOSING YOUR OWN LIFE.'},
+      {word:'雑音', truth:'全部を受け取る必要はない。何を聞かないかも選択になる。', en:'NOT EVERYTHING DESERVES YOUR ATTENTION.'},
+      {word:'混線', truth:'いろんな声が重なると、自分の声まで分からなくなる。', en:'TOO MANY SIGNALS CAN BURY YOUR OWN.'},
+      {word:'雑念', truth:'考えが散ると、目の前の一歩まで見えなくなる。', en:'A SCATTERED MIND CAN HIDE THE NEXT STEP.'}
     ];
     const SIGNAL_WORDS = ['記憶','選択','余白','温度','継続','実感'];
 
@@ -676,7 +678,7 @@
     let finalSequence=false,finalGateSpawned=false,finalGatePassed=false,clearTimer=0;
     let captionLocked=false;
 
-    const player={x:W/2,y:H-250,w:32,h:40,vx:0,tilt:0,glow:0};
+    const player={x:W/2,y:H-250,w:26,h:32,vx:0,tilt:0,glow:0};
 
 
     function resizeGame(){
@@ -698,7 +700,7 @@
       canvas.width=W;
       canvas.height=H;
       player.y=H-(portraitMode?285:165);
-      player.x=clamp(player.x,28,W-28);
+      player.x=clamp(player.x,portraitMode?14:28,W-(portraitMode?14:28));
       input.targetX=clamp(input.targetX,0,W);
       seedWorld();
     }
@@ -724,7 +726,7 @@
         <p class="kicker">T-ACT / INTERACTIVE RECORD</p>
         <h1>STRUCTURE RUN</h1>
         <p class="lead"><span class="danger">構造を避けるだけでは足りない。読め。</span><br>
-        評価、偏見、流行、承認、数字、比較。先を読み、現実にある“構造”の中を、自分の軸で走る。</p>
+        評価、偏見、流行、承認、飽和、数字、比較、雑音、混線、雑念。先を読み、現実にある“構造”の中を、自分の軸で走る。</p>
         <div class="howto">
           <div><b>MOVE</b><span>← → / A D / 画面ドラッグ</span></div>
           <div><b>READ</b><span>ニアミスとSIGNALでCLARITYを貯める</span></div>
@@ -756,6 +758,7 @@
         <p class="lead">衝突対象：<span class="danger">${lastHit.word}</span><br>
         <span class="accent">${lastHit.truth}</span></p>
         <p class="microcopy">${lastHit.en}</p>
+        <p style="margin-top:14px"><span class="accent">構造は避けきれない。ただ、先を見通せたなら避けられたのかもしれない。</span></p>
         <div class="stats">
           <div class="stat"><b>${pad(score)}</b><span>record</span></div>
           <div class="stat"><b>${pad(best)}</b><span>best</span></div>
@@ -861,7 +864,7 @@
       clarityMeter.classList.toggle('ready',clarity>=100&&focusTimer<=0);
       btnFocus.classList.toggle('ready',clarity>=100&&focusTimer<=0);
       btnFocus.classList.toggle('active',focusTimer>0);
-      btnFocus.textContent=focusTimer>0?'READING':(clarity>=100?'FOCUS READY':'FOCUS');
+      btnFocus.textContent=focusTimer>0?'READING':(clarity>=100?'BOOST READY':'BOOST');
       soundBtn.textContent=soundOn?'SOUND':'MUTED';
       pauseBtn.textContent=state==='paused'?'RESUME':'PAUSE';
     }
@@ -885,14 +888,14 @@
       if(finalSequence)return;
       const d=difficulty(), datum=WORD_DATA[Math.floor(Math.random()*WORD_DATA.length)], y=-86;
       const roll=Math.random();
-      const margin=portraitMode?22:35;
+      const margin=portraitMode?12:35;
 
       if(d>2.0 && roll<.30){
         // In portrait, gates stay wide enough to be read and planned for.
-        const minGap=portraitMode?Math.max(190,W*.38):225;
-        const maxGap=portraitMode?Math.max(230,W*.48):300;
+        const minGap=portraitMode?Math.max(220,W*.44):225;
+        const maxGap=portraitMode?Math.max(270,W*.58):300;
         const gapW=portraitMode
-          ? clamp(W*(.50-d*.018),minGap,maxGap)
+          ? clamp(W*(.60-d*.012),minGap,maxGap)
           : clamp(330-d*14,minGap,maxGap);
 
         const centerMin=gapW/2+margin+18;
@@ -912,13 +915,13 @@
         const x=rand(margin,W-w-margin);
         obstacle(
           datum,x,y,w,portraitMode?58:52,'scanner',
-          (Math.random()<.5?-1:1)*rand(portraitMode?.25:.40,portraitMode?.60:.90)
+          (Math.random()<.5?-1:1)*rand(portraitMode?.18:.40,portraitMode?.48:.90)
         );
 
       }else{
         const wide=Math.random()<.34;
         const w=portraitMode
-          ? (wide?rand(W*.32,W*.52):rand(W*.14,W*.24))
+          ? (wide?rand(W*.24,W*.38):rand(W*.10,W*.17))
           : (wide?rand(165,320):rand(52,105));
         const x=rand(margin,W-w-margin);
         obstacle(
@@ -1018,7 +1021,7 @@
 
       player.vx*=portraitMode?.78:.80;
       player.vx=clamp(player.vx,-maxSpeed,maxSpeed);
-      player.x=clamp(player.x+player.vx,27,W-27);
+      player.x=clamp(player.x+player.vx,portraitMode?12:27,W-(portraitMode?12:27));
       player.tilt+=((player.vx/maxSpeed)-player.tilt)*.16;
       player.glow+=.13;
 
@@ -1195,6 +1198,8 @@
       ctx.save();
       ctx.translate(player.x,player.y);
       ctx.rotate(player.tilt*.24);
+      const shipScale=portraitMode?.78:1;
+      ctx.scale(shipScale,shipScale);
 
       // vertical beam so the eye can immediately lock onto the player
       const beam=ctx.createLinearGradient(0,-230,0,34);
