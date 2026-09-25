@@ -205,7 +205,7 @@
     @keyframes meterPulse{to{filter:brightness(1.65);box-shadow:0 0 25px rgba(115,255,241,.85)}}
 
     .top-tools{
-      position:absolute;right:max(10px,env(safe-area-inset-right));bottom:max(168px,calc(env(safe-area-inset-bottom) + 164px));z-index:8;display:flex;gap:7px;
+      position:absolute;right:max(10px,env(safe-area-inset-right));bottom:max(10px,env(safe-area-inset-bottom));z-index:8;display:flex;gap:7px;
     }
     .tool-btn{
       min-width:38px;height:38px;padding:0 10px;margin:0;border-radius:11px;
@@ -378,7 +378,7 @@
     .microcopy{font-size:9px!important;color:rgba(201,231,235,.39)!important;letter-spacing:.08em}
 
     @media(max-width:760px){
-      #game-shell{width:100vw;height:100vh;border-radius:0}
+      #game-shell{width:100vw;height:100vh;height:100dvh;border-radius:0}
       canvas,.scanlines,.grain,.chromatic,.vignette,.overlay,.focus-flash,.crash-flash,.whiteout{border-radius:0}
       .hud{top:max(7px,env(safe-area-inset-top));left:max(7px,env(safe-area-inset-left));right:max(7px,env(safe-area-inset-right));grid-template-columns:1fr 1.3fr 1fr;gap:5px}
       .panel{min-width:0;padding:7px 8px;border-radius:9px}
@@ -387,112 +387,102 @@
       .hud-center{padding:6px 8px 7px}
       .phase-name{font-size:8px}.clarity-label{font-size:7px}
       .system-log{left:10px;top:67px;width:42vw}.log-line{font-size:7px;margin-bottom:3px}
-      #controls{bottom:max(8px,env(safe-area-inset-bottom));gap:10px}
+      #controls{bottom:max(18px,env(safe-area-inset-bottom));gap:10px}
       .control-btn{min-width:58px;min-height:42px;padding:9px 11px}
       .focus-btn{min-width:96px;font-size:8px}
-      .brand-chip{display:none}.top-tools{right:max(7px,env(safe-area-inset-right));bottom:max(8px,env(safe-area-inset-bottom));gap:4px}
-      .tool-btn{height:36px;min-width:34px;padding:0 7px;font-size:8px}
-      .story-caption{bottom:59px;width:88%}.story-caption strong{font-size:13px}
+      .brand-chip{display:none}.top-tools{right:max(7px,env(safe-area-inset-right));bottom:max(76px,calc(env(safe-area-inset-bottom) + 66px));gap:4px}
+      .tool-btn{height:34px;min-width:32px;padding:0 7px;font-size:8px}
+      .story-caption{bottom:72px;width:88%}.story-caption strong{font-size:13px}
       .card{padding:25px 17px 21px}
       .howto{grid-template-columns:1fr}.howto div{padding:8px}
       .stats{grid-template-columns:repeat(2,1fr)}
     }
-    }
+
     @media(prefers-reduced-motion:reduce){
       .grain{animation:none}.phase-banner.show,.story-caption.show,.focus-flash.on{animation-duration:.01ms}
     }
-#btnRight{right:max(150px,env(safe-area-inset-right))}
-    }
 
-  
-    /* ===== Portrait Play Mode: "read ahead" layout ===== */
+    /* ===== Portrait Play Mode: read the structure ahead ===== */
     @media (max-width:760px) and (orientation:portrait){
       .hud{
-        top:max(8px,env(safe-area-inset-top));
-        left:max(8px,env(safe-area-inset-left));
-        right:max(8px,env(safe-area-inset-right));
+        top:max(6px,env(safe-area-inset-top));
+        left:max(7px,env(safe-area-inset-left));
+        right:max(7px,env(safe-area-inset-right));
         display:grid;
         grid-template-columns:1fr 1fr;
-        grid-template-areas:
-          "score flow"
-          "clarity clarity";
-        gap:6px;
+        grid-template-areas:"score flow" "clarity clarity";
+        gap:5px;
       }
       .hud-side:first-child{grid-area:score;justify-content:flex-start}
       .hud-side.right{grid-area:flow;justify-content:flex-end}
       .hud-center{grid-area:clarity}
-      .hud-side .panel{flex:1}
+      .hud-side .panel{flex:1;padding:6px 8px}
       .hud-side .panel:nth-child(2){display:none}
-      .hud-center{padding:7px 9px 8px}
-      .phase-line{gap:8px}
-      .phase-name{font-size:9px}
-      .clarity-label{font-size:7px}
-      .meter{height:6px}
+      .hud-center{padding:5px 8px 6px}
+      .label{font-size:6px;margin-bottom:2px}
+      .value{font-size:15px;line-height:1.05}
+      .phase-line{gap:7px}
+      .phase-name{font-size:8px}
+      .clarity-label{font-size:6px}
+      .meter{height:4px;margin-top:5px}
 
       .system-log{display:none}
       .brand-chip{display:none}
       .top-tools{
-        top:max(106px,calc(env(safe-area-inset-top) + 98px));
+        top:max(92px,calc(env(safe-area-inset-top) + 84px));
         right:max(8px,env(safe-area-inset-right));
         bottom:auto;
         gap:4px;
+        opacity:.58;
       }
-      .tool-btn{
-        height:32px;
-        min-width:32px;
-        padding:0 7px;
-        font-size:7px;
-        opacity:.72;
-      }
+      .tool-btn{height:30px;min-width:30px;padding:0 6px;font-size:7px}
 
       #controls{
         left:0;
         right:0;
-        bottom:max(10px,env(safe-area-inset-bottom));
+        bottom:max(22px,env(safe-area-inset-bottom));
         transform:none;
         width:100%;
         display:grid;
         grid-template-columns:1fr auto 1fr;
         gap:10px;
-        padding:0 max(14px,env(safe-area-inset-right)) 0 max(14px,env(safe-area-inset-left));
+        padding:0 max(16px,env(safe-area-inset-right)) 0 max(16px,env(safe-area-inset-left));
         align-items:end;
-        z-index:14;
+        z-index:20;
+        pointer-events:none;
+      }
+      #controls::before{
+        content:"";
+        position:absolute;
+        left:50%;top:50%;
+        width:min(94vw,470px);height:76px;
+        transform:translate(-50%,-50%);
+        background:radial-gradient(ellipse at center,rgba(1,7,13,.66),rgba(1,7,13,0) 72%);
+        pointer-events:none;
+        z-index:-1;
       }
       #btnLeft{justify-self:start}
       #btnFocus{justify-self:center}
       #btnRight{justify-self:end}
       .control-btn{
-        min-width:58px;
-        min-height:42px;
-        border-radius:15px;
+        min-width:62px;
+        min-height:46px;
+        padding:8px 11px;
+        border-radius:14px;
         font-size:18px;
+        pointer-events:auto;
+        background:rgba(5,11,20,.82);
+        -webkit-backdrop-filter:blur(10px);
+        backdrop-filter:blur(10px);
       }
-      .focus-btn{
-        min-width:98px;
-        font-size:8px;
-        letter-spacing:.13em;
-      }
+      .focus-btn{min-width:112px;font-size:9px;letter-spacing:.13em}
 
-      .story-caption{
-        bottom:max(230px,calc(env(safe-area-inset-bottom) + 220px));
-        width:84%;
-      }
+      .story-caption{bottom:max(88px,calc(env(safe-area-inset-bottom) + 80px));width:84%}
       .story-caption small{font-size:7px}
-      .story-caption strong{
-        font-size:14px;
-        line-height:1.55;
-      }
+      .story-caption strong{font-size:13px;line-height:1.5}
+      .phase-banner strong{font-size:clamp(34px,12vw,58px);letter-spacing:.10em}
 
-      .phase-banner strong{
-        font-size:clamp(34px,12vw,58px);
-        letter-spacing:.10em;
-      }
-
-      .card{
-        width:min(92%,560px);
-        padding:24px 16px 20px;
-        border-radius:20px;
-      }
+      .card{width:min(92%,560px);padding:24px 16px 20px;border-radius:20px}
       .card h1{font-size:clamp(30px,10vw,45px)}
       .card h2{font-size:clamp(26px,9vw,40px)}
       .lead{font-size:12px}
@@ -682,6 +672,25 @@
     const player={x:W/2,y:H-250,w:26,h:32,vx:0,tilt:0,glow:0};
 
 
+    function syncVisualViewport(){
+      const vv=window.visualViewport;
+      if(vv){
+        shell.style.width=Math.round(vv.width)+'px';
+        shell.style.height=Math.round(vv.height)+'px';
+        shell.style.left=Math.round(vv.offsetLeft)+'px';
+        shell.style.top=Math.round(vv.offsetTop)+'px';
+        shell.style.right='auto';
+        shell.style.bottom='auto';
+      }else{
+        shell.style.width='100vw';
+        shell.style.height='100dvh';
+        shell.style.left='0';
+        shell.style.top='0';
+        shell.style.right='auto';
+        shell.style.bottom='auto';
+      }
+    }
+
     function resizeGame(){
       const rect=shell.getBoundingClientRect();
       const aspect=Math.max(.38,rect.width/Math.max(1,rect.height));
@@ -700,7 +709,7 @@
 
       canvas.width=W;
       canvas.height=H;
-      player.y=H-(portraitMode?300:165);
+      player.y=portraitMode?H*.73:H-165;
       player.x=clamp(player.x,portraitMode?14:28,W-(portraitMode?14:28));
       input.targetX=clamp(input.targetX,0,W);
       seedWorld();
@@ -718,9 +727,18 @@
       for(let i=0;i<12;i++) backgroundWords.push({data:WORD_DATA[i%WORD_DATA.length],x:rand(65,W-65),y:rand(90,H-40),speed:rand(.16,.43),alpha:rand(.02,.05)});
     }
     seedWorld();
+    syncVisualViewport();
     resizeGame();
-    addEventListener("resize",()=>{ clearTimeout(window.__srResize); window.__srResize=setTimeout(resizeGame,80); });
-    if(window.visualViewport){ visualViewport.addEventListener("resize",()=>{ clearTimeout(window.__srVV); window.__srVV=setTimeout(resizeGame,60); }); }
+    const scheduleViewportSync=()=>{
+      clearTimeout(window.__srViewport);
+      window.__srViewport=setTimeout(()=>{syncVisualViewport();resizeGame();},50);
+    };
+    addEventListener("resize",scheduleViewportSync,{passive:true});
+    addEventListener("orientationchange",scheduleViewportSync,{passive:true});
+    if(window.visualViewport){
+      visualViewport.addEventListener("resize",scheduleViewportSync,{passive:true});
+      visualViewport.addEventListener("scroll",scheduleViewportSync,{passive:true});
+    }
 
     function titleHtml(){
       return `
@@ -825,7 +843,7 @@
       lastHit={word:'構造',truth:'構造を見ろ。',en:'READ THE STRUCTURE.'};
       shake=0;obstacles=[];particles=[];trails=[];signals=[];
       finalSequence=false;finalGateSpawned=false;finalGatePassed=false;clearTimer=0;captionLocked=false;
-      player.x=W/2;player.y=H-(portraitMode?300:165);player.vx=0;player.tilt=0;player.glow=0;
+      player.x=W/2;player.y=portraitMode?H*.73:H-165;player.vx=0;player.tilt=0;player.glow=0;
       input.left=false;input.right=false;input.pointer=false;input.targetX=W/2;
       countdown=165;state='countdown';overlay.style.display='none';
       writeLog('> route reset / '+(portraitMode?'PORTRAIT READ MODE':'WIDE IMMERSION MODE'),'live');
@@ -887,7 +905,7 @@
 
     function spawnPattern(){
       if(finalSequence)return;
-      const d=difficulty(), datum=WORD_DATA[Math.floor(Math.random()*WORD_DATA.length)], y=-86;
+      const d=difficulty(), datum=WORD_DATA[Math.floor(Math.random()*WORD_DATA.length)], y=portraitMode?-120:-86;
       const roll=Math.random();
       const margin=portraitMode?12:35;
 
@@ -1143,7 +1161,7 @@
         {x:W*.68,y:H*.24,w:Math.min(225,W*.22),h:66,t:'APPROVAL MARKET'},
         {x:W*.76,y:H*.49,w:Math.min(170,W*.17),h:50,t:'TREND / LIVE'}
       ];
-      billboards.slice(0,portraitMode?1:billboards.length).forEach((b,i)=>{
+      billboards.slice(0,portraitMode?0:billboards.length).forEach((b,i)=>{
         const flick=.45+Math.sin(frame*.035+i)*.14;
         ctx.strokeStyle=`rgba(115,255,241,${.06*flick})`;ctx.fillStyle=`rgba(12,52,60,${.045*flick})`;
         ctx.fillRect(b.x,b.y,b.w,b.h);ctx.strokeRect(b.x+.5,b.y+.5,b.w-1,b.h-1);
@@ -1199,7 +1217,7 @@
       ctx.save();
       ctx.translate(player.x,player.y);
       ctx.rotate(player.tilt*.24);
-      const shipScale=portraitMode?.78:1;
+      const shipScale=portraitMode?.68:1;
       ctx.scale(shipScale,shipScale);
 
       // vertical beam so the eye can immediately lock onto the player
