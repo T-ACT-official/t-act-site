@@ -774,10 +774,10 @@
       return `
         <p class="kicker">RECORD ENDED</p>
         <h2>LOG ENDED</h2>
-        <p class="lead">衝突対象：<span class="danger">${lastHit.word}</span><br>
+        <p style="margin:10px auto 6px;max-width:520px;line-height:1.7;color:rgba(228,250,252,.84);font-size:13px">衝突対象：<span class="danger">${lastHit.word}</span><br>
         <span class="accent">${lastHit.truth}</span></p>
         <p class="microcopy">${lastHit.en}</p>
-        <p style="margin-top:14px"><span class="accent">構造は避けきれない。ただ、先を見通せたなら避けられたのかもしれない。</span></p>
+        <p style="margin:16px auto 8px;max-width:540px;line-height:1.82;font-size:18px;font-weight:800;letter-spacing:.03em"><span class="accent">構造は避けきれない。ただ、先を見通せたなら避けられたのかもしれない。</span></p>
         <div class="stats">
           <div class="stat"><b>${pad(score)}</b><span>record</span></div>
           <div class="stat"><b>${pad(best)}</b><span>best</span></div>
@@ -1145,8 +1145,8 @@
       city.forEach((b,i)=>{
         const par=[.06,.10,.15][b.layer], offset=(frame*par)%(W+120);
         let x=(b.x-offset+W+120)%(W+120)-60;
-        const baseY=horizon+42+b.layer*28, alpha=[.026,.038,.052][b.layer];
-        ctx.fillStyle=`rgba(${b.layer===2?80:120},${b.layer===1?110:210},255,${alpha})`;
+        const baseY=horizon+42+b.layer*28, alpha=portraitMode?[.042,.062,.088][b.layer]:[.026,.038,.052][b.layer];
+        ctx.fillStyle=`rgba(${b.layer===2?96:120},${b.layer===1?132:210},255,${alpha})`;
         ctx.fillRect(x,baseY-b.h,b.w,b.h);
         ctx.fillStyle=`rgba(115,255,241,${alpha*.7})`;
         for(let wy=baseY-b.h+12;wy<baseY-8;wy+=18){
@@ -1161,12 +1161,40 @@
         {x:W*.68,y:H*.24,w:Math.min(225,W*.22),h:66,t:'APPROVAL MARKET'},
         {x:W*.76,y:H*.49,w:Math.min(170,W*.17),h:50,t:'TREND / LIVE'}
       ];
-      billboards.slice(0,portraitMode?0:billboards.length).forEach((b,i)=>{
-        const flick=.45+Math.sin(frame*.035+i)*.14;
-        ctx.strokeStyle=`rgba(115,255,241,${.06*flick})`;ctx.fillStyle=`rgba(12,52,60,${.045*flick})`;
+      billboards.slice(0,portraitMode?2:billboards.length).forEach((b,i)=>{
+        const flick=(portraitMode?.72:.45)+Math.sin(frame*.035+i)*.18;
+        ctx.shadowBlur=portraitMode?20:10;
+        ctx.shadowColor=portraitMode?'rgba(115,255,241,.25)':'rgba(115,255,241,.14)';
+        ctx.strokeStyle=`rgba(115,255,241,${(portraitMode?.12:.06)*flick})`;
+        ctx.fillStyle=`rgba(12,52,60,${(portraitMode?.09:.045)*flick})`;
         ctx.fillRect(b.x,b.y,b.w,b.h);ctx.strokeRect(b.x+.5,b.y+.5,b.w-1,b.h-1);
-        ctx.fillStyle=`rgba(152,255,246,${.10*flick})`;ctx.font='700 10px ui-monospace,monospace';ctx.textAlign='center';ctx.fillText(b.t,b.x+b.w/2,b.y+b.h/2+3);
+        ctx.fillStyle=`rgba(152,255,246,${(portraitMode?.18:.10)*flick})`;ctx.font=portraitMode?'800 11px ui-monospace,monospace':'700 10px ui-monospace,monospace';ctx.textAlign='center';ctx.fillText(b.t,b.x+b.w/2,b.y+b.h/2+3);
+        ctx.shadowBlur=0;
       });
+
+      if(portraitMode){
+        const sideGlowL=ctx.createLinearGradient(0,0,W*.18,0);
+        sideGlowL.addColorStop(0,'rgba(255,66,168,.14)');
+        sideGlowL.addColorStop(1,'rgba(255,66,168,0)');
+        ctx.fillStyle=sideGlowL;ctx.fillRect(0,H*.18,W*.16,H*.64);
+
+        const sideGlowR=ctx.createLinearGradient(W,0,W-W*.18,0);
+        sideGlowR.addColorStop(0,'rgba(109,247,255,.15)');
+        sideGlowR.addColorStop(1,'rgba(109,247,255,0)');
+        ctx.fillStyle=sideGlowR;ctx.fillRect(W-W*.16,H*.12,W*.16,H*.70);
+
+        const horizonGlow=ctx.createRadialGradient(W/2,H*.37,10,W/2,H*.37,W*.42);
+        horizonGlow.addColorStop(0,'rgba(115,255,241,.10)');
+        horizonGlow.addColorStop(.45,'rgba(182,156,255,.06)');
+        horizonGlow.addColorStop(1,'rgba(0,0,0,0)');
+        ctx.fillStyle=horizonGlow;ctx.fillRect(0,H*.14,W,H*.52);
+
+        ctx.strokeStyle='rgba(255,94,166,.06)';
+        for(let i=0;i<5;i++){
+          const x=W*(.12+i*.19), y1=H*(.18+(i%2)*.07), y2=H*(.54+(i%3)*.06);
+          ctx.beginPath();ctx.moveTo(x,y1);ctx.lineTo(x+10,y2);ctx.stroke();
+        }
+      }
 
       // perspective road
       const roadTop=H*.37, roadBottom=H+15;
@@ -1174,19 +1202,19 @@
       ctx.beginPath();ctx.moveTo(W*(portraitMode?.34:.39),roadTop);ctx.lineTo(W*(portraitMode?.66:.61),roadTop);ctx.lineTo(W*(portraitMode?.96:.84),roadBottom);ctx.lineTo(W*(portraitMode?.04:.16),roadBottom);ctx.closePath();ctx.fill();
 
       for(let i=-7;i<=7;i++){
-        const endX=W/2+i*75;ctx.strokeStyle=focus?'rgba(115,255,241,.13)':'rgba(115,255,241,.055)';
+        const endX=W/2+i*75;ctx.strokeStyle=focus?'rgba(115,255,241,.13)':(portraitMode?'rgba(115,255,241,.082)':'rgba(115,255,241,.055)');
         ctx.beginPath();ctx.moveTo(W/2,roadTop);ctx.lineTo(endX,roadBottom);ctx.stroke();
       }
       const scroll=(frame*(2.0+d*.34))%50;
       for(let y=roadTop+scroll;y<roadBottom;y+=50){
         const t=(y-roadTop)/(roadBottom-roadTop), curve=roadTop+(roadBottom-roadTop)*t*t;
-        ctx.strokeStyle=`rgba(115,255,241,${.018+t*.075})`;ctx.beginPath();ctx.moveTo(W*(portraitMode?.04:.16),curve);ctx.lineTo(W*(portraitMode?.96:.84),curve);ctx.stroke();
+        ctx.strokeStyle=`rgba(115,255,241,${portraitMode?(.03+t*.10):(.018+t*.075)})`;ctx.beginPath();ctx.moveTo(W*(portraitMode?.04:.16),curve);ctx.lineTo(W*(portraitMode?.96:.84),curve);ctx.stroke();
       }
 
       for(const r of rain){
         r.y+=r.s*(focus?.4:1);r.x-=r.s*.22*(focus?.4:1);
         if(r.y>H+20||r.x<-20){r.y=-20;r.x=Math.random()*W}
-        ctx.strokeStyle=`rgba(185,242,246,${r.a})`;ctx.beginPath();ctx.moveTo(r.x,r.y);ctx.lineTo(r.x-r.l*.28,r.y+r.l);ctx.stroke();
+        ctx.strokeStyle=`rgba(185,242,246,${portraitMode?(r.a*1.18):r.a})`;ctx.beginPath();ctx.moveTo(r.x,r.y);ctx.lineTo(r.x-r.l*.28,r.y+r.l);ctx.stroke();
       }
 
       for(const bw of backgroundWords){
